@@ -33,29 +33,29 @@ public class AntCommand {
     // FIXME ... someone ought to complete this.
     
     public static void main(String[] args) throws Exception {
-        makeBuildXml("build.xml");
-        
-        //final Set<Permission> permissions = new HashSet<Permission>();  
-//        SecurityManagerListener l = new SecurityManagerListener()
-//        {
+//        makeBuildXml("build.xml");
 //
-//            public boolean checkPermission(Permission perm)
-//            {
-//                //permissions.add(perm);
-//                return false; // false : don't check the permission
-//            }
-//            
-//        };
-//        
-//        ((JNodeSecurityManager) System.getSecurityManager()).setListener(l);
-        Main.main(args);
-//        ((JNodeSecurityManager) System.getSecurityManager()).setListener(null);
-
-//        System.out.println("permissions:\n");            
-//        for(Permission p : permissions)
-//        {
-//            System.out.println(p);            
-//        }
+//        //final Set<Permission> permissions = new HashSet<Permission>();
+////        SecurityManagerListener l = new SecurityManagerListener()
+////        {
+////
+////            public boolean checkPermission(Permission perm)
+////            {
+////                //permissions.add(perm);
+////                return false; // false : don't check the permission
+////            }
+////
+////        };
+////
+////        ((JNodeSecurityManager) System.getSecurityManager()).setListener(l);
+//        Main.main(args);
+////        ((JNodeSecurityManager) System.getSecurityManager()).setListener(null);
+//
+////        System.out.println("permissions:\n");
+////        for(Permission p : permissions)
+////        {
+////            System.out.println(p);
+////        }
     }
     
     public static void makeBuildXml(String file) throws Exception {

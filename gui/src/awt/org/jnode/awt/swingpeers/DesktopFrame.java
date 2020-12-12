@@ -78,7 +78,7 @@ public final class DesktopFrame extends JFrame implements JNodeAwtContext {
                 super.paintComponent(g);
                 if (backgroundImage != null) {
                     Dimension ds = desktop.getSize();
-                    /* cnetered
+                    /* centered
                     int iw = backgroundImage.getWidth();
                     int ih = backgroundImage.getHeight();
                     g.drawImage(backgroundImage, (ds.width - iw) / 2, (ds.height - ih) / 2, desktop);
@@ -87,8 +87,10 @@ public final class DesktopFrame extends JFrame implements JNodeAwtContext {
                     // bottom right
                     int iw = backgroundImage.getWidth();
                     int ih = backgroundImage.getHeight();
-                    g.drawImage(backgroundImage, ds.width - iw - 30, ds.height - ih - 20, desktop);                    
+                    g.drawImage(backgroundImage, ds.width - iw - 30, ds.height - ih - 20, desktop);
                 }
+                g.setColor(new Color(255, 255, 255));
+                g.drawString("HELLO!", 10, 10);
             }
         };
         setBgColor();

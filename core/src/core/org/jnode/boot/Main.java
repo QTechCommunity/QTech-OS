@@ -61,7 +61,7 @@ public final class Main {
     public static int vmMain() {
         //return 15;
         try {
-            Unsafe.debug("Starting JNode\n");
+            Unsafe.debug("Starting Q-OS\n");
             final long start = VmSystem.currentKernelMillis();
 
             Unsafe.debug("VmSystem.initialize\n");
@@ -86,21 +86,28 @@ public final class Main {
                 mainClass = null;
             }
             final long end = VmSystem.currentKernelMillis();
-            System.out.println("JNode initialization finished in " + (end - start) + "ms.");
+            System.out.println("Q-OS initialization finished in " + (end - start) + "ms.");
+            System.out.println();
+            System.out.println("#==========================================#");
+            System.out.println("| Welcome to Q-OS!                         |");
+            System.out.println("| WARNING: This project is in development. |");
+            System.out.println("#==========================================#");
 
             if (mainClass != null) {
                 try {
                     final Method mainMethod = 
-                        mainClass.getMethod("main", new Class[]{String[].class});
+                        mainClass.getMethod("main", String[].class);
                     mainMethod.invoke(null, new Object[]{proc.getMainClassArguments()});
                 } catch (NoSuchMethodException x) {
-                    final Object insatnce = mainClass.newInstance();
-                    if (insatnce instanceof Runnable) {
-                        ((Runnable) insatnce).run();
+                    final Object instance = mainClass.newInstance();
+                    if (instance instanceof Runnable) {
+                        ((Runnable) instance).run();
                     } else {
                         BootLogInstance.get().warn("No valid Main-Class found");
                     }
                 }
+            } else {
+                System.err.println("Main-Class is null.");
             }
         } catch (Throwable ex) {
             BootLogInstance.get().error("Error in bootstrap", ex);
@@ -112,6 +119,7 @@ public final class Main {
         return VmSystem.getExitCode();
     }
 
+    @SuppressWarnings({"InfiniteLoopStatement", "BusyWait"})
     private static void sleepForever() {
         while (true) {
             try {

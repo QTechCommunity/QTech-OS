@@ -42,35 +42,36 @@
   </runtime>
 
   <extension point="org.jnode.shell.aliases">
-    <alias name="alias"     class="org.jnode.command.system.AliasCommand"/>
-    <alias name="bindkeys"  class="org.jnode.command.system.BindKeysCommand"/>
-    <alias name="class"     class="org.jnode.command.system.ClassCommand"/>
-    <alias name="classpath" class="org.jnode.command.system.ClasspathCommand" internal="yes"/>
-    <alias name="cpuid"     class="org.jnode.command.system.CpuIDCommand"/>
-    <alias name="gc"        class="org.jnode.command.system.GcCommand"/>
-    <alias name="halt"      class="org.jnode.command.system.HaltCommand"/>
-    <alias name="isolate"   class="org.jnode.command.system.IsolateCommand"/>
-    <alias name="java"      class="org.jnode.command.system.JavaCommand"/>
-    <alias name="kdb"       class="org.jnode.command.system.KdbCommand"/>
-    <alias name="kill"      class="org.jnode.command.system.KillCommand"/>
-    <alias name="loadkeys"  class="org.jnode.command.system.LoadkeysCommand"/>
-    <alias name="locale"    class="org.jnode.command.system.LocaleCommand"/>
-    <alias name="log4j"     class="org.jnode.command.system.Log4jCommand"/>
-    <alias name="lsirq"     class="org.jnode.command.system.LsIRQCommand"/>
-    <alias name="memory"    class="org.jnode.command.system.MemoryCommand"/>
-    <alias name="namespace" class="org.jnode.command.system.NamespaceCommand"/>
-    <alias name="onheap"    class="org.jnode.command.system.OnHeapCommand"/>
-    <alias name="page"      class="org.jnode.command.system.PageCommand"/>
-    <alias name="plugin"    class="org.jnode.command.system.PluginCommand"/>
-    <alias name="printenv"  class="org.jnode.command.system.PrintEnvCommand"/>
-    <alias name="propset"   class="org.jnode.command.system.SetCommand" internal="yes"/>
-    <alias name="reboot"    class="org.jnode.command.system.RebootCommand"/>
-    <alias name="run"       class="org.jnode.command.system.RunCommand"/>
-    <alias name="syntax"    class="org.jnode.command.system.SyntaxCommand"/>
-    <alias name="terminate" class="org.jnode.command.system.TerminateCommand"/>
-    <alias name="thread"    class="org.jnode.command.system.ThreadCommand"/>
-    <alias name="uname"     class="org.jnode.command.system.UnameCommand"/>
-    <alias name="vminfo"    class="org.jnode.command.system.VmInfoCommand"/>
+    <alias name="alias"      class="org.jnode.command.system.AliasCommand"/>
+    <alias name="bindkeys"   class="org.jnode.command.system.BindKeysCommand"/>
+    <alias name="class"      class="org.jnode.command.system.ClassCommand"/>
+    <alias name="classpath"  class="org.jnode.command.system.ClasspathCommand" internal="yes"/>
+    <alias name="cpuid"      class="org.jnode.command.system.CpuIDCommand"/>
+    <alias name="gc"         class="org.jnode.command.system.GcCommand"/>
+    <alias name="halt"       class="org.jnode.command.system.HaltCommand"/>
+    <alias name="isolate"    class="org.jnode.command.system.IsolateCommand"/>
+    <alias name="java"       class="org.jnode.command.system.JavaCommand"/>
+    <alias name="kdb"        class="org.jnode.command.system.KdbCommand"/>
+    <alias name="kill"       class="org.jnode.command.system.KillCommand"/>
+    <alias name="loadkeys"   class="org.jnode.command.system.LoadkeysCommand"/>
+    <alias name="locale"     class="org.jnode.command.system.LocaleCommand"/>
+    <alias name="log4j"      class="org.jnode.command.system.Log4jCommand"/>
+    <alias name="lsirq"      class="org.jnode.command.system.LsIRQCommand"/>
+    <alias name="memory"     class="org.jnode.command.system.MemoryCommand"/>
+    <alias name="namespace"  class="org.jnode.command.system.NamespaceCommand"/>
+    <alias name="onheap"     class="org.jnode.command.system.OnHeapCommand"/>
+    <alias name="page"       class="org.jnode.command.system.PageCommand"/>
+    <alias name="plugin"     class="org.jnode.command.system.PluginCommand"/>
+    <alias name="printenv"   class="org.jnode.command.system.PrintEnvCommand"/>
+    <alias name="propset"    class="org.jnode.command.system.SetCommand" internal="yes"/>
+    <alias name="reboot"     class="org.jnode.command.system.RebootCommand"/>
+    <alias name="resolution" class="org.jnode.command.system.ResolutionCommand"/>
+    <alias name="run"        class="org.jnode.command.system.RunCommand"/>
+    <alias name="syntax"     class="org.jnode.command.system.SyntaxCommand"/>
+    <alias name="terminate"  class="org.jnode.command.system.TerminateCommand"/>
+    <alias name="thread"     class="org.jnode.command.system.ThreadCommand"/>
+    <alias name="uname"      class="org.jnode.command.system.UnameCommand"/>
+    <alias name="vminfo"     class="org.jnode.command.system.VmInfoCommand"/>
   </extension>
 
   <extension point="org.jnode.shell.syntaxes">

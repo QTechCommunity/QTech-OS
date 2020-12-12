@@ -49,8 +49,9 @@ public class DisassembleCommand extends AbstractCommand {
     private static final String fmt_out = "Disassembling %d methods took %dms%n";
     
     private final int maxTestLevel = LoadCompileService.getHighestOptimizationLevel(true);
-    private final int maxNontestLevel = LoadCompileService.getHighestOptimizationLevel(false);
-    private final int maxLevel = Math.max(maxTestLevel, maxNontestLevel);
+    private final int maxNonTestLevel = LoadCompileService.getHighestOptimizationLevel(false);
+    @SuppressWarnings("FieldCanBeLocal")
+    private final int maxLevel = Math.max(maxTestLevel, maxNonTestLevel);
 
     private final ClassNameArgument argClass;
     private final StringArgument argMethod;
@@ -98,8 +99,8 @@ public class DisassembleCommand extends AbstractCommand {
                 err.format(err_test_opt, maxTestLevel);
                 exit(1);
             }
-        } else if (maxNontestLevel < level) {
-            err.format(err_opt, maxNontestLevel);
+        } else if (maxNonTestLevel < level) {
+            err.format(err_opt, maxNonTestLevel);
             exit(1);
         }
         final long start = System.currentTimeMillis();

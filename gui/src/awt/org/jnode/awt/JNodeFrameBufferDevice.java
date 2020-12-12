@@ -38,6 +38,7 @@ public class JNodeFrameBufferDevice extends GraphicsDevice implements DeviceList
     private final GraphicsConfiguration[] configs;
     private boolean stopped = false;
     private GraphicsConfiguration defaultConfig;
+    private static JNodeFrameBufferDevice instance;
 
     public JNodeFrameBufferDevice(Device device) {
         this.device = device;
@@ -53,6 +54,11 @@ public class JNodeFrameBufferDevice extends GraphicsDevice implements DeviceList
             configs[i] = new JNodeGraphicsConfiguration(this, fbConfigs[i]);
         }
         defaultConfig = configs[0];
+        instance = this;
+    }
+
+    public static JNodeFrameBufferDevice getInstance() {
+        return instance;
     }
 
     /**

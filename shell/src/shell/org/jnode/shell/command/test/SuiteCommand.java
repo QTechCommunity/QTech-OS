@@ -23,17 +23,15 @@ package org.jnode.shell.command.test;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Set;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
-
 import org.jnode.driver.console.CompletionInfo;
 import org.jnode.shell.AbstractCommand;
 import org.jnode.shell.syntax.Argument;
 import org.jnode.shell.syntax.CommandSyntaxException;
 import org.jnode.shell.syntax.FlagArgument;
 import org.jnode.shell.syntax.StringArgument;
-import org.jnode.test.framework.TestManager;
+//import org.jnode.test.framework.TestManager;
 
 /**
  * This command runs JUnit tests registered with the JNode test framework.
@@ -66,25 +64,25 @@ public class SuiteCommand extends AbstractCommand {
      * Execute this command
      */
     public void execute() {
-        TestManager mgr = TestManager.getInstance();
-        if (FLAG_LIST.isSet()) {
-            PrintWriter out = getOutput().getPrintWriter();
-            for (Class<? extends Test> test : mgr.getTests()) {
-                out.print(test.getName() + " :");
-                for (String category : mgr.getCategories(test)) {
-                    out.print(" ");
-                    out.print(category);
-                }
-                out.println();
-            }
-        } else if (FLAG_RUN.isSet()) {
-            String[] categories = ARG_CATEGORY.getValues();
-            if (categories == null) {
-                categories = new String[0];
-            }
-            TestSuite suite = mgr.getTestSuite(Arrays.asList(categories));
-            junit.textui.TestRunner.run(suite);
-        }
+//        TestManager mgr = TestManager.getInstance();
+//        if (FLAG_LIST.isSet()) {
+//            PrintWriter out = getOutput().getPrintWriter();
+//            for (Class<? extends Test> test : mgr.getTests()) {
+//                out.print(test.getName() + " :");
+//                for (String category : mgr.getCategories(test)) {
+//                    out.print(" ");
+//                    out.print(category);
+//                }
+//                out.println();
+//            }
+//        } else if (FLAG_RUN.isSet()) {
+//            String[] categories = ARG_CATEGORY.getValues();
+//            if (categories == null) {
+//                categories = new String[0];
+//            }
+//            TestSuite suite = mgr.getTestSuite(Arrays.asList(categories));
+//            junit.textui.TestRunner.run(suite);
+//        }
     }
 
     /**
@@ -98,21 +96,22 @@ public class SuiteCommand extends AbstractCommand {
         }
 
         public void doComplete(CompletionInfo completions, String partial, int flags) {
-            Set<String> availCategories = TestManager.getInstance().getCategories();
-            for (String availCategory : availCategories) {
-                if (availCategory.startsWith(partial)) {
-                    completions.addCompletion(availCategory);
-                }
-            }
+//            Set<String> availCategories = TestManager.getInstance().getCategories();
+//            for (String availCategory : availCategories) {
+//                if (availCategory.startsWith(partial)) {
+//                    completions.addCompletion(availCategory);
+//                }
+//            }
         }
 
         protected String doAccept(String category) throws CommandSyntaxException {
-            Set<String> availCategories = TestManager.getInstance().getCategories();
-            if (availCategories.contains(category)) {
-                return category;
-            } else {
-                throw new CommandSyntaxException("not a recognized JUnit test category");
-            }
+//            Set<String> availCategories = TestManager.getInstance().getCategories();
+//            if (availCategories.contains(category)) {
+//                return category;
+//            } else {
+//                throw new CommandSyntaxException("not a recognized JUnit test category");
+//            }
+            throw new UnsupportedOperationException("This operation is currently unsupported.");
         }    
     }
 }

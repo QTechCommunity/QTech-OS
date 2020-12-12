@@ -18,21 +18,28 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
  
-package org.jnode.util;
+package org.jnode.command.system;
+
+import org.jnode.shell.AbstractCommand;
+import org.jnode.vm.VmSystem;
 
 /**
- * @author Ewout Prangsma (epr@users.sourceforge.net)
+ * @author Quinten Jungblut
  */
-public class OsUtils {
+public class ShutdownCommand extends AbstractCommand {
 
-    /**
-     * Are we running in JNode.
-     *
-     * @return boolean
-     */
-    public static final boolean isQOS() {
-        final String osName = System.getProperty("os.name", "");
-        return osName.equals("Q-OS");
+    private static final String help_super = "Stop all services and devices, then halt the computer";
+
+    public ShutdownCommand() {
+        super(help_super);
     }
 
+    public static void main(String[] args) throws Exception {
+        new ShutdownCommand().execute(args);
+    }
+
+    @Override
+    public void execute() {
+        VmSystem.halt(false);
+    }
 }

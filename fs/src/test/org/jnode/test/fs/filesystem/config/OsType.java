@@ -50,9 +50,9 @@ public enum OsType {
 
         if (this == BOTH_OS)
             isCurrOS = true;
-        else if (OsUtils.isJNode() && (this == JNODE_OS))
+        else if (OsUtils.isQOS() && (this == JNODE_OS))
             isCurrOS = true;
-        else if (!OsUtils.isJNode() && (this == OTHER_OS))
+        else if (!OsUtils.isQOS() && (this == OTHER_OS))
             isCurrOS = true;
         else
             isCurrOS = false;

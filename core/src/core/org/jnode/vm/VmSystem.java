@@ -297,25 +297,25 @@ public final class VmSystem {
         res.put("java.home", "/jnode");
         res.put("java.io.tmpdir", "/jnode/tmp");
         res.put("java.library.path", "/jnode/tmp"); //dummy value but needed by Runtime.loadLibrary
-        res.put("java.runtime.name", "JNode");
+        res.put("java.runtime.name", "Q-OS");
         res.put("java.runtime.version", vm.getVersion());
         res.put("java.specification.name", "Java Platform API Specification");
         res.put("java.specification.vendor", "Sun Microsystems Inc.");
         res.put("java.specification.version", "1.6");
-        res.put("java.vendor", "JNode.org");
+        res.put("java.vendor", "QSoftware");
         res.put("java.vendor.url", "http://jnode.org");
         res.put("java.vendor.url.bug", "http://jnode.org");
         res.put("java.version", "1.6");
-        res.put("java.vm.info", "JNode");
-        res.put("java.vm.name", "JNode");
+        res.put("java.vm.info", "Q-OS");
+        res.put("java.vm.name", "Q-OS");
         res.put("java.vm.specification.name", "Java Virtual Machine Specification");
         res.put("java.vm.specification.vendor", "Sun Microsystems Inc.");
         res.put("java.vm.specification.version", "1.0");
-        res.put("java.vm.vendor", "JNode.org");
+        res.put("java.vm.vendor", "QSoftware");
         res.put("java.vm.version", vm.getVersion());
         res.put("line.separator", "\n");
         res.put("os.arch", arch.getName());
-        res.put("os.name", "JNode");
+        res.put("os.name", "Q-OS");
         res.put("os.version", vm.getVersion());
         res.put("path.separator", ":");
         //todo
@@ -396,7 +396,7 @@ public final class VmSystem {
     /**
      * Gets the class of the given object
      *
-     * @param obj
+     * @param obj the object to get the class from.
      * @return The class
      */
     public static Class<?> getClass(Object obj) {

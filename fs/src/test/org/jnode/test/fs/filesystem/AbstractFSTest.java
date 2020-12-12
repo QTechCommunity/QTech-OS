@@ -93,7 +93,7 @@ public abstract class AbstractFSTest extends TestCase {
     public final void setUp() throws NameNotFoundException, FileSystemException, IOException,
         InstantiationException, IllegalAccessException, Exception {
         super.setUp();
-        if (!setup && !OsUtils.isJNode()) {
+        if (!setup && !OsUtils.isQOS()) {
             // We are not running in JNode, emulate a JNode environment.
 
             InitialNaming.setNameSpace(new BasicNameSpace());
