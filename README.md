@@ -1,23 +1,23 @@
-# Welcome to JNode!
+# Welcome to Q-OS!
 
-[![Build Status](https://travis-ci.org/jnode/jnode.svg?branch=master)](https://travis-ci.org/jnode/jnode)
+<!--[![Build Status](https://travis-ci.org/jnode/jnode.svg?branch=master)](https://travis-ci.org/jnode/jnode)-->
 
-In this file, you find the instructions needed to setup a JNode development environment.
+In this file, you find the instructions needed to setup a Q-OS development environment.
 
 ## Sub-Projects
 
-JNode has been divided into several sub-projects in order to keep it "accessible". These sub-projects are:
+Q-OS has been divided into several sub-projects in order to keep it "accessible". These sub-projects are:
 
-*JNode-All*    The root project where everything comes together  
-*JNode-Cli*    Various command line commands  
-*JNode-Core*   The core java classes, the Virtual Machine, the OS kernel and the Driver framework  
-*JNode-Distr*  Tools and apps needed for a JNode "distribution"  
-*JNode-FS*     The Filesystems and the various block device drivers  
-*JNode-GUI*    The AWT implementation and the various video & input device drivers  
-*JNode-Net*    The Network implementation and the various network device drivers  
-*JNode-Shell*  The Command line shell and several system commands  
-*JNode-Sound*  Future work  
-*JNode-Textui* Text based AWT interface  
+*Q-OS-All*    The root project where everything comes together  
+*Q-OS-Cli*    Various command line commands  
+*Q-OS-Core*   The core java classes, the Virtual Machine, the OS kernel and the Driver framework  
+*Q-OS-Distr*  Tools and apps needed for a Q-OS "distribution"  
+*Q-OS-FS*     The Filesystems and the various block device drivers  
+*Q-OS-GUI*    The AWT implementation and the various video & input device drivers  
+*Q-OS-Net*    The Network implementation and the various network device drivers  
+*Q-OS-Shell*  The Command line shell and several system commands  
+*Q-OS-Sound*  Future work  
+*Q-OS-Textui* Text based AWT interface  
 
 Each sub-project has the same directory structure:
 
@@ -32,7 +32,7 @@ Each sub-project has the same directory structure:
 
 ## Eclipse
 
-JNode is usually developed in Eclipse. (It can be done without)
+Q-OS is usually developed in Eclipse. (It can be done without)
 
 The various sub-projects must be imported into eclipse. Since they reference each other, it is advisably to import them all at the same time
 using `Import -> Existing projects into workspace`.
@@ -59,7 +59,7 @@ The build will result in the following files:
 ## Questions
 
 If you have any questions, please post them to the forums at www.jnode.org
-or to the IRC channel #JNode.org@irc.oftc.net
+or to the IRC channel #Q-OS.org@irc.oftc.net
  
- -- The JNode Team --
+ -- The Q-OS Team --
  

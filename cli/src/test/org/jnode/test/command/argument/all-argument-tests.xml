@@ -1,5 +1,5 @@
 <testSet title="argument tests">
-    <plugin id="org.jnode.command.file"/>
+    <plugin id="com.qtech.os.command.file"/>
     <testSpec title="num-list concat 1" command="cut" runMode="AS_ALIAS" rc="0">
         <arg>-b</arg>
         <arg>3,5,7</arg>

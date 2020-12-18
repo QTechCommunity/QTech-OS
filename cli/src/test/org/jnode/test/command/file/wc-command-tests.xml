@@ -1,5 +1,5 @@
 <testSet title="POSIX wc command tests">
-  <plugin id="org.jnode.command.file"/>
+  <plugin id="com.qtech.os.command.file"/>
   <testSpec title="wc (1)" command="wc" runMode="AS_ALIAS" rc="0">
   <input>123 456 789 0
 </input>

@@ -1,10 +1,10 @@
 <testSet title="POSIX command tests">
-    <plugin id="org.jnode.command.common"/>
-    <testSpec title="true command" command="org.jnode.command.common.TrueCommand" 
+    <plugin id="com.qtech.os.command.common"/>
+    <testSpec title="true command" command="com.qtech.os.command.common.TrueCommand"
               runMode="AS_ALIAS" rc="0"/>
-    <testSpec title="false command" command="org.jnode.command.common.FalseCommand"
+    <testSpec title="false command" command="com.qtech.os.command.common.FalseCommand"
               runMode="AS_ALIAS" rc="1"/>
-    <testSpec title="expr 1 + 1" command="org.jnode.command.common.ExprCommand"
+    <testSpec title="expr 1 + 1" command="com.qtech.os.command.common.ExprCommand"
               runMode="AS_ALIAS" rc="0">
         <arg>1</arg>
         <arg>+</arg>
@@ -12,7 +12,7 @@
         <output>2
 </output>
     </testSpec>
-    <testSpec title="expr 2 * 2" command="org.jnode.command.common.ExprCommand"
+    <testSpec title="expr 2 * 2" command="com.qtech.os.command.common.ExprCommand"
               runMode="AS_ALIAS" rc="0">
         <arg>2</arg>
         <arg>*</arg>
@@ -20,7 +20,7 @@
         <output>4
 </output>
     </testSpec>
-    <testSpec title="expr 4 / 2" command="org.jnode.command.common.ExprCommand"
+    <testSpec title="expr 4 / 2" command="com.qtech.os.command.common.ExprCommand"
               runMode="AS_ALIAS" rc="0">
         <arg>4</arg>
         <arg>/</arg>
@@ -28,7 +28,7 @@
         <output>2
 </output>
     </testSpec>
-    <testSpec title="expr 1 + 2 * 2" command="org.jnode.command.common.ExprCommand"
+    <testSpec title="expr 1 + 2 * 2" command="com.qtech.os.command.common.ExprCommand"
               runMode="AS_ALIAS" rc="0">
         <arg>1</arg>
         <arg>+</arg>
@@ -38,7 +38,7 @@
         <output>5
 </output>
     </testSpec>
-    <testSpec title="expr ( 1 + 2 ) * 2" command="org.jnode.command.common.ExprCommand"
+    <testSpec title="expr ( 1 + 2 ) * 2" command="com.qtech.os.command.common.ExprCommand"
               runMode="AS_ALIAS" rc="0">
         <arg>(</arg>
         <arg>1</arg>

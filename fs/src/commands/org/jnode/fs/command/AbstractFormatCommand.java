@@ -53,13 +53,17 @@ public abstract class AbstractFormatCommand<T extends FileSystem<?>> extends Abs
 
     public final void execute() 
         throws FileSystemException, NameNotFoundException, DeviceNotFoundException, DriverException {
-        Device dev = ARG_DEVICE.getValue();
-        Formatter<T> formatter = getFormatter();
-        formatter.format(dev);
+        try {
+            Device dev = ARG_DEVICE.getValue();
+            Formatter<T> formatter = getFormatter();
+            formatter.format(dev);
 
-        // restart the device
-        final DeviceManager dm = InitialNaming.lookup(DeviceManager.NAME);
-        dm.stop(dev);
-        dm.start(dev);
+            // restart the device
+            final DeviceManager dm = InitialNaming.lookup(DeviceManager.NAME);
+            dm.stop(dev);
+            dm.start(dev);
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
     }
 }
