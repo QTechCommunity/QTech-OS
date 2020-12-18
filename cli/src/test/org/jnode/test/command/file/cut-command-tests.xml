@@ -1,5 +1,5 @@
 <testSet title="POSIX cut command tests">
-    <plugin id="com.qtech.os.command.file"/>
+    <plugin id="org.jnode.command.file"/>
     <testSpec title="cut byte-range 1" command="cut" runMode="AS_ALIAS" rc="0">
         <arg>-b</arg>
         <arg>3-7</arg>

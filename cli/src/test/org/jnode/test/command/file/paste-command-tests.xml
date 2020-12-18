@@ -1,6 +1,6 @@
 <testSet title="POSIX paste command tests">
-    <plugin id="com.qtech.os.command.file"/>
-    <plugin id="com.qtech.os.shell.bjorne" class="com.qtech.os.test.shell.bjorne.BjornePseudoPlugin"/>
+    <plugin id="org.jnode.command.file"/>
+    <plugin id="org.jnode.shell.bjorne" class="org.jnode.test.shell.bjorne.BjornePseudoPlugin"/>
     <testSpec title="serial stdin default-delim" command="paste" runMode="AS_ALIAS" rc="0">
         <arg>-s</arg>
         <input>1

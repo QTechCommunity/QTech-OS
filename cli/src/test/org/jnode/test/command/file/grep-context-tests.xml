@@ -1,5 +1,5 @@
 <testSet title="grep context line tests">
-    <plugin id="com.qtech.os.command.file"/>
+    <plugin id="org.jnode.command.file"/>
     <!-- 
          Context lines are not part of the POSIX standard. They are an extension
          and therefore we don't need to meet a 'standard'. Though we do try to

@@ -1,6 +1,6 @@
 <testSet title="cat command tests">
-    <plugin id="com.qtech.os.command.file"/>
-    <plugin id="com.qtech.os.shell.bjorne" class="com.qtech.os.test.shell.bjorne.BjornePseudoPlugin"/>
+    <plugin id="org.jnode.command.file"/>
+    <plugin id="org.jnode.shell.bjorne" class="org.jnode.test.shell.bjorne.BjornePseudoPlugin"/>
     <testSpec title="stdin->stdout" command="cat" runMode="AS_ALIAS" rc="0">
         <input>1234
 </input>

@@ -435,10 +435,6 @@ public class TextScreenConsole extends AbstractConsole implements TextConsole {
         return this.screen;
     }
 
-    public final Class<? extends TextScreen> getScreenClass() {
-        return this.screen.getClass();
-    }
-
     /**
      * Get the options used to create this {@link TextScreenConsole}
      *
