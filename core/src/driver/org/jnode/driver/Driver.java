@@ -68,7 +68,7 @@ public abstract class Driver {
      *
      * @param device The device to control, never null
      *               from the device.
-     * @throws DriverException
+     * @throws DriverException when already connected.
      */
     protected final void connect(Device device)
         throws DriverException {
@@ -93,8 +93,9 @@ public abstract class Driver {
      * This method is called just before a new device is set to this driver.
      * If we should refuse the given device, throw a DriverException.
      *
-     * @param device
-     * @throws DriverException
+     * @param device The device to control, never null
+     *               from the device.
+     * @throws DriverException ...
      */
     protected void verifyConnect(Device device)
         throws DriverException {

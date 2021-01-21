@@ -311,6 +311,15 @@ public class CommandShell implements Runnable, Shell, ConsoleListener {
             throw new ShellFailureException("Shell setup failure", ex);
         }
 
+        if (this.bootShell) {
+            try {
+                runCommand("classpath --add file:///jnode/binaries");
+                runCommand("classpath --add file:///jnode/user/binaries");
+            } catch (ShellException e) {
+                e.printStackTrace();
+            }
+        }
+
         // Run commands from the JNode command line first
         final String cmdLine = System.getProperty(CMDLINE_PROPERTY_NAME, "");
         final StringTokenizer tok = new StringTokenizer(cmdLine);

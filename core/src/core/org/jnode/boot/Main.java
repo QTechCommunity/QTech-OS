@@ -20,7 +20,15 @@
  
 package org.jnode.boot;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URL;
+import java.security.AccessController;
 import java.util.List;
 
 import org.jnode.annotation.LoadStatics;
@@ -33,6 +41,7 @@ import org.jnode.plugin.PluginRegistry;
 import org.jnode.plugin.manager.DefaultPluginManager;
 import org.jnode.vm.Unsafe;
 import org.jnode.vm.VmSystem;
+import sun.misc.IOUtils;
 
 /**
  * First class that is executed when JNode boots.
@@ -56,6 +65,7 @@ public final class Main {
      *
      * @return int
      */
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @LoadStatics
     @Uninterruptible
     public static int vmMain() {
@@ -85,13 +95,53 @@ public final class Main {
                 BootLogInstance.get().warn("No Main-Class found");
                 mainClass = null;
             }
+
             final long end = VmSystem.currentKernelMillis();
             System.out.println("Q-OS initialization finished in " + (end - start) + "ms.");
-            System.out.println();
-            System.out.println("#==========================================#");
-            System.out.println("| Welcome to Q-OS!                         |");
-            System.out.println("| WARNING: This project is in development. |");
-            System.out.println("#==========================================#");
+
+            File file = new File("/jnode/user/shared/boot/message.txt");
+            if (!file.exists()) {
+                if (!file.getParentFile().exists()) {
+                    if (!file.getParentFile().mkdirs()) {
+                        System.err.println("/user/shared directory couldn't be created.");
+                    }
+                }
+
+                if (!file.createNewFile()) {
+                    System.err.println("Couldn't create welcome file!");
+                }
+                FileOutputStream outputStream = new FileOutputStream(file);
+                PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(outputStream));
+
+                printWriter.println("#==========================================#");
+                printWriter.println("| Welcome to Q-OS!                         |");
+                printWriter.println("| WARNING: This project is in development. |");
+                printWriter.println("#==========================================#");
+                printWriter.flush();
+                outputStream.close();
+            }
+
+            File bin = new File("/jnode/binaries/");
+            if (bin.isFile()) {
+                bin.delete();
+            }
+            if (!bin.exists()) {
+                bin.mkdirs();
+            }
+
+            File userBin = new File("/jnode/user/binaries/");
+            if (userBin.isFile()) {
+                userBin.delete();
+            }
+            if (!userBin.exists()) {
+                userBin.mkdirs();
+            }
+
+            FileInputStream fileInputStream = new FileInputStream(file);
+            byte[] bytes = IOUtils.readFully(fileInputStream, (int) file.length(), true);
+            String message = new String(bytes);
+
+            System.out.println(message);
 
             if (mainClass != null) {
                 try {
@@ -108,6 +158,8 @@ public final class Main {
                 }
             } else {
                 System.err.println("Main-Class is null.");
+                System.in.read();
+                throw new NullPointerException("Main-Class is null");
             }
         } catch (Throwable ex) {
             BootLogInstance.get().error("Error in bootstrap", ex);

@@ -30,8 +30,9 @@
 	<property name="jnode.disk.pln" value="${my-build.dir}/jnodedisk${jnode.bits}.pln" />
 	<property name="jnode.disk.geometry" value="64/16/63" />
 
-	<property name="jnode.virtual.memsize" value="512" />
-	<property name="logFile" value="${build.dir}/debugger.txt" />
+	<property name="jnode.virtual.memsize" value="2048" />
+	<!-- Todo: remove when unneeded! -->
+<!--	<property name="logFile" value="${build.dir}/debugger.txt" />-->
 
 	<property name="grub-ver" value="grub-0.97-i386-pc" />
 	<property name="grub.dir" value="${my-build.dir}/${grub-ver}/boot/grub" />
@@ -297,6 +298,9 @@
 			</copy>
 			<copy todir="@{dir}/licenses">
 				<fileset dir="${root.dir}/licenses"/>
+			</copy>
+			<copy todir="@{dir}/res">
+				<fileset dir="${root.dir}/res"/>
 			</copy>
 			<copy file="${my-lib.dir}/eltorito.s2" todir="@{dir}/boot/grub" />
             <copy file="${my-lib.dir}/fat.s15" todir="@{dir}/boot/grub" />

@@ -38,54 +38,54 @@ public interface VMFileSystemAPI {
    /**
      * Does a given file exist?
      */
-    public boolean fileExists(String file);
+   boolean fileExists(String file);
 
     /**
      * Is the given File a plain file?
      */
-    public boolean isFile(String file);
+    boolean isFile(String file);
 
     /**
      * Is the given File a directory?
      */
-    public boolean isDirectory(String file);
+    boolean isDirectory(String file);
 
     /**
      * Can the given file be read?
      * 
      * @param file
      */
-    public boolean canRead(String file) throws IOException;
+    boolean canRead(String file) throws IOException;
 
     /**
      * Can the given file be written to?
      * 
      * @param file
      */
-    public boolean canWrite(String file) throws IOException;
+    boolean canWrite(String file) throws IOException;
 
-    public boolean canExecute(String file) throws IOException;
+    boolean canExecute(String file) throws IOException;
     
     /**
      * Gets the length in bytes of the given file or 0 if the file does not exist.
      * 
      * @param file
      */
-    public long getLength(String file);
+    long getLength(String file);
 
     /**
      * Gets the last modification date of the given file.
      * 
      * @param file
      */
-    public long getLastModified(String file);
+    long getLastModified(String file);
 
     /**
      * Sets the last modification date of the given file.
      * 
      * @param file
      */
-    public void setLastModified(String file, long time) throws IOException;
+    void setLastModified(String file, long time) throws IOException;
 
     /**
      * Mark the given file as readonly.
@@ -93,29 +93,30 @@ public interface VMFileSystemAPI {
      * @param file
      * @throws IOException
      */
-    public void setReadOnly(String file) throws IOException;
+    void setReadOnly(String file) throws IOException;
 
-    public boolean setReadable(String normalizedPath, boolean enable,
-            boolean owneronly) throws IOException;
+    boolean setReadable(String normalizedPath, boolean enable,
+                        boolean owneronly) throws IOException;
 
-    public boolean setWritable(String normalizedPath, boolean enable,
-            boolean owneronly) throws IOException;
+    @SuppressWarnings("UnusedReturnValue")
+    boolean setWritable(String normalizedPath, boolean enable,
+                        boolean owneronly) throws IOException;
 
-    public boolean setExecutable(String normalizedPath, boolean enable,
-            boolean owneronly) throws IOException;
+    boolean setExecutable(String normalizedPath, boolean enable,
+                          boolean owneronly) throws IOException;
 
     /**
      * Delete the given file.
      * 
-     * @param file
-     * @throws IOException
+     * @param file file to delete
+     * @throws IOException on i/o failure.
      */
-    public void delete(String file) throws IOException;
+    void delete(String file) throws IOException;
 
     /**
      * This method returns an array of filesystem roots.
      */
-    public File[] getRoots();
+    File[] getRoots();
     
     /**
      * Gets an array of names of all entries of the given directory. All names are relative to the
@@ -123,7 +124,7 @@ public interface VMFileSystemAPI {
      * 
      * @param directory
      */
-    public String[] list(String directory) throws IOException;
+    String[] list(String directory) throws IOException;
 
     /**
      * Open a given file
@@ -131,7 +132,7 @@ public interface VMFileSystemAPI {
      * @param file
      * @throws IOException
      */
-    public VMFileHandle open(String file, VMOpenMode mode) throws IOException;
+    VMFileHandle open(String file, VMOpenMode mode) throws IOException;
 
     /**
      * Make a directory
@@ -139,7 +140,7 @@ public interface VMFileSystemAPI {
      * @param file
      * @throws IOException
      */
-    public boolean mkDir(String file) throws IOException;
+    boolean mkDir(String file) throws IOException;
     
     /**
      * Make a file
@@ -147,11 +148,11 @@ public interface VMFileSystemAPI {
      * @param file
      * @throws IOException
      */
-    public boolean mkFile(String file, VMOpenMode mode) throws IOException;
+    boolean mkFile(String file, VMOpenMode mode) throws IOException;
 
-    public long getTotalSpace(String normalizedPath) throws IOException;
+    long getTotalSpace(String normalizedPath) throws IOException;
 
-    public long getFreeSpace(String normalizedPath) throws IOException;
+    long getFreeSpace(String normalizedPath) throws IOException;
 
-    public long getUsableSpace(String normalizedPath) throws IOException;
+    long getUsableSpace(String normalizedPath) throws IOException;
 }

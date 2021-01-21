@@ -35,6 +35,7 @@ import org.jnode.vm.classmgr.VmType;
  * @author epr
  * @author crawley@jnode.org
  */
+@SuppressWarnings({"FieldCanBeLocal", "SpellCheckingInspection"})
 public class CompileCommand extends AbstractCommand {
     
     private static final String help_class = "the class file to compile";
@@ -95,7 +96,7 @@ public class CompileCommand extends AbstractCommand {
         final Class<?> cls;
         try {
             cls = cl.loadClass(className);
-            final VmType<?> type = VmType.fromClass((Class<?>) cls);
+            final VmType<?> type = VmType.fromClass(cls);
             final long start = System.currentTimeMillis();
             final int count;
             if (methodName == null) {

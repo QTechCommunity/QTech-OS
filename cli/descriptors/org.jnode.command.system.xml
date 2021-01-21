@@ -66,7 +66,6 @@
     <alias name="printenv"   class="org.jnode.command.system.PrintEnvCommand"/>
     <alias name="propset"    class="org.jnode.command.system.SetCommand" internal="yes"/>
     <alias name="reboot"     class="org.jnode.command.system.RebootCommand"/>
-    <alias name="resolution" class="org.jnode.command.system.ResolutionCommand"/>
     <alias name="run"        class="org.jnode.command.system.RunCommand"/>
     <alias name="syntax"     class="org.jnode.command.system.SyntaxCommand"/>
     <alias name="terminate"  class="org.jnode.command.system.TerminateCommand"/>

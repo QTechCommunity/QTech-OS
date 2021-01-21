@@ -128,7 +128,7 @@
 	<!-- lists of plugins to use while booting -->
 	<property name="default-plugin-list" value="${root.dir}/all/conf/default-plugin-list.xml"/>
 	<property name="full-plugin-list" value="${root.dir}/all/conf/full-plugin-list.xml"/>
-	<property name="install-plugin-list" value="${root.dir}/all/conf/install-plugin-list.xml"/>
+	<property name="install-plugin-list" value="/conf/install-plugin-list_disabled.xml"/>
 	<property name="system-plugin-list" value="${root.dir}/all/conf/system-plugin-list.xml"/>
 	<property name="sources.dist.tar.gz" value="${build.dir}/jnodesources-${jnode-ver}.tar.gz"/>
 	<property name="qos-x86.iso" value="${cdroms.dir}/qos-x86.iso"/>
