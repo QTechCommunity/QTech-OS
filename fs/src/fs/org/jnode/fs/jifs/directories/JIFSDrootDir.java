@@ -45,7 +45,9 @@ public class JIFSDrootDir extends JIFSDirectory {
         addFSE(new JIFSFmemory(this));
         addFSE(new JIFSFversion(this));
         addFSE(new JIFSFdevices(this));
+
         // directory
+        addFSE(new JIFSDdevices(this));
         addFSE(new JIFSDthreads(this));
         addFSE(new JIFSDplugins(this));
         addFSE(new JIFSDpluginJars(this));

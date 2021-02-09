@@ -22,7 +22,12 @@ package org.jnode.driver.input;
 
 import java.util.ArrayList;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import org.apache.log4j.Logger;
+import org.jnode.driver.console.KeyEventBindings;
 
 /**
  * @author Ewout Prangsma (epr@users.sourceforge.net)
@@ -43,6 +48,15 @@ public class KeyboardAPIAdapter implements KeyboardAPI {
      * The interpreter
      */
     private KeyboardInterpreter interpreter = null/*new KeyboardInterpreter()*/;
+    private final Set<Integer> pressed = new HashSet<Integer>();
+
+    public boolean isKeyDown(int keyCode) {
+        return pressed.contains(keyCode);
+    }
+
+    public Set<Integer> getKeysDown() {
+        return Collections.unmodifiableSet(pressed);
+    }
 
     public synchronized void addKeyboardListener(KeyboardListener l) {
         listeners.add(l);
@@ -98,8 +112,10 @@ public class KeyboardAPIAdapter implements KeyboardAPI {
             for (KeyboardListener l : listeners) {
                 try {
                     if (event.isKeyPressed()) {
+                        this.pressed.add(event.getKeyCode());
                         l.keyPressed(event);
                     } else if (event.isKeyReleased()) {
+                        this.pressed.remove(event.getKeyCode());
                         l.keyReleased(event);
                     }
                 } catch (Throwable ex) {

@@ -101,7 +101,7 @@ public class JIFSFile implements ExtFSEntry, FSFile {
     // public void write(long fileOffset, byte[] src, int off, int len) throws
     // IOException{
     public void write(long fileOffset, ByteBuffer src) throws IOException {
-        throw new IOException("can not write to JNIFSFile..");
+        throw new IOException("can not write to JIFSFile..");
     }
 
     public void setLength(long length) {

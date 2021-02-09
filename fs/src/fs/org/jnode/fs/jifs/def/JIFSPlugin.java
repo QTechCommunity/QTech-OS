@@ -46,6 +46,7 @@ import org.jnode.plugin.PluginException;
 /**
  * @author Andreas H\u00e4nel
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class JIFSPlugin extends Plugin {
 
     /**
@@ -67,8 +68,9 @@ public class JIFSPlugin extends Plugin {
     /**
      * Start this plugin
      */
+    @SuppressWarnings("RedundantThrows")
     protected void startPlugin() throws PluginException {
-        log.info("start jifs");
+        log.info("Start JIFS");
         try {
             JIFileSystemType type = null;
             try {
@@ -97,7 +99,7 @@ public class JIFSPlugin extends Plugin {
                 log.error("Cannot mount jifs", ex);
             }
         } catch (NameNotFoundException e) {
-            log.error("filsystemservice / filesystemtype not found");
+            log.error("FilSystemService / FileSystemType not found");
         }
     }
 

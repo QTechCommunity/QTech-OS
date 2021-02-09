@@ -22,7 +22,9 @@ package org.jnode.shell;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,6 +44,7 @@ import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
 
+import java.util.UUID;
 import javax.naming.NameNotFoundException;
 
 import org.apache.log4j.Logger;
@@ -562,7 +565,7 @@ public class CommandShell implements Runnable, Shell, ConsoleListener {
     public int invoke(CommandLine cmdLine, Properties sysProps, Map<String, String> env) 
         throws ShellException {
         if (this.invoker instanceof CommandInvoker) {
-            return ((CommandInvoker) this.invoker).invoke(cmdLine, sysProps, env);
+                return ((CommandInvoker) this.invoker).invoke(cmdLine, sysProps, env);
         } else {
             return this.invoker.invoke(cmdLine);
         }
@@ -956,10 +959,10 @@ public class CommandShell implements Runnable, Shell, ConsoleListener {
             ((FanoutWriter) out).addStream(writer);
             ((FanoutWriter) err).addStream(writer);
         } else {
-            cout = new CommandOutput(new FanoutWriter(true, out, writer));
-            outPW = cout.getPrintWriter();
-            cerr = new CommandOutput(new FanoutWriter(true, err, writer));
-            errPW = cerr.getPrintWriter();
+            this.cout = new CommandOutput(new FanoutWriter(true, out, writer));
+            this.outPW = this.cout.getPrintWriter();
+            this.cerr = new CommandOutput(new FanoutWriter(true, err, writer));
+            this.errPW = this.cerr.getPrintWriter();
         }
         errPW.println("Testing");
     }
@@ -1017,9 +1020,57 @@ public class CommandShell implements Runnable, Shell, ConsoleListener {
             }
         } else if (ex instanceof Exception) {
             errPW.println("Exception in command: " + ex.getMessage());
+
+            try {
+                File dir = new File("jnode/user/shared/jnode-shell/exceptions");
+                if (!dir.exists()) {
+                    if (!dir.mkdirs()) {
+                        System.err.println("Couldn't create exceptions directory.");
+                    }
+                }
+                File file = new File(dir, UUID.randomUUID() + ".txt");
+                if (!file.createNewFile()) {
+                    System.err.println("Couldn't create exception log file.");
+                }
+
+                FileWriter fileWriter = new FileWriter(file);
+                PrintWriter printWriter = new PrintWriter(fileWriter);
+
+                ex.printStackTrace(printWriter);
+
+                fileWriter.close();
+
+                System.err.println("Exception written to: " + file.getAbsolutePath());
+            } catch (IOException e) {
+                System.err.println(e.getMessage());
+            }
+
             stackTrace(ex);
         } else {
             errPW.println("Fatal error in command: " + ex.getMessage());
+
+            try {
+                File dir = new File("jnode/home/usr/shared/jnode-shell/exceptions");
+                if (!dir.exists()) {
+                    if (!dir.mkdirs()) {
+                        System.err.println("Couldn't create exceptions directory.");
+                    }
+                }
+                File file = new File(dir, UUID.randomUUID() + ".txt");
+                if (!file.createNewFile()) {
+                    System.err.println("Couldn't create exception log file.");
+                }
+
+                FileWriter fileWriter = new FileWriter(file);
+                PrintWriter printWriter = new PrintWriter(fileWriter);
+
+                ex.printStackTrace(printWriter);
+
+                fileWriter.close();
+            } catch (IOException e) {
+                System.err.println(e.getMessage());
+            }
+
             stackTrace(ex);
         }
     }
