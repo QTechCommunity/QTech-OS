@@ -899,7 +899,7 @@ public final class Address implements UnboxedObject {
      * @param value
      */
     @Uninterruptible
-    public void atomicAdd(Word value) {    	
+    public void atomicAdd(Word value) {
     }
 
     /**
@@ -910,7 +910,7 @@ public final class Address implements UnboxedObject {
      * @param value
      */
     @Uninterruptible
-    public void atomicAnd(Word value) {    	
+    public void atomicAnd(Word value) {
     }
 
     /**
@@ -921,7 +921,7 @@ public final class Address implements UnboxedObject {
      * @param value
      */
     @Uninterruptible
-    public void atomicOr(Word value) {    	
+    public void atomicOr(Word value) {
     }
 
     /**
@@ -932,6 +932,6 @@ public final class Address implements UnboxedObject {
      * @param value
      */
     @Uninterruptible
-    public void atomicSub(Word value) {    	
+    public void atomicSub(Word value) {
     }
 }

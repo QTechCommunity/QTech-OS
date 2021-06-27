@@ -34,8 +34,8 @@ public abstract class AWTEvent extends java.util.EventObject
      */
     public AWTEvent(Object source_, int id_)
     {
-	super(source_);
-	_id = id_;
+    super(source_);
+    _id = id_;
     }
 
     public int getID() { return _id; }

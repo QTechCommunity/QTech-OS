@@ -104,7 +104,7 @@ public class ThreadGroupReferenceCommandSet
     ThreadGroup group = (ThreadGroup) oid.getObject();
     ThreadGroup parent = group.getParent();
     if (parent == null) {
-    	os.writeLong(0L);
+        os.writeLong(0L);
     } else {
     ObjectId parentId = idMan.getObjectId(parent);
     parentId.write(os);

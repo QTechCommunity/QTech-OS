@@ -34,7 +34,7 @@ public class ConstrainedTextField
      * but set its length.
      */
     public ConstrainedTextField(int length_) {
-	super(length_);
+    super(length_);
     }
 
     /**
@@ -42,7 +42,7 @@ public class ConstrainedTextField
      * length.
      */
     public ConstrainedTextField(String text_, int length_) {
-	super(text_, length_);
+    super(text_, length_);
     }
 
     /** 
@@ -51,14 +51,14 @@ public class ConstrainedTextField
      * and it is a printing character, ring the bell.
      */
     public void processKeyEvent(KeyEvent ke_) {
-	int key = ke_.getKeyCode();
-	if (super._document.length() >= _columns && 
-		ke_.isActionKey() == false && 
-		key >= ' ') {
-	    ke_.consume();
-	    Toolkit.getDefaultToolkit().beep();
-	}
+    int key = ke_.getKeyCode();
+    if (super._document.length() >= _columns &&
+        ke_.isActionKey() == false &&
+        key >= ' ') {
+        ke_.consume();
+        Toolkit.getDefaultToolkit().beep();
+    }
 
-	super.processKeyEvent(ke_);
+    super.processKeyEvent(ke_);
     }
 }

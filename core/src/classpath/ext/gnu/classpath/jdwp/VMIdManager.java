@@ -121,49 +121,49 @@ public class VMIdManager
 
       // Special case: arrays
       if (object.getClass ().isArray ())
-	id = new ArrayId ();
+    id = new ArrayId ();
       else
-	{
-	  // Loop through all classes until we hit baseclass
-	  Class myClass;
-	  for (myClass = object.getClass (); myClass != null;
-	       myClass = myClass.getSuperclass ())
-	    {
-	      Class clz = (Class) _idList.get (myClass);
-	      if (clz != null)
-		{
-		  try
-		    {
-		      id = (ObjectId) clz.newInstance ();
-		      synchronized (_idLock)
-			{
-			  id.setId (++_lastId);
-			}
-		      id.setReference (obj);
-		      return id;
-		    }
-		  catch (InstantiationException ie)
-		    {
-		      // This really should not happen
-		      throw new RuntimeException ("cannot create new ID", ie);
-		    }
-		  catch (IllegalAccessException iae)
-		    {
-		      // This really should not happen
-		      throw new RuntimeException ("illegal access of ID", iae);
-		    }
-		}
-	    }
+    {
+      // Loop through all classes until we hit baseclass
+      Class myClass;
+      for (myClass = object.getClass (); myClass != null;
+           myClass = myClass.getSuperclass ())
+        {
+          Class clz = (Class) _idList.get (myClass);
+          if (clz != null)
+        {
+          try
+            {
+              id = (ObjectId) clz.newInstance ();
+              synchronized (_idLock)
+            {
+              id.setId (++_lastId);
+            }
+              id.setReference (obj);
+              return id;
+            }
+          catch (InstantiationException ie)
+            {
+              // This really should not happen
+              throw new RuntimeException ("cannot create new ID", ie);
+            }
+          catch (IllegalAccessException iae)
+            {
+              // This really should not happen
+              throw new RuntimeException ("illegal access of ID", iae);
+            }
+        }
+        }
 
-	  /* getSuperclass returned null and no matching ID type found.
-	     So it must derive from Object. */
-	  id = new ObjectId ();
-	}
+      /* getSuperclass returned null and no matching ID type found.
+         So it must derive from Object. */
+      id = new ObjectId ();
+    }
 
       synchronized (_idLock)
-	{
-	  id.setId (++_lastId);
-	}
+    {
+      id.setId (++_lastId);
+    }
       id.setReference (obj);
       return id;
     }
@@ -180,19 +180,19 @@ public class VMIdManager
       ReferenceTypeId id;
       Class clazz = (Class) ref.get ();
       if (clazz == null)
-	return null;
+    return null;
 
       if (clazz.isArray ())
-	id = new ArrayReferenceTypeId ();
+    id = new ArrayReferenceTypeId ();
       else if (clazz.isInterface ())
-	id = new InterfaceReferenceTypeId ();
+    id = new InterfaceReferenceTypeId ();
       else
-	id = new ClassReferenceTypeId ();
+    id = new ClassReferenceTypeId ();
       id.setReference (ref);
       synchronized (_ridLock)
-	{
-	  id.setId (++_lastRid);
-	}
+    {
+      id.setId (++_lastRid);
+    }
       return id;
     }
   }
@@ -264,16 +264,16 @@ public class VMIdManager
     public boolean equals (Object obj)
     {
       if (obj instanceof ReferenceKey)
-	{
-	  ReferenceKey ref = (ReferenceKey) obj;
-	  
-	  /* First check if the two references are the same.
-	     If they are, that means we must be clearing GCd objects. */
-	  if (this == obj)
-	    return true;
-	  
-	  return (ref.get () == get ());
-	}
+    {
+      ReferenceKey ref = (ReferenceKey) obj;
+      
+      /* First check if the two references are the same.
+         If they are, that means we must be clearing GCd objects. */
+      if (this == obj)
+        return true;
+      
+      return (ref.get () == get ());
+    }
       
       return false;
     }
@@ -324,9 +324,9 @@ public class VMIdManager
     Reference ref;
     while ((ref = _refQueue.poll ()) != null)
       {
-	ObjectId id = (ObjectId) _oidTable.get (ref);
-	_oidTable.remove (ref);
-	_idTable.remove (new Long (id.getId ()));
+    ObjectId id = (ObjectId) _oidTable.get (ref);
+    _oidTable.remove (ref);
+    _idTable.remove (new Long (id.getId ()));
       }
   }
 
@@ -343,13 +343,13 @@ public class VMIdManager
     ObjectId id = (ObjectId) _oidTable.get (ref);
     if (id == null)
       {
-	// update the tables -- this is an arbitrary place to put this
-	_update ();
+    // update the tables -- this is an arbitrary place to put this
+    _update ();
 
-	// Object not found. Make new id for it
-	id = IdFactory.newObjectId (ref);
-	_oidTable.put (ref, id);
-	_idTable.put (new Long (id.getId ()), id);
+    // Object not found. Make new id for it
+    id = IdFactory.newObjectId (ref);
+    _oidTable.put (ref, id);
+    _idTable.put (new Long (id.getId ()), id);
       }
 
     return id;
@@ -393,10 +393,10 @@ public class VMIdManager
     ReferenceTypeId id = (ReferenceTypeId)_classTable.get (ref);
     if (id == null)
       {
-	// Object not found. Make new id for it
-	id = IdFactory.newReferenceTypeId (ref);
-	_classTable.put (ref, id);
-	_ridTable.put (new Long (id.getId ()), id);
+    // Object not found. Make new id for it
+    id = IdFactory.newReferenceTypeId (ref);
+    _classTable.put (ref, id);
+    _ridTable.put (new Long (id.getId ()), id);
       }
 
     return id;

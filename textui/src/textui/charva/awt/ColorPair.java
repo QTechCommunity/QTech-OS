@@ -32,8 +32,8 @@ public class ColorPair
      */
     public ColorPair(Color foreground_, Color background_)
     {
-	_foreground = foreground_.getCursesColor();
-	_background = background_.getCursesColor();
+    _foreground = foreground_.getCursesColor();
+    _background = background_.getCursesColor();
     }
 
     /**
@@ -42,14 +42,14 @@ public class ColorPair
      */
     public boolean equals(Object object_)
     {
-	try {
-	    ColorPair pair = (ColorPair) object_;
-	    return (_foreground == pair.getForeground() &&
-		_background == pair.getBackground());
-	}
-	catch (ClassCastException e) {
-	    return false;
-	}
+    try {
+        ColorPair pair = (ColorPair) object_;
+        return (_foreground == pair.getForeground() &&
+        _background == pair.getBackground());
+    }
+    catch (ClassCastException e) {
+        return false;
+    }
 
     }
 
@@ -72,8 +72,8 @@ public class ColorPair
     /** Return a string representation of this object.
      */
     public String toString() {
-	return ("fgnd=" + Color.getColorName(_foreground) + 
-	    ", bkgnd=" + Color.getColorName(_background));
+    return ("fgnd=" + Color.getColorName(_foreground) +
+        ", bkgnd=" + Color.getColorName(_background));
     }
 
     //====================================================================

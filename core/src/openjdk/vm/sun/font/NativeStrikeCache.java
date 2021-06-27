@@ -31,7 +31,7 @@ class NativeStrikeCache {
     private static void getGlyphCacheDescription(long[] arg1) {
         arg1[0] = 4; // nativeAddressSize
 
-		//TODO find right values
+        //TODO find right values
         arg1[1] = 0; // glyphInfoSize
         arg1[2] = 0; // xAdvanceOffset
         arg1[3] = 0; // yAdvanceOffset

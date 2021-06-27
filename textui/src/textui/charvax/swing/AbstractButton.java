@@ -46,13 +46,13 @@ public abstract class AbstractButton
     /** @deprecated Replaced by setText().
      */
     public void setLabel(String label_) {
-	setText(label_);
+    setText(label_);
     }
 
     /** Sets the button's label text.
      */
     public void setText(String label_) {
-	_label = label_;
+    _label = label_;
     }
 
     /** Set the button's mnemonic character.
@@ -79,11 +79,11 @@ public abstract class AbstractButton
      * @param mnemonic_ the keycode of the mnemonic key.
      */
     public void setMnemonic(int mnemonic_) {
-	_mnemonic = mnemonic_;
-	Window ancestor = super.getAncestorWindow();
-	if (ancestor != null) {
-	    ancestor.addKeyListener(this);
-	}
+    _mnemonic = mnemonic_;
+    Window ancestor = super.getAncestorWindow();
+    if (ancestor != null) {
+        ancestor.addKeyListener(this);
+    }
     }
 
     /** @deprecated Replaced by getText().
@@ -97,7 +97,7 @@ public abstract class AbstractButton
     /** Returns the button's mnemonic character.
      */
     public int getMnemonic() {
-	return _mnemonic;
+    return _mnemonic;
     }
 
     /** Sets the action command for this button.
@@ -112,27 +112,27 @@ public abstract class AbstractButton
      * somewhere inside this component.
      */
     public void processMouseEvent(MouseEvent e) {
-	// Request focus if this is a MOUSE_PRESSED
-	super.processMouseEvent(e);
+    // Request focus if this is a MOUSE_PRESSED
+    super.processMouseEvent(e);
 
-	if (e.getButton() == MouseEvent.BUTTON1 &&
-		e.getModifiers() == MouseEvent.MOUSE_CLICKED &&
-		this.isFocusTraversable()) {
+    if (e.getButton() == MouseEvent.BUTTON1 &&
+        e.getModifiers() == MouseEvent.MOUSE_CLICKED &&
+        this.isFocusTraversable()) {
 
-	    this.doClick();
-	}
+        this.doClick();
+    }
     }
 
     /** Programmatically performs a "click" of this button.
      */
     public void doClick() {
-	
-	// This is required because our parent window will send the KeyEvent
-	// to the Container containing the component with the current focus.
-//	super.requestFocus();
-	getParent().setFocus(this);	// Mustn't generate FocusEvents (?)
+    
+    // This is required because our parent window will send the KeyEvent
+    // to the Container containing the component with the current focus.
+//    super.requestFocus();
+    getParent().setFocus(this);    // Mustn't generate FocusEvents (?)
 
-	Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_ENTER, this);
+    Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_ENTER, this);
     }
 
     /**
@@ -140,16 +140,16 @@ public abstract class AbstractButton
      * an ActionEvent.
      */
     public void setSelected(boolean state_) {
-	// Post an ItemEvent if the state has changed.
-	if (_selected != state_) {
-	    int statechange = state_ ? ItemEvent.SELECTED : ItemEvent.DESELECTED;
-	    ItemEvent evt = new ItemEvent(this, this, statechange);
-	    Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(evt);
-	}
+    // Post an ItemEvent if the state has changed.
+    if (_selected != state_) {
+        int statechange = state_ ? ItemEvent.SELECTED : ItemEvent.DESELECTED;
+        ItemEvent evt = new ItemEvent(this, this, statechange);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(evt);
+    }
 
-	_selected = state_;
-	if (isDisplayed())
-	    super.repaint();
+    _selected = state_;
+    if (isDisplayed())
+        super.repaint();
     }
 
     /** Returns the state of the button.
@@ -161,84 +161,84 @@ public abstract class AbstractButton
      */
     protected void processEvent(AWTEvent evt_) {
 
-	super.processEvent(evt_);
+    super.processEvent(evt_);
 
-	if (evt_ instanceof KeyEvent) {
-	    KeyEvent key_event = (KeyEvent) evt_;
-	    if (( ! key_event.isConsumed()) &&
-		key_event.getKeyCode() == KeyEvent.VK_ENTER &&
-		super.isEnabled()) {
-		
-		EventQueue queue = Toolkit.getDefaultToolkit().getSystemEventQueue();
-		queue.postEvent(new ActionEvent(this, getActionCommand()));
-		key_event.consume();
-	    }
-	}
-	else if (evt_ instanceof ActionEvent)
-	    fireActionPerformed((ActionEvent) evt_);
-	else if (evt_ instanceof ItemEvent)
-	    fireItemStateChanged((ItemEvent) evt_);
+    if (evt_ instanceof KeyEvent) {
+        KeyEvent key_event = (KeyEvent) evt_;
+        if (( ! key_event.isConsumed()) &&
+        key_event.getKeyCode() == KeyEvent.VK_ENTER &&
+        super.isEnabled()) {
+        
+        EventQueue queue = Toolkit.getDefaultToolkit().getSystemEventQueue();
+        queue.postEvent(new ActionEvent(this, getActionCommand()));
+        key_event.consume();
+        }
+    }
+    else if (evt_ instanceof ActionEvent)
+        fireActionPerformed((ActionEvent) evt_);
+    else if (evt_ instanceof ItemEvent)
+        fireItemStateChanged((ItemEvent) evt_);
     }
 
     /**
      * Register an ActionListener object for this button.
      */
     public void addActionListener(ActionListener al_) {
-	if (_actionListeners == null)
-	    _actionListeners = new Vector<ActionListener>();
-	_actionListeners.add(al_);
+    if (_actionListeners == null)
+        _actionListeners = new Vector<ActionListener>();
+    _actionListeners.add(al_);
     }
 
     /** Invoke all the ActionListener callbacks that may have been registered
      * for this button. 
      */
     protected void fireActionPerformed(ActionEvent ae_) {
-	if (_actionListeners != null) {
-	    for (Enumeration<ActionListener> e = _actionListeners.elements(); 
-		    e.hasMoreElements(); ) {
+    if (_actionListeners != null) {
+        for (Enumeration<ActionListener> e = _actionListeners.elements(); 
+            e.hasMoreElements(); ) {
 
-		ActionListener al = (ActionListener) e.nextElement();
-		al.actionPerformed(ae_);
-	    }
-	}
+        ActionListener al = (ActionListener) e.nextElement();
+        al.actionPerformed(ae_);
+        }
+    }
     }
 
     /**
      * Register an ItemListener object for this component.
      */
     public void addItemListener(ItemListener il_) {
-	if (_itemListeners == null)
-	    _itemListeners = new Vector<ItemListener>();
-	_itemListeners.add(il_);
+    if (_itemListeners == null)
+        _itemListeners = new Vector<ItemListener>();
+    _itemListeners.add(il_);
     }
 
     public void removeItemListener(ItemListener listener_) {
-	if (_itemListeners == null)
-	    return;
-	_itemListeners.remove(listener_);
+    if (_itemListeners == null)
+        return;
+    _itemListeners.remove(listener_);
     }
 
     /** Implements the KeyListener interface; this is called if a control
      * character or a function key or cursor key was typed.
      */
     public void keyPressed(KeyEvent ke_) {
-	if (ke_.getKeyCode() == getMnemonic()) {
-	    doClick();
-	    ke_.consume();
-	}
+    if (ke_.getKeyCode() == getMnemonic()) {
+        doClick();
+        ke_.consume();
+    }
     }
 
     /** Implements the KeyListener interface; this is called if a printable
      * (ASCII or ISO8859-1) character was typed.
      */
     public void keyTyped(KeyEvent ke_) {
-	// We must accept either uppercase or lowercase mnemonic characters.
-	char keyLower = Character.toLowerCase(ke_.getKeyChar());
-	char mnemonicLower = Character.toLowerCase((char) getMnemonic());
-	if (keyLower == mnemonicLower) {
-	    doClick();
-	    ke_.consume();
-	}
+    // We must accept either uppercase or lowercase mnemonic characters.
+    char keyLower = Character.toLowerCase(ke_.getKeyChar());
+    char mnemonicLower = Character.toLowerCase((char) getMnemonic());
+    if (keyLower == mnemonicLower) {
+        doClick();
+        ke_.consume();
+    }
     }
 
     /** Implements the KeyListener interface but is never invoked. */
@@ -249,14 +249,14 @@ public abstract class AbstractButton
      * for this component. 
      */
     protected void fireItemStateChanged(ItemEvent ie_) {
-	if (_itemListeners != null) {
-	    for (Enumeration<ItemListener> e = _itemListeners.elements(); 
-		    e.hasMoreElements(); ) {
+    if (_itemListeners != null) {
+        for (Enumeration<ItemListener> e = _itemListeners.elements(); 
+            e.hasMoreElements(); ) {
 
-		ItemListener il = (ItemListener) e.nextElement();
-		il.itemStateChanged(ie_);
-	    }
-	}
+        ItemListener il = (ItemListener) e.nextElement();
+        il.itemStateChanged(ie_);
+        }
+    }
     }
 
     /** Returns the complete label string, including the mnemonic key
@@ -264,27 +264,27 @@ public abstract class AbstractButton
      * mnemonic key does not appear within the label).
      */
     protected String getLabelString() {
-	String label = getText();
-	if (_mnemonic == 0)
-	    return label;	// no mnemonic is set
+    String label = getText();
+    if (_mnemonic == 0)
+        return label;    // no mnemonic is set
 
-	if (_mnemonic >= ' ' && 
-		_mnemonic < 0xff && 
-		label.indexOf((char) _mnemonic) != -1) {
-	    return label;	// the mnemonic char appears within the label
-	}
+    if (_mnemonic >= ' ' && 
+        _mnemonic < 0xff && 
+        label.indexOf((char) _mnemonic) != -1) {
+        return label;    // the mnemonic char appears within the label
+    }
 
-	StringBuffer buf = new StringBuffer(label);
-	if (_mnemonic < ' ') {
-	    char c = (char) (_mnemonic + '@');
-	    return buf.append(" (^").append(c).append(")").toString();
-	}
-	else if (_mnemonic >= KeyEvent.VK_F1 && _mnemonic <= KeyEvent.VK_F20) {
-	    int offset = _mnemonic - KeyEvent.VK_F1 + 1;
-	    return buf.append(" (F").append(offset).append(")").toString();
-	}
-	else
-	    return label;   // At this stage we don't handle other chars
+    StringBuffer buf = new StringBuffer(label);
+    if (_mnemonic < ' ') {
+        char c = (char) (_mnemonic + '@');
+        return buf.append(" (^").append(c).append(")").toString();
+    }
+    else if (_mnemonic >= KeyEvent.VK_F1 && _mnemonic <= KeyEvent.VK_F20) {
+        int offset = _mnemonic - KeyEvent.VK_F1 + 1;
+        return buf.append(" (F").append(offset).append(")").toString();
+    }
+    else
+        return label;   // At this stage we don't handle other chars
     }
 
     //====================================================================

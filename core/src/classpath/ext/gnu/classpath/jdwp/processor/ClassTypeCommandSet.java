@@ -107,7 +107,7 @@ public class ClassTypeCommandSet
     Class superClazz = clazz.getSuperclass();
 
     if (superClazz == null) {
-    	os.writeLong(0L);
+        os.writeLong(0L);
     } else {
     ReferenceTypeId clazzId = idMan.getReferenceTypeId(superClazz);
     clazzId.write(os);
@@ -197,25 +197,25 @@ public class ClassTypeCommandSet
 
     int invokeOpts = bb.getInt();
     boolean suspend = ((invokeOpts
-			& JdwpConstants.InvokeOptions.INVOKE_SINGLE_THREADED)
-		       != 0);
+            & JdwpConstants.InvokeOptions.INVOKE_SINGLE_THREADED)
+               != 0);
     try
       {
         if (suspend)
-	  VMVirtualMachine.suspendAllThreads ();
+      VMVirtualMachine.suspendAllThreads ();
 
         MethodResult mr = VMVirtualMachine.executeMethod(null, thread,
-							 clazz, method,
-							 values, false);
+                             clazz, method,
+                             values, false);
         if (suspend)
-	  VMVirtualMachine.resumeAllThreads ();
+      VMVirtualMachine.resumeAllThreads ();
 
         return mr;
       }
     catch (Exception ex)
       {
         if (suspend)
-	  VMVirtualMachine.resumeAllThreads ();
+      VMVirtualMachine.resumeAllThreads ();
 
         throw new JdwpInternalErrorException(ex);
       }

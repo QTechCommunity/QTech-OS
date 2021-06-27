@@ -31,8 +31,8 @@ public class ActionEvent extends AWTEvent
     String _command;
 
     public ActionEvent(Component source_, String command_) {
-	super(source_, AWTEvent.ACTION_PERFORMED);
-	_command = command_;
+    super(source_, AWTEvent.ACTION_PERFORMED);
+    _command = command_;
     }
 
     /**

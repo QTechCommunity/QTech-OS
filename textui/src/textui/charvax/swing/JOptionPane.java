@@ -42,8 +42,8 @@ import charvax.swing.border.EmptyBorder;
  * the label of the OK button to "OK (F1)", and set the F1 key to 
  * have the same effect as the OK button:</p>
  * <pre>
- *	JOptionPane.OK_LABEL = "OK (F1)";
- *	JOptionPane.OK_ACCELERATOR = KeyEvent.VK_F1;
+ *    JOptionPane.OK_LABEL = "OK (F1)";
+ *    JOptionPane.OK_ACCELERATOR = KeyEvent.VK_F1;
  * </pre>
  * <p>Note that after the buttons have been customized, they stay customized
  * for all future invocations of the JOptionPane "showXXXDialog()" methods.</p>
@@ -126,7 +126,7 @@ public class JOptionPane
 {
     /** Creates a JOptionPane with a test message */
     public JOptionPane() {
-	this("This is a test message", PLAIN_MESSAGE, DEFAULT_OPTION, null, null, null);
+    this("This is a test message", PLAIN_MESSAGE, DEFAULT_OPTION, null, null, null);
     }
 
     /**
@@ -136,7 +136,7 @@ public class JOptionPane
      * stacked vertically.
      */
     public JOptionPane(Object message_) {
-	this(message_, PLAIN_MESSAGE, DEFAULT_OPTION, null, null, null);
+    this(message_, PLAIN_MESSAGE, DEFAULT_OPTION, null, null, null);
     }
 
     /**
@@ -147,7 +147,7 @@ public class JOptionPane
      * determine which icon to display.
      */
     public JOptionPane(Object message_, int messagetype_) {
-	this(message_, messagetype_, DEFAULT_OPTION, null, null, null);
+    this(message_, messagetype_, DEFAULT_OPTION, null, null, null);
     }
 
     /**
@@ -161,7 +161,7 @@ public class JOptionPane
      * OK_CANCEL_OPTION.
      */
     public JOptionPane(Object message_, int messagetype_, int optiontype_) {
-	this(message_, messagetype_, optiontype_, null, null, null);
+    this(message_, messagetype_, optiontype_, null, null, null);
     }
 
     /**
@@ -181,46 +181,46 @@ public class JOptionPane
      * is used
      */
     public JOptionPane(Object message_, int messageType_, int optionType_, 
-	Object icon_, Object[] options_, Object initialValue_) 
+    Object icon_, Object[] options_, Object initialValue_)
     {
-	_message = message_;
-	_messagetype = messageType_;
-	_optiontype = optionType_;
-	_options = options_;
-	_initialValue = initialValue_;
+    _message = message_;
+    _messagetype = messageType_;
+    _optiontype = optionType_;
+    _options = options_;
+    _initialValue = initialValue_;
     }
 
     /** If newvalue_ is true, a JTextField will be displayed for
      * the user to provide text input.
      */
     public void setWantsInput(boolean newvalue_) {
-	_wantsInput = newvalue_;
+    _wantsInput = newvalue_;
     }
 
     /** Returns the value of _wantsInput.
      */
     public boolean getWantsInput() {
-	return _wantsInput;
+    return _wantsInput;
     }
 
     /** Sets the default input value that is displayed to the user.
      * Only used if <code>_wantsInput</code> is true.
      */
     public void setInitialSelectionValue(Object value_) {
-	_inputValue = (String) value_;
+    _inputValue = (String) value_;
     }
 
     /** Sets the initial value of the text field for the user to modify.
      */
     public void setInputValue(Object value_) {
-	_inputValue = (String) value_;
+    _inputValue = (String) value_;
     }
 
     /** Returns the value the user has input, (relevant only if 
      * _wantsInput is true).
      */
     public Object getInputValue() {
-	return _inputValue;
+    return _inputValue;
     }
 
     /** Sets the options this pane displays in the button-panel at
@@ -232,13 +232,13 @@ public class JOptionPane
      * can be set for the button.
      */
     public void setOptions(Object[] newOptions_) {
-	_options = newOptions_;
+    _options = newOptions_;
     }
 
     /** Returns the choices the user can make.
      */
     public Object[] getOptions() {
-	return _options;
+    return _options;
     }
 
     /** Sets the initial value that is to be enabled -- the Component
@@ -253,7 +253,7 @@ public class JOptionPane
      * (NOT IMPLEMENTED YET).
      */
     public Object getInitialValue() {
-	return null;
+    return null;
     }
 
     /**
@@ -264,15 +264,15 @@ public class JOptionPane
      */
     public JDialog createDialog(Component owner_, String title_) {
 
-	/* This is a non-static inner class used for a popup dialog.
-	 */
-	JOptionPane.Popup dlg = null;
+    /* This is a non-static inner class used for a popup dialog.
+     */
+    JOptionPane.Popup dlg = null;
 
-	dlg = this.new Popup(owner_, _message, title_);
-	if (owner_ != null)
-	    dlg.setLocationRelativeTo(owner_);
+    dlg = this.new Popup(owner_, _message, title_);
+    if (owner_ != null)
+        dlg.setLocationRelativeTo(owner_);
 
-	return dlg;
+    return dlg;
     }
 
     /**
@@ -284,12 +284,12 @@ public class JOptionPane
      * @param optiontype_ must be YES_NO_OPTION or YES_NO_CANCEL_OPTION.
      */
     public static int showConfirmDialog(Component parent_,
-	    Object message_, String title_, int optiontype_) {
+        Object message_, String title_, int optiontype_) {
 
-	JOptionPane pane = new JOptionPane(message_, PLAIN_MESSAGE, optiontype_);
-	Popup dialog = (Popup) pane.createDialog(parent_, title_);
-	dialog.show();
-	return ((Integer) pane.getValue()).intValue();
+    JOptionPane pane = new JOptionPane(message_, PLAIN_MESSAGE, optiontype_);
+    Popup dialog = (Popup) pane.createDialog(parent_, title_);
+    dialog.show();
+    return ((Integer) pane.getValue()).intValue();
     }
 
     /**
@@ -301,25 +301,25 @@ public class JOptionPane
      * which icon to display).
      */
     public static String showInputDialog(Component parent_,
-	    Object message_, String title_, int messagetype_) {
+        Object message_, String title_, int messagetype_) {
 
-	JOptionPane pane = new JOptionPane(message_, 
-		messagetype_, OK_CANCEL_OPTION);
-	pane._wantsInput = true;
-	Popup dialog = (Popup) pane.createDialog(parent_, title_);
-	dialog.show();
-	int option = ((Integer) pane.getValue()).intValue();
-	if (option == CANCEL_OPTION)
-	    return null;
-	else
-	    return (String) pane.getInputValue();
+    JOptionPane pane = new JOptionPane(message_,
+        messagetype_, OK_CANCEL_OPTION);
+    pane._wantsInput = true;
+    Popup dialog = (Popup) pane.createDialog(parent_, title_);
+    dialog.show();
+    int option = ((Integer) pane.getValue()).intValue();
+    if (option == CANCEL_OPTION)
+        return null;
+    else
+        return (String) pane.getInputValue();
     }
 
     /**
      * Brings up a confirmation dialog titled "Confirm"
      */
     public static void showMessageDialog(Component parent_, Object message_) {
-	showMessageDialog(parent_, message_, "Confirm", DEFAULT_OPTION);
+    showMessageDialog(parent_, message_, "Confirm", DEFAULT_OPTION);
     }
 
     /**
@@ -328,17 +328,17 @@ public class JOptionPane
      * specify an icon to display).
      */
     public static void showMessageDialog(Component parent_,
-	    Object message_, String title_, int msgtype_) {
+        Object message_, String title_, int msgtype_) {
 
-	JOptionPane pane = new JOptionPane(message_, msgtype_, DEFAULT_OPTION);
-	JDialog dialog = pane.createDialog(parent_, title_);
-	dialog.show();
+    JOptionPane pane = new JOptionPane(message_, msgtype_, DEFAULT_OPTION);
+    JDialog dialog = pane.createDialog(parent_, title_);
+    dialog.show();
     }
 
     /** Returns the option the user has selected.
      */
     public Object getValue() {
-	return _value;
+    return _value;
     }
 
     // INSTANCE VARIABLES
@@ -411,237 +411,237 @@ public class JOptionPane
      * JOptionPane creates.
      */
     private class Popup
-	extends JDialog
-	implements ActionListener, KeyListener
+    extends JDialog
+    implements ActionListener, KeyListener
     {
-	/** Constructor
-	 */
-	Popup(Component owner_, Object message_, String title_) {
+    /** Constructor
+     */
+    Popup(Component owner_, Object message_, String title_) {
 
-	    super();
+        super();
 
-	    // The window inherits the colors of its parent if there is one,
-	    // otherwise the default colors are used.
-	    if (owner_ != null) {
-		super.setForeground(owner_.getForeground());
-		super.setBackground(owner_.getBackground());
-	    }
-	    else {
-		super.setForeground(Toolkit.getDefaultForeground());
-		super.setBackground(Toolkit.getDefaultBackground());
-	    }
-	    setTitle(title_);
+        // The window inherits the colors of its parent if there is one,
+        // otherwise the default colors are used.
+        if (owner_ != null) {
+        super.setForeground(owner_.getForeground());
+        super.setBackground(owner_.getBackground());
+        }
+        else {
+        super.setForeground(Toolkit.getDefaultForeground());
+        super.setBackground(Toolkit.getDefaultBackground());
+        }
+        setTitle(title_);
 
-	    _ownerComponent = owner_;
-	    setLayout(new BorderLayout());
+        _ownerComponent = owner_;
+        setLayout(new BorderLayout());
 
-	    JPanel northpan = new JPanel();
-	    northpan.setBorder(new EmptyBorder(2,2,1,2));
+        JPanel northpan = new JPanel();
+        northpan.setBorder(new EmptyBorder(2,2,1,2));
 
-	    JPanel messagepanel = new JPanel();
-	    if (message_ instanceof String) {
-		messagepanel.add(new JLabel((String) message_));
-	    }
-	    else if (message_ instanceof Object[]) {
-		messagepanel.setLayout(
-			new BoxLayout(getOwner(), BoxLayout.Y_AXIS));
+        JPanel messagepanel = new JPanel();
+        if (message_ instanceof String) {
+        messagepanel.add(new JLabel((String) message_));
+        }
+        else if (message_ instanceof Object[]) {
+        messagepanel.setLayout(
+            new BoxLayout(getOwner(), BoxLayout.Y_AXIS));
 
-		Object[] objects = (Object[]) message_;
-		for (int i=0; i<objects.length; i++) {
-		    messagepanel.add(new JLabel(objects[i].toString()));
-		}
-	    }
-	    else {
-		throw new IllegalArgumentException("illegal message type " +
-		       message_.getClass().getName());
-	    }
+        Object[] objects = (Object[]) message_;
+        for (int i=0; i<objects.length; i++) {
+            messagepanel.add(new JLabel(objects[i].toString()));
+        }
+        }
+        else {
+        throw new IllegalArgumentException("illegal message type " +
+               message_.getClass().getName());
+        }
 
-	    northpan.add(messagepanel);
-	    add(northpan, BorderLayout.NORTH);
+        northpan.add(messagepanel);
+        add(northpan, BorderLayout.NORTH);
 
-	    if (_wantsInput) {
-		JPanel centerpan = new JPanel();
-		centerpan.setBorder(new EmptyBorder(1, 1, 1, 1));
-		_inputField = new JTextField(_inputValue, 20);
-		_inputField.addActionListener(this);
-		centerpan.add(_inputField);
-		add(centerpan, BorderLayout.CENTER);
-	    }
+        if (_wantsInput) {
+        JPanel centerpan = new JPanel();
+        centerpan.setBorder(new EmptyBorder(1, 1, 1, 1));
+        _inputField = new JTextField(_inputValue, 20);
+        _inputField.addActionListener(this);
+        centerpan.add(_inputField);
+        add(centerpan, BorderLayout.CENTER);
+        }
 
-	    JPanel southpan = new JPanel();
-	    southpan.setLayout(new FlowLayout(FlowLayout.CENTER, 1, 1));
-	
-	    if (_options != null) {
-		// Option buttons were explicitly specified.
-		for (int i=0; i<_options.length; i++) {
-		    AbstractButton button = null;
-		    if (_options[i] instanceof String)
-			button = new JButton((String) _options[i]);
-		    else if (_options[i] instanceof AbstractButton)
-			button = (AbstractButton) _options[i];
-		    button.addActionListener(this);
-		    southpan.add(button);
-		}
-	    }
-	    else {
-		// Decide which option buttons to display, based on the
-		// value of _optiontype.
-		if (_optiontype == DEFAULT_OPTION || 
-			_optiontype == OK_CANCEL_OPTION) {
+        JPanel southpan = new JPanel();
+        southpan.setLayout(new FlowLayout(FlowLayout.CENTER, 1, 1));
 
-		    _okButton = new JButton("OK");
-		    _okButton.setText(OK_LABEL);
-		    _okButton.addActionListener(this);
-		    southpan.add(_okButton);
-		}
-		if (_optiontype == YES_NO_OPTION ||
-			_optiontype == YES_NO_CANCEL_OPTION) {
+        if (_options != null) {
+        // Option buttons were explicitly specified.
+        for (int i=0; i<_options.length; i++) {
+            AbstractButton button = null;
+            if (_options[i] instanceof String)
+            button = new JButton((String) _options[i]);
+            else if (_options[i] instanceof AbstractButton)
+            button = (AbstractButton) _options[i];
+            button.addActionListener(this);
+            southpan.add(button);
+        }
+        }
+        else {
+        // Decide which option buttons to display, based on the
+        // value of _optiontype.
+        if (_optiontype == DEFAULT_OPTION ||
+            _optiontype == OK_CANCEL_OPTION) {
 
-		    _yesButton = new JButton("Yes");
-		    _yesButton.setText(YES_LABEL);
-		    _yesButton.addActionListener(this);
-		    southpan.add(_yesButton);
-		}
-		if (_optiontype == YES_NO_OPTION ||
-			_optiontype == YES_NO_CANCEL_OPTION) {
+            _okButton = new JButton("OK");
+            _okButton.setText(OK_LABEL);
+            _okButton.addActionListener(this);
+            southpan.add(_okButton);
+        }
+        if (_optiontype == YES_NO_OPTION ||
+            _optiontype == YES_NO_CANCEL_OPTION) {
 
-		    _noButton = new JButton("No");
-		    _noButton.setText(NO_LABEL);
-		    _noButton.addActionListener(this);
-		    southpan.add(_noButton);
-		}
-		if (_optiontype == YES_NO_CANCEL_OPTION ||
-			_optiontype == OK_CANCEL_OPTION) {
+            _yesButton = new JButton("Yes");
+            _yesButton.setText(YES_LABEL);
+            _yesButton.addActionListener(this);
+            southpan.add(_yesButton);
+        }
+        if (_optiontype == YES_NO_OPTION ||
+            _optiontype == YES_NO_CANCEL_OPTION) {
 
-		    _cancelButton = new JButton("Cancel");
-		    _cancelButton.setText(CANCEL_LABEL);
-		    _cancelButton.addActionListener(this);
-		    southpan.add(_cancelButton);
-		}
-	    }
-	    add(southpan, BorderLayout.SOUTH);
+            _noButton = new JButton("No");
+            _noButton.setText(NO_LABEL);
+            _noButton.addActionListener(this);
+            southpan.add(_noButton);
+        }
+        if (_optiontype == YES_NO_CANCEL_OPTION ||
+            _optiontype == OK_CANCEL_OPTION) {
 
-	    setSize(Toolkit.getDefaultToolkit().getScreenSize());
-	    pack();
-	    Dimension msgsize = messagepanel.getSize();
-	    setSize(msgsize.width+8, msgsize.height+9);
-	    pack();
+            _cancelButton = new JButton("Cancel");
+            _cancelButton.setText(CANCEL_LABEL);
+            _cancelButton.addActionListener(this);
+            southpan.add(_cancelButton);
+        }
+        }
+        add(southpan, BorderLayout.SOUTH);
 
-	    /* Center the dialog over its parent component.
-	     */
-	    Dimension ourSize = getSize();
-	    if (_ownerComponent != null) {
-		Point ownerOrigin = _ownerComponent.getLocationOnScreen();
-		Dimension ownerSize = _ownerComponent.getSize();
-		Point ownerCenter = ownerOrigin.addOffset(
-		    ownerSize.width/2, ownerSize.height/2);
-		setLocation(ownerCenter.addOffset(
-		    -ourSize.width/2, -ourSize.height/2));
-	    }
-	    else {
-		/* The parent component was not specified. Center this
-		 * dialog box in the middle of the screen.
-		 */
-		Dimension screensize =
-		    Toolkit.getDefaultToolkit().getScreenSize();
-		Point screenCenter = new Point(screensize.width/2,
-		    screensize.height/2);
-		setLocation(screenCenter.addOffset(
-		    -ourSize.width/2, -ourSize.height/2));
-	    }
+        setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        pack();
+        Dimension msgsize = messagepanel.getSize();
+        setSize(msgsize.width+8, msgsize.height+9);
+        pack();
 
-	    // Add a KeyListener in case one or more accelerators were set.
-	    addKeyListener(this);
-	}
+        /* Center the dialog over its parent component.
+         */
+        Dimension ourSize = getSize();
+        if (_ownerComponent != null) {
+        Point ownerOrigin = _ownerComponent.getLocationOnScreen();
+        Dimension ownerSize = _ownerComponent.getSize();
+        Point ownerCenter = ownerOrigin.addOffset(
+            ownerSize.width/2, ownerSize.height/2);
+        setLocation(ownerCenter.addOffset(
+            -ourSize.width/2, -ourSize.height/2));
+        }
+        else {
+        /* The parent component was not specified. Center this
+         * dialog box in the middle of the screen.
+         */
+        Dimension screensize =
+            Toolkit.getDefaultToolkit().getScreenSize();
+        Point screenCenter = new Point(screensize.width/2,
+            screensize.height/2);
+        setLocation(screenCenter.addOffset(
+            -ourSize.width/2, -ourSize.height/2));
+        }
 
-	/** Gets called when the user presses an option-button (or
-	 * if ENTER is pressed while focus is in the TextField).
-	 */
-	public void actionPerformed(ActionEvent e_) {
-	    if (_wantsInput)
-		_inputValue = _inputField.getText();
+        // Add a KeyListener in case one or more accelerators were set.
+        addKeyListener(this);
+    }
 
-	    if (_options != null) {
-		// Options were specified explicitly.
-		// So ignore ENTER if pressed while focus is in textfield.
-		if (e_.getSource() == _inputField)
-		    return;
+    /** Gets called when the user presses an option-button (or
+     * if ENTER is pressed while focus is in the TextField).
+     */
+    public void actionPerformed(ActionEvent e_) {
+        if (_wantsInput)
+        _inputValue = _inputField.getText();
 
-		AbstractButton source = (AbstractButton) e_.getSource();
-		for (int i=0; i < _options.length; i++) {
-		    if (_options[i] instanceof String && 
-			    source.getText().equals(_options[i]) ) {
+        if (_options != null) {
+        // Options were specified explicitly.
+        // So ignore ENTER if pressed while focus is in textfield.
+        if (e_.getSource() == _inputField)
+            return;
 
-			_value = _options[i];
-			break;
-		    }
-		    else if (source == _options[i]) {
-			_value = source;
-			break;
-		    }
-		}
-	    }
-	    else {
-		// Options were not specified explicitly.
-		Object source = e_.getSource();
-		if ( source == _okButton || source == _inputField) {
-		    _value = new Integer(JOptionPane.OK_OPTION);
-		}
-		else if (source == _yesButton) {
-		    _value = new Integer(JOptionPane.YES_OPTION);
-		}
-		else if (source == _noButton) {
-		    _value = new Integer(JOptionPane.NO_OPTION);
-		}
-		else if (source == _cancelButton) {
-		    _value = new Integer(JOptionPane.CANCEL_OPTION);
-		}
-	    }
+        AbstractButton source = (AbstractButton) e_.getSource();
+        for (int i=0; i < _options.length; i++) {
+            if (_options[i] instanceof String &&
+                source.getText().equals(_options[i]) ) {
 
-	    hide();
-	}
+            _value = _options[i];
+            break;
+            }
+            else if (source == _options[i]) {
+            _value = source;
+            break;
+            }
+        }
+        }
+        else {
+        // Options were not specified explicitly.
+        Object source = e_.getSource();
+        if ( source == _okButton || source == _inputField) {
+            _value = new Integer(JOptionPane.OK_OPTION);
+        }
+        else if (source == _yesButton) {
+            _value = new Integer(JOptionPane.YES_OPTION);
+        }
+        else if (source == _noButton) {
+            _value = new Integer(JOptionPane.NO_OPTION);
+        }
+        else if (source == _cancelButton) {
+            _value = new Integer(JOptionPane.CANCEL_OPTION);
+        }
+        }
 
-	public void keyPressed(KeyEvent e_) {
-	    int key = e_.getKeyCode();
-	    if (key == OK_ACCELERATOR &&
-		    (_optiontype == DEFAULT_OPTION || 
-		    _optiontype == OK_CANCEL_OPTION)) {
+        hide();
+    }
 
-		_value = new Integer(JOptionPane.OK_OPTION);
-		_inputValue = _inputField.getText();
-		hide();
-	    }
-	    else if (key == YES_ACCELERATOR &&
-		    (_optiontype == YES_NO_OPTION ||
-		    _optiontype == YES_NO_CANCEL_OPTION)) {
-		_value = new Integer(JOptionPane.YES_OPTION);
-		_inputValue = _inputField.getText();
-		hide();
-	    }
-	    else if (key == NO_ACCELERATOR &&
-		    (_optiontype == YES_NO_OPTION ||
-		    _optiontype == YES_NO_CANCEL_OPTION)) {
-		_value = new Integer(JOptionPane.NO_OPTION);
-		hide();
-	    }
-	    else if (key == CANCEL_ACCELERATOR &&
-		    (_optiontype == YES_NO_CANCEL_OPTION ||
-		    _optiontype == OK_CANCEL_OPTION)) {
-		_value = new Integer(JOptionPane.CANCEL_OPTION);
-		hide();
-	    }
-	}
+    public void keyPressed(KeyEvent e_) {
+        int key = e_.getKeyCode();
+        if (key == OK_ACCELERATOR &&
+            (_optiontype == DEFAULT_OPTION ||
+            _optiontype == OK_CANCEL_OPTION)) {
 
-	public void keyTyped(KeyEvent e_) {
-	}
+        _value = new Integer(JOptionPane.OK_OPTION);
+        _inputValue = _inputField.getText();
+        hide();
+        }
+        else if (key == YES_ACCELERATOR &&
+            (_optiontype == YES_NO_OPTION ||
+            _optiontype == YES_NO_CANCEL_OPTION)) {
+        _value = new Integer(JOptionPane.YES_OPTION);
+        _inputValue = _inputField.getText();
+        hide();
+        }
+        else if (key == NO_ACCELERATOR &&
+            (_optiontype == YES_NO_OPTION ||
+            _optiontype == YES_NO_CANCEL_OPTION)) {
+        _value = new Integer(JOptionPane.NO_OPTION);
+        hide();
+        }
+        else if (key == CANCEL_ACCELERATOR &&
+            (_optiontype == YES_NO_CANCEL_OPTION ||
+            _optiontype == OK_CANCEL_OPTION)) {
+        _value = new Integer(JOptionPane.CANCEL_OPTION);
+        hide();
+        }
+    }
 
-	public void keyReleased(KeyEvent e_) { }
+    public void keyTyped(KeyEvent e_) {
+    }
 
-	private Component _ownerComponent;
-	private JButton _okButton;
-	private JButton _yesButton;
-	private JButton _noButton;
-	private JButton _cancelButton;
-	private JTextField _inputField = new JTextField(20);
+    public void keyReleased(KeyEvent e_) { }
+
+    private Component _ownerComponent;
+    private JButton _okButton;
+    private JButton _yesButton;
+    private JButton _noButton;
+    private JButton _cancelButton;
+    private JTextField _inputField = new JTextField(20);
     }
 }

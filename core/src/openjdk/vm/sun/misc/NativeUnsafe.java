@@ -402,14 +402,14 @@ class NativeUnsafe {
      */
     public static Object staticFieldBase(Unsafe instance, Field f) {
         final VmProcessor proc = VmProcessor.current();
-		final Address tablePtr;
+        final Address tablePtr;
         VmStaticField sf = (VmStaticField) getVmField(f);
         if (sf.isShared()) {
             tablePtr = VmMagic.getArrayData(proc.getSharedStaticsTable());
         } else {
             tablePtr = VmMagic.getArrayData(proc.getIsolatedStaticsTable());
         }
-		Object ret = tablePtr.loadObjectReference().toObject();
+        Object ret = tablePtr.loadObjectReference().toObject();
         if(sf.isStatic() && sf.isFinal() && f.getType().equals(String.class))
             ret = new IrregularStaticAccess(tablePtr.toLong());
         else
@@ -421,14 +421,14 @@ class NativeUnsafe {
      * @see org.jnode.vm.VmReflection#getInstanceFieldAddress(Object, org.jnode.vm.classmgr.VmInstanceField)   
      */
     public static long staticFieldOffset(Unsafe instance, Field f) {
-		final int offset;
+        final int offset;
         VmStaticField sf = (VmStaticField) getVmField(f);
         if (sf.isShared()) {
             offset = sf.getSharedStaticsIndex() << 2;
         } else {
             offset = sf.getIsolatedStaticsIndex() << 2;
         }
-		return offset;
+        return offset;
     }
 
     public static long objectFieldOffset(Unsafe instance, Field f) {

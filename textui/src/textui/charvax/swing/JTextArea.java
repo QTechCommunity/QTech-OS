@@ -477,7 +477,7 @@ public class JTextArea
                         col++;
                     }
                 }
-                else {	// We have reached the right-hand column.
+                else {    // We have reached the right-hand column.
                     if(charBuffer.length() > 0){
                         toolkit.addString( charBuffer.toString(), 0, colorpair );
                         charBuffer.setLength(0);
@@ -497,7 +497,7 @@ public class JTextArea
                             _columns++;
                         }
                     }
-                    else {	// line-wrap is true
+                    else {    // line-wrap is true
                         if( _wrapStyleWord == false ) {
                             col = 0;
                             row++;
@@ -529,7 +529,7 @@ public class JTextArea
                                     break;
                                 }
                             }
-                            if( j == _columns ) {	// the word was too long
+                            if( j == _columns ) {    // the word was too long
                                 if( chr == ' ' || chr == '\n' || chr == '\t' ) {
                                     col = 0;
                                     row++;
@@ -540,9 +540,9 @@ public class JTextArea
                                 }
                             }
                         }
-                    }	// end if line-wrap is true
-                }		// end if we have reached the right-hand column
-            }		// end FOR loop.
+                    }    // end if line-wrap is true
+                }        // end if we have reached the right-hand column
+            }        // end FOR loop.
 
         if(charBuffer.length() > 0){
             toolkit.addString( charBuffer.toString(), 0, colorpair );
@@ -680,14 +680,14 @@ public class JTextArea
                     col++;
                 }
             }
-            else {	// We have reached the right-hand column.
+            else {    // We have reached the right-hand column.
                 if( _lineWrap == false ) {
                     if( chr == '\n' ) {
                         col = 0;
                         row++;
                     }
                 }
-                else {	// line-wrap is true
+                else {    // line-wrap is true
                     if( _wrapStyleWord == false ) {
                         col = 0;
                         row++;
@@ -706,15 +706,15 @@ public class JTextArea
                                 break;
                             }
                         }
-                        if( j == _columns ) {	// the word was too long
+                        if( j == _columns ) {    // the word was too long
                             if( chr == ' ' || chr == '\n' || chr == '\t' ) {
                                 col = 0;
                                 row++;
                             }
                         }
                     }
-                }	// end if line-wrap is true
-            }		// end if we have reached the right-hand column
+                }    // end if line-wrap is true
+            }        // end if we have reached the right-hand column
 
             if( mode_ == LINE_START_OFFSET && col == 0 && row == value_ ) {
                 return i + 1;
@@ -723,7 +723,7 @@ public class JTextArea
                 return i;
             }
 
-        }		// end FOR loop.
+        }        // end FOR loop.
 
         if( mode_ == LINE_OF_OFFSET ) {
             if( value_ == super._document.length() ) {

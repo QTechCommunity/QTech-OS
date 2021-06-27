@@ -32,38 +32,38 @@ public class TableModelEvent extends java.util.EventObject
      * and re-query the TableModel.
      */
     public TableModelEvent(TableModel source_) {
-	this (source_, 0, source_.getRowCount()-1, ALL_COLUMNS, UPDATE);
+    this (source_, 0, source_.getRowCount()-1, ALL_COLUMNS, UPDATE);
     }
 
     /** This row of data has been updated.
      */
     public TableModelEvent(TableModel source_, int row_) {
-	this(source_, row_, row_, ALL_COLUMNS, UPDATE);
+    this(source_, row_, row_, ALL_COLUMNS, UPDATE);
     }
 
     /** The data in rows [firstRow_, lastRow] have been updated.
      */
     public TableModelEvent(TableModel source_, int firstRow_,
-	    int lastRow_) {
-	this(source_, firstRow_, lastRow_, ALL_COLUMNS, UPDATE);
+        int lastRow_) {
+    this(source_, firstRow_, lastRow_, ALL_COLUMNS, UPDATE);
     }
 
     /** The cells in the specified column in rows [firstRow_, lastRow] 
      * have been updated.
      */
     public TableModelEvent(TableModel source_, int firstRow_,
-	    int lastRow_, int column_) {
-	this(source_, firstRow_, lastRow_, column_, UPDATE);
+        int lastRow_, int column_) {
+    this(source_, firstRow_, lastRow_, column_, UPDATE);
     }
 
     public TableModelEvent(TableModel source_,
-	int firstRow_, int lastRow_, int column_, int type_)
+    int firstRow_, int lastRow_, int column_, int type_)
     {
-	super(source_);
-	_firstRow = firstRow_;
-	//_lastRow = lastRow_;
-	_column = column_;
-	_type = type_;
+    super(source_);
+    _firstRow = firstRow_;
+    //_lastRow = lastRow_;
+    _column = column_;
+    _type = type_;
     }
 
     /** Get the index of the first row that changed

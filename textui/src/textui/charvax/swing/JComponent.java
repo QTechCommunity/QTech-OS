@@ -38,17 +38,17 @@ public abstract class JComponent
     }
 
     public void setBorder(Border border_) {
-	_border = border_;
+    _border = border_;
     }
 
     public Border getBorder() { return _border; }
 
     public Insets getInsets() { 
-	if (_border != null) {
-	    return _border.getBorderInsets(this);
-	}
-	else
-	    return new Insets(0,0,0,0);
+    if (_border != null) {
+        return _border.getBorderInsets(this);
+    }
+    else
+        return new Insets(0,0,0,0);
     }
 
 
@@ -57,23 +57,23 @@ public abstract class JComponent
      * @param toolkit
      */
     public void draw(Toolkit toolkit) {
-	Point origin = getLocationOnScreen();
+        Point origin = getLocationOnScreen();
 
-//	int colorpair = getCursesColor();
+//        int colorpair = getCursesColor();
 
-	/* Blank out the area of this component, but only if this
-	 * component's color-pair is different than that of the
-	 * parent container.
-	Container parent = getParent();
-	if (parent != null && colorpair != parent.getCursesColor())
-	    Toolkit.getDefaultToolkit().blankBox(origin, this.getSize(), colorpair);
-	 */
+        /* Blank out the area of this component, but only if this
+         * component's color-pair is different than that of the
+         * parent container.
+        Container parent = getParent();
+        if (parent != null && colorpair != parent.getCursesColor())
+            Toolkit.getDefaultToolkit().blankBox(origin, this.getSize(), colorpair);
+         */
 
-	if (_border != null) {
-	    _border.paintBorder(this, 0,
-		    origin.x, origin.y,
-		    this.getWidth(), this.getHeight(), toolkit);
-	}
+        if (_border != null) {
+            _border.paintBorder(this, 0,
+                origin.x, origin.y,
+                this.getWidth(), this.getHeight(), toolkit);
+        }
     }
 
     //====================================================================

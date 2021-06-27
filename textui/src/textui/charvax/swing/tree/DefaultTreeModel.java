@@ -32,7 +32,7 @@ public class DefaultTreeModel
      */
     DefaultTreeModel(TreeNode root)
     {
-	this(root, false);
+    this(root, false);
     }
 
     /** Creates a tree specifying whether any node can have children, or
@@ -40,8 +40,8 @@ public class DefaultTreeModel
      */
     DefaultTreeModel(TreeNode root, boolean asksAllowsChildren) 
     {
-	_root = root;
-	_asksAllowsChildren = asksAllowsChildren;
+    _root = root;
+    _asksAllowsChildren = asksAllowsChildren;
     }
 
     /** Returns the root of the tree. 
@@ -49,7 +49,7 @@ public class DefaultTreeModel
      */
     public Object getRoot()
     {
-	return _root;
+    return _root;
     }
 
     /** Returns the child of parent at index index in the parent's child 
@@ -59,8 +59,8 @@ public class DefaultTreeModel
      */
     public Object getChild(Object parent, int index)
     {
-	TreeNode parentNode = (TreeNode) parent;
-	return parentNode.getChildAt(index);
+    TreeNode parentNode = (TreeNode) parent;
+    return parentNode.getChildAt(index);
     }
 
     /** Returns the number of children of parent. Returns 0 if the node 
@@ -69,8 +69,8 @@ public class DefaultTreeModel
      */
     public int getChildCount(Object parent)
     {
-	TreeNode parentNode = (TreeNode) parent;
-	return parentNode.getChildCount();
+    TreeNode parentNode = (TreeNode) parent;
+    return parentNode.getChildCount();
     }
 
     /** Returns true if node is a leaf. The way the test is performed 
@@ -78,13 +78,13 @@ public class DefaultTreeModel
      */
     public boolean isLeaf(Object node_)
     {
-	TreeNode node = (TreeNode) node_;
-	if (_asksAllowsChildren) {
-	    return ( ! node.getAllowsChildren());
-	}
-	else {
-	    return (node.getChildCount() == 0);
-	}
+    TreeNode node = (TreeNode) node_;
+    if (_asksAllowsChildren) {
+        return ( ! node.getAllowsChildren());
+    }
+    else {
+        return (node.getChildCount() == 0);
+    }
     }
 
     /** Called when the user has altered the value for the item 

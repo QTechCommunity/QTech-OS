@@ -30,7 +30,7 @@ public class SyncEvent extends AWTEvent
     private static final long serialVersionUID = 1L;
 
     public SyncEvent(Component source_) {
-	super(source_, AWTEvent.SYNC_EVENT);
+    super(source_, AWTEvent.SYNC_EVENT);
     }
 
 }

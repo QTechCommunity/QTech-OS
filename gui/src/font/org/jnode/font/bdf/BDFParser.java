@@ -57,8 +57,8 @@ public class BDFParser implements BDFParserConstants {
         }
 
         /**
-	 * Value object, removes need for AWT's Dimension.
-	 */
+     * Value object, removes need for AWT's Dimension.
+     */
         public static class Dimension {
             public int width,height;
             public void setSize(int w, int h) {
@@ -68,8 +68,8 @@ public class BDFParser implements BDFParserConstants {
         }
 
         /**
-	 * Value object, removes need for AWT's Rectangle.
-	 */
+     * Value object, removes need for AWT's Rectangle.
+     */
         public static class Rectangle {
             public int x,y,width,height;
 
@@ -87,8 +87,8 @@ public class BDFParser implements BDFParserConstants {
         }
 
         /**
-	 * Value object, not really needed externally.
-	 */
+     * Value object, not really needed externally.
+     */
         public static class Version {
                 private int major;
                 private int minor;

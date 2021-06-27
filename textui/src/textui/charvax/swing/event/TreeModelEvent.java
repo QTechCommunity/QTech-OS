@@ -30,7 +30,7 @@ public class TreeModelEvent extends java.util.EventObject
      * Objects.
      */
      public TreeModelEvent(Object source, Object[] objects) {
-	 this(source, new TreePath(objects), null, null);
+     this(source, new TreePath(objects), null, null);
      }
 
     /** Used to create an event when nodes have been changed, inserted, or 
@@ -38,7 +38,7 @@ public class TreeModelEvent extends java.util.EventObject
      * an array of Objects.
      */
     TreeModelEvent(Object source, Object[] objects, int[] childIndices, Object[] children) {
-	this(source, new TreePath(objects), childIndices, children);
+    this(source, new TreePath(objects), childIndices, children);
     }
 
     /** Used to create an event when the node structure has changed in some
@@ -46,7 +46,7 @@ public class TreeModelEvent extends java.util.EventObject
      * TreePath object.
      */
     TreeModelEvent(Object source, TreePath path) {
-	this(source, path, null, null);
+    this(source, path, null, null);
     }
 
     /** Used to create an event when nodes have been changed, inserted, or 
@@ -54,10 +54,10 @@ public class TreeModelEvent extends java.util.EventObject
      * a TreePath object.
      */
     TreeModelEvent(Object source, TreePath path, int[] childIndices, Object[] children) {
-	super(source);
-	this.path = path;
-	this.childIndices = childIndices;
-	this.children = children;
+    super(source);
+    this.path = path;
+    this.childIndices = childIndices;
+    this.children = children;
     }
 
     //=============================================================

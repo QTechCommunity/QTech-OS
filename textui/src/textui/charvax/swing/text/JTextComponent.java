@@ -35,31 +35,31 @@ public abstract class JTextComponent
 
     public String getDocument() 
     { 
-	return _document.toString(); 
+    return _document.toString();
     }
 
     public void setDocument(String document_) 
     { 
-	_document = new StringBuffer(document_); 
+    _document = new StringBuffer(document_);
     }
 
     public synchronized String getText() {
-	return _document.toString();
+    return _document.toString();
     }
 
     public synchronized void setText(String text_)
     {
-	_document = new StringBuffer(text_);
+    _document = new StringBuffer(text_);
     }
 
     public int getCaretPosition()
     {
-	return _caretPosition;
+    return _caretPosition;
     }
 
     public void setCaretPosition(int caret_)
     {
-	_caretPosition = caret_;
+    _caretPosition = caret_;
     }
 
     /** Returns the boolean flag indicating whether this TextComponent
@@ -73,7 +73,7 @@ public abstract class JTextComponent
      */
     public void setEditable(boolean editable_)
     {
-	_editable = editable_;
+    _editable = editable_;
     }
 
     //====================================================================

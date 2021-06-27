@@ -34,23 +34,23 @@ class SyncQueue extends java.util.LinkedList<AWTEvent>
     private boolean stopped = false;
 
     private SyncQueue() {
-	super();
+    super();
     }
 
     public static SyncQueue getInstance() {
-	if (_instance == null) {
-	    _instance = new SyncQueue();
+    if (_instance == null) {
+        _instance = new SyncQueue();
 
-	    /* Start a thread to read from the SyncQueue. Make it a daemon
-	     * thread so that the program will exit when the main thread 
-	     * ends.
-	     */
-	    SyncThread thr = new SyncThread(_instance, EventQueue.getInstance());
-	    thr.setDaemon(true);
-	    thr.setName("sync thread");
-	    thr.start();
-	}
-	return _instance;
+        /* Start a thread to read from the SyncQueue. Make it a daemon
+         * thread so that the program will exit when the main thread
+         * ends.
+         */
+        SyncThread thr = new SyncThread(_instance, EventQueue.getInstance());
+        thr.setDaemon(true);
+        thr.setName("sync thread");
+        thr.start();
+    }
+    return _instance;
     }
 
     public synchronized void stop(){
@@ -60,8 +60,8 @@ class SyncQueue extends java.util.LinkedList<AWTEvent>
     }
 
     public synchronized void postEvent(AWTEvent evt_) {
-	_instance.addLast(evt_);
-	_instance.notifyAll();	    // wake up the dequeueing thread
+    _instance.addLast(evt_);
+    _instance.notifyAll();        // wake up the dequeueing thread
     }
 
     public synchronized AWTEvent getNextEvent() {
@@ -74,10 +74,10 @@ class SyncQueue extends java.util.LinkedList<AWTEvent>
                 ie.printStackTrace();
             }
         }      
-	return stopped ? null :(AWTEvent) _instance.removeFirst();
+    return stopped ? null :(AWTEvent) _instance.removeFirst();
     }
 
     public synchronized boolean isEmpty() {
-	return (_instance.size() == 0);
+    return (_instance.size() == 0);
     }
 }

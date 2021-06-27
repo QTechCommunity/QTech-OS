@@ -32,7 +32,7 @@ class NativeDrawGlyphListAA {
      * @see sun.java2d.loops.DrawGlyphListAA#DrawGlyphListAA(sun.java2d.SunGraphics2D, sun.java2d.SurfaceData, sun.font.GlyphList)
      */
     private static void DrawGlyphListAA(DrawGlyphListAA instance, SunGraphics2D sg2d, SurfaceData dest,
-				       GlyphList srcData){
+                       GlyphList srcData){
         //todo implement it
     }
 }
