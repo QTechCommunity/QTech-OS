@@ -130,11 +130,11 @@ public abstract class AbstractToolkit
     public Component getComponentAt(int x, int y)
     {
         Window top_window = getTopWindow();
-        Point origin = top_window.getLocation();    	
+        Point origin = top_window.getLocation();
         Component component = null;
         
         if (top_window.contains(x, y)) {
-        	component =
+            component =
                 top_window.getComponentAt(x - origin.x, y - origin.y);
         }
         
@@ -214,15 +214,15 @@ public abstract class AbstractToolkit
                 int key = -1;
                 MouseEvent mouseEvent = null;
                 if(event == null) 
-                	break;
+                    break;
                 else if(event instanceof Integer)
-                	key = ((Integer) event).intValue();
+                    key = ((Integer) event).intValue();
                 else if(event instanceof MouseEvent)
-					mouseEvent = (MouseEvent) event;                
+                    mouseEvent = (MouseEvent) event;
 
                 if(mouseEvent != null)
                 {
-                    fireMouseEvent(mouseEvent);                	
+                    fireMouseEvent(mouseEvent);
                 }
                 
                 /* Note that if the "kent" key is defined, ncurses returns
@@ -275,7 +275,7 @@ public abstract class AbstractToolkit
 
                     _scriptPrintStream.println(scriptbuf.toString());
                 }   // if (_scriptPrintStream != null)
-            }	    // for (;;)
+            }        // for (;;)
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -424,7 +424,7 @@ public abstract class AbstractToolkit
      * cursor position.
      */
 //    public abstract void addHorizontalLine(int length_, int attrib_,
-//	int colorpair);
+//    int colorpair);
 
     /**
      * Draw a vertical line of the specified length starting at the current
@@ -581,19 +581,19 @@ public abstract class AbstractToolkit
      * Provides an interface to the ncurses "tigetstr()" function.
      */
 //    public abstract String getStringCapability(String capname_)
-//	throws TerminfoCapabilityException;
+//    throws TerminfoCapabilityException;
 
     /**
      * Provides an interface to the ncurses "tigetnum()" function.
      */
 //    public abstract int getNumericCapability(String capname_)
-//	throws TerminfoCapabilityException;
+//    throws TerminfoCapabilityException;
 
     /**
      * Provides an interface to the ncurses "tigetflag()" function.
      */
 //    public abstract boolean getBooleanCapability(String capname_)
-//	throws TerminfoCapabilityException;
+//    throws TerminfoCapabilityException;
 
 //NOT USED
     /**
@@ -732,7 +732,7 @@ public abstract class AbstractToolkit
      * (not important).
      */
     public void triggerGarbageCollection(Component source_) {
-//LS	_evtQueue.postEvent( new GarbageCollectionEvent(source_));
+//LS    _evtQueue.postEvent( new GarbageCollectionEvent(source_));
     }
 
     //====================================================================
@@ -862,10 +862,10 @@ public abstract class AbstractToolkit
             }
         }
 
-//	String home = System.getProperty("user.home");
-//	String logfilename = home + "/charva.log";
+//    String home = System.getProperty("user.home");
+//    String logfilename = home + "/charva.log";
 
-//	System.loadLibrary("Terminal");
+//    System.loadLibrary("Terminal");
     }
 
     /** This flag is true is the system property "charva.color" has been set.

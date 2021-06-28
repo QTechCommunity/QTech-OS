@@ -31,27 +31,27 @@ public class Dialog
     /** Creates a modal dialog without a title and with a Frame owner.
      */
     public Dialog(Frame owner_) {
-	this(owner_, "");
+    this(owner_, "");
     }
 
     public Dialog(Frame owner_, String title_) {
-	super(owner_);
-	_title = title_;
-	_insets = new Insets(2,2,2,2);
+    super(owner_);
+    _title = title_;
+    _insets = new Insets(2,2,2,2);
     }
 
     public Dialog(Dialog owner_) {
-	this(owner_, "");
+    this(owner_, "");
     }
 
     public Dialog(Dialog owner_, String title_) {
-	super(owner_);
-	_title = title_;
-	_insets = new Insets(2,2,2,2);
+    super(owner_);
+    _title = title_;
+    _insets = new Insets(2,2,2,2);
     }
 
     public void setTitle(String title_) {
-	_title = title_;
+    _title = title_;
     }
 
     /** This method does nothing because dialogs are
@@ -62,33 +62,33 @@ public class Dialog
 
     public void draw(Toolkit toolkit) {
 
-	/* Draw the enclosing frame
-	 */
-	int colorpair = getCursesColor();
-	_term.blankBox(_origin, _size, colorpair);
-	int boxwidth = _size.width - 2;
-	int boxheight = _size.height - 2;
-	_term.drawBox(_origin.addOffset(1,1), 
-		new Dimension(boxwidth, boxheight),
-		colorpair);
+    /* Draw the enclosing frame
+     */
+    int colorpair = getCursesColor();
+    _term.blankBox(_origin, _size, colorpair);
+    int boxwidth = _size.width - 2;
+    int boxheight = _size.height - 2;
+    _term.drawBox(_origin.addOffset(1,1),
+        new Dimension(boxwidth, boxheight),
+        colorpair);
 
-	/* Draw the title into the enclosing frame.
-	 */
-	if (_title != null && _title.length() != 0) {
-	    _term.setCursor(_origin.addOffset(2,1));
-	    _term.addChar(' ', 0, colorpair);
-	    _term.addString(_title, 0, colorpair);
-	    _term.addChar(' ', 0, colorpair);
-	}
+    /* Draw the title into the enclosing frame.
+     */
+    if (_title != null && _title.length() != 0) {
+        _term.setCursor(_origin.addOffset(2,1));
+        _term.addChar(' ', 0, colorpair);
+        _term.addString(_title, 0, colorpair);
+        _term.addChar(' ', 0, colorpair);
+    }
 
-	/* Draw all the contained components
-	 */
-	super.draw(toolkit);
+    /* Draw all the contained components
+     */
+    super.draw(toolkit);
     }
 
     public void debug(int level_) {
-	System.err.println("Dialog origin=" + _origin + 
-	    " size=" + _size );
+    System.err.println("Dialog origin=" + _origin +
+        " size=" + _size );
     }
 
     private String _title = null;

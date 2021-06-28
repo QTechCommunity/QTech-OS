@@ -40,162 +40,162 @@ public class GridBagLayout
      */
     public Dimension minimumSize(Container container_)
     {
-	/* First work out the dimensions of the grid (i.e. the number of
-	 * rows and columns).  We do this by iterating through all the 
-	 * added components, and inspecting their gridx, gridy, gridwidth and
-	 * gridheight constraints.
-	 */
-	_rows = 0;
-	_columns = 0;
-	Enumeration<GridBagConstraints> e1 = _constraints.elements();
-	while (e1.hasMoreElements()) {
-	    GridBagConstraints gbc = e1.nextElement();
-	    if (gbc.gridx + gbc.gridwidth > _columns)
-		_columns = gbc.gridx + gbc.gridwidth;
+    /* First work out the dimensions of the grid (i.e. the number of
+     * rows and columns).  We do this by iterating through all the 
+     * added components, and inspecting their gridx, gridy, gridwidth and
+     * gridheight constraints.
+     */
+    _rows = 0;
+    _columns = 0;
+    Enumeration<GridBagConstraints> e1 = _constraints.elements();
+    while (e1.hasMoreElements()) {
+        GridBagConstraints gbc = e1.nextElement();
+        if (gbc.gridx + gbc.gridwidth > _columns)
+        _columns = gbc.gridx + gbc.gridwidth;
 
-	    if (gbc.gridy + gbc.gridheight > _rows)
-		_rows = gbc.gridy + gbc.gridheight;
-	}
+        if (gbc.gridy + gbc.gridheight > _rows)
+        _rows = gbc.gridy + gbc.gridheight;
+    }
 
-	/* Now that we know the number of rows and columns, we can create
-	 * arrays to hold the row heights and column widths.
-	 */
-	_calculatedRowHeights = new int[_rows];
-	_calculatedRowWeights = new double[_rows];
-	_calculatedColumnWidths = new int[_columns];
-	_calculatedColumnWeights = new double[_columns];
+    /* Now that we know the number of rows and columns, we can create
+     * arrays to hold the row heights and column widths.
+     */
+    _calculatedRowHeights = new int[_rows];
+    _calculatedRowWeights = new double[_rows];
+    _calculatedColumnWidths = new int[_columns];
+    _calculatedColumnWeights = new double[_columns];
 
-	/* Create a pair of arrays, each the same length as the number of
-	 * contained components, to hold the "width-left" and "height-left"
-	 * values for each component.
-	 */
-	int width_left[] = new int[_components.size()];
-	int height_left[] = new int[_components.size()];
+    /* Create a pair of arrays, each the same length as the number of
+     * contained components, to hold the "width-left" and "height-left"
+     * values for each component.
+     */
+    int width_left[] = new int[_components.size()];
+    int height_left[] = new int[_components.size()];
 
-	Enumeration<Component> e3 = _components.elements();
-	Enumeration<GridBagConstraints> e2 = _constraints.elements();
-	for (int i=0; e3.hasMoreElements(); i++) {
-	    Component c = e3.nextElement();
-	    GridBagConstraints gbc = e2.nextElement();
+    Enumeration<Component> e3 = _components.elements();
+    Enumeration<GridBagConstraints> e2 = _constraints.elements();
+    for (int i=0; e3.hasMoreElements(); i++) {
+        Component c = e3.nextElement();
+        GridBagConstraints gbc = e2.nextElement();
 
-	    /* Calculate the minimum width & height required for this 
-	     * component.
-	     */
-	    Insets insets = gbc.insets;
-	    Dimension minsize = c.minimumSize();
-	    width_left[i] = 
-		    minsize.width + insets.left + insets.right;
-	    height_left[i] =
-		    minsize.height + insets.top + insets.bottom;
-	}
+        /* Calculate the minimum width & height required for this 
+         * component.
+         */
+        Insets insets = gbc.insets;
+        Dimension minsize = c.minimumSize();
+        width_left[i] = 
+            minsize.width + insets.left + insets.right;
+        height_left[i] =
+            minsize.height + insets.top + insets.bottom;
+    }
 
-	/* Now iterate through all the rows and allocate heights to each row.
-	 */
-	for (int row=0; row<_rows; row++) {
-	    /* Iterate through the constraints and find those whose bottom edge
-	     * is in the current row. The one with the maximum height_left
-	     * value determines the height of this row.
-	     */
-	    _calculatedRowHeights[row] = 0;
-	    Enumeration<GridBagConstraints> e = _constraints.elements();
-	    for (int i=0; e.hasMoreElements(); i++) {
-		GridBagConstraints gbc = e.nextElement();
+    /* Now iterate through all the rows and allocate heights to each row.
+     */
+    for (int row=0; row<_rows; row++) {
+        /* Iterate through the constraints and find those whose bottom edge
+         * is in the current row. The one with the maximum height_left
+         * value determines the height of this row.
+         */
+        _calculatedRowHeights[row] = 0;
+        Enumeration<GridBagConstraints> e = _constraints.elements();
+        for (int i=0; e.hasMoreElements(); i++) {
+        GridBagConstraints gbc = e.nextElement();
 
-		if (row == gbc.gridy + gbc.gridheight - 1) {
-		    /* This component's bottom edge is in the current row.
-		     */
-		    if (height_left[i] > _calculatedRowHeights[row])
-			_calculatedRowHeights[row] = height_left[i];
-		}
-	    }
+        if (row == gbc.gridy + gbc.gridheight - 1) {
+            /* This component's bottom edge is in the current row.
+             */
+            if (height_left[i] > _calculatedRowHeights[row])
+            _calculatedRowHeights[row] = height_left[i];
+        }
+        }
 
-	    /* Now that we have calculated the height of this row, subtract 
-	     * this row-height from the height_left value of each component 
-	     * which extends to or below this row.
-	     */
-	    e = _constraints.elements();
-	    for (int i=0; e.hasMoreElements(); i++) {
-		GridBagConstraints gbc = e.nextElement();
+        /* Now that we have calculated the height of this row, subtract 
+         * this row-height from the height_left value of each component 
+         * which extends to or below this row.
+         */
+        e = _constraints.elements();
+        for (int i=0; e.hasMoreElements(); i++) {
+        GridBagConstraints gbc = e.nextElement();
 
-		if (row >= gbc.gridy &&
-			row < gbc.gridy + gbc.gridheight) {
-		    height_left[i] -= _calculatedRowHeights[row];
-		}
-	    }
-	}
+        if (row >= gbc.gridy &&
+            row < gbc.gridy + gbc.gridheight) {
+            height_left[i] -= _calculatedRowHeights[row];
+        }
+        }
+    }
 
-	/* Now iterate through all the columns and allocate widths to each
-	 * column.
-	 */
-	for (int column=0; column<_columns; column++) {
-	    /* Iterate through the constraints and find those whose right edge
-	     * is in the current column. The one with the maximum width_left
-	     * value determines the width of this column.
-	     */
-	    _calculatedColumnWidths[column] = 0;
-	    Enumeration<GridBagConstraints> e = _constraints.elements();
-	    for (int i=0; e.hasMoreElements(); i++) {
-		GridBagConstraints gbc = e.nextElement();
+    /* Now iterate through all the columns and allocate widths to each
+     * column.
+     */
+    for (int column=0; column<_columns; column++) {
+        /* Iterate through the constraints and find those whose right edge
+         * is in the current column. The one with the maximum width_left
+         * value determines the width of this column.
+         */
+        _calculatedColumnWidths[column] = 0;
+        Enumeration<GridBagConstraints> e = _constraints.elements();
+        for (int i=0; e.hasMoreElements(); i++) {
+        GridBagConstraints gbc = e.nextElement();
 
-		if (column == gbc.gridx + gbc.gridwidth - 1) {
-		    /* This component's right edge is in the current column.
-		     */
-		    if (width_left[i] > _calculatedColumnWidths[column])
-			_calculatedColumnWidths[column] = width_left[i];
-		}
-	    }
+        if (column == gbc.gridx + gbc.gridwidth - 1) {
+            /* This component's right edge is in the current column.
+             */
+            if (width_left[i] > _calculatedColumnWidths[column])
+            _calculatedColumnWidths[column] = width_left[i];
+        }
+        }
 
-	    /* Now that we have calculated the width of this column, subtract 
-	     * this column-width from the width_left value of each component 
-	     * which extends to or to the right of this column.
-	     */
-	    e = _constraints.elements();
-	    for (int i=0; e.hasMoreElements(); i++) {
-		GridBagConstraints gbc = e.nextElement();
+        /* Now that we have calculated the width of this column, subtract 
+         * this column-width from the width_left value of each component 
+         * which extends to or to the right of this column.
+         */
+        e = _constraints.elements();
+        for (int i=0; e.hasMoreElements(); i++) {
+        GridBagConstraints gbc = e.nextElement();
 
-		if (column >= gbc.gridx &&
-			column < gbc.gridx + gbc.gridwidth) {
-		    width_left[i] -= _calculatedColumnWidths[column];
-		}
-	    }
-	}
+        if (column >= gbc.gridx &&
+            column < gbc.gridx + gbc.gridwidth) {
+            width_left[i] -= _calculatedColumnWidths[column];
+        }
+        }
+    }
 
-	/* Iterate through all the components and calculate the row 
-	 * and column weights.
-	 */
-	e2 = _constraints.elements();
-	while (e2.hasMoreElements()) {
-	    GridBagConstraints gbc = e2.nextElement();
+    /* Iterate through all the components and calculate the row 
+     * and column weights.
+     */
+    e2 = _constraints.elements();
+    while (e2.hasMoreElements()) {
+        GridBagConstraints gbc = e2.nextElement();
 
-	    for (int i=gbc.gridx; i< gbc.gridx + gbc.gridwidth; i++) {
-		if (gbc.weightx > _calculatedColumnWeights[i])
-		    _calculatedColumnWeights[i] = gbc.weightx;
-	    }
+        for (int i=gbc.gridx; i< gbc.gridx + gbc.gridwidth; i++) {
+        if (gbc.weightx > _calculatedColumnWeights[i])
+            _calculatedColumnWeights[i] = gbc.weightx;
+        }
 
-	    for (int i=gbc.gridy; i< gbc.gridy + gbc.gridheight; i++) {
-		if (gbc.weighty > _calculatedRowWeights[i])
-		    _calculatedRowWeights[i] = gbc.weighty;
-	    }
-	}
+        for (int i=gbc.gridy; i< gbc.gridy + gbc.gridheight; i++) {
+        if (gbc.weighty > _calculatedRowWeights[i])
+            _calculatedRowWeights[i] = gbc.weighty;
+        }
+    }
 
-	/* Now just add up all the column widths and row heights to find
-	 * the minimum size of the container.
-	 */
-	Insets insets = container_.getInsets();
-	int totalwidth = insets.left + insets.right;
-	int totalheight = insets.top + insets.bottom;
+    /* Now just add up all the column widths and row heights to find
+     * the minimum size of the container.
+     */
+    Insets insets = container_.getInsets();
+    int totalwidth = insets.left + insets.right;
+    int totalheight = insets.top + insets.bottom;
 
-	for (int i=0; i<_columns; i++) {
-	    totalwidth += _calculatedColumnWidths[i];
-	    _totalweightx += _calculatedColumnWeights[i];
-	}
+    for (int i=0; i<_columns; i++) {
+        totalwidth += _calculatedColumnWidths[i];
+        _totalweightx += _calculatedColumnWeights[i];
+    }
 
-	for (int i=0; i<_rows; i++) {
-	    totalheight += _calculatedRowHeights[i];
-	    _totalweighty += _calculatedRowWeights[i];
-	}
+    for (int i=0; i<_rows; i++) {
+        totalheight += _calculatedRowHeights[i];
+        _totalweighty += _calculatedRowWeights[i];
+    }
 
-	return new Dimension(totalwidth, totalheight);
+    return new Dimension(totalwidth, totalheight);
     }
 
     /**
@@ -203,171 +203,171 @@ public class GridBagLayout
      */
     public void doLayout(Container container_)
     {
-	Insets insets = container_.getInsets();
-	Dimension size = container_.getSize();
-	Dimension minsize = minimumSize(container_);
-	int extraColumns = size.width - minsize.width;
-	int extraRows = size.height - minsize.height;
+    Insets insets = container_.getInsets();
+    Dimension size = container_.getSize();
+    Dimension minsize = minimumSize(container_);
+    int extraColumns = size.width - minsize.width;
+    int extraRows = size.height - minsize.height;
 
-	Enumeration<Component> e1 = _components.elements();
-	Enumeration<GridBagConstraints> e2 = _constraints.elements();
-	while (e1.hasMoreElements()) {
-	    Component c = e1.nextElement();
+    Enumeration<Component> e1 = _components.elements();
+    Enumeration<GridBagConstraints> e2 = _constraints.elements();
+    while (e1.hasMoreElements()) {
+        Component c = e1.nextElement();
 
-	    GridBagConstraints gbc = e2.nextElement();
+        GridBagConstraints gbc = e2.nextElement();
 
-	    /* Calculate the boundaries of the grid cell that this
-	     * component occupies.
-	     */
-	    int left = insets.left;
-	    if (_totalweightx == 0.0)
-		left += extraColumns/2;
+        /* Calculate the boundaries of the grid cell that this
+         * component occupies.
+         */
+        int left = insets.left;
+        if (_totalweightx == 0.0)
+        left += extraColumns/2;
 
-	    for (int i=0; i<gbc.gridx; i++) {
-		left += _calculatedColumnWidths[i];
-		if (_totalweightx != 0.0)
-		    left += (extraColumns * _calculatedColumnWeights[i]) /
-			    _totalweightx;
-	    }
+        for (int i=0; i<gbc.gridx; i++) {
+        left += _calculatedColumnWidths[i];
+        if (_totalweightx != 0.0)
+            left += (extraColumns * _calculatedColumnWeights[i]) /
+                _totalweightx;
+        }
 
-	    int right = left;
-	    for (int i=0; i<gbc.gridwidth; i++)
-		right += _calculatedColumnWidths[gbc.gridx + i];
+        int right = left;
+        for (int i=0; i<gbc.gridwidth; i++)
+        right += _calculatedColumnWidths[gbc.gridx + i];
 
-	    int top = insets.top;
-	    if (_totalweighty == 0.0)
-		top += extraRows/2;
+        int top = insets.top;
+        if (_totalweighty == 0.0)
+        top += extraRows/2;
 
-	    for (int i=0; i<gbc.gridy; i++) {
-		top += _calculatedRowHeights[i];
-		if (_totalweighty != 0.0)
-		    top += (extraRows * _calculatedRowWeights[i]) /
-			    _totalweighty;
-	    }
+        for (int i=0; i<gbc.gridy; i++) {
+        top += _calculatedRowHeights[i];
+        if (_totalweighty != 0.0)
+            top += (extraRows * _calculatedRowWeights[i]) /
+                _totalweighty;
+        }
 
-	    int bottom = top;
-	    for (int i=0; i<gbc.gridheight; i++)
-		bottom += _calculatedRowHeights[gbc.gridy + i];
+        int bottom = top;
+        for (int i=0; i<gbc.gridheight; i++)
+        bottom += _calculatedRowHeights[gbc.gridy + i];
 
-	    if (c instanceof Container) {
-		Container cont = (Container) c;
+        if (c instanceof Container) {
+        Container cont = (Container) c;
 
-		/* Get the contained container to lay itself out at its
-		 * preferred size, if it is not already laid out.
-		 */
-		if (cont.isValid() == false)
-		    cont.setSize(cont.minimumSize());
+        /* Get the contained container to lay itself out at its
+         * preferred size, if it is not already laid out.
+         */
+        if (cont.isValid() == false)
+            cont.setSize(cont.minimumSize());
 
-		switch (gbc.fill) {
-		    case GridBagConstraints.NONE:
-			break;
+        switch (gbc.fill) {
+            case GridBagConstraints.NONE:
+            break;
 
-		    case GridBagConstraints.HORIZONTAL:
-			cont.setWidth(right - left);
-			break;
+            case GridBagConstraints.HORIZONTAL:
+            cont.setWidth(right - left);
+            break;
 
-		    case GridBagConstraints.VERTICAL:
-			cont.setHeight(bottom - top);
-			break;
+            case GridBagConstraints.VERTICAL:
+            cont.setHeight(bottom - top);
+            break;
 
-		    case GridBagConstraints.BOTH:
-			cont.setSize(right - left, bottom - top);
-			break;
+            case GridBagConstraints.BOTH:
+            cont.setSize(right - left, bottom - top);
+            break;
 
-		    default:
-			throw new IllegalArgumentException(
-				"Invalid fill parameter");
-		}
-		cont.doLayout();
-	    }
+            default:
+            throw new IllegalArgumentException(
+                "Invalid fill parameter");
+        }
+        cont.doLayout();
+        }
 
 
-	    /* Calculate the x position of the component's origin (i.e. top
-	     * left corner).
-	     */
-	    int cx = 0;
-	    switch (gbc.anchor) {
-		case GridBagConstraints.WEST:
-		case GridBagConstraints.NORTHWEST:
-		case GridBagConstraints.SOUTHWEST:
-		    cx = left + gbc.insets.left;
-		    break;
+        /* Calculate the x position of the component's origin (i.e. top
+         * left corner).
+         */
+        int cx = 0;
+        switch (gbc.anchor) {
+        case GridBagConstraints.WEST:
+        case GridBagConstraints.NORTHWEST:
+        case GridBagConstraints.SOUTHWEST:
+            cx = left + gbc.insets.left;
+            break;
 
-		case GridBagConstraints.EAST:
-		case GridBagConstraints.NORTHEAST:
-		case GridBagConstraints.SOUTHEAST:
-		    cx = right - gbc.insets.right - c.getSize().width;
-		    break;
+        case GridBagConstraints.EAST:
+        case GridBagConstraints.NORTHEAST:
+        case GridBagConstraints.SOUTHEAST:
+            cx = right - gbc.insets.right - c.getSize().width;
+            break;
 
-		case GridBagConstraints.CENTER:
-		case GridBagConstraints.NORTH:
-		case GridBagConstraints.SOUTH:
-		    cx = (left + gbc.insets.left) + 
-			    (right - gbc.insets.right);
-		    cx -= c.getSize().width;
-		    cx = cx / 2;
-		    break;
+        case GridBagConstraints.CENTER:
+        case GridBagConstraints.NORTH:
+        case GridBagConstraints.SOUTH:
+            cx = (left + gbc.insets.left) + 
+                (right - gbc.insets.right);
+            cx -= c.getSize().width;
+            cx = cx / 2;
+            break;
 
-		default:
-		    throw new IllegalArgumentException(
-			    "invalid anchor paremeter");
-	    }
+        default:
+            throw new IllegalArgumentException(
+                "invalid anchor paremeter");
+        }
 
-	    /* Calculate the y position of the component's origin (i.e. top
-	     * left corner).
-	     */
-	    int cy = 0;
-	    switch (gbc.anchor) {
-		case GridBagConstraints.NORTH:
-		case GridBagConstraints.NORTHWEST:
-		case GridBagConstraints.NORTHEAST:
-		    cy = top + gbc.insets.top;
-		    break;
+        /* Calculate the y position of the component's origin (i.e. top
+         * left corner).
+         */
+        int cy = 0;
+        switch (gbc.anchor) {
+        case GridBagConstraints.NORTH:
+        case GridBagConstraints.NORTHWEST:
+        case GridBagConstraints.NORTHEAST:
+            cy = top + gbc.insets.top;
+            break;
 
-		case GridBagConstraints.SOUTH:
-		case GridBagConstraints.SOUTHWEST:
-		case GridBagConstraints.SOUTHEAST:
-		    cy = bottom - gbc.insets.bottom - c.getSize().height;
-		    break;
+        case GridBagConstraints.SOUTH:
+        case GridBagConstraints.SOUTHWEST:
+        case GridBagConstraints.SOUTHEAST:
+            cy = bottom - gbc.insets.bottom - c.getSize().height;
+            break;
 
-		case GridBagConstraints.CENTER:
-		case GridBagConstraints.WEST:
-		case GridBagConstraints.EAST:
-		    cy = (top + gbc.insets.top) + 
-			    (bottom - gbc.insets.bottom);
-		    cy -= c.getSize().height;
-		    cy = cy / 2;
-	    }
+        case GridBagConstraints.CENTER:
+        case GridBagConstraints.WEST:
+        case GridBagConstraints.EAST:
+            cy = (top + gbc.insets.top) + 
+                (bottom - gbc.insets.bottom);
+            cy -= c.getSize().height;
+            cy = cy / 2;
+        }
 
-	    c.setLocation(cx, cy);
-	}
+        c.setLocation(cx, cy);
+    }
     }
 
     public void addLayoutComponent(Component component_, Object constraint_)
     {
-	_components.add(component_);
+    _components.add(component_);
 
-	/* Make a copy of the constraints object passed to us, so that the
-	 * caller can re-use it for other components.
-	 */
-	GridBagConstraints constraint = (GridBagConstraints) constraint_;
-	GridBagConstraints newc = new GridBagConstraints();
-	newc.gridx = constraint.gridx;
-	newc.gridy = constraint.gridy;
-	newc.gridwidth = constraint.gridwidth;
-	newc.gridheight = constraint.gridheight;
-	newc.weightx = constraint.weightx;
-	newc.weighty = constraint.weighty;
-	newc.anchor = constraint.anchor;
-	newc.fill = constraint.fill;
-	newc.insets = new Insets(
-		constraint.insets.top,
-		constraint.insets.left,
-		constraint.insets.bottom,
-		constraint.insets.right);
-	newc.ipadx = constraint.ipadx;
-	newc.ipady = constraint.ipady;
-	_constraints.add(newc);
+    /* Make a copy of the constraints object passed to us, so that the
+     * caller can re-use it for other components.
+     */
+    GridBagConstraints constraint = (GridBagConstraints) constraint_;
+    GridBagConstraints newc = new GridBagConstraints();
+    newc.gridx = constraint.gridx;
+    newc.gridy = constraint.gridy;
+    newc.gridwidth = constraint.gridwidth;
+    newc.gridheight = constraint.gridheight;
+    newc.weightx = constraint.weightx;
+    newc.weighty = constraint.weighty;
+    newc.anchor = constraint.anchor;
+    newc.fill = constraint.fill;
+    newc.insets = new Insets(
+        constraint.insets.top,
+        constraint.insets.left,
+        constraint.insets.bottom,
+        constraint.insets.right);
+    newc.ipadx = constraint.ipadx;
+    newc.ipady = constraint.ipady;
+    _constraints.add(newc);
     }
 
     /**
@@ -375,7 +375,7 @@ public class GridBagLayout
      * information it should be discarded.
      */
     public void invalidateLayout(Container target_) {
-	
+    
     }
 
     //====================================================================

@@ -96,24 +96,24 @@ class SocketTransport
     String p = (String) properties.get (_PROPERTY_ADDRESS);
     if (p != null)
       {
-	String[] s = p.split (":");
-	if (s.length == 2)
-	  {
-	    _host = s[0];
-	    _port = Integer.parseInt (s[1]);
-	    // @classpath-bugfix Michael Klaus (Michael.Klaus@gmx.net)
-	  } else if(s.length == 1) {
-		  _port = Integer.parseInt(s[0]);
-			// @classpath-bugfix-end
-	  }
+    String[] s = p.split (":");
+    if (s.length == 2)
+      {
+        _host = s[0];
+        _port = Integer.parseInt (s[1]);
+        // @classpath-bugfix Michael Klaus (Michael.Klaus@gmx.net)
+      } else if(s.length == 1) {
+          _port = Integer.parseInt(s[0]);
+            // @classpath-bugfix-end
+      }
       }
 
     // Get server [form: "y" or "n"]
     p = (String) properties.get (_PROPERTY_SERVER);
     if (p != null)
       {
-	if (p.toLowerCase().equals ("y"))
-	  _server = true;
+    if (p.toLowerCase().equals ("y"))
+      _server = true;
       }
   }
 
@@ -128,24 +128,24 @@ class SocketTransport
   {
     try
       {
-	if (_server)
-	  {
-	    // Get a server socket
-	    ServerSocketFactory ssf = ServerSocketFactory.getDefault ();
-	    ServerSocket ss = ssf.createServerSocket (_port, 1);
-	    _socket = ss.accept ();
-	  }
-	else
-	  {
-	    // Get a client socket (the factory will connect it)
-	    SocketFactory sf = SocketFactory.getDefault ();
-	    _socket = sf.createSocket (_host, _port);
-	  }
+    if (_server)
+      {
+        // Get a server socket
+        ServerSocketFactory ssf = ServerSocketFactory.getDefault ();
+        ServerSocket ss = ssf.createServerSocket (_port, 1);
+        _socket = ss.accept ();
+      }
+    else
+      {
+        // Get a client socket (the factory will connect it)
+        SocketFactory sf = SocketFactory.getDefault ();
+        _socket = sf.createSocket (_host, _port);
+      }
       }
     catch (IOException ioe)
       {
-	// This will grab UnknownHostException, too.
-	throw new TransportException (ioe);
+    // This will grab UnknownHostException, too.
+    throw new TransportException (ioe);
       }
   }
 
@@ -157,11 +157,11 @@ class SocketTransport
   {
     try
       {
-	_socket.close ();
+    _socket.close ();
       }
     catch (Throwable t)
       {
-	// We don't really care about errors at this point
+    // We don't really care about errors at this point
       }
   }
 

@@ -217,21 +217,21 @@ public class ObjectReferenceCommandSet
 
     int invokeOptions = bb.getInt();
     boolean suspend = ((invokeOptions
-			& JdwpConstants.InvokeOptions.INVOKE_SINGLE_THREADED)
-		       != 0);
+            & JdwpConstants.InvokeOptions.INVOKE_SINGLE_THREADED)
+               != 0);
     if (suspend)
       {
-	// We must suspend all other running threads first
+    // We must suspend all other running threads first
         VMVirtualMachine.suspendAllThreads ();
       }
 
     boolean nonVirtual = ((invokeOptions
-			   & JdwpConstants.InvokeOptions.INVOKE_NONVIRTUAL)
-			  != 0);
+               & JdwpConstants.InvokeOptions.INVOKE_NONVIRTUAL)
+              != 0);
 
     MethodResult mr = VMVirtualMachine.executeMethod(obj, thread,
-						     clazz, method,
-						     values, nonVirtual);
+                             clazz, method,
+                             values, nonVirtual);
     Object value = mr.getReturnedValue();
     Exception exception = mr.getThrownException();
 

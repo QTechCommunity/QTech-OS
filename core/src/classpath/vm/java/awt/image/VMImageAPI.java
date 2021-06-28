@@ -28,5 +28,5 @@ import java.awt.Graphics2D;
  */
 public interface VMImageAPI {
 
-	public Graphics2D createGraphics(BufferedImage image);
+    public Graphics2D createGraphics(BufferedImage image);
 }

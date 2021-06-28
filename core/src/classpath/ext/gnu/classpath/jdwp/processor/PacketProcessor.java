@@ -140,7 +140,7 @@ public class PacketProcessor
     // Notify initialization thread (gnu.classpath.jdwp.Jdwp) that
     // the PacketProcessor thread is ready.
     Jdwp.getDefault().subcomponentInitialized ();
-	
+    
     try
       {
         while (!_shutdown)

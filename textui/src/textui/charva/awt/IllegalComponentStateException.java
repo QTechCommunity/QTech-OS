@@ -31,7 +31,7 @@ public class IllegalComponentStateException extends RuntimeException
      */
     public IllegalComponentStateException()
     {
-	super();
+    super();
     }
 
     /** Construct an IllegalComponentStateException with the specified
@@ -39,6 +39,6 @@ public class IllegalComponentStateException extends RuntimeException
      */
     public IllegalComponentStateException(String msg)
     {
-	super(msg);
+    super(msg);
     }
 }

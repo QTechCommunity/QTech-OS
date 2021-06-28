@@ -36,21 +36,21 @@ public class TitledBorder
      * empty title.
      */
     public TitledBorder(Border border_) {
-	this(border_, "", 0, 0, null, null);
+    this(border_, "", 0, 0, null, null);
     }
 
     /** Create a TitledBorder instance with a line border and
      * the specified title, with the title text in black.
      */
     public TitledBorder(String title_) {
-	this(new LineBorder(null), title_, 0, 0, null, null);
+    this(new LineBorder(null), title_, 0, 0, null, null);
     }
 
     /** Create a TitledBorder instance with the specified border
      * and title, and with the title text in black.
      */
     public TitledBorder(Border border_, String title_) {
-	this(border_, title_, 0, 0, null, null);
+    this(border_, title_, 0, 0, null, null);
     }
 
     /** Creates a TitledBorder instance with the specified border, 
@@ -64,54 +64,54 @@ public class TitledBorder
      * @param titleColor_ the title color.
      */
     public TitledBorder(Border border_, String title_, 
-	int titleJustification_, int titlePosition_, 
-	Font titleFont_, Color titleColor_) 
+    int titleJustification_, int titlePosition_,
+    Font titleFont_, Color titleColor_)
     {
-	_border = border_;
-	_title = title_;
-	_titleColor = titleColor_;
+    _border = border_;
+    _title = title_;
+    _titleColor = titleColor_;
     }
 
     /** Returns the insets of the border.
      */
     public Insets getBorderInsets(Component component_) {
-	return new Insets(1,1,1,1);
+    return new Insets(1,1,1,1);
     }
 
     /** Sets the title text.
      */
     public void setTitle(String title_) {
-	_title = title_;
+    _title = title_;
     }
 
     /** Returns the title
      */
     public String getTitle() { 
-	return _title; 
+    return _title;
     }
 
     /** Set the color of the title text.
      */
     public void setTitleColor(Color titleColor_) {
-	_titleColor = titleColor_;
+    _titleColor = titleColor_;
     }
 
     /** Returns the color of the title text.
      */
     public Color getTitleColor() {
-	return _titleColor;
+    return _titleColor;
     }
 
     /** Sets the border of this titled border.
      */
     public void setBorder(Border border_) {
-	_border = border_;
+    _border = border_;
     }
 
     /** Returns the border of the titled border.
      */
     public Border getBorder() {
-	return _border;
+    return _border;
     }
 
     /**
@@ -121,27 +121,27 @@ public class TitledBorder
     public void paintBorder(Component component_,
                             int graphics_, int x_, int y_, int width_, int height_, Toolkit toolkit) {
 
-	/* First draw the specified border (which, in the case of the CHARVA
-	 * package, is always a LineBorder).
-	 */
-	_border.paintBorder(component_, graphics_, x_, y_, width_, height_, toolkit);
+    /* First draw the specified border (which, in the case of the CHARVA
+     * package, is always a LineBorder).
+     */
+    _border.paintBorder(component_, graphics_, x_, y_, width_, height_, toolkit);
 
-	/* Now insert the title. The background color is obtained from
-	 * component_. If the titleColor has not been set explicitly,
-	 * the foreground color is also obtained from component_.
-	 */
-	Color background = component_.getBackground();
-	if (_titleColor == null)
-	    _titleColor = component_.getForeground();
+    /* Now insert the title. The background color is obtained from
+     * component_. If the titleColor has not been set explicitly,
+     * the foreground color is also obtained from component_.
+     */
+    Color background = component_.getBackground();
+    if (_titleColor == null)
+        _titleColor = component_.getForeground();
 
-	int colorpair = Color.getCursesColor(_titleColor, background);
-	if (_title.length() != 0) {
-	    Point origin = new Point(x_, y_);
-	    toolkit.setCursor(origin.addOffset(1,0));
-	    toolkit.addChar(' ', 0, colorpair);
-	    toolkit.addString(_title, 0, colorpair);
-	    toolkit.addChar(' ', 0, colorpair);
-	}
+    int colorpair = Color.getCursesColor(_titleColor, background);
+    if (_title.length() != 0) {
+        Point origin = new Point(x_, y_);
+        toolkit.setCursor(origin.addOffset(1,0));
+        toolkit.addChar(' ', 0, colorpair);
+        toolkit.addString(_title, 0, colorpair);
+        toolkit.addChar(' ', 0, colorpair);
+    }
     }
 
     //====================================================================

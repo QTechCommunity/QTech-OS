@@ -69,6 +69,6 @@ public abstract class CommandSet
    * @throws JdwpException command wasn't carried out successfully
    */
   public abstract boolean runCommand(ByteBuffer bb, DataOutputStream os,
-				     byte command) 
+                     byte command) 
     throws JdwpException;
 }

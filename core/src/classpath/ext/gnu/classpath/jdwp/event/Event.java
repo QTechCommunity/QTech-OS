@@ -146,18 +146,18 @@ public abstract class Event
     JdwpPacket pkt;
     try
       {
-	dos.writeByte (request.getSuspendPolicy ());
-	dos.writeInt (1);
-	dos.writeByte (_eventKind);
-	dos.writeInt (request.getId ());
-	_writeData (dos);
+    dos.writeByte (request.getSuspendPolicy ());
+    dos.writeInt (1);
+    dos.writeByte (_eventKind);
+    dos.writeInt (request.getId ());
+    _writeData (dos);
 
-	pkt = new JdwpCommandPacket (JdwpConstants.CommandSet.Event.CS_VALUE,
-				     JdwpConstants.CommandSet.Event.COMPOSITE);
+    pkt = new JdwpCommandPacket (JdwpConstants.CommandSet.Event.CS_VALUE,
+                     JdwpConstants.CommandSet.Event.COMPOSITE);
       }
     catch (IOException ioe)
       {
-	pkt = null;
+    pkt = null;
       }
 
     return pkt;

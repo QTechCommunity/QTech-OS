@@ -48,40 +48,40 @@ class SyncThread
     extends Thread
 {
     SyncThread(SyncQueue syncQueue_, EventQueue eventQueue_) {
-	_syncQueue = syncQueue_;
-	_eventQueue = eventQueue_;
+    _syncQueue = syncQueue_;
+    _eventQueue = eventQueue_;
     }
 
     public void run() {
-	for (;;) {
-	    AWTEvent evt = _syncQueue.getNextEvent();
+    for (;;) {
+        AWTEvent evt = _syncQueue.getNextEvent();
         // Sync thread exit point
         if(evt == null) break;
-	    try {
-		sleep(50); 
-	    }
-	    catch (InterruptedException e) {
-		System.err.println("SyncThread: sleep interrupted!");
-	    }
+        try {
+        sleep(50);
+        }
+        catch (InterruptedException e) {
+        System.err.println("SyncThread: sleep interrupted!");
+        }
 
-	    if (evt instanceof SyncEvent) {
-		_eventQueue.postEvent(evt);
+        if (evt instanceof SyncEvent) {
+        _eventQueue.postEvent(evt);
 
-		/* If there any more SyncEvents on the queue, drain the queue;
-		 * there is no point in putting more than one SyncEvent on the
-		 * EventQueue.
-		 */
-		while (_syncQueue.isEmpty() == false) {
-		    if (_syncQueue.getNextEvent() instanceof GarbageCollectionEvent) {
-			System.gc();
-			break;
-		    }
-		}
-	    } /* //LS
-	    else
-		System.gc();	// it was a GarbageCollectionEvent
+        /* If there any more SyncEvents on the queue, drain the queue;
+         * there is no point in putting more than one SyncEvent on the
+         * EventQueue.
+         */
+        while (_syncQueue.isEmpty() == false) {
+            if (_syncQueue.getNextEvent() instanceof GarbageCollectionEvent) {
+            System.gc();
+            break;
+            }
+        }
+        } /* //LS
+        else
+        System.gc();    // it was a GarbageCollectionEvent
         */
-	}
+    }
     }
 
     private SyncQueue _syncQueue;

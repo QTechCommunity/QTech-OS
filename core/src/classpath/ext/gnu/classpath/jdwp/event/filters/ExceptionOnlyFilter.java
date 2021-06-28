@@ -67,7 +67,7 @@ public class ExceptionOnlyFilter
    * @throws InvalidClassException if refid is invalid
    */
   public ExceptionOnlyFilter (ReferenceTypeId refId, boolean caught,
-			      boolean uncaught)
+                  boolean uncaught)
     throws InvalidClassException
   {
     if (refId != null && refId.getReference().get() == null)

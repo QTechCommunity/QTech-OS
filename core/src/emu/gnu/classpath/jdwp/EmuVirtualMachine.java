@@ -83,8 +83,8 @@ public class EmuVirtualMachine
     ThreadGroup parent = group.getParent ();
     while (parent != null)
       {
-	group = parent;
-	parent = group.getParent ();
+    group = parent;
+    parent = group.getParent ();
       }
 
     // Get all the threads in the system
@@ -94,17 +94,17 @@ public class EmuVirtualMachine
 
     for (int i = 0; i < num; ++i)
       {
-	Thread t = threads[i];
-	if (t != null)
-	  {
-	    if (t.getThreadGroup () == jdwpGroup || t == current)
-	      {
-		// Don't suspend the current thread or any JDWP thread
-		continue;
-	      }
-	    else
-	      suspendThread (t);
-	  }
+    Thread t = threads[i];
+    if (t != null)
+      {
+        if (t.getThreadGroup () == jdwpGroup || t == current)
+          {
+        // Don't suspend the current thread or any JDWP thread
+        continue;
+          }
+        else
+          suspendThread (t);
+      }
       }
 
     // Now suspend the current thread
@@ -139,8 +139,8 @@ public class EmuVirtualMachine
     ThreadGroup parent = group.getParent ();
     while (parent != null)
       {
-	group = parent;
-	parent = group.getParent ();
+    group = parent;
+    parent = group.getParent ();
       }
 
     // Get all the threads in the system
@@ -150,17 +150,17 @@ public class EmuVirtualMachine
 
     for (int i = 0; i < num; ++i)
       {
-	Thread t = threads[i];
-	if (t != null)
-	  {
-	    if (t.getThreadGroup () == jdwpGroup || t == current)
-	      {
-		// Don't resume the current thread or any JDWP thread
-		continue;
-	      }
-	    else
-	      resumeThread (t);
-	  }
+    Thread t = threads[i];
+    if (t != null)
+      {
+        if (t.getThreadGroup () == jdwpGroup || t == current)
+          {
+        // Don't resume the current thread or any JDWP thread
+        continue;
+          }
+        else
+          resumeThread (t);
+      }
       }
   }
 
@@ -251,7 +251,7 @@ public class EmuVirtualMachine
    * @return a list of frames
    */
   public static ArrayList getFrames (Thread thread, int start,
-					    int length)
+                        int length)
     throws JdwpException {
       System.out.println("getFrames");
       return new ArrayList();
@@ -325,9 +325,9 @@ public class EmuVirtualMachine
    * @return a result object containing the results of the invocation
    */
   public static MethodResult executeMethod (Object obj, Thread thread,
-					    Class clazz, Method method,
-					    Object[] values,
-					    boolean nonVirtual)
+                        Class clazz, Method method,
+                        Object[] values,
+                        boolean nonVirtual)
     throws JdwpException {
       System.out.println("executeMethod");
       return null;

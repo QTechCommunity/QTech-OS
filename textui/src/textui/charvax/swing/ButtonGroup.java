@@ -56,58 +56,58 @@ public class ButtonGroup
      */
     public ButtonGroup()
     {
-	_buttons = new Vector<AbstractButton>();
+    _buttons = new Vector<AbstractButton>();
     }
 
     /** Adds the specified button to the group.
      */
     public void add(AbstractButton button_)
     {
-	_buttons.add(button_);
-	button_.addItemListener(this);
-	button_.setSelected(false);
+    _buttons.add(button_);
+    button_.addItemListener(this);
+    button_.setSelected(false);
     }
 
     /** Returns the number of buttons in the ButtonGroup.
      */
     public int getButtonCount()
     {
-	return _buttons.size();
+    return _buttons.size();
     }
 
     /** Returns an Enumeration of all the buttons in this group.
      */
     public Enumeration<AbstractButton> getElements()
     {
-	return _buttons.elements();
+    return _buttons.elements();
     }
 
     /** Get the selected radiobutton. Returns null if no button is selected.
      */
     public AbstractButton getSelection()
     {
-	for (Enumeration<AbstractButton> e = _buttons.elements(); e.hasMoreElements();) {
+    for (Enumeration<AbstractButton> e = _buttons.elements(); e.hasMoreElements();) {
 
-	    AbstractButton b = (AbstractButton) e.nextElement();
-	    if (b.isSelected() == true)
-		return b;
-	}
-	return null;	// no button was selected.
+        AbstractButton b = (AbstractButton) e.nextElement();
+        if (b.isSelected() == true)
+        return b;
+    }
+    return null;    // no button was selected.
     }
 
     /** Returns the selected value for the specified button.
      */
     public boolean isSelected(AbstractButton button_)
     {
-	return button_.isSelected();
+    return button_.isSelected();
     }
 
     /** Remove the specified button from the group.
      */
     public void remove(AbstractButton button_)
     {
-	_buttons.remove(button_);
-	button_.removeItemListener(this);
+    _buttons.remove(button_);
+    button_.removeItemListener(this);
     }
 
     /** Sets the selected value for the specified button.
@@ -116,7 +116,7 @@ public class ButtonGroup
      */
     public void setSelected(AbstractButton button_, boolean val_)
     {
-	button_.setSelected(val_);
+    button_.setSelected(val_);
     }
 
     /** Implements the ItemListener interface. Listens for state
@@ -124,22 +124,22 @@ public class ButtonGroup
      */
     public void itemStateChanged(ItemEvent e_)
     {
-	Component source = (Component) e_.getSource();
-	int statechange = e_.getStateChange();
+    Component source = (Component) e_.getSource();
+    int statechange = e_.getStateChange();
 
-	/* There should have been only one button in the selected
-	 * state. All the other buttons should be in the deselected state.
-	 */
-	for (Enumeration<AbstractButton> e = _buttons.elements(); e.hasMoreElements(); ) {
+    /* There should have been only one button in the selected
+     * state. All the other buttons should be in the deselected state.
+     */
+    for (Enumeration<AbstractButton> e = _buttons.elements(); e.hasMoreElements(); ) {
 
-	    AbstractButton b = (AbstractButton) e.nextElement();
-	    if (source != b || statechange != ItemEvent.SELECTED) {
-		if (b.isSelected()) {
-		    b._selected = false;
-		    b.setEnabled(true);
-		}
-	    }
-	}
+        AbstractButton b = (AbstractButton) e.nextElement();
+        if (source != b || statechange != ItemEvent.SELECTED) {
+        if (b.isSelected()) {
+            b._selected = false;
+            b.setEnabled(true);
+        }
+        }
+    }
     }
 
     //====================================================================
