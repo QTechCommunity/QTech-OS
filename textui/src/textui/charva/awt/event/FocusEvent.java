@@ -37,11 +37,11 @@ public class FocusEvent extends AWTEvent
      * @param source_ The component to which the event must be delivered.
      */
     public FocusEvent(int id_, Component source_) {
-    super(source_, id_);
+	super(source_, id_);
     }
 
     public String toString() {
-    return ("FocusEvent: source=[" + getSource() + "] id=" + 
-        ((getID() == FOCUS_LOST) ? "FOCUS_LOST" : "FOCUS_GAINED"));
+	return ("FocusEvent: source=[" + getSource() + "] id=" + 
+	    ((getID() == FOCUS_LOST) ? "FOCUS_LOST" : "FOCUS_GAINED"));
     }
 }

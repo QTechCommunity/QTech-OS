@@ -195,48 +195,48 @@ public abstract class JdwpPacket
 
     if (bytes.length == length)
       {
-    id = ((bytes[i++] & 0xff) << 24 | (bytes[i++] & 0xff) << 16
+	id = ((bytes[i++] & 0xff) << 24 | (bytes[i++] & 0xff) << 16
               | (bytes[i++] & 0xff) << 8 | (bytes[i++] & 0xff));
-    flags = bytes[i++];
+	flags = bytes[i++];
 
-    Class clazz = null;
-    if (flags == 0)
-      clazz = JdwpCommandPacket.class;
-    else if ((flags & JDWP_FLAG_REPLY) != 0)
-      clazz = JdwpReplyPacket.class;
-    else
-      {
-        // Malformed packet. Discard it.
-        return null;
-      }
+	Class clazz = null;
+	if (flags == 0)
+	  clazz = JdwpCommandPacket.class;
+	else if ((flags & JDWP_FLAG_REPLY) != 0)
+	  clazz = JdwpReplyPacket.class;
+	else
+	  {
+	    // Malformed packet. Discard it.
+	    return null;
+	  }
 
-    JdwpPacket pkt = null;
-    try
-      {
-        pkt = (JdwpPacket) clazz.newInstance ();
-      }
-    catch (InstantiationException ie)
-      {
-        // Discard packet
-        return null;
-      }
-    catch (IllegalAccessException iae)
-      {
-        // Discard packet
-        return null;
-      }
+	JdwpPacket pkt = null;
+	try
+	  {
+	    pkt = (JdwpPacket) clazz.newInstance ();
+	  }
+	catch (InstantiationException ie)
+	  {
+	    // Discard packet
+	    return null;
+	  }
+	catch (IllegalAccessException iae)
+	  {
+	    // Discard packet
+	    return null;
+	  }
 
-    pkt.setId (id);
-    pkt.setFlags (flags);
+	pkt.setId (id);
+	pkt.setFlags (flags);
 
-    i += pkt.myFromBytes (bytes, i);
-    byte[] data = new byte[length - i];
-    System.arraycopy (bytes, i, data, 0, data.length);
-    pkt.setData (data);
+	i += pkt.myFromBytes (bytes, i);
+	byte[] data = new byte[length - i];
+	System.arraycopy (bytes, i, data, 0, data.length);
+	pkt.setData (data);
 
-    return pkt;
+	return pkt;
       }
-    
+	
     return null;
   }
 

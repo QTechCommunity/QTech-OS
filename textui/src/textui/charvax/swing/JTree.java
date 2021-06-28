@@ -55,20 +55,20 @@ public class JTree
     /** Returns the TreeModel that is providing the data. 
      */
     public TreeModel getModel() {
-    return _treeModel;
+	return _treeModel;
     }
 
     /** Sets the TreeModel that will provide the data.
      */
     public void setModel(TreeModel newModel_) {
-    _treeModel = newModel_;
+	_treeModel = newModel_;
     }
 
     /** Returns true if the root node of the tree is displayed.
      * @return true if the root node of the tree is displayed
      */
     public boolean isRootVisible() {
-    return false;    // temporary kludge...
+	return false;	// temporary kludge...
     }
 
     /** Determines whether or not the root node from the TreeModel is visible.
@@ -81,7 +81,7 @@ public class JTree
     /** Returns the number of rows that are currently being displayed.
      */
     public int getRowCount() {
-    return 0;    // temporary kludge...
+	return 0;	// temporary kludge...
     }
 
     /** Selects the node identified by the specified path. If any component 
@@ -101,13 +101,13 @@ public class JTree
      * currently selected
      */
     public TreePath getSelectionPath() {
-    return null;    // temporary kludge...
+	return null;	// temporary kludge...
     }
 
     /** Returns true if the item identified by the path is currently selected.
      */
     public boolean isPathSelected(TreePath path) {
-    return false;    // temporary kludge...
+	return false;	// temporary kludge...
     }
 
     /** Ensures that the node identified by path is currently viewable. 
@@ -120,7 +120,7 @@ public class JTree
      * Otherwise, this method returns false. 
      */
     public boolean isVisible(TreePath path) {
-    return false;    // temporary kludge...
+	return false;	// temporary kludge...
     }
 
     /** Makes sure all the path components in path are expanded (except 
@@ -146,7 +146,7 @@ public class JTree
      * &gt; getRowCount().
      */
     public TreePath getPathForRow(int row) {
-    return null;    // temporary kludge...
+	return null;	// temporary kludge...
     }
 
     /** Ensures that the node identified by the specified path is expanded 
@@ -173,7 +173,7 @@ public class JTree
      * model to be used.
      */
     public TreeSelectionModel getSelectionModel() {
-    return _selectionModel;
+	return _selectionModel;
     }
 
     /** Removes the node identified by the specified path from the 
@@ -195,7 +195,7 @@ public class JTree
     /** Returns true if the selection is currently empty. 
      */
     public boolean isSelectionEmpty() {
-    return false;    // temporary kludge...
+	return false;	// temporary kludge...
     }
 
     /** Sets the number of rows that are to be displayed. This will only 
@@ -203,20 +203,20 @@ public class JTree
      * preferred size and size of that scrollpane. 
      */
     public void setVisibleRowCount(int newCount) {
-    _visibleRowCount = newCount;
+	_visibleRowCount = newCount;
     }
 
     /** Returns the maximum number of rows that are displayed in the 
      * display area. 
      */
     public int getVisibleRowCount() {
-    return _visibleRowCount;
+	return _visibleRowCount;
     }
 
     /** Returns a TreeModel wrapping the specified object.
      */
     protected static TreeModel createTreeModel(Object value) {
-    return null;    // temporary kludge....
+	return null;	// temporary kludge....
     }
 
     //==================================================================

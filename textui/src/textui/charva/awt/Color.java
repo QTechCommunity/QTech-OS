@@ -29,27 +29,27 @@ public class Color
      * be in the range 0-255.
      */
     public Color(int red_, int green_, int blue_) {
-    _red = (red_ != 0) ? 255 : 0;
-    _green = (green_ != 0) ? 255 : 0;
-    _blue = (blue_ != 0) ? 255 : 0;
+	_red = (red_ != 0) ? 255 : 0;
+	_green = (green_ != 0) ? 255 : 0;
+	_blue = (blue_ != 0) ? 255 : 0;
     }
 
     public boolean equals(Object obj_) {
-    if (obj_ == null)
-        return false;
+	if (obj_ == null)
+	    return false;
 
-    if ( ! (obj_ instanceof Color))
-        return false;
+	if ( ! (obj_ instanceof Color))
+	    return false;
 
-    Color othercolor = (Color) obj_;
-    if (_red != othercolor._red)
-        return false;
-    if (_green != othercolor._green)
-        return false;
-    if (_blue != othercolor._blue)
-        return false;
+	Color othercolor = (Color) obj_;
+	if (_red != othercolor._red)
+	    return false;
+	if (_green != othercolor._green)
+	    return false;
+	if (_blue != othercolor._blue)
+	    return false;
 
-    return true;
+	return true;
     }
 
     /** Convert the Color object to an integer value compatible with
@@ -57,66 +57,66 @@ public class Color
      */
     public int getCursesColor()
     {
-    if (_red != 0) {
-        if (_green != 0) {
-        if (_blue != 0)
-            return Toolkit.WHITE;
-        else
-            return Toolkit.YELLOW;
-        }
-        else {
-        if (_blue != 0)
-            return Toolkit.MAGENTA;
-        else
-            return Toolkit.RED;
-        }
-    }
-    else {
-        if (_green != 0) {
-        if (_blue != 0)
-            return Toolkit.CYAN;
-        else
-            return Toolkit.GREEN;
-        }
-        else {
-        if (_blue != 0)
-            return Toolkit.BLUE;
-        else
-            return Toolkit.BLACK;
-        }
-    }
+	if (_red != 0) {
+	    if (_green != 0) {
+		if (_blue != 0)
+		    return Toolkit.WHITE;
+		else
+		    return Toolkit.YELLOW;
+	    }
+	    else {
+		if (_blue != 0)
+		    return Toolkit.MAGENTA;
+		else
+		    return Toolkit.RED;
+	    }
+	}
+	else {
+	    if (_green != 0) {
+		if (_blue != 0)
+		    return Toolkit.CYAN;
+		else
+		    return Toolkit.GREEN;
+	    }
+	    else {
+		if (_blue != 0)
+		    return Toolkit.BLUE;
+		else
+		    return Toolkit.BLACK;
+	    }
+	}
     }
 
     public String toString()
     {
-    if (_red != 0) {
-        if (_green != 0) {
-        if (_blue != 0)
-            return "white";
-        else
-            return "cyan";
-        }
-        else {
-        if (_blue != 0)
-            return "magenta";
-        else
-            return "red";
-        }
-    }
-    else {
-        if (_green != 0) {
-        if (_blue != 0)
-            return "white";
-        else
-            return "green";
-        }
-        else {
-        if (_blue != 0)
-            return "blue";
-        else
-            return "black";
-        }
-    }
+	if (_red != 0) {
+	    if (_green != 0) {
+		if (_blue != 0)
+		    return "white";
+		else
+		    return "cyan";
+	    }
+	    else {
+		if (_blue != 0)
+		    return "magenta";
+		else
+		    return "red";
+	    }
+	}
+	else {
+	    if (_green != 0) {
+		if (_blue != 0)
+		    return "white";
+		else
+		    return "green";
+	    }
+	    else {
+		if (_blue != 0)
+		    return "blue";
+		else
+		    return "black";
+	    }
+	}
     }
 
     /** Compute the ncurses color-pair number corresponding to the specified
@@ -124,59 +124,59 @@ public class Color
      */
     public static int getCursesColor(Color foreground_, Color background_)
     {
-    if ( ! Toolkit.isColorEnabled)
-        return 0;
+	if ( ! Toolkit.isColorEnabled)
+	    return 0;
 
-    /* The default colors (in case an exception occurs) are white 
-     * on black.
-     */
-    int curses_color_pair = 0;
-    try {
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        
-        // if the terminal is capable of colors
-        if (toolkit.hasColors()) {
-        ColorPair color_pair = new ColorPair(foreground_, background_);
-        curses_color_pair = toolkit.getColorPairIndex(color_pair);
-        }
-    }
-    catch (TerminfoCapabilityException e) {
-        System.err.println( "can't set color pair: foreground " + 
-        foreground_ + " background " + background_);
-    }
-    return curses_color_pair;
+	/* The default colors (in case an exception occurs) are white 
+	 * on black.
+	 */
+	int curses_color_pair = 0;
+	try {
+	    Toolkit toolkit = Toolkit.getDefaultToolkit();
+	    
+	    // if the terminal is capable of colors
+	    if (toolkit.hasColors()) {
+		ColorPair color_pair = new ColorPair(foreground_, background_);
+		curses_color_pair = toolkit.getColorPairIndex(color_pair);
+	    }
+	}
+	catch (TerminfoCapabilityException e) {
+	    System.err.println( "can't set color pair: foreground " + 
+		foreground_ + " background " + background_);
+	}
+	return curses_color_pair;
     }
 
 
     /** Convert an ncurses color value to a color name.
      */
     public static String getColorName(int colorval_) {
-    if (colorval_ == Toolkit.BLACK)        return "black";
-    else if (colorval_ == Toolkit.RED)    return "red";
-    else if (colorval_ == Toolkit.GREEN)    return "green";
-    else if (colorval_ == Toolkit.YELLOW)   return "yellow";
-    else if (colorval_ == Toolkit.BLUE)    return "blue";
-    else if (colorval_ == Toolkit.MAGENTA)  return "magenta";
-    else if (colorval_ == Toolkit.CYAN)    return "cyan";
-    else if (colorval_ == Toolkit.WHITE)    return "white";
-        else
-    return "UNKNOWN";
+	if (colorval_ == Toolkit.BLACK)		return "black";
+	else if (colorval_ == Toolkit.RED)	return "red";
+	else if (colorval_ == Toolkit.GREEN)	return "green";
+	else if (colorval_ == Toolkit.YELLOW)   return "yellow";
+	else if (colorval_ == Toolkit.BLUE)	return "blue";
+	else if (colorval_ == Toolkit.MAGENTA)  return "magenta";
+	else if (colorval_ == Toolkit.CYAN)	return "cyan";
+	else if (colorval_ == Toolkit.WHITE)	return "white";
+	    else
+	return "UNKNOWN";
     }
 
     /** Convert from an integer (ncurses-compatible) value to
      * a Color object.
      */
     public static Color fromCursesColor(int colorval_) {
-    if (colorval_ == Toolkit.BLACK)        return black;
-    else if (colorval_ == Toolkit.RED)    return red;
-    else if (colorval_ == Toolkit.GREEN)    return green;
-    else if (colorval_ == Toolkit.YELLOW)   return yellow;
-    else if (colorval_ == Toolkit.BLUE)    return blue;
-    else if (colorval_ == Toolkit.MAGENTA)  return magenta;
-    else if (colorval_ == Toolkit.CYAN)    return cyan;
-    else if (colorval_ == Toolkit.WHITE)    return white;
-        else
-    return null;
+	if (colorval_ == Toolkit.BLACK)		return black;
+	else if (colorval_ == Toolkit.RED)	return red;
+	else if (colorval_ == Toolkit.GREEN)	return green;
+	else if (colorval_ == Toolkit.YELLOW)   return yellow;
+	else if (colorval_ == Toolkit.BLUE)	return blue;
+	else if (colorval_ == Toolkit.MAGENTA)  return magenta;
+	else if (colorval_ == Toolkit.CYAN)	return cyan;
+	else if (colorval_ == Toolkit.WHITE)	return white;
+	    else
+	return null;
     }
 
     //====================================================================

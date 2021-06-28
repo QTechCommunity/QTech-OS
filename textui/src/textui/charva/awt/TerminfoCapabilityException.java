@@ -31,11 +31,11 @@ public class TerminfoCapabilityException extends Exception
     
     public TerminfoCapabilityException()
     {
-    super();
+	super();
     }
 
     public TerminfoCapabilityException(String msg)
     {
-    super(msg);
+	super(msg);
     }
 }

@@ -34,16 +34,16 @@ public class WindowEvent extends AWTEvent
     private static final long serialVersionUID = 1L;
 
     public WindowEvent(Window source_, int id_) {
-    super(source_, id_);
+	super(source_, id_);
 
-    /* Only two valid ID's at this stage...
-     */
-    if (id_ != AWTEvent.WINDOW_CLOSING &&
-        id_ != AWTEvent.WINDOW_OPENED) {
+	/* Only two valid ID's at this stage...
+	 */
+	if (id_ != AWTEvent.WINDOW_CLOSING &&
+		id_ != AWTEvent.WINDOW_OPENED) {
 
-        throw new IllegalArgumentException(
-        "Invalid WindowEvent type");
-    }
+	    throw new IllegalArgumentException(
+		"Invalid WindowEvent type");
+	}
 
     }
 

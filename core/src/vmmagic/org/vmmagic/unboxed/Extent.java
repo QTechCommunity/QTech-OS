@@ -74,7 +74,7 @@ public final class Extent implements UnboxedObject {
     }
     
     public boolean isZero() {
-        return EQ(zero());
+    	return EQ(zero());
     }
 
     public int toInt() {

@@ -43,14 +43,14 @@ public class JMenu
      */
     public JMenu()
     {
-    super();
+	super();
     }
 
     /** Constructs a new JMenu with the specified string as its text
      */
     public JMenu(String text_)
     {
-    this(text_, -1);
+	this(text_, -1);
     }
 
     /** Constructs a new JMenu with the specified text and the
@@ -59,7 +59,7 @@ public class JMenu
      */
     public JMenu(String text_, int mnemonic_)
     {
-    super(text_, mnemonic_);
+	super(text_, mnemonic_);
     }
 
     /**
@@ -68,19 +68,19 @@ public class JMenu
      */
     public JMenuItem add(JMenuItem item_)
     {
-    _menuItems.add(item_);
-    if (item_ instanceof JMenu) {
-        ((JMenu) item_).setParentMenu(this);
-    }
+	_menuItems.add(item_);
+	if (item_ instanceof JMenu) {
+	    ((JMenu) item_).setParentMenu(this);
+	}
 
-    return item_;
+	return item_;
     }
 
     /** Add a horizontal separator to the end of the menu.
      */
     public void addSeparator()
     {
-    _menuItems.add(new JSeparator());
+	_menuItems.add(new JSeparator());
     }
 
     /**
@@ -90,9 +90,9 @@ public class JMenu
      */
     public JMenuItem add(String text_)
     {
-    JMenuItem item = new JMenuItem(text_);
-    add(item);
-    return item;
+	JMenuItem item = new JMenuItem(text_);
+	add(item);
+	return item;
     }
 
     /**
@@ -102,14 +102,14 @@ public class JMenu
      */
     public void setForeground(Color color_)
     {
-    super.setForeground(color_);
+	super.setForeground(color_);
 
-    Enumeration<Component> e = _menuItems.elements();
-    while (e.hasMoreElements()) {
-        Component c = e.nextElement();
-        if (c.getForeground() == null)
-            c.setForeground(color_);
-    }
+	Enumeration<Component> e = _menuItems.elements();
+	while (e.hasMoreElements()) {
+	    Component c = e.nextElement();
+	    if (c.getForeground() == null)
+	    	c.setForeground(color_);
+	}
     }
 
     /**
@@ -119,44 +119,44 @@ public class JMenu
      */
     public void setBackground(Color color_)
     {
-    super.setBackground(color_);
+	super.setBackground(color_);
 
-    Enumeration<Component> e = _menuItems.elements();
-    while (e.hasMoreElements()) {
-        Component c = e.nextElement();
-        if (c.getBackground() == null)
-        c.setBackground(color_);
-    }
+	Enumeration<Component> e = _menuItems.elements();
+	while (e.hasMoreElements()) {
+	    Component c = e.nextElement();
+	    if (c.getBackground() == null)
+		c.setBackground(color_);
+	}
     }
 
     public void draw(Toolkit toolkit) {
-    /* Get the absolute origin of this component.
-     */
-    Point origin = getLocationOnScreen();
+	/* Get the absolute origin of this component.
+	 */
+	Point origin = getLocationOnScreen();
 
-    int colorpair = getCursesColor();
+	int colorpair = getCursesColor();
 
-    toolkit.setCursor(origin);
+	toolkit.setCursor(origin);
 
-    int attribute = 0;
-    if ( ! (getParent() instanceof JMenuBar)) {
-        // This menu is in a JPopupMenu.
-        super.draw(toolkit);
-    }
-    else {
-        attribute = (super.hasFocus()) ? Toolkit.A_BOLD : Toolkit.A_REVERSE;
-        toolkit.addString(" ", attribute, colorpair);
-        toolkit.addString(super.getText(), attribute, colorpair);
-        toolkit.addString(" ", attribute, colorpair);
+	int attribute = 0;
+	if ( ! (getParent() instanceof JMenuBar)) {
+	    // This menu is in a JPopupMenu.
+	    super.draw(toolkit);
+	}
+	else {
+	    attribute = (super.hasFocus()) ? Toolkit.A_BOLD : Toolkit.A_REVERSE;
+	    toolkit.addString(" ", attribute, colorpair);
+	    toolkit.addString(super.getText(), attribute, colorpair);
+	    toolkit.addString(" ", attribute, colorpair);
 
-        if (super.getMnemonic() > 0) {
-        int mnemonicPos = super.getText().indexOf((char) super.getMnemonic());
-        if (mnemonicPos != -1) {
-            toolkit.setCursor(origin.addOffset(mnemonicPos + 1, 0));
-            toolkit.addChar(super.getMnemonic(), attribute | Toolkit.A_UNDERLINE, colorpair);
-        }
-        }
-    }
+	    if (super.getMnemonic() > 0) {
+		int mnemonicPos = super.getText().indexOf((char) super.getMnemonic());
+		if (mnemonicPos != -1) {
+		    toolkit.setCursor(origin.addOffset(mnemonicPos + 1, 0));
+		    toolkit.addChar(super.getMnemonic(), attribute | Toolkit.A_UNDERLINE, colorpair);
+		}
+	    }
+	}
     }
 
     /** Returns the menu item at the specified index.
@@ -164,64 +164,64 @@ public class JMenu
      */
     public JMenuItem getMenuItem(int index_)
     {
-    Object o = _menuItems.elementAt(index_);
-    if (o instanceof JMenuItem)
-        return (JMenuItem) o;
-    else
-        return null;
+	Object o = _menuItems.elementAt(index_);
+	if (o instanceof JMenuItem)
+	    return (JMenuItem) o;
+	else
+	    return null;
     }
 
     public void fireActionPerformed(ActionEvent ae_) {
-    // Notify all the registered ActionListeners.
-    super.fireActionPerformed(ae_);
+	// Notify all the registered ActionListeners.
+	super.fireActionPerformed(ae_);
 
-    setPopupMenuVisible(true);
+	setPopupMenuVisible(true);
 
-    // We get here when the popup menu has hidden itself.
-    if (_popup.leftWasPressed()) {
-        Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_LEFT);
-        SwingUtilities.invokeLater(new Runnable() {
-        public void run() {
-            Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_ENTER);
-        }
-        });
-    }
-    else if (_popup.rightWasPressed()) {
-        Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_RIGHT);
-        SwingUtilities.invokeLater(new Runnable() {
-        public void run() {
-            Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_ENTER);
-        }
-        });
-    }
-    else if ( ! isTopLevelMenu()) {
-        getAncestorWindow().hide();
-    }
+	// We get here when the popup menu has hidden itself.
+	if (_popup.leftWasPressed()) {
+	    Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_LEFT);
+	    SwingUtilities.invokeLater(new Runnable() {
+		public void run() {
+		    Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_ENTER);
+		}
+	    });
+	}
+	else if (_popup.rightWasPressed()) {
+	    Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_RIGHT);
+	    SwingUtilities.invokeLater(new Runnable() {
+		public void run() {
+		    Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_ENTER);
+		}
+	    });
+	}
+	else if ( ! isTopLevelMenu()) {
+	    getAncestorWindow().hide();
+	}
     }
 
     public Dimension minimumSize()
     {
-    return new Dimension(this.getWidth(), getHeight());
+	return new Dimension(this.getWidth(), getHeight());
     }
 
     public Dimension getSize()
     {
-    return minimumSize();
+	return minimumSize();
     }
 
     public int getWidth() {
-    return getText().length() + 2;
+	return getText().length() + 2;
     }
 
     public int getHeight() {
-    return 1;
+	return 1;
     }
 
     /** Returns true if the popup window of this menu is displayed.
      */
     public boolean isPopupMenuVisible()
     {
-    return _popupMenuVisible;
+	return _popupMenuVisible;
     }
 
     /** Displays this menu's popup menu if the specified value is true;
@@ -229,77 +229,77 @@ public class JMenu
      */
     public void setPopupMenuVisible(boolean visible_)
     {
-    _popupMenuVisible = visible_;
-    if ( ! visible_) {
-        _popup.hide();
-        return;
-    }
+	_popupMenuVisible = visible_;
+	if ( ! visible_) {
+	    _popup.hide();
+	    return;
+	}
 
-    if (_popup == null)
-        _popup = new JPopupMenu(_menuItems);
+	if (_popup == null)
+	    _popup = new JPopupMenu(_menuItems);
 
-    Point p;
-    if ( ! this.isTopLevelMenu()) {
+	Point p;
+	if ( ! this.isTopLevelMenu()) {
 
-        /* If this menu is a submenu (i.e. it is not a direct
-         * child of the menubar), check if there is enough
-         * space on the right hand side of the parent menu.
-         * If there is not enough space, position it on the
-         * left of the parent menu.
-         */
-        JMenu parentmenu = (JMenu) getParentMenu();
-        JPopupMenu parentpopup = parentmenu.getPopupMenu();
-        p = parentpopup.getLocation();
+	    /* If this menu is a submenu (i.e. it is not a direct
+	     * child of the menubar), check if there is enough
+	     * space on the right hand side of the parent menu.
+	     * If there is not enough space, position it on the
+	     * left of the parent menu.
+	     */
+	    JMenu parentmenu = (JMenu) getParentMenu();
+	    JPopupMenu parentpopup = parentmenu.getPopupMenu();
+	    p = parentpopup.getLocation();
 
-        int verticalOffset = parentpopup.getComponentIndex(this);
-        _popup.setInvoker(parentpopup);
-        int parentwidth = parentpopup.getSize().width;
-        Toolkit term = Toolkit.getDefaultToolkit();
-        if (p.x + parentwidth + _popup.getWidth() <
-            term.getScreenColumns()) {
+	    int verticalOffset = parentpopup.getComponentIndex(this);
+	    _popup.setInvoker(parentpopup);
+	    int parentwidth = parentpopup.getSize().width;
+	    Toolkit term = Toolkit.getDefaultToolkit();
+	    if (p.x + parentwidth + _popup.getWidth() <
+		    term.getScreenColumns()) {
 
-        _popup.setLocation(
-                p.addOffset(parentwidth - 1, verticalOffset));
-        }
-        else {
-        _popup.setLocation(
-            p.addOffset(-_popup.getWidth() + 1, verticalOffset));
-        }
-    }
-    else {
-        JMenuBar parentMenuBar = (JMenuBar) getParent();
-        p = parentMenuBar.getPopupMenuLocation(this);
-        _popup.setInvoker(parentMenuBar);
-        _popup.setLocation(p);
-    }
-    _popup.show();
+		_popup.setLocation(
+			    p.addOffset(parentwidth - 1, verticalOffset));
+	    }
+	    else {
+		_popup.setLocation(
+			p.addOffset(-_popup.getWidth() + 1, verticalOffset));
+	    }
+	}
+	else {
+	    JMenuBar parentMenuBar = (JMenuBar) getParent();
+	    p = parentMenuBar.getPopupMenuLocation(this);
+	    _popup.setInvoker(parentMenuBar);
+	    _popup.setLocation(p);
+	}
+	_popup.show();
     }
 
     /** Returns true if this menu is the direct child of a menubar.
      */
     public boolean isTopLevelMenu()
     {
-    return (getParent() instanceof JMenuBar);
+	return (getParent() instanceof JMenuBar);
     }
 
     /** Returns a reference to this JMenu's popup menu.
      */
     public JPopupMenu getPopupMenu()
     {
-    return _popup;
+	return _popup;
     }
 
     /** Output a text description of the menu.
      */
     public void debug(int level_)
     {
-    for (int i=0; i<level_; i++)
-        System.err.print("    ");
-    System.err.println("JMenu origin=" + _origin + " text=" + getText());
+	for (int i=0; i<level_; i++)
+	    System.err.print("    ");
+	System.err.println("JMenu origin=" + _origin + " text=" + getText());
     }
 
     public String toString() {
-    return "JMenu: text=" + getText();
+	return "JMenu: text=" + getText();
     }
 
     //====================================================================
@@ -311,19 +311,19 @@ public class JMenu
      */
     void setParentMenu(Component parent_)
     {
-    _parentMenu = new WeakReference<Component>(parent_);
+	_parentMenu = new WeakReference<Component>(parent_);
 
-    // If the colors of this menu have not been set yet, inherit the
-    // colors of the parent.
-    if (super.getForeground() == null)
-        super.setForeground(parent_.getForeground());
+	// If the colors of this menu have not been set yet, inherit the
+	// colors of the parent.
+	if (super.getForeground() == null)
+	    super.setForeground(parent_.getForeground());
 
-    if (super.getBackground() == null)
-        super.setBackground(parent_.getBackground());
+	if (super.getBackground() == null)
+	    super.setBackground(parent_.getBackground());
     }
 
     Component getParentMenu() {
-    return (Component) _parentMenu.get();
+	return (Component) _parentMenu.get();
     }
 
     //====================================================================

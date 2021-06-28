@@ -28,55 +28,55 @@ public class MouseEvent extends InputEvent
     private static final long serialVersionUID = 1L;
 
     public MouseEvent(Component source_, int modifiers_, 
-        int x_, int y_, int clickcount_, int button_) {
+	    int x_, int y_, int clickcount_, int button_) {
 
-    super(source_, AWTEvent.MOUSE_EVENT);
-    modifiers = modifiers_;
-    x = x_;
-    y = y_;
-    clickcount = clickcount_;
-    button = button_;
+	super(source_, AWTEvent.MOUSE_EVENT);
+	modifiers = modifiers_;
+	x = x_;
+	y = y_;
+	clickcount = clickcount_;
+	button = button_;
     }
 
     public int getModifiers() {
-    return modifiers;
+	return modifiers;
     }
 
     public boolean isLeftButtonPressed()
     {
-        return (button == BUTTON1) && (modifiers == MOUSE_PRESSED);
+    	return (button == BUTTON1) && (modifiers == MOUSE_PRESSED);
     }
     
     public boolean isMiddleButtonPressed()
     {
-        return (button == BUTTON2) && (modifiers == MOUSE_PRESSED);
+    	return (button == BUTTON2) && (modifiers == MOUSE_PRESSED);
     }
 
     public boolean isRightButtonPressed()
     {
-        return (button == BUTTON3) && (modifiers == MOUSE_PRESSED);
+    	return (button == BUTTON3) && (modifiers == MOUSE_PRESSED);
     }
-    
+	
     public int getX() {
-    return x;
+	return x;
     }
 
     public int getY() {
-    return y;
+	return y;
     }
 
     public int getClickCount() {
-    return clickcount;
+	return clickcount;
     }
 
     public int getButton() {
-    return button;
+	return button;
     }
 
     public String toString() {
-    return ("MouseEvent: x=" + x + " y=" + y + 
-        " modifiers=" + modifiers + " clickcount=" + clickcount +
-        " button=" + button + " source=[" + getSource() + "]");
+	return ("MouseEvent: x=" + x + " y=" + y + 
+	    " modifiers=" + modifiers + " clickcount=" + clickcount +
+	    " button=" + button + " source=[" + getSource() + "]");
     }
 
     // INSTANCE VARIABLES ================================================

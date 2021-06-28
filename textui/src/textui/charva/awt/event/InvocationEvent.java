@@ -37,7 +37,7 @@ public class InvocationEvent extends AWTEvent
      * when the run() method has returned.
      */
     public InvocationEvent(Object source_, Runnable runnable_) {
-    this(source_, runnable_, null);
+	this(source_, runnable_, null);
     }
 
     /**
@@ -52,10 +52,10 @@ public class InvocationEvent extends AWTEvent
      * when the run() method has returned.
      */
     public InvocationEvent(Object source_, Runnable runnable_, 
-        Object notifier_) {
-    super(source_, AWTEvent.INVOCATION_EVENT);
-    _runnable = runnable_;
-    _notifier = notifier_;
+	    Object notifier_) {
+	super(source_, AWTEvent.INVOCATION_EVENT);
+	_runnable = runnable_;
+	_notifier = notifier_;
     }
 
     /**
@@ -63,13 +63,13 @@ public class InvocationEvent extends AWTEvent
      * is non-null) calls the notifier's notifyAll() method.
      */
     public void dispatch() {
-    _runnable.run();
+	_runnable.run();
 
-    if (_notifier != null) {
-        synchronized (_notifier) {
-        _notifier.notifyAll();
-        }
-    }
+	if (_notifier != null) {
+	    synchronized (_notifier) {
+		_notifier.notifyAll();
+	    }
+	}
     }
 
     //====================================================================

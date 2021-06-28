@@ -165,11 +165,11 @@ public class DummyPluginDescriptor implements PluginDescriptor {
         return null;
     }
 
-    @Override
-    public void firePluginStarted() {
-    }
+	@Override
+	public void firePluginStarted() {
+	}
 
-    @Override
-    public void firePluginStopped() {
-    }
+	@Override
+	public void firePluginStopped() {
+	}
 }

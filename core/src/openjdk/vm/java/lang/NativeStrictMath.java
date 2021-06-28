@@ -1645,12 +1645,12 @@ public final strictfp class NativeStrictMath {
         // 1. Replace x by |x| (sinh(-x) = -sinh(x)).
         // 2.
         //                                   E + E/(E+1)
-        //     0       <= x <= 22     :  sinh(x) := --------------,  E=expm1(x)
-        //                                      2
+        //	 0       <= x <= 22     :  sinh(x) := --------------,  E=expm1(x)
+        // 	       			              2
         //
         //  22       <= x <= lnovft :  sinh(x) := exp(x)/2
         //  lnovft   <= x <= ln2ovft:  sinh(x) := exp(x/2)/2 * exp(x/2)
-        //    ln2ovft  <  x           :  sinh(x) := +inf (overflow)
+        //	ln2ovft  <  x           :  sinh(x) := +inf (overflow)
 
         double t, w, h;
 
@@ -1734,12 +1734,12 @@ public final strictfp class NativeStrictMath {
         //  0        <= x <= ln2/2  :  cosh(x) := 1 + -------------------
         //                                                 2*exp(x)
         //
-        //                                      exp(x) +  1/exp(x)
+        //		                              exp(x) +  1/exp(x)
         //  ln2/2    <= x <= 22     :  cosh(x) := ------------------
-        //                                        2
+        //		       			             2
         //  22       <= x <= lnovft :  cosh(x) := exp(x)/2
         //  lnovft   <= x <= ln2ovft:  cosh(x) := exp(x/2)/2 * exp(x/2)
-        //    ln2ovft  <  x            :  cosh(x) := +inf  (overflow)
+        //	ln2ovft  <  x	        :  cosh(x) := +inf  (overflow)
 
         double t, w;
         long bits;
@@ -1887,75 +1887,75 @@ public final strictfp class NativeStrictMath {
     public static double expm1(double x) {
         // Method
         //   1. Argument reduction:
-        //    Given x, find r and integer k such that
+        //	Given x, find r and integer k such that
         //
         //            x = k * ln(2) + r,  |r| <= 0.5 * ln(2)
         //
         //  Here a correction term c will be computed to compensate
-        //    the error in r when rounded to a floating-point number.
+        //	the error in r when rounded to a floating-point number.
         //
         //   2. Approximating expm1(r) by a special rational function on
-        //    the interval [0, 0.5 * ln(2)]:
-        //    Since
-        //        r*(exp(r)+1)/(exp(r)-1) = 2 + r^2/6 - r^4/360 + ...
-        //    we define R1(r*r) by
-        //        r*(exp(r)+1)/(exp(r)-1) = 2 + r^2/6 * R1(r*r)
-        //    That is,
-        //        R1(r**2) = 6/r *((exp(r)+1)/(exp(r)-1) - 2/r)
-        //             = 6/r * ( 1 + 2.0*(1/(exp(r)-1) - 1/r))
-        //             = 1 - r^2/60 + r^4/2520 - r^6/100800 + ...
+        //	the interval [0, 0.5 * ln(2)]:
+        //	Since
+        //	    r*(exp(r)+1)/(exp(r)-1) = 2 + r^2/6 - r^4/360 + ...
+        //	we define R1(r*r) by
+        //	    r*(exp(r)+1)/(exp(r)-1) = 2 + r^2/6 * R1(r*r)
+        //	That is,
+        //	    R1(r**2) = 6/r *((exp(r)+1)/(exp(r)-1) - 2/r)
+        //		     = 6/r * ( 1 + 2.0*(1/(exp(r)-1) - 1/r))
+        //		     = 1 - r^2/60 + r^4/2520 - r^6/100800 + ...
         //  We use a special Remes algorithm on [0, 0.347] to generate
-        //     a polynomial of degree 5 in r*r to approximate R1. The
-        //    maximum error of this polynomial approximation is bounded
-        //    by 2**-61. In other words,
-        //        R1(z) ~ 1.0 + Q1*z + Q2*z**2 + Q3*z**3 + Q4*z**4 + Q5*z**5
-        //    where     Q1  =  -1.6666666666666567384E-2,
-        //         Q2  =   3.9682539681370365873E-4,
-        //         Q3  =  -9.9206344733435987357E-6,
-        //         Q4  =   2.5051361420808517002E-7,
-        //         Q5  =  -6.2843505682382617102E-9;
-        //      (where z=r*r, and Q1 to Q5 are called EXPM1_Qx in the source)
-        //    with error bounded by
-        //        |                  5           |     -61
-        //        | 1.0+Q1*z+...+Q5*z   -  R1(z) | <= 2
-        //        |                              |
+        // 	a polynomial of degree 5 in r*r to approximate R1. The
+        //	maximum error of this polynomial approximation is bounded
+        //	by 2**-61. In other words,
+        //	    R1(z) ~ 1.0 + Q1*z + Q2*z**2 + Q3*z**3 + Q4*z**4 + Q5*z**5
+        //	where 	Q1  =  -1.6666666666666567384E-2,
+        // 		Q2  =   3.9682539681370365873E-4,
+        // 		Q3  =  -9.9206344733435987357E-6,
+        // 		Q4  =   2.5051361420808517002E-7,
+        // 		Q5  =  -6.2843505682382617102E-9;
+        //  	(where z=r*r, and Q1 to Q5 are called EXPM1_Qx in the source)
+        //	with error bounded by
+        //	    |                  5           |     -61
+        //	    | 1.0+Q1*z+...+Q5*z   -  R1(z) | <= 2
+        //	    |                              |
         //
-        //    expm1(r) = exp(r)-1 is then computed by the following
-        //     specific way which minimize the accumulation rounding error:
-        //                   2     3
-        //                  r     r    [ 3 - (R1 + R1*r/2)  ]
-        //          expm1(r) = r + --- + --- * [--------------------]
-        //                      2     2    [ 6 - r*(3 - R1*r/2) ]
+        //	expm1(r) = exp(r)-1 is then computed by the following
+        // 	specific way which minimize the accumulation rounding error:
+        //			       2     3
+        //			      r     r    [ 3 - (R1 + R1*r/2)  ]
+        //	      expm1(r) = r + --- + --- * [--------------------]
+        //		              2     2    [ 6 - r*(3 - R1*r/2) ]
         //
-        //    To compensate the error in the argument reduction, we use
-        //        expm1(r+c) = expm1(r) + c + expm1(r)*c
-        //               ~ expm1(r) + c + r*c
-        //    Thus c+r*c will be added in as the correction terms for
-        //    expm1(r+c). Now rearrange the term to avoid optimization
-        //     screw up:
-        //                (      2                                    2 )
-        //                ({  ( r    [ R1 -  (3 - R1*r/2) ]  )  }    r  )
-        //     expm1(r+c)~r - ({r*(--- * [--------------------]-c)-c} - --- )
-        //                    ({  ( 2    [ 6 - r*(3 - R1*r/2) ]  )  }    2  )
+        //	To compensate the error in the argument reduction, we use
+        //		expm1(r+c) = expm1(r) + c + expm1(r)*c
+        //			   ~ expm1(r) + c + r*c
+        //	Thus c+r*c will be added in as the correction terms for
+        //	expm1(r+c). Now rearrange the term to avoid optimization
+        // 	screw up:
+        //		        (      2                                    2 )
+        //		        ({  ( r    [ R1 -  (3 - R1*r/2) ]  )  }    r  )
+        //	 expm1(r+c)~r - ({r*(--- * [--------------------]-c)-c} - --- )
+        //	                ({  ( 2    [ 6 - r*(3 - R1*r/2) ]  )  }    2  )
         //                      (                                             )
         //
-        //           = r - E
+        //		   = r - E
         //   3. Scale back to obtain expm1(x):
-        //    From step 1, we have
-        //       expm1(x) = either 2^k*[expm1(r)+1] - 1
-        //            = or     2^k*[expm1(r) + (1-2^-k)]
+        //	From step 1, we have
+        //	   expm1(x) = either 2^k*[expm1(r)+1] - 1
+        //		    = or     2^k*[expm1(r) + (1-2^-k)]
         //   4. Implementation notes:
-        //    (A). To save one multiplication, we scale the coefficient Qi
-        //         to Qi*2^i, and replace z by (x^2)/2.
-        //    (B). To achieve maximum accuracy, we compute expm1(x) by
-        //      (i)   if x < -56*ln2, return -1.0, (raise inexact if x!=inf)
-        //      (ii)  if k=0, return r-E
-        //      (iii) if k=-1, return 0.5*(r-E)-0.5
-        //        (iv)    if k=1 if r < -0.25, return 2*((r+0.5)- E)
-        //                      else         return  1.0+2.0*(r-E);
-        //      (v)   if (k<-2||k>56) return 2^k(1-(E-r)) - 1 (or exp(x)-1)
-        //      (vi)  if k <= 20, return 2^k((1-2^-k)-(E-r)), else
-        //      (vii) return 2^k(1-((E+2^-k)-r))
+        //	(A). To save one multiplication, we scale the coefficient Qi
+        //	     to Qi*2^i, and replace z by (x^2)/2.
+        //	(B). To achieve maximum accuracy, we compute expm1(x) by
+        //	  (i)   if x < -56*ln2, return -1.0, (raise inexact if x!=inf)
+        //	  (ii)  if k=0, return r-E
+        //	  (iii) if k=-1, return 0.5*(r-E)-0.5
+        //        (iv)	if k=1 if r < -0.25, return 2*((r+0.5)- E)
+        //	       	       else	     return  1.0+2.0*(r-E);
+        //	  (v)   if (k<-2||k>56) return 2^k(1-(E-r)) - 1 (or exp(x)-1)
+        //	  (vi)  if k <= 20, return 2^k((1-2^-k)-(E-r)), else
+        //	  (vii) return 2^k(1-((E+2^-k)-r))
 
         boolean negative = (x < 0);
         double y, hi, lo, c, t, e, hxs, hfx, r1;

@@ -32,36 +32,36 @@ public class PlaybackThread
     extends Thread
 {
     PlaybackThread(BufferedReader scriptReader_) {
-    _scriptReader = scriptReader_;
-    _toolkit = Toolkit.getDefaultToolkit();
+	_scriptReader = scriptReader_;
+	_toolkit = Toolkit.getDefaultToolkit();
     }
 
     public void run() {
-    String line;
+	String line;
 
-    try {
-        while ((line = _scriptReader.readLine()) != null) {
-        StringTokenizer st = new StringTokenizer(line);
-        String keycodeToken = st.nextToken();
-        int keycode = Integer.parseInt(keycodeToken, 16);
+	try {
+	    while ((line = _scriptReader.readLine()) != null) {
+		StringTokenizer st = new StringTokenizer(line);
+		String keycodeToken = st.nextToken();
+		int keycode = Integer.parseInt(keycodeToken, 16);
 
-        String delayToken = st.nextToken();
-        long delay = Long.parseLong(delayToken);
+		String delayToken = st.nextToken();
+		long delay = Long.parseLong(delayToken);
 
-        if (delay != 0) {
-            try {
-            Thread.sleep(delay);
-            }
-            catch (InterruptedException ei) {}
-        }
+		if (delay != 0) {
+		    try {
+			Thread.sleep(delay);
+		    }
+		    catch (InterruptedException ei) {}
+		}
 
-        _toolkit.fireKeystroke(keycode);
-        }
-    }
-    catch (IOException ei) {
-        System.err.println("while reading script file: " +
-            ei.getMessage());
-    }
+		_toolkit.fireKeystroke(keycode);
+	    }
+	}
+	catch (IOException ei) {
+	    System.err.println("while reading script file: " +
+		    ei.getMessage());
+	}
     }
 
     //====================================================================

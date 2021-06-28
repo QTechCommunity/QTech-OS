@@ -37,6 +37,6 @@ public class ShutdownHook
      * and restores the previous terminal settings.
      */
     public void run() {
-    Toolkit.getDefaultToolkit().close();
+	Toolkit.getDefaultToolkit().close();
     }
 }

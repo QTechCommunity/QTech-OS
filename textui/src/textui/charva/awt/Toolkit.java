@@ -156,8 +156,8 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
             final ShellManager sm = InitialNaming.lookup(ShellManager.NAME);
             final ConsoleManager conMgr = sm.getCurrentShell().getConsole().getManager();
             final TextConsole console = (TextConsole) conMgr.createConsole(
-                    "charva",
-                    ConsoleManager.CreateOptions.TEXT |
+            		"charva", 
+            		ConsoleManager.CreateOptions.TEXT |
                             ConsoleManager.CreateOptions.STACKED |
                             ConsoleManager.CreateOptions.NO_LINE_EDITTING);
             console.addKeyboardListener(new KeyboardAdapter() {
@@ -592,28 +592,28 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
     }
 
     //NOT USED
-    //    public void redrawWin() {
-    //    }
-    //    public String getStringCapability(String capname_)
-    //            throws TerminfoCapabilityException {
-    //        return null;
-    //    }
-    //    public int getNumericCapability(String capname_)
-    //            throws TerminfoCapabilityException {
-    //        return 0;
-    //    }
+    //	public void redrawWin() {
+    //	}
+    //	public String getStringCapability(String capname_)
+    //			throws TerminfoCapabilityException {
+    //		return null;
+    //	}
+    //	public int getNumericCapability(String capname_)
+    //			throws TerminfoCapabilityException {
+    //		return 0;
+    //	}
     //NOT USED
-    //    public boolean getBooleanCapability(String capname_)
-    //            throws TerminfoCapabilityException {
-    //        return false;
-    //    }
+    //	public boolean getBooleanCapability(String capname_)
+    //			throws TerminfoCapabilityException {
+    //		return false;
+    //	}
     //NOT USED
-    //    public void putp(String str_) {
-    //    }
+    //	public void putp(String str_) {
+    //	}
     //NOT USED
-    //    public void print(String str_) throws TerminfoCapabilityException {
-    //    }
+    //	public void print(String str_) throws TerminfoCapabilityException {
+    //	}
     //NOT USED
-    //    public void addHorizontalLine(int length_, int attrib_, int colorpair) {
-    //    }
+    //	public void addHorizontalLine(int length_, int attrib_, int colorpair) {
+    //	}
 }

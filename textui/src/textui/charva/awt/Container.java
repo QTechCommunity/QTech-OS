@@ -38,22 +38,22 @@ public abstract class Container
      */
     public void doLayout() {
 
-    if (_isValid)
-        return;
+	if (_isValid)
+	    return;
 
-    if (_layoutMgr != null) {
-        _layoutMgr.doLayout(this);
+	if (_layoutMgr != null) {
+	    _layoutMgr.doLayout(this);
 
-        /* Don't set the _isValid flag if the layout manager flag
-         * is an instance of LayoutManager2; the doLayout method must
-         * be called every time because the parent window may have been
-         * resized.
-         * Instances of LayoutManager, on the other hand, are not affected
-         * be resizing of the parent window.
-         */
-        if (_layoutMgr instanceof LayoutManager2 == false)
-        _isValid = true;
-    }
+	    /* Don't set the _isValid flag if the layout manager flag
+	     * is an instance of LayoutManager2; the doLayout method must
+	     * be called every time because the parent window may have been
+	     * resized.
+	     * Instances of LayoutManager, on the other hand, are not affected
+	     * be resizing of the parent window.
+	     */
+	    if (_layoutMgr instanceof LayoutManager2 == false)
+		_isValid = true;
+	}
     }
 
     public Dimension getSize() { return new Dimension (_size); }
@@ -63,36 +63,36 @@ public abstract class Container
     public int getWidth() { return _size.width; }
 
     public void setSize(Dimension size_) { 
-    _size = new Dimension(size_); 
-    invalidate();
+	_size = new Dimension(size_); 
+	invalidate();
     }
     public void setSize(int width_, int height_) {
-    _size.width = width_;
-    _size.height = height_;
-    invalidate();
+	_size.width = width_;
+	_size.height = height_;
+	invalidate();
     }
     public void setHeight(int height_) { 
-    _size.height = height_; 
-    invalidate();
+	_size.height = height_; 
+	invalidate();
     }
     public void setWidth(int width_) { 
-    _size.width = width_; 
-    invalidate();
+	_size.width = width_; 
+	invalidate();
     }
 
     public Dimension minimumSize() {
-    if (_layoutMgr == null)
-        return _size;
+	if (_layoutMgr == null)
+	    return _size;
 
-    if (_isValid == false)
-        _minimumSize = _layoutMgr.minimumSize(this);
-    return _minimumSize;
+	if (_isValid == false)
+	    _minimumSize = _layoutMgr.minimumSize(this);
+	return _minimumSize;
     }
 
     /** Returns the component at the specified index.
      */
     public Component getComponent(int n) {
-    return (Component) _components.elementAt(n);
+	return (Component) _components.elementAt(n);
     }
 
     /** Returns the component that contains the specified point, or null
@@ -100,7 +100,7 @@ public abstract class Container
      * the point are relative to the origin of this container.
      */
     public Component getComponentAt(Point p) {
-    return getComponentAt(p.x, p.y);
+	return getComponentAt(p.x, p.y);
     }
 
     /** Returns the component that contains the specified point, or null
@@ -108,21 +108,21 @@ public abstract class Container
      * the point are relative to the origin of this container.
      */
     public Component getComponentAt(int x, int y) {
-    Enumeration<Component> e = _components.elements();
-    while (e.hasMoreElements()) {
-        Component c = (Component) e.nextElement();
-        if (c.contains(x, y)) {
-        if (c instanceof Container) {
-            // Calculate the coordinates of the point relative
-            // to the origin of the container
-            Point origin = c.getLocation();
-            return ((Container) c).getComponentAt(x-origin.x, y-origin.y);
-        }
-        else
-            return c;
-        }
-    }
-    return null;
+	Enumeration<Component> e = _components.elements();
+	while (e.hasMoreElements()) {
+	    Component c = (Component) e.nextElement();
+	    if (c.contains(x, y)) {
+		if (c instanceof Container) {
+		    // Calculate the coordinates of the point relative
+		    // to the origin of the container
+		    Point origin = c.getLocation();
+		    return ((Container) c).getComponentAt(x-origin.x, y-origin.y);
+		}
+		else
+		    return c;
+	    }
+	}
+	return null;
     }
 
     /** The contained component will inherit the foreground and background 
@@ -130,44 +130,44 @@ public abstract class Container
      */
     public Component add(Component component_) {
 
-    _addComponent(component_);
-    if (_layoutMgr != null && _layoutMgr instanceof LayoutManager2) {
-        if (_layoutMgr instanceof BorderLayout) {
-        ((BorderLayout) _layoutMgr).addLayoutComponent(
-            component_, BorderLayout.CENTER);
-        }
-        else {
-        throw new IllegalArgumentException(
-            "LayoutManager2 requires a constraint object");
-        }
-    }
-    invalidate();
-    return component_;
+	_addComponent(component_);
+	if (_layoutMgr != null && _layoutMgr instanceof LayoutManager2) {
+	    if (_layoutMgr instanceof BorderLayout) {
+		((BorderLayout) _layoutMgr).addLayoutComponent(
+		    component_, BorderLayout.CENTER);
+	    }
+	    else {
+		throw new IllegalArgumentException(
+			"LayoutManager2 requires a constraint object");
+	    }
+	}
+	invalidate();
+	return component_;
     }
 
     /**
      * Removes the specified component from this container.
      */
     public void remove(Component component_) {
-    _components.remove(component_);
-    component_.setParent(null);
-    if (_currentFocus == component_) {
-        _currentFocus = null;
-        _currentFocus = getCurrentFocus();
-    }
-    invalidate();
+	_components.remove(component_);
+	component_.setParent(null);
+	if (_currentFocus == component_) {
+	    _currentFocus = null;
+	    _currentFocus = getCurrentFocus();
+	}
+	invalidate();
     }
 
     private void _addComponent(Component component_) {
 
-    /* Add the specified component to the list of components in this
-     * container.
-     */
-    _components.addElement(component_);
+	/* Add the specified component to the list of components in this
+	 * container.
+	 */
+	_components.addElement(component_);
 
-    /* Set this container as the parent of the component.
-     */
-    component_.setParent(this);
+	/* Set this container as the parent of the component.
+	 */
+	component_.setParent(this);
     }
 
     /**
@@ -180,12 +180,12 @@ public abstract class Container
      */
     public void add(Component component_, Object constraint_) {
 
-    _addComponent(component_);    // add to this container.
+	_addComponent(component_);    // add to this container.
 
-    if (_layoutMgr != null && _layoutMgr instanceof LayoutManager2) {
-        ((LayoutManager2) _layoutMgr).addLayoutComponent(
-            component_, constraint_);
-    }
+	if (_layoutMgr != null && _layoutMgr instanceof LayoutManager2) {
+	    ((LayoutManager2) _layoutMgr).addLayoutComponent(
+		    component_, constraint_);
+	}
     }
 
     public void setLayout(LayoutManager mgr_) { _layoutMgr = mgr_; }
@@ -194,18 +194,18 @@ public abstract class Container
      * Returns an array of all the components in this container.
      */
     public Component[] getComponents() { 
-    int arraylen = _components.size();
-    Component[] array = new Component[arraylen];
-    for (int i=0; i<arraylen; i++) {
-        array[i] = (Component) _components.elementAt(i);
-    }
-    return array;
+	int arraylen = _components.size();
+	Component[] array = new Component[arraylen];
+	for (int i=0; i<arraylen; i++) {
+	    array[i] = (Component) _components.elementAt(i);
+	}
+	return array;
     }
 
     /** Returns the number of components in this Container.
      */
     public int getComponentCount() {
-    return _components.size();
+	return _components.size();
     }
 
     /**
@@ -214,15 +214,15 @@ public abstract class Container
      */
     public void draw(Toolkit toolkit) {
 
-    if ( !isVisible())
-        return;
-    
-    Enumeration<Component> e = _components.elements();
-    while (e.hasMoreElements()) {
-        Component c = (Component) e.nextElement();
-        if (c.isVisible())
-        c.draw(toolkit);
-    }
+	if ( !isVisible())
+	    return;
+	
+	Enumeration<Component> e = _components.elements();
+	while (e.hasMoreElements()) {
+	    Component c = (Component) e.nextElement();
+	    if (c.isVisible())
+		c.draw(toolkit);
+	}
     }
 
     /**
@@ -232,14 +232,14 @@ public abstract class Container
      */
     public void setForeground(Color color_)
     {
-    super.setForeground(color_);
+	super.setForeground(color_);
 
-    Enumeration<Component> e = _components.elements();
-    while (e.hasMoreElements()) {
-        Component c = (Component) e.nextElement();
-        if (c.getForeground() == null)
-            c.setForeground(color_);
-    }
+	Enumeration<Component> e = _components.elements();
+	while (e.hasMoreElements()) {
+	    Component c = (Component) e.nextElement();
+	    if (c.getForeground() == null)
+	    	c.setForeground(color_);
+	}
     }
 
     /**
@@ -249,35 +249,35 @@ public abstract class Container
      */
     public void setBackground(Color color_)
     {
-    super.setBackground(color_);
+	super.setBackground(color_);
 
-    Enumeration <Component>e = _components.elements();
-    while (e.hasMoreElements()) {
-        Component c = (Component) e.nextElement();
-        if (c.getBackground() == null)
-        c.setBackground(color_);
-    }
+	Enumeration <Component>e = _components.elements();
+	while (e.hasMoreElements()) {
+	    Component c = (Component) e.nextElement();
+	    if (c.getBackground() == null)
+		c.setBackground(color_);
+	}
     }
 
     public void processKeyEvent(KeyEvent ke_) {
 
-    /** Invoke all the KeyListener callbacks that may have been registered
-     * for this Container. 
-     */
-    super.processKeyEvent(ke_);
-    if (ke_.isConsumed())
-        return;
+	/** Invoke all the KeyListener callbacks that may have been registered
+	 * for this Container. 
+	 */
+	super.processKeyEvent(ke_);
+	if (ke_.isConsumed())
+	    return;
 
-    /* Propagate the KeyEvent down to the current focus component
-     * inside this container.
-     */
-    if (_currentFocus != null) {
-        _currentFocus.processKeyEvent(ke_);
-    }
+	/* Propagate the KeyEvent down to the current focus component
+	 * inside this container.
+	 */
+	if (_currentFocus != null) {
+	    _currentFocus.processKeyEvent(ke_);
+	}
     }
 
     public void requestFocus() {
-    getCurrentFocus().requestFocus();
+	getCurrentFocus().requestFocus();
     }
 
     /**
@@ -293,29 +293,29 @@ public abstract class Container
      */
     public Component getCurrentFocus() {
 
-    if (_currentFocus == null) {
-        /* _currentFocus is not yet set. Try to set it to the first
-         * FocusTraversable component contained in this container.
-         */
-        Enumeration<Component> e = _components.elements();
-        while (e.hasMoreElements()) {
-        Component c = (Component) e.nextElement();
-        if (c.isFocusTraversable()) {
-            _currentFocus = c;
-            break;
-        }
-        }
-    }
+	if (_currentFocus == null) {
+	    /* _currentFocus is not yet set. Try to set it to the first
+	     * FocusTraversable component contained in this container.
+	     */
+	    Enumeration<Component> e = _components.elements();
+	    while (e.hasMoreElements()) {
+		Component c = (Component) e.nextElement();
+		if (c.isFocusTraversable()) {
+		    _currentFocus = c;
+		    break;
+		}
+	    }
+	}
 
-    if (_currentFocus == null) {
-        throw new IllegalComponentStateException(
-        "no focus-traversable components inside this Container");
-    }
-    if (_currentFocus instanceof Container) {
-        return ((Container) _currentFocus).getCurrentFocus();
-    }
-    else
-        return _currentFocus;
+	if (_currentFocus == null) {
+	    throw new IllegalComponentStateException(
+		"no focus-traversable components inside this Container");
+	}
+	if (_currentFocus instanceof Container) {
+	    return ((Container) _currentFocus).getCurrentFocus();
+	}
+	else
+	    return _currentFocus;
     }
 
     /**
@@ -326,61 +326,61 @@ public abstract class Container
      */
     public void nextFocus() {
 
-    /* Put a FOCUS_LOST event on the queue for the component that is
-     * losing the focus.
-     * If the current focus is a Container, then this method will have been
-     * called by that container (which would already have posted a 
-     * FOCUS_LOST event for its own contained component that was losing
-     * focus).
-    if ((_currentFocus instanceof Container) == false) {
-        FocusEvent evt = new FocusEvent(AWTEvent.FOCUS_LOST, _currentFocus);
-        EventQueue evtQueue =
-            Toolkit.getDefaultToolkit().getSystemEventQueue();
-        evtQueue.postEvent(evt);
-    }
-     */
+	/* Put a FOCUS_LOST event on the queue for the component that is
+	 * losing the focus.
+	 * If the current focus is a Container, then this method will have been
+	 * called by that container (which would already have posted a 
+	 * FOCUS_LOST event for its own contained component that was losing
+	 * focus).
+	if ((_currentFocus instanceof Container) == false) {
+	    FocusEvent evt = new FocusEvent(AWTEvent.FOCUS_LOST, _currentFocus);
+	    EventQueue evtQueue =
+		    Toolkit.getDefaultToolkit().getSystemEventQueue();
+	    evtQueue.postEvent(evt);
+	}
+	 */
 
-    /* Determine which component should get focus next.
-     */
-    int index = _components.indexOf(_currentFocus);
-    if (index == -1) {
-        throw new IllegalComponentStateException(
-        "focus component not found in parent");
-    }
+	/* Determine which component should get focus next.
+	 */
+	int index = _components.indexOf(_currentFocus);
+	if (index == -1) {
+	    throw new IllegalComponentStateException(
+		"focus component not found in parent");
+	}
 
-    Component focusCandidate;
+	Component focusCandidate;
 
-    for (;;) {
-        /* If the focus was owned by the last component in this container, 
-         * the new focus should go to the next component in the parent 
-         * container, IF THERE IS A PARENT (this container may be a 
-         * Window, in which case the parent is null).
-         */
-        if (++index >= _components.size()) {
-        if (getParent() != null) {
-            getParent().nextFocus();
-            return;
-        }
-        else {
-            /* Don't need to worry about infinite loops. Worst case, we
-             * should just end up where we started.
-             */
-            index = 0;
-        }
-        }
-        
-        focusCandidate = (Component) _components.elementAt(index);
+	for (;;) {
+	    /* If the focus was owned by the last component in this container, 
+	     * the new focus should go to the next component in the parent 
+	     * container, IF THERE IS A PARENT (this container may be a 
+	     * Window, in which case the parent is null).
+	     */
+	    if (++index >= _components.size()) {
+		if (getParent() != null) {
+		    getParent().nextFocus();
+		    return;
+		}
+		else {
+		    /* Don't need to worry about infinite loops. Worst case, we
+		     * should just end up where we started.
+		     */
+		    index = 0;
+		}
+	    }
+	    
+	    focusCandidate = (Component) _components.elementAt(index);
 
-        /* If the next component will not accept the focus, continue
-         * trying until we get one that does.
-         */
-        if (focusCandidate.isFocusTraversable())
-        break;
-    }
-    if (focusCandidate instanceof Container)
-        ((Container) focusCandidate).firstFocus();
+	    /* If the next component will not accept the focus, continue
+	     * trying until we get one that does.
+	     */
+	    if (focusCandidate.isFocusTraversable())
+		break;
+	}
+	if (focusCandidate instanceof Container)
+	    ((Container) focusCandidate).firstFocus();
 
-    focusCandidate.requestFocus();
+	focusCandidate.requestFocus();
     }
 
     /**
@@ -391,58 +391,58 @@ public abstract class Container
      */
     public void previousFocus() {
 
-    /* Put a FOCUS_LOST event on the queue for the component that is
-     * losing the focus.
-     * If the current focus is a Container, then this method will have been
-     * called by that container (which would already have posted a 
-     * FOCUS_LOST event for its own contained component that was losing
-     * focus).
-    if ((_currentFocus instanceof Container) == false) {
-        FocusEvent evt = new FocusEvent(AWTEvent.FOCUS_LOST, _currentFocus);
-        EventQueue evtQueue =
-            Toolkit.getDefaultToolkit().getSystemEventQueue();
-        evtQueue.postEvent(evt);
-    }
-     */
+	/* Put a FOCUS_LOST event on the queue for the component that is
+	 * losing the focus.
+	 * If the current focus is a Container, then this method will have been
+	 * called by that container (which would already have posted a 
+	 * FOCUS_LOST event for its own contained component that was losing
+	 * focus).
+	if ((_currentFocus instanceof Container) == false) {
+	    FocusEvent evt = new FocusEvent(AWTEvent.FOCUS_LOST, _currentFocus);
+	    EventQueue evtQueue =
+		    Toolkit.getDefaultToolkit().getSystemEventQueue();
+	    evtQueue.postEvent(evt);
+	}
+	 */
 
-    /* Determine which component should get focus next.
-     */
-    int index = _components.indexOf(_currentFocus);
-    if (index == -1) {
-        throw new IllegalArgumentException(
-        "focus component not found in parent");
-    }
+	/* Determine which component should get focus next.
+	 */
+	int index = _components.indexOf(_currentFocus);
+	if (index == -1) {
+	    throw new IllegalArgumentException(
+		"focus component not found in parent");
+	}
 
-    Component focusCandidate;
+	Component focusCandidate;
 
-    for (;;) {
-        /* If the focus was owned by the first component in this container, 
-         * the new focus should go to the previous component in the parent 
-         * container, IF THERE IS A PARENT (this container may be a 
-         * Window, in which case the parent is null).
-         */
-        if (--index < 0) {
-        if (getParent() != null) {
-            getParent().previousFocus();
-            return;
-        }
-        else {
-            index = _components.size() - 1;
-        }
-        }
-        
-        focusCandidate = (Component) _components.elementAt(index);
+	for (;;) {
+	    /* If the focus was owned by the first component in this container, 
+	     * the new focus should go to the previous component in the parent 
+	     * container, IF THERE IS A PARENT (this container may be a 
+	     * Window, in which case the parent is null).
+	     */
+	    if (--index < 0) {
+		if (getParent() != null) {
+		    getParent().previousFocus();
+		    return;
+		}
+		else {
+		    index = _components.size() - 1;
+		}
+	    }
+	    
+	    focusCandidate = (Component) _components.elementAt(index);
 
-        /* If the next component will not accept the focus, continue
-         * trying until we get one that does.
-         */
-        if (focusCandidate.isFocusTraversable())
-        break;
-    }
-    if (focusCandidate instanceof Container)
-        ((Container) focusCandidate).lastFocus();
+	    /* If the next component will not accept the focus, continue
+	     * trying until we get one that does.
+	     */
+	    if (focusCandidate.isFocusTraversable())
+		break;
+	}
+	if (focusCandidate instanceof Container)
+	    ((Container) focusCandidate).lastFocus();
 
-    focusCandidate.requestFocus();
+	focusCandidate.requestFocus();
     }
 
     /**
@@ -450,9 +450,9 @@ public abstract class Container
      * requestFocus() method of the contained component.
      */
     public void setFocus(Component focus_) {
-    _currentFocus = focus_;
-    if (getParent() != null)
-        getParent().setFocus(this);
+	_currentFocus = focus_;
+	if (getParent() != null)
+	    getParent().setFocus(this);
     }
 
     /**
@@ -461,16 +461,16 @@ public abstract class Container
      * TAB or SHIFT-TAB is pressed).
      */
     public boolean isFocusTraversable() {
-    if ( !super.isFocusTraversable())
-        return false;
+	if ( !super.isFocusTraversable())
+	    return false;
 
-    Enumeration<Component> e = _components.elements();
-    while (e.hasMoreElements()) {
-        Component c = (Component) e.nextElement();
-        if (c.isFocusTraversable())
-        return true;
-    }
-    return false;
+	Enumeration<Component> e = _components.elements();
+	while (e.hasMoreElements()) {
+	    Component c = (Component) e.nextElement();
+	    if (c.isFocusTraversable())
+		return true;
+	}
+	return false;
     }
 
     public Insets getInsets() { return _insets; }
@@ -478,11 +478,11 @@ public abstract class Container
     /* Default implementation of debug, gets overridden by subclasses.
      */
     public void debug(int level_) {
-    Enumeration<Component> e = _components.elements();
-    while (e.hasMoreElements()) {
-        Component c = (Component) e.nextElement();
-        c.debug(level_ + 1);
-    }
+	Enumeration<Component> e = _components.elements();
+	while (e.hasMoreElements()) {
+	    Component c = (Component) e.nextElement();
+	    c.debug(level_ + 1);
+	}
     }
 
     /**
@@ -494,18 +494,18 @@ public abstract class Container
      */
     private void firstFocus() {
 
-    Enumeration<Component> e = _components.elements();
-    while (e.hasMoreElements()) {
-        Component c = (Component) e.nextElement();
-        if (c.isFocusTraversable()) {
-        if (c instanceof Container) {
-            ((Container) c).firstFocus();
-        }
+	Enumeration<Component> e = _components.elements();
+	while (e.hasMoreElements()) {
+	    Component c = (Component) e.nextElement();
+	    if (c.isFocusTraversable()) {
+		if (c instanceof Container) {
+		    ((Container) c).firstFocus();
+		}
 
-        _currentFocus = c;
-        return;
-        }
-    }
+		_currentFocus = c;
+		return;
+	    }
+	}
     }
 
     /**
@@ -517,17 +517,17 @@ public abstract class Container
      */
     private void lastFocus() {
 
-    for (int i=_components.size() - 1; i >= 0; i--) {
-        Component c = (Component) _components.elementAt(i);
-        if (c.isFocusTraversable()) {
-        if (c instanceof Container) {
-            ((Container) c).lastFocus();
-        }
+	for (int i=_components.size() - 1; i >= 0; i--) {
+	    Component c = (Component) _components.elementAt(i);
+	    if (c.isFocusTraversable()) {
+		if (c instanceof Container) {
+		    ((Container) c).lastFocus();
+		}
 
-        _currentFocus = c;
-        return;
-        }
-    }
+		_currentFocus = c;
+		return;
+	    }
+	}
     }
 
     /**
@@ -537,13 +537,13 @@ public abstract class Container
      * been added, removed or resized.
      */
     public void validate() {
-    if (_isValid)
-        return;
+	if (_isValid)
+	    return;
 
-    /* doLayout sets the validate flag (unless the layout manager is
-     * an instance of LayoutManager2).
-     */
-    doLayout();
+	/* doLayout sets the validate flag (unless the layout manager is
+	 * an instance of LayoutManager2).
+	 */
+	doLayout();
     }
 
     /**
@@ -558,8 +558,8 @@ public abstract class Container
      * again.
      */
     public void invalidate() {
-    _isValid = false;
-    super.invalidate();
+	_isValid = false;
+	super.invalidate();
     }
 
     //====================================================================

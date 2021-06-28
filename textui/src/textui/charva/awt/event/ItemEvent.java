@@ -35,9 +35,9 @@ public class ItemEvent extends AWTEvent
      * selected or deselected.
      */
     public ItemEvent(Component source_, Object item_, int statechange_) {
-    super(source_, AWTEvent.ITEM_STATE_CHANGED);
-    _item = item_;
-    _statechange = statechange_;
+	super(source_, AWTEvent.ITEM_STATE_CHANGED);
+	_item = item_;
+	_statechange = statechange_;
     }
 
     /** 

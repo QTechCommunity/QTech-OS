@@ -42,13 +42,13 @@ public class ScrollEvent extends AWTEvent
      * column that must appear in the viewport.
      */
     public ScrollEvent(Component source_, int direction_, Point limit_) {
-    super(source_, AWTEvent.SCROLL_EVENT);
-    _direction = direction_;
-    _limit = limit_;
+	super(source_, AWTEvent.SCROLL_EVENT);
+	_direction = direction_;
+	_limit = limit_;
     }
 
     public Scrollable getScrollable() { 
-    return (Scrollable) super.getSource();
+	return (Scrollable) super.getSource();
     }
 
     public int getDirection() { return _direction; }

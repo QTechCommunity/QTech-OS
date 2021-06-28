@@ -55,8 +55,8 @@ import org.jnode.shell.syntax.XMLSyntaxSpecAdapter;
  * @author crawley@jnode.org
  */
 public class Emu {
-    // FIXME configuring a hard-coded list of projects is a bad idea.
-    private static final String[] ALL_PROJECTS = new String[]{
+	// FIXME configuring a hard-coded list of projects is a bad idea.
+	private static final String[] ALL_PROJECTS = new String[]{
         "cli", "core", "distr", "fs", "gui", "net", "shell", "sound", "textui"
     };
 

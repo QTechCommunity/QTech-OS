@@ -33,12 +33,12 @@ public class AdjustmentEvent extends AWTEvent
      * @param value_ The value of the adjustable component.
      */
     public AdjustmentEvent(Component source_, int value_) {
-    super(source_, AWTEvent.ADJUSTMENT_EVENT);
-    _value = value_;
+	super(source_, AWTEvent.ADJUSTMENT_EVENT);
+	_value = value_;
     }
 
     public Component getAdjustable() {
-    return (Component) super.getSource();
+	return (Component) super.getSource();
     }
 
     public int getValue() { return _value; }

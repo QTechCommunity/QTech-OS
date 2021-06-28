@@ -35,13 +35,13 @@ public class JLabel
     /** Construct an empty label.
      */
     public JLabel() {
-    this("", SwingConstants.LEFT);
+	this("", SwingConstants.LEFT);
     }
 
     /** Construct a JLabel with the specified text.
      */
     public JLabel(String text_) {
-    this(text_, SwingConstants.LEFT);
+	this(text_, SwingConstants.LEFT);
     }
 
     /** 
@@ -49,85 +49,85 @@ public class JLabel
      * other than left-aligned.
      */
     public JLabel(String text_, int align_) {
-    _labeltext = text_;
-    _width = text_.length();
-    switch (align_) {
-        case SwingConstants.LEFT:
-        _alignmentX = LEFT_ALIGNMENT;
-        break;
-        case SwingConstants.CENTER:
-        _alignmentX = CENTER_ALIGNMENT;
-        break;
-        case SwingConstants.RIGHT:
-        _alignmentX = RIGHT_ALIGNMENT;
-        break;
-    }
+	_labeltext = text_;
+	_width = text_.length();
+	switch (align_) {
+	    case SwingConstants.LEFT:
+		_alignmentX = LEFT_ALIGNMENT;
+		break;
+	    case SwingConstants.CENTER:
+		_alignmentX = CENTER_ALIGNMENT;
+		break;
+	    case SwingConstants.RIGHT:
+		_alignmentX = RIGHT_ALIGNMENT;
+		break;
+	}
     }
 
     public void setLength(int length_) { _width = length_; }
 
     public Dimension minimumSize() {
-    return this.getSize();
+	return this.getSize();
     }
 
     public void draw(Toolkit toolkit) {
 
-    // Draw the border if it exists
-    super.draw(toolkit);
+	// Draw the border if it exists
+	super.draw(toolkit);
 
-    /* Get the absolute origin of this component.
-     */
-    Point origin = getLocationOnScreen();
-    Insets insets = super.getInsets();
-    origin.translate(insets.left, insets.top);
+	/* Get the absolute origin of this component.
+	 */
+	Point origin = getLocationOnScreen();
+	Insets insets = super.getInsets();
+	origin.translate(insets.left, insets.top);
 
-    toolkit.setCursor(origin);
+	toolkit.setCursor(origin);
 
-    // we'll sort out justification and video-attributes etc later.
-    StringBuffer buf = new StringBuffer(_labeltext);
-    int textlength = _labeltext.length();
-    if (_width > textlength) {
-        for (int i=textlength; i<_width; i++)
-        buf.append(' ');
-    }
-    else if (_width < textlength)
-        buf.setLength(_width);    // truncate
+	// we'll sort out justification and video-attributes etc later.
+	StringBuffer buf = new StringBuffer(_labeltext);
+	int textlength = _labeltext.length();
+	if (_width > textlength) {
+	    for (int i=textlength; i<_width; i++)
+		buf.append(' ');
+	}
+	else if (_width < textlength)
+	    buf.setLength(_width);	// truncate
 
-    int colorpair = getCursesColor();
-    toolkit.addString(buf.toString(), 0, colorpair);
+	int colorpair = getCursesColor();
+	toolkit.addString(buf.toString(), 0, colorpair);
     }
 
     /**
      * This may be wrong, but it'll do for now.
      */
     public Dimension getSize() {
-    return new Dimension(this.getWidth(), this.getHeight());
+	return new Dimension(this.getWidth(), this.getHeight());
     }
 
     public int getWidth() {
-    Insets insets = super.getInsets();
-    return _width + insets.left + insets.right; 
+	Insets insets = super.getInsets();
+	return _width + insets.left + insets.right; 
     }
 
     public int getHeight() {
-    Insets insets = super.getInsets();
-    return 1 + insets.top + insets.bottom;
+	Insets insets = super.getInsets();
+	return 1 + insets.top + insets.bottom;
     }
 
     public synchronized void setText(String label_) {
-    _labeltext = label_;
+	_labeltext = label_;
 
-    /* If the text is shorter than it was previously, blank out the
-     * previous text.  In practice this means that the label grows
-     * in length but never shrinks.
-     */
-    if (label_.length() > _width)
-        _width = label_.length();
+	/* If the text is shorter than it was previously, blank out the
+	 * previous text.  In practice this means that the label grows
+	 * in length but never shrinks.
+	 */
+	if (label_.length() > _width)
+	    _width = label_.length();
 
-    /* If this component is already displayed, generate a PaintEvent
-     * and post it onto the queue.
-     */
-    repaint();
+	/* If this component is already displayed, generate a PaintEvent
+	 * and post it onto the queue.
+	 */
+	repaint();
     }
 
     public String getText() { return _labeltext; }
@@ -147,14 +147,14 @@ public class JLabel
     public void requestFocus() {}
 
     public void debug(int level_) {
-    for (int i=0; i<level_; i++)
-        System.err.print("    ");
-    System.err.println("JLabel origin=" + _origin + 
-        " size=" + getSize() + " label=" + _labeltext);
+	for (int i=0; i<level_; i++)
+	    System.err.print("    ");
+	System.err.println("JLabel origin=" + _origin + 
+	    " size=" + getSize() + " label=" + _labeltext);
     }
 
     public String toString() {
-    return "JLabel: [" + getText() + "]";
+	return "JLabel: [" + getText() + "]";
     }
 
     //====================================================================

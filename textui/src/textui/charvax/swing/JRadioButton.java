@@ -41,21 +41,21 @@ public class JRadioButton
     /** Create a new JRadioButton with an empty label.
      */
     public JRadioButton() {
-    this("", false);
+	this("", false);
     }
 
     /** Use this constructor when you want to initialize the value.
      */
     public JRadioButton(String text_) {
-    this(text_, false);
+	this(text_, false);
     }
 
     /** 
      * Use this constructor when you want to set both the label and the value.
      */
     public JRadioButton(String label_, boolean value_) {
-    super.setText(label_);
-    super._selected = value_;
+	super.setText(label_);
+	super._selected = value_;
     }
 
     /**
@@ -63,23 +63,23 @@ public class JRadioButton
      * Component superclass.
      */
     public Dimension getSize() {
-    return new Dimension(this.getWidth(), this.getHeight());
+	return new Dimension(this.getWidth(), this.getHeight());
     }
 
     public int getWidth() {
-    Insets insets = super.getInsets();
-    return super.getText().length() + 4 + insets.left + insets.right;
+	Insets insets = super.getInsets();
+	return super.getText().length() + 4 + insets.left + insets.right;
     }
 
     public int getHeight() {
-    Insets insets = super.getInsets();
-    return 1 + insets.top + insets.bottom;
+	Insets insets = super.getInsets();
+	return 1 + insets.top + insets.bottom;
     }
 
     /** Called by the LayoutManager.
      */
     public Dimension minimumSize() {
-    return this.getSize();
+	return this.getSize();
     }
 
     /**
@@ -88,94 +88,94 @@ public class JRadioButton
      */
     public void draw(Toolkit toolkit) {
 
-    // Draw the border if it exists
-    super.draw(toolkit);
+	// Draw the border if it exists
+	super.draw(toolkit);
 
-    String valstring;
+	String valstring;
 
-    /* Get the absolute origin of this component.
-     */
-    Point origin = getLocationOnScreen();
-    Insets insets = super.getInsets();
+	/* Get the absolute origin of this component.
+	 */
+	Point origin = getLocationOnScreen();
+	Insets insets = super.getInsets();
 
-    toolkit.setCursor(origin.addOffset(insets.left, insets.top));
-    if (super.isSelected())
-        valstring = "(*) ";
-    else
-        valstring = "( ) ";
+	toolkit.setCursor(origin.addOffset(insets.left, insets.top));
+	if (super.isSelected())
+	    valstring = "(*) ";
+	else
+	    valstring = "( ) ";
 
-    int colorpair = getCursesColor();
-    int attribute = super._enabled ? Toolkit.A_BOLD : 0;
-    toolkit.addString(valstring + super.getLabelString(), attribute, colorpair);
+	int colorpair = getCursesColor();
+	int attribute = super._enabled ? Toolkit.A_BOLD : 0;
+	toolkit.addString(valstring + super.getLabelString(), attribute, colorpair);
     }
 
     public void processKeyEvent(KeyEvent ke_) {
-    /* First call all KeyListener objects that may have been registered
-     * for this component. 
-     */
-    super.processKeyEvent(ke_);
+	/* First call all KeyListener objects that may have been registered
+	 * for this component. 
+	 */
+	super.processKeyEvent(ke_);
 
-    /* Check if any of the KeyListeners consumed the KeyEvent.
-     */
-    if (ke_.isConsumed())
-        return;
+	/* Check if any of the KeyListeners consumed the KeyEvent.
+	 */
+	if (ke_.isConsumed())
+	    return;
 
-    Toolkit term = Toolkit.getDefaultToolkit();
-    int key = ke_.getKeyCode();
-    switch (key) {
-        case '\t':
-        getParent().nextFocus();
-        return;
+	Toolkit term = Toolkit.getDefaultToolkit();
+	int key = ke_.getKeyCode();
+	switch (key) {
+	    case '\t':
+		getParent().nextFocus();
+		return;
 
-        case KeyEvent.VK_BACK_TAB:
-        getParent().previousFocus();
-        return;
+	    case KeyEvent.VK_BACK_TAB:
+		getParent().previousFocus();
+		return;
 
-        /* Set the button's state to SELECTED on ENTER.
-         */
-        case KeyEvent.VK_ENTER:
-        // Check if the button is disabled or ALREADY selected.
-        if ( (!super.isEnabled()) || super.isSelected()) {
-            return;    
-        }
-        super.setSelected(true);
+	    /* Set the button's state to SELECTED on ENTER.
+	     */
+	    case KeyEvent.VK_ENTER:
+		// Check if the button is disabled or ALREADY selected.
+		if ( (!super.isEnabled()) || super.isSelected()) {
+		    return;	
+		}
+		super.setSelected(true);
 
-        // post an ItemEvent.
-        EventQueue queue = term.getSystemEventQueue();
-        queue.postEvent(new ItemEvent(this, this, ItemEvent.SELECTED));
-        break;
-    }
+		// post an ItemEvent.
+		EventQueue queue = term.getSystemEventQueue();
+		queue.postEvent(new ItemEvent(this, this, ItemEvent.SELECTED));
+		break;
+	}
 
-    draw(Toolkit.getDefaultToolkit());
-    requestFocus();
-    super.requestSync();
+	draw(Toolkit.getDefaultToolkit());
+	requestFocus();
+	super.requestSync();
     }
 
     public void requestFocus() {
-    /* Generate the FOCUS_GAINED event.
-     */
-    super.requestFocus();
+	/* Generate the FOCUS_GAINED event.
+	 */
+	super.requestFocus();
 
-    /* Get the absolute origin of this component.
-     */
-    Point origin = getLocationOnScreen();
-    Insets insets = super.getInsets();
-    Toolkit.getDefaultToolkit().setCursor(
-        origin.addOffset(1 + insets.left, 0 + insets.top));
+	/* Get the absolute origin of this component.
+	 */
+	Point origin = getLocationOnScreen();
+	Insets insets = super.getInsets();
+	Toolkit.getDefaultToolkit().setCursor(
+		origin.addOffset(1 + insets.left, 0 + insets.top));
     }
 
     public String toString() {
-    return "JRadioButton location=" + getLocation() +
-        " label=\"" + getText() +
-        "\" actionCommand=\"" + getActionCommand() +
-        "\" selected=" + isSelected();
+	return "JRadioButton location=" + getLocation() +
+	    " label=\"" + getText() +
+	    "\" actionCommand=\"" + getActionCommand() +
+	    "\" selected=" + isSelected();
     }
 
     public void debug(int level_) {
-    for (int i=0; i<level_; i++)
-        System.err.print("    ");
-    System.err.println("JRadioButton origin=" + _origin + 
-        " size=" + getSize() + " label=" + super.getText());
+	for (int i=0; i<level_; i++)
+	    System.err.print("    ");
+	System.err.println("JRadioButton origin=" + _origin + 
+	    " size=" + getSize() + " label=" + super.getText());
     }
 
     //====================================================================

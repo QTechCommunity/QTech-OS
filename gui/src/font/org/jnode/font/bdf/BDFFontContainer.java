@@ -47,15 +47,15 @@ import org.apache.log4j.Logger;
 
 
 public class BDFFontContainer {
-    private static final Logger log = Logger.getLogger(BDFFontContainer.class);
-    static
-    {
-        log.setLevel(Level.DEBUG);
-    }
+	private static final Logger log = Logger.getLogger(BDFFontContainer.class);
+	static
+	{
+		log.setLevel(Level.DEBUG);
+	}
 
     private static final PropertyResourceBundle charMapper =
-        (PropertyResourceBundle)PropertyResourceBundle.getBundle(
-                    BDFFontContainer.class.getPackage().getName()+".mappings");
+    	(PropertyResourceBundle)PropertyResourceBundle.getBundle(
+    				BDFFontContainer.class.getPackage().getName()+".mappings");
 
     static final Object LOCK = new Object();
     private static final long serialVersionUID = -2156798287434571634L;
@@ -90,7 +90,7 @@ public class BDFFontContainer {
     private int style;
 
     public static final BDFFontContainer createFont(Reader r) throws Exception {
-        log.debug("<<< BEGIN createFont >>>");
+    	log.debug("<<< BEGIN createFont >>>");
         BDFParser parser = new BDFParser(r);
         log.debug("createFont: before parser.createFont");
         BDFFontContainer font = parser.createFont();
@@ -208,7 +208,7 @@ public class BDFFontContainer {
         return properties;
     }
 
-    public BDFParser.Dimension getResolution() {
+	public BDFParser.Dimension getResolution() {
         return resolution;
     }
 
@@ -266,13 +266,13 @@ public class BDFFontContainer {
         this.properties = properties;
     }
 
-    public void setResolution(BDFParser.Dimension resolution) {
-        this.resolution = resolution;
-    }
+	public void setResolution(BDFParser.Dimension resolution) {
+		this.resolution = resolution;
+	}
 
     public void setResolution(int xres, int yres) {
-        resolution.setSize(xres, yres);
-    }
+		resolution.setSize(xres, yres);
+	}
 
     public void setVersion(BDFParser.Version version) {
         this.version = version;

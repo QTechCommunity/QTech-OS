@@ -94,52 +94,52 @@ public class EventManager
 
     // Add lists for all the event types
     _requests.put (new Byte (EventRequest.EVENT_SINGLE_STEP),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_BREAKPOINT),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_FRAME_POP),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_EXCEPTION),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_USER_DEFINED),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_THREAD_START),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_THREAD_END),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_CLASS_PREPARE),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_CLASS_UNLOAD),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_CLASS_LOAD),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_FIELD_ACCESS),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_FIELD_MODIFY),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_METHOD_ENTRY),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_METHOD_EXIT),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_VM_INIT),
-           new Hashtable ());
+		   new Hashtable ());
     _requests.put (new Byte (EventRequest.EVENT_VM_DEATH),
-           new Hashtable ());
+		   new Hashtable ());
 
     // Add auto-generated event notifications
     // only two: VM_INIT, VM_DEATH
     try
       {
-    requestEvent (new EventRequest (0,
-                    EventRequest.EVENT_VM_INIT,
-                    EventRequest.SUSPEND_NONE));
-    requestEvent (new EventRequest (0,
-                    EventRequest.EVENT_VM_DEATH,
-                    EventRequest.SUSPEND_NONE));
+	requestEvent (new EventRequest (0,
+					EventRequest.EVENT_VM_INIT,
+					EventRequest.SUSPEND_NONE));
+	requestEvent (new EventRequest (0,
+					EventRequest.EVENT_VM_DEATH,
+					EventRequest.SUSPEND_NONE));
       }
     catch (JdwpException e)
       {
-    // This can't happen
+	// This can't happen
       }
   }
 
@@ -160,8 +160,8 @@ public class EventManager
     requests = (Hashtable) _requests.get (kind);
     if (requests == null)
       {
-    // Did not get a valid event type
-    throw new IllegalArgumentException ("invalid event kind: " + kind);
+	// Did not get a valid event type
+	throw new IllegalArgumentException ("invalid event kind: " + kind);
       }
     boolean match = false;
 
@@ -171,9 +171,9 @@ public class EventManager
     Iterator rIter = requests.values().iterator ();
     while (rIter.hasNext ())
       {
-    EventRequest request = (EventRequest) rIter.next ();
-    if (request.matches (event))
-      interestedRequest = request;
+	EventRequest request = (EventRequest) rIter.next ();
+	if (request.matches (event))
+	  interestedRequest = request;
       }
 
     return interestedRequest;
@@ -202,8 +202,8 @@ public class EventManager
     requests = (Hashtable) _requests.get (kind);
     if (requests == null)
       {
-    // Did not get a valid event type
-    throw new InvalidEventTypeException (request.getEventKind ());
+	// Did not get a valid event type
+	throw new InvalidEventTypeException (request.getEventKind ());
       }
 
     // Register the event with the VM
@@ -226,16 +226,16 @@ public class EventManager
     requests = (Hashtable) _requests.get (new Byte (kind));
     if (requests == null)
       {
-    // Did not get a valid event type
-    throw new IllegalArgumentException ("invalid event kind: " + kind);
+	// Did not get a valid event type
+	throw new IllegalArgumentException ("invalid event kind: " + kind);
       }
 
     Integer iid = new Integer (id);
     EventRequest request = (EventRequest) requests.get (iid);
     if (request != null)
       {
-    VMVirtualMachine.unregisterEvent (request);
-    requests.remove (iid);
+	VMVirtualMachine.unregisterEvent (request);
+	requests.remove (iid);
       }
   }
 
@@ -252,8 +252,8 @@ public class EventManager
     Hashtable requests = (Hashtable) _requests.get (new Byte (kind));
     if (requests == null)
       {
-    // Did not get a valid event type
-    throw new IllegalArgumentException ("invalid event kind: " + kind);
+	// Did not get a valid event type
+	throw new IllegalArgumentException ("invalid event kind: " + kind);
       }
 
     VMVirtualMachine.clearEvents (kind);
@@ -274,8 +274,8 @@ public class EventManager
     Hashtable requests = (Hashtable) _requests.get (new Byte (kind));
     if (requests == null)
       {
-    // Did not get a valid event type
-    throw new IllegalArgumentException ("invalid event kind: " + kind);
+	// Did not get a valid event type
+	throw new IllegalArgumentException ("invalid event kind: " + kind);
       }
 
     return (EventRequest) requests.get (new Integer (id));
@@ -293,8 +293,8 @@ public class EventManager
     Hashtable requests = (Hashtable) _requests.get (new Byte (kind));
     if (requests == null)
       {
-    // Did not get a valid event type
-    throw new IllegalArgumentException ("invalid event kind: " + kind);
+	// Did not get a valid event type
+	throw new IllegalArgumentException ("invalid event kind: " + kind);
       }
     
     return requests.values ();

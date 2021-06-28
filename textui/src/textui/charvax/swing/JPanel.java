@@ -37,7 +37,7 @@ public class JPanel
      * The default constructor sets the layout manager to FlowLayout.
      */
     public JPanel() {
-    _layoutMgr = new FlowLayout();
+	_layoutMgr = new FlowLayout();
     }
 
     /**
@@ -45,21 +45,21 @@ public class JPanel
      * the default FlowLayout.
      */
     public JPanel(LayoutManager layout_) {
-    _layoutMgr = layout_;
+	_layoutMgr = layout_;
     }
 
     public void setBorder(Border border_) {
-    _border = border_;
+	_border = border_;
     }
 
     public Border getBorder() { return _border; }
 
     public Insets getInsets() { 
-    if (_border != null) {
-        return _border.getBorderInsets(this);
-    }
-    else
-        return super.getInsets();
+	if (_border != null) {
+	    return _border.getBorderInsets(this);
+	}
+	else
+	    return super.getInsets();
     }
 
     /**
@@ -68,37 +68,37 @@ public class JPanel
      * @param toolkit
      */
     public void draw(Toolkit toolkit) {
-    Point origin = getLocationOnScreen();
+	Point origin = getLocationOnScreen();
 
-    /* Blank out the area of this component, but only if this
-     * component's color-pair is different than that of the
-     * parent container.
-     */
-    int colorpair = getCursesColor();
-//    Container parent = getParent();
-//    if (parent != null && colorpair != parent.getCursesColor())
-        toolkit.blankBox(origin, _size, colorpair);
+	/* Blank out the area of this component, but only if this
+	 * component's color-pair is different than that of the
+	 * parent container.
+	 */
+	int colorpair = getCursesColor();
+//	Container parent = getParent();
+//	if (parent != null && colorpair != parent.getCursesColor())
+	    toolkit.blankBox(origin, _size, colorpair);
 
-    if (_border != null) {
-        _border.paintBorder(this, 0,
-            origin.x, origin.y,
-            _size.width, _size.height, toolkit);
-    }
+	if (_border != null) {
+	    _border.paintBorder(this, 0,
+		    origin.x, origin.y,
+		    _size.width, _size.height, toolkit);
+	}
 
-    /* Draw all the components contained by this container.
-     */
-    super.draw(toolkit);
+	/* Draw all the components contained by this container.
+	 */
+	super.draw(toolkit);
     }
 
     public String toString() {
-    return "JPanel origin=" + _origin + " size=" + _size;
+	return "JPanel origin=" + _origin + " size=" + _size;
     }
 
     public void debug(int level_) {
-    for (int i=0; i<level_; i++)
-        System.err.print("    ");
-    System.err.println(this.toString());
-    super.debug(level_ + 1);
+	for (int i=0; i<level_; i++)
+	    System.err.print("    ");
+	System.err.println(this.toString());
+	super.debug(level_ + 1);
     }
 
     //====================================================================

@@ -102,7 +102,7 @@ public class VirtualMachineCommandSet
             executeResume(bb, os);
             break;
           case JdwpConstants.CommandSet.VirtualMachine.EXIT:
-        shutdown = true;
+	    shutdown = true;
             executeExit(bb, os);
             break;
           case JdwpConstants.CommandSet.VirtualMachine.CREATE_STRING:

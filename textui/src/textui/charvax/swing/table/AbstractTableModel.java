@@ -44,21 +44,21 @@ public abstract class AbstractTableModel
      * changes.
      */
     public void addTableModelListener(TableModelListener l) {
-    _listeners.add(l);
+	_listeners.add(l);
     }
 
     /** Removes the specified listener from the list of listeners.
      */
     public void removeTableModelListener(TableModelListener l) {
-    _listeners.remove(l);
+	_listeners.remove(l);
     }
 
     /** Returns a default name for the column using spreadsheet conventions: A,
      * B, C... 
      */
     public String getColumnName(int column_) {
-    StringBuffer buf = new StringBuffer('A' + column_);
-    return buf.toString();
+	StringBuffer buf = new StringBuffer('A' + column_);
+	return buf.toString();
     }
 
     /** This empty implementation is provided so that users don't have to
@@ -70,48 +70,48 @@ public abstract class AbstractTableModel
      * registered themselves as listeners for this TableModel.
      */
     public void fireTableChanged(TableModelEvent evt_) {
-    Enumeration<TableModelListener> e = _listeners.elements();
-    while (e.hasMoreElements()) {
-        TableModelListener l = (TableModelListener) e.nextElement();
-        l.tableChanged(evt_);
-    }
+	Enumeration<TableModelListener> e = _listeners.elements();
+	while (e.hasMoreElements()) {
+	    TableModelListener l = (TableModelListener) e.nextElement();
+	    l.tableChanged(evt_);
+	}
     }
 
     /** Notifies all listeners that the value at [row, column] has been
      * updated.
      */
     public void fireTableCellUpdated(int row_, int column_) {
-    TableModelEvent evt = new TableModelEvent(this, row_, row_, column_);
-    fireTableChanged(evt);
+	TableModelEvent evt = new TableModelEvent(this, row_, row_, column_);
+	fireTableChanged(evt);
     }
 
     /** Notifies all listeners that all cell values in the table may have
      * changed.
      */
     public void fireTableDataChanged() {
-    TableModelEvent evt = new TableModelEvent(
-        this, 0, this.getRowCount()-1, TableModelEvent.ALL_COLUMNS);
-    fireTableChanged(evt);
+	TableModelEvent evt = new TableModelEvent(
+	    this, 0, this.getRowCount()-1, TableModelEvent.ALL_COLUMNS);
+	fireTableChanged(evt);
     }
 
     /** Notifies all listeners that rows in the range [firstRow_, lastRow_],
      * inclusive, have been deleted.
      */
     public void fireTableRowsDeleted(int firstRow_, int lastRow_) {
-    TableModelEvent evt = new TableModelEvent(
-        this, firstRow_, lastRow_, TableModelEvent.ALL_COLUMNS,
-        TableModelEvent.DELETE);
-    fireTableChanged(evt);
+	TableModelEvent evt = new TableModelEvent(
+	    this, firstRow_, lastRow_, TableModelEvent.ALL_COLUMNS,
+	    TableModelEvent.DELETE);
+	fireTableChanged(evt);
     }
 
     /** Notifies all listeners that rows in the range [firstRow_, lastRow_],
      * inclusive, have been inserted.
      */
     public void fireTableRowsInserted(int firstRow_, int lastRow_) {
-    TableModelEvent evt = new TableModelEvent(
-        this, firstRow_, lastRow_, TableModelEvent.ALL_COLUMNS,
-        TableModelEvent.INSERT);
-    fireTableChanged(evt);
+	TableModelEvent evt = new TableModelEvent(
+	    this, firstRow_, lastRow_, TableModelEvent.ALL_COLUMNS,
+	    TableModelEvent.INSERT);
+	fireTableChanged(evt);
     }
 
     //====================================================================

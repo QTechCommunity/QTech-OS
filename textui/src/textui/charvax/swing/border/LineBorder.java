@@ -28,21 +28,21 @@ public class LineBorder
     implements Border
 {
     public LineBorder(Color color_) {
-    _lineColor = color_;
+	_lineColor = color_;
     }
 
     /** Returns the insets of the border.
      */
     public Insets getBorderInsets(Component component_) {
-    return new Insets(1,1,1,1);
+	return new Insets(1,1,1,1);
     }
 
     public static Border createBlackLineBorder() {
-    return _blackLineBorder;
+	return _blackLineBorder;
     }
 
     public Color getLineColor() {
-    return _lineColor;
+	return _lineColor;
     }
 
     /**
@@ -63,16 +63,16 @@ public class LineBorder
     public void paintBorder(Component component_,
                             int graphics_, int x_, int y_, int width_, int height_, Toolkit toolkit) {
 
-    Color background = component_.getBackground();
-    if (_lineColor == null)
-        _lineColor = component_.getForeground();
+	Color background = component_.getBackground();
+	if (_lineColor == null)
+	    _lineColor = component_.getForeground();
 
-    int curses_colorpair = Color.getCursesColor(_lineColor, background);
+	int curses_colorpair = Color.getCursesColor(_lineColor, background);
 
-    toolkit.drawBoxNative(x_, y_,
-        x_ + width_ - 1,
-        y_ + height_ - 1,
-        curses_colorpair);
+	toolkit.drawBoxNative(x_, y_,
+		x_ + width_ - 1,
+		y_ + height_ - 1,
+		curses_colorpair);
     }
 
     //====================================================================

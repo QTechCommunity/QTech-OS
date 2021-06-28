@@ -44,35 +44,35 @@ public class JViewport
     /** Set the JViewport's one child.
      */
     public void setView(Component child_) {
-    if ((child_ instanceof Scrollable) == false &&
-        (child_ instanceof TableHeader) == false) {
+	if ((child_ instanceof Scrollable) == false &&
+	    (child_ instanceof TableHeader) == false) {
 
-        throw new IllegalArgumentException(
-        "JViewport's view must be a Scrollable or a TableHeader");
-    }
+	    throw new IllegalArgumentException(
+		"JViewport's view must be a Scrollable or a TableHeader");
+	}
 
-    if (_child != null)
-        super.remove(_child);   // only allow one child.
+	if (_child != null)
+	    super.remove(_child);   // only allow one child.
 
-    super.add(child_);
-    _child = child_;
+	super.add(child_);
+	_child = child_;
     }
 
     /** Returns the JViewport's one child.
      */
     public Component getView() {
-    return _child;
+	return _child;
     }
 
     public void draw(Toolkit toolkit) {
 
-    /* Get the absolute origin of this Viewport
-     */
-    Point origin = getLocationOnScreen();
+	/* Get the absolute origin of this Viewport
+	 */
+	Point origin = getLocationOnScreen();
 
-    toolkit.setClipRect(new Rectangle(origin, getExtentSize()));
-    _child.draw(toolkit);
-    toolkit.resetClipRect();
+	toolkit.setClipRect(new Rectangle(origin, getExtentSize()));
+	_child.draw(toolkit);
+	toolkit.resetClipRect();
     }
 
     /** Gets the coordinates of the origin of the view, relative to
@@ -84,17 +84,17 @@ public class JViewport
      * the origin of the viewport.
      */
     public void setViewPosition(Point origin_) {
-    _child.setLocation(origin_);
+	_child.setLocation(origin_);
     }
 
     /** Returns the child component's size.
      */
     public Dimension getViewSize() {
-    return _child.getSize();
+	return _child.getSize();
     }
 
     public Rectangle getBounds() {
-    return new Rectangle(getLocation(), getExtentSize());
+	return new Rectangle(getLocation(), getExtentSize());
     }
 
     /** This package-private method is called by JScrollPane to
@@ -103,21 +103,21 @@ public class JViewport
      * interface - for example, a TableHeader).
      */
     void setExtentSize(int width, int height) {
-    _extent = new Dimension(width, height);
+	_extent = new Dimension(width, height);
     }
 
     /** Returns the size of the visible part of the view.
      */
     public Dimension getExtentSize() {
-    return new Dimension(_extent);
+	return new Dimension(_extent);
     }
 
     public void debug(int level_) {
-    for (int i=0; i<level_; i++)
-        System.err.print("    ");
-    System.err.println("Viewport origin=" + _origin + 
-        " size=" + getSize() );
-    super.debug(level_ + 1);
+	for (int i=0; i<level_; i++)
+	    System.err.print("    ");
+	System.err.println("Viewport origin=" + _origin + 
+	    " size=" + getSize() );
+	super.debug(level_ + 1);
     }
 
     //====================================================================

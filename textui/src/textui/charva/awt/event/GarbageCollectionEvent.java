@@ -34,6 +34,6 @@ public class GarbageCollectionEvent extends AWTEvent
 {
     private static final long serialVersionUID = 1L;
     public GarbageCollectionEvent(Component source_) {
-    super(source_, AWTEvent.GARBAGE_COLLECTION);
+	super(source_, AWTEvent.GARBAGE_COLLECTION);
     }
 }

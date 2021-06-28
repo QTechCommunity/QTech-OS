@@ -34,60 +34,60 @@ import org.vmmagic.pragma.Uninterruptible;
  */
 public final class ObjectReference implements Uninterruptible {
 
-    /**
-     * Convert from an object to a reference. Note: this is a JikesRVM specific
-     * extension to vmmagic.
-     * 
-     * @param obj
-     *            The object
-     * @return The corresponding reference
-     */
+	/**
+	 * Convert from an object to a reference. Note: this is a JikesRVM specific
+	 * extension to vmmagic.
+	 * 
+	 * @param obj
+	 *            The object
+	 * @return The corresponding reference
+	 */
     @KernelSpace
-    public static ObjectReference fromObject(Object obj) {
-        return null;
-    }
+	public static ObjectReference fromObject(Object obj) {
+		return null;
+	}
 
-    /**
-     * Convert from an address to an object. Note: this is a JikesRVM specific
-     * extension to vmmagic.
-     * 
-     * @param address
-     *            The object address
-     * @return The corresponding reference
-     */
-    public static ObjectReference fromAddress(Address address) {
-        return null;
-    }
+	/**
+	 * Convert from an address to an object. Note: this is a JikesRVM specific
+	 * extension to vmmagic.
+	 * 
+	 * @param address
+	 *            The object address
+	 * @return The corresponding reference
+	 */
+	public static ObjectReference fromAddress(Address address) {
+		return null;
+	}
 
-    /**
-     * Return a null reference
-     */
-    public static final ObjectReference nullReference() {
-        return null;
-    }
+	/**
+	 * Return a null reference
+	 */
+	public static final ObjectReference nullReference() {
+		return null;
+	}
 
-    /**
-     * Convert from an reference to an object. Note: this is a JikesRVM specific
-     * extension to vmmagic.
-     * 
-     * @return The object
-     */
-    public Object toObject() {
-        return null;
-    }
+	/**
+	 * Convert from an reference to an object. Note: this is a JikesRVM specific
+	 * extension to vmmagic.
+	 * 
+	 * @return The object
+	 */
+	public Object toObject() {
+		return null;
+	}
 
-    /**
-     * Get a heap address for the object.
-     */
+	/**
+	 * Get a heap address for the object.
+	 */
     @KernelSpace
-    public Address toAddress() {
-        return null;
-    }
+	public Address toAddress() {
+		return null;
+	}
 
-    /**
-     * Is this a null reference?
-     */
-    public boolean isNull() {
-        return false;
-    }
+	/**
+	 * Is this a null reference?
+	 */
+	public boolean isNull() {
+		return false;
+	}
 }

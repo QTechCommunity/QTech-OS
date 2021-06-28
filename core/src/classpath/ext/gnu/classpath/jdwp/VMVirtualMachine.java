@@ -81,8 +81,8 @@ public class VMVirtualMachine
     ThreadGroup parent = group.getParent ();
     while (parent != null)
       {
-    group = parent;
-    parent = group.getParent ();
+	group = parent;
+	parent = group.getParent ();
       }
     
     // Get all the threads in the system
@@ -92,17 +92,17 @@ public class VMVirtualMachine
 
     for (int i = 0; i < num; ++i)
       {
-    Thread t = threads[i];
-    if (t != null)
-      {
-        if (t.getThreadGroup () == jdwpGroup || t == current)
-          {
-        // Don't suspend the current thread or any JDWP thread
-        continue;
-          }
-        else
-          suspendThread (t);
-      }
+	Thread t = threads[i];
+	if (t != null)
+	  {
+	    if (t.getThreadGroup () == jdwpGroup || t == current)
+	      {
+		// Don't suspend the current thread or any JDWP thread
+		continue;
+	      }
+	    else
+	      suspendThread (t);
+	  }
       }
 
     // Now suspend the current thread
@@ -135,8 +135,8 @@ public class VMVirtualMachine
     ThreadGroup parent = group.getParent ();
     while (parent != null)
       {
-    group = parent;
-    parent = group.getParent ();
+	group = parent;
+	parent = group.getParent ();
       }
     
     // Get all the threads in the system
@@ -146,17 +146,17 @@ public class VMVirtualMachine
 
     for (int i = 0; i < num; ++i)
       {
-    Thread t = threads[i];
-    if (t != null)
-      {
-        if (t.getThreadGroup () == jdwpGroup || t == current)
-          {
-        // Don't resume the current thread or any JDWP thread
-        continue;
-          }
-        else
-          resumeThread (t);
-      }
+	Thread t = threads[i];
+	if (t != null)
+	  {
+	    if (t.getThreadGroup () == jdwpGroup || t == current)
+	      {
+		// Don't resume the current thread or any JDWP thread
+		continue;
+	      }
+	    else
+	      resumeThread (t);
+	  }
       }
   }
 
@@ -224,7 +224,7 @@ public class VMVirtualMachine
    * @return a list of frames
    */
   public static native ArrayList getFrames (Thread thread, int start,
-                        int length)
+					    int length)
     throws JdwpException;
 
   /**
@@ -283,9 +283,9 @@ public class VMVirtualMachine
    * @return a result object containing the results of the invocation
    */
   public static native MethodResult executeMethod (Object obj, Thread thread,
-                        Class clazz, Method method,
-                        Object[] values,
-                        boolean nonVirtual)
+					    Class clazz, Method method,
+					    Object[] values,
+					    boolean nonVirtual)
     throws JdwpException;
 
   /**

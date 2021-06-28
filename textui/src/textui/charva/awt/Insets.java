@@ -27,14 +27,14 @@ package charva.awt;
 public class Insets
 {
     public Insets(int top_, int left_, int bottom_, int right_) {
-    top = top_;
-    left = left_;
-    bottom = bottom_;
-    right = right_;
+	top = top_;
+	left = left_;
+	bottom = bottom_;
+	right = right_;
     }
 
     public String toString() {
-    return "(" + top + "," + left + "," + bottom + "," + right + ")";
+	return "(" + top + "," + left + "," + bottom + "," + right + ")";
     }
 
     //====================================================================

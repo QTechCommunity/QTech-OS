@@ -227,9 +227,9 @@ public class Tutorial extends JFrame implements ActionListener {
         } else if (actionCommand.equals("JFileChooser")) {
             testFileChooser();
         } else if (actionCommand.equals("custom FileChooser")) {
-            //        JFileChooser.CANCEL_LABEL = "Cancel (F4)";
-            //        JFileChooser.CANCEL_ACCELERATOR = KeyEvent.VK_F4;
-            //        (new JFileChooser()).show();
+            //	    JFileChooser.CANCEL_LABEL = "Cancel (F4)";
+            //	    JFileChooser.CANCEL_ACCELERATOR = KeyEvent.VK_F4;
+            //	    (new JFileChooser()).show();
             JOptionPane.showMessageDialog(this,
                     "This test has been (temporarily) disabled", "Information",
                     JOptionPane.PLAIN_MESSAGE);
@@ -313,17 +313,17 @@ public class Tutorial extends JFrame implements ActionListener {
         //  Uncomment this section of code to apply a FileFilter that masks out
         // all
         //  files whose names do not end with ".java".
-        //    /* Construct an anonymous inner class that extends the abstract
-        //     * FileFilter class.
-        //     */
-        //    charvax.swing.filechooser.FileFilter filter =
-        //        new charvax.swing.filechooser.FileFilter() {
-        //        public boolean accept(File file_) {
-        //        String pathname = file_.getAbsolutePath();
-        //        return (pathname.endsWith(".java"));
-        //        }
-        //    };
-        //    chooser.setFileFilter(filter);
+        //	/* Construct an anonymous inner class that extends the abstract
+        //	 * FileFilter class.
+        //	 */
+        //	charvax.swing.filechooser.FileFilter filter =
+        //		new charvax.swing.filechooser.FileFilter() {
+        //	    public boolean accept(File file_) {
+        //		String pathname = file_.getAbsolutePath();
+        //		return (pathname.endsWith(".java"));
+        //	    }
+        //	};
+        //	chooser.setFileFilter(filter);
 
         if (chooser.showDialog(this, "Open File") == JFileChooser.APPROVE_OPTION) {
 
@@ -1647,7 +1647,7 @@ class JTableTest extends JDialog implements ActionListener, ItemListener {
         TitledBorder border = new TitledBorder(new LineBorder(Color.cyan));
         border.setTitle("The Heavenly Bodies");
         scrollPane.setViewportBorder(border);
-        //    scrollPane.setSize(25, 6);
+        //	scrollPane.setSize(25, 6);
         centerpan.add(scrollPane);
 
         return centerpan;

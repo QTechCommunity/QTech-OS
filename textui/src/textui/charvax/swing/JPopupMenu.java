@@ -38,14 +38,14 @@ public class JPopupMenu
      */
     public JPopupMenu(Vector<Component> items_)
     {
-    super();
+	super();
 
-    for (Component item : items_) {
-        add(item);
-    }
+	for (Component item : items_) {
+	    add(item);
+	}
 
-    setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-    pack();
+	setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+	pack();
     }
 
     /**
@@ -54,9 +54,9 @@ public class JPopupMenu
      */
     public void setInvoker(Component invoker_)
     {
-    _invoker = invoker_;
-    setForeground(invoker_.getForeground());
-    setBackground(invoker_.getBackground());
+	_invoker = invoker_;
+	setForeground(invoker_.getForeground());
+	setBackground(invoker_.getBackground());
     }
 
     /** Returns the component that invoked this popup menu.
@@ -68,105 +68,105 @@ public class JPopupMenu
      */
     public JMenuItem getMenuItem(int index_)
     {
-    Object o = super._components.elementAt(index_);
-    if (o instanceof JMenuItem)
-        return (JMenuItem) o;
-    else
-        return null;
+	Object o = super._components.elementAt(index_);
+	if (o instanceof JMenuItem)
+	    return (JMenuItem) o;
+	else
+	    return null;
     }
 
     public int getComponentIndex(Component c)
     {
-    return super._components.indexOf(c);
+	return super._components.indexOf(c);
     }
 
     public void processKeyEvent(KeyEvent e) {
-    _wasCancelled = false;
-    _leftWasPressed = false;
-    _rightWasPressed = false;
+	_wasCancelled = false;
+	_leftWasPressed = false;
+	_rightWasPressed = false;
 
-    if ( ! _visible)
-        return;    // the popup has already been dismissed.
+	if ( ! _visible)
+	    return;	// the popup has already been dismissed.
 
-    int key = e.getKeyCode();
-    Toolkit term = Toolkit.getDefaultToolkit();
+	int key = e.getKeyCode();
+	Toolkit term = Toolkit.getDefaultToolkit();
 
-    if (key == KeyEvent.VK_UP) {
-        super.previousFocus();
-    }
+	if (key == KeyEvent.VK_UP) {
+	    super.previousFocus();
+	}
 
-    else if (key == KeyEvent.VK_DOWN) {
-        super.nextFocus();
-    }
+	else if (key == KeyEvent.VK_DOWN) {
+	    super.nextFocus();
+	}
 
-    else if (key == KeyEvent.VK_LEFT) {
-        /* Pressing the LEFT cursor key has the effect of cancelling
-         * the selected menu and invoking the next menu on the left.
-         */
-        _leftWasPressed = true;
-        hide();
-    }
+	else if (key == KeyEvent.VK_LEFT) {
+	    /* Pressing the LEFT cursor key has the effect of cancelling
+	     * the selected menu and invoking the next menu on the left.
+	     */
+	    _leftWasPressed = true;
+	    hide();
+	}
 
-    else if (key == KeyEvent.VK_RIGHT) {
-        /* Pressing the RIGHT cursor key has the effect of cancelling
-         * the selected menu and invoking the next menu on the right.
-         */
-        _rightWasPressed = true;
-        hide();
-    }
+	else if (key == KeyEvent.VK_RIGHT) {
+	    /* Pressing the RIGHT cursor key has the effect of cancelling
+	     * the selected menu and invoking the next menu on the right.
+	     */
+	    _rightWasPressed = true;
+	    hide();
+	}
 
-    else if (key == KeyEvent.VK_ENTER) {
-        /* Pressing ENTER sends an ActionEvent. The source of the
-         * event is the menu item, not the menu; this means that the
-         * client program has to add an ActionListener to each menu
-         * item. This is inconvenient, but it's the way that the Java
-         * Swing menus do it.
-         */
-        JMenuItem item = (JMenuItem) super.getCurrentFocus();
-        _activate(item);
-        e.consume();
-    }
+	else if (key == KeyEvent.VK_ENTER) {
+	    /* Pressing ENTER sends an ActionEvent. The source of the
+	     * event is the menu item, not the menu; this means that the
+	     * client program has to add an ActionListener to each menu
+	     * item. This is inconvenient, but it's the way that the Java
+	     * Swing menus do it.
+	     */
+	    JMenuItem item = (JMenuItem) super.getCurrentFocus();
+	    _activate(item);
+	    e.consume();
+	}
 
-    else if (key == KeyEvent.VK_BACK_SPACE || key == 0x1b) {
-        // Backspace or ESC was pressed
-        _wasCancelled = true;
-        hide();
-    }
+	else if (key == KeyEvent.VK_BACK_SPACE || key == 0x1b) {
+	    // Backspace or ESC was pressed
+	    _wasCancelled = true;
+	    hide();
+	}
 
-    else {
-        /* Check if one of the mnemonic keys was pressed.
-         * Note that the user can press a lowercase or an uppercase
-         * key.
-         */
-        char keyLower = Character.toLowerCase((char) key);
-        for (int i=0; i < super._components.size(); i++) {
-        JMenuItem item = getMenuItem(i);
-        if (item != null) {
-            if (item.getMnemonic() == -1)
-            continue;   // this item doesn't have a mnemonic
+	else {
+	    /* Check if one of the mnemonic keys was pressed.
+	     * Note that the user can press a lowercase or an uppercase
+	     * key.
+	     */
+	    char keyLower = Character.toLowerCase((char) key);
+	    for (int i=0; i < super._components.size(); i++) {
+		JMenuItem item = getMenuItem(i);
+		if (item != null) {
+		    if (item.getMnemonic() == -1)
+			continue;   // this item doesn't have a mnemonic
 
-            char mnemonicLower = 
-            Character.toLowerCase((char) item.getMnemonic());
-            if (keyLower == mnemonicLower) {
-            _activate(item);
-            return;
-            }
-        }
-        }
-        term.beep();
-    }
-    }        // end of processKeyEvent()
+		    char mnemonicLower = 
+			Character.toLowerCase((char) item.getMnemonic());
+		    if (keyLower == mnemonicLower) {
+			_activate(item);
+			return;
+		    }
+		}
+	    }
+	    term.beep();
+	}
+    }	    // end of processKeyEvent()
 
     public boolean wasCancelled() {
-    return _wasCancelled;
+	return _wasCancelled;
     }
 
     boolean leftWasPressed() {
-    return _leftWasPressed;
+	return _leftWasPressed;
     }
 
     boolean rightWasPressed() {
-    return _rightWasPressed;
+	return _rightWasPressed;
     }
 
     /** Private helper method for activating a menu item (either a
@@ -174,35 +174,35 @@ public class JPopupMenu
      */
     private void _activate(JMenuItem item_)
     {
-    if (item_ instanceof JMenu) {
-        JMenu menu = (JMenu) item_;
-        menu.setPopupMenuVisible(true);
+	if (item_ instanceof JMenu) {
+	    JMenu menu = (JMenu) item_;
+	    menu.setPopupMenuVisible(true);
 
-        // The popup menu has hidden itself
-        if (menu.getPopupMenu().leftWasPressed()) {
-        Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_LEFT);
-        }
-        else if (menu.getPopupMenu().rightWasPressed()) {
-        Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_RIGHT);
-        }
-        else if (menu.getPopupMenu().wasCancelled() == false)
-        hide();
-    }
-    else {
-        ActionEvent evt = new ActionEvent(item_, item_.getActionCommand());
-        Toolkit term = Toolkit.getDefaultToolkit();
-        term.getSystemEventQueue().postEvent(evt);
-        hide();
-    }
+	    // The popup menu has hidden itself
+	    if (menu.getPopupMenu().leftWasPressed()) {
+		Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_LEFT);
+	    }
+	    else if (menu.getPopupMenu().rightWasPressed()) {
+		Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_RIGHT);
+	    }
+	    else if (menu.getPopupMenu().wasCancelled() == false)
+		hide();
+	}
+	else {
+	    ActionEvent evt = new ActionEvent(item_, item_.getActionCommand());
+	    Toolkit term = Toolkit.getDefaultToolkit();
+	    term.getSystemEventQueue().postEvent(evt);
+	    hide();
+	}
     }
 
     public String toString() {
-    String str = "JPopupMenu: [";
-    for (int i=0; i<getComponentCount(); i++) {
-        str += getMenuItem(i);
-        str += " ";
-    }
-    return str + "]";
+	String str = "JPopupMenu: [";
+	for (int i=0; i<getComponentCount(); i++) {
+	    str += getMenuItem(i);
+	    str += " ";
+	}
+	return str + "]";
     }
 
     protected boolean _wasCancelled;

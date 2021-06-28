@@ -44,11 +44,11 @@ package org.jnode.font.bdf;
  * @author Stephane Meslin-Weber
  */
 public class BDFGlyph {
-    public String name;
-    public BDFParser.Rectangle bbx = new BDFParser.Rectangle();
-    public int[] data;
+	public String name;
+	public BDFParser.Rectangle bbx = new BDFParser.Rectangle();
+	public int[] data;
     public StringBuffer rawData;
-    private BDFFontContainer font;
+	private BDFFontContainer font;
 
     /**
      * Decodes a BDF font BITMAP/ENDCHAR sequence of packed bits.
@@ -109,9 +109,9 @@ public class BDFGlyph {
         return result;
     }
 
-    public BDFParser.Rectangle getBbx() {
-        return new BDFParser.Rectangle(bbx);
-    }
+	public BDFParser.Rectangle getBbx() {
+		return new BDFParser.Rectangle(bbx);
+	}
 
     public BDFParser.Rectangle getBbx(BDFParser.Rectangle rec) {
         rec.x = bbx.x;
@@ -119,7 +119,7 @@ public class BDFGlyph {
         rec.width = bbx.width;
         rec.height = bbx.height;
         return rec;
-    }
+	}
 
     void init(BDFFontContainer font) {
         this.font = font;
@@ -127,50 +127,50 @@ public class BDFGlyph {
         rawData = null;
     }
 
-    public void setBbx(BDFParser.Rectangle bbx) {
-        this.bbx = bbx;
-    }
+	public void setBbx(BDFParser.Rectangle bbx) {
+		this.bbx = bbx;
+	}
 
-    public int[] getData() {
-        return data;
-    }
+	public int[] getData() {
+		return data;
+	}
 
     public void setRawData(StringBuffer rawData) {
         this.rawData = rawData;
     }
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public BDFFontContainer getFont() {
-        return font;
-    }
+	public BDFFontContainer getFont() {
+		return font;
+	}
 
-    public BDFGlyph(String name) {
-        this.name = name;
-    }
+	public BDFGlyph(String name) {
+		this.name = name;
+	}
 
-    public void setSWidth(int swx0, int swy0) {
-//        System.err.println("SWidth: "+swx0+","+swy0);
-    }
+	public void setSWidth(int swx0, int swy0) {
+//		System.err.println("SWidth: "+swx0+","+swy0);
+	}
 
-    private BDFParser.Dimension dsize = new BDFParser.Dimension();
-    public void setDWidth(int dwx0, int dwy0) {
-        dsize.setSize(dwx0,dwy0);
-    }
+	private BDFParser.Dimension dsize = new BDFParser.Dimension();
+	public void setDWidth(int dwx0, int dwy0) {
+		dsize.setSize(dwx0,dwy0);
+	}
 
     public BDFParser.Dimension getDWidth() {
         return dsize;
     }
 
-    public void setBBX(int x, int y, int width, int height) {
-        bbx.setBounds(x, y, width, height);
-    }
+	public void setBBX(int x, int y, int width, int height) {
+		bbx.setBounds(x, y, width, height);
+	}
 
     public String toString() {
         return "BDFGlyph[name="+name+", bbx="+bbx+", dsize="+dsize+"]";

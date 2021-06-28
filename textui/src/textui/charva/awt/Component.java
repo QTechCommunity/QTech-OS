@@ -48,10 +48,10 @@ public abstract class Component
      */
     public void setVisible(boolean visible_)
     {
-    if (visible_)
-        show();
-    else
-        hide();
+	if (visible_)
+	    show();
+	else
+	    hide();
     }
 
     /**
@@ -60,10 +60,10 @@ public abstract class Component
      */
     public void show()
     {
-    if ( !_visible) {
-        _visible = true;
-        repaint();    // post a PaintEvent
-    }
+	if ( !_visible) {
+	    _visible = true;
+	    repaint();	// post a PaintEvent
+	}
     }
 
     /**
@@ -72,29 +72,29 @@ public abstract class Component
      */
     public void hide()
     {
-    if (_visible) {
-        _visible = false;
+	if (_visible) {
+	    _visible = false;
 
-        // try to move focus to next focusTraversable component
-        if (hasFocus()) {
-        getParent().nextFocus();
-        if (hasFocus()) {
-            // there was no next focusTraversable component
-            getParent().previousFocus();
-            if (hasFocus()) {
-            throw new IllegalComponentStateException(
-            "cannot hide component; it was the only " +
-            "focusTraversable component in this window");
-            }
-        }
-        }
+	    // try to move focus to next focusTraversable component
+	    if (hasFocus()) {
+		getParent().nextFocus();
+		if (hasFocus()) {
+		    // there was no next focusTraversable component
+		    getParent().previousFocus();
+		    if (hasFocus()) {
+			throw new IllegalComponentStateException(
+			"cannot hide component; it was the only " +
+			"focusTraversable component in this window");
+		    }
+		}
+	    }
 
         Component parent = getParent();
         if(parent != null){
             parent.repaint();
         }
-        //repaint();    // post a PaintEvent
-    }
+	    //repaint();	// post a PaintEvent
+	}
     }
 
     /**
@@ -115,28 +115,28 @@ public abstract class Component
      * because the <code>_visible</code> flag may be false.
      */
     public boolean isDisplayed() { 
-    /*
-     * Every component that has been added to a Container has a parent.
-     * The Window class overrides this method because it is never added to
-     * a Container.
-     */
-    Container parent = getParent();
-    if (parent == null)
-        return false;
-    return parent.isDisplayed();
+	/*
+	 * Every component that has been added to a Container has a parent.
+	 * The Window class overrides this method because it is never added to
+	 * a Container.
+	 */
+	Container parent = getParent();
+	if (parent == null)
+	    return false;
+	return parent.isDisplayed();
     }
 
     public Point getLocation() { 
-    return new Point(_origin); 
+	return new Point(_origin); 
     }
 
     public void setLocation(Point origin_) {
-    _origin = new Point(origin_); 
+	_origin = new Point(origin_); 
     }
 
     public void setLocation(int x_, int y_) { 
-    _origin.x = x_; 
-    _origin.y = y_; 
+	_origin.x = x_; 
+	_origin.y = y_; 
     }
 
     /**
@@ -145,14 +145,14 @@ public abstract class Component
      * has a _parent value of null, but it overrides this method.
      */
     public Point getLocationOnScreen() {
-    Container parent = getParent();
-    if (parent == null) {
-        throw new IllegalComponentStateException(
-            "cannot get component location " +
-            "before it has been added to a container");
-    }
+	Container parent = getParent();
+	if (parent == null) {
+	    throw new IllegalComponentStateException(
+		    "cannot get component location " +
+		    "before it has been added to a container");
+	}
 
-    return parent.getLocationOnScreen().addOffset(_origin);
+	return parent.getLocationOnScreen().addOffset(_origin);
     }
 
     public abstract Dimension getSize();
@@ -166,7 +166,7 @@ public abstract class Component
      * the origin of its parent Container.
      */
     public Rectangle getBounds() {
-    return new Rectangle(_origin, getSize());
+	return new Rectangle(_origin, getSize());
     }
 
     /** Checks whether this component "contains" the specified point, 
@@ -174,11 +174,11 @@ public abstract class Component
      * to the top left corner of the parent Container.
      */
     public boolean contains(Point p) {
-    return this.contains(p.x, p.y);
+	return this.contains(p.x, p.y);
     }
 
     public boolean contains(int x, int y) {
-    return this.getBounds().contains(x, y);
+	return this.getBounds().contains(x, y);
     }
 
     public abstract Dimension minimumSize();
@@ -190,15 +190,15 @@ public abstract class Component
      * collected when there are no more strong references to it.
      */
     public void setParent(Container container_) {
-    _parent = new WeakReference<Container>(container_);
+	_parent = new WeakReference<Container>(container_);
 
-    // If this component's colors have not been set yet, inherit
-    // the parent container's colors.
-    if (getForeground() == null)
-        setForeground(container_.getForeground());
+	// If this component's colors have not been set yet, inherit
+	// the parent container's colors.
+	if (getForeground() == null)
+	    setForeground(container_.getForeground());
 
-    if (getBackground() == null)
-        setBackground(container_.getBackground());
+	if (getBackground() == null)
+	    setBackground(container_.getBackground());
     }
 
     /**
@@ -206,30 +206,30 @@ public abstract class Component
      * component has no parent.
      */
     protected Container getParent() {
-    if (_parent == null)
-        return null;
+	if (_parent == null)
+	    return null;
 
-    /* Note that _parent is a WeakReference.
-     */
-    return (Container) _parent.get();
+	/* Note that _parent is a WeakReference.
+	 */
+	return (Container) _parent.get();
     }
 
     /**
      * Register a KeyListener object for this component.
      */
     public void addKeyListener(KeyListener kl_) {
-    if (_keyListeners == null)
-        _keyListeners = new Vector<KeyListener>();
-    _keyListeners.add(kl_);
+	if (_keyListeners == null)
+	    _keyListeners = new Vector<KeyListener>();
+	_keyListeners.add(kl_);
     }
 
     /**
      * Register a FocusListener object for this component.
      */
     public void addFocusListener(FocusListener fl_) {
-    if (_focusListeners == null)
-        _focusListeners = new Vector<FocusListener>();
-    _focusListeners.add(fl_);
+	if (_focusListeners == null)
+	    _focusListeners = new Vector<FocusListener>();
+	_focusListeners.add(fl_);
     }
 
     /**
@@ -237,31 +237,31 @@ public abstract class Component
      * This can be overridden by subclasses, to handle custom events.
      */
     protected void processEvent(AWTEvent evt_) {
-    if (evt_ instanceof KeyEvent) {
-        KeyEvent ke = (KeyEvent) evt_;
+	if (evt_ instanceof KeyEvent) {
+	    KeyEvent ke = (KeyEvent) evt_;
 
-        /* Find the ancestor Window that contains the component that
-         * generated the keystroke. 
-         * Then we call the processKeyEvent method
-         * of the ancestor Window, which calls the same method in its
-         * current-focus container, and so on, until the KeyEvent
-         * gets down to the component that generated the keystroke.
-         * This allows KeyEvents to be processed by outer enclosing
-         * containers, then by inner containers, and finally by the
-         * component that generated the KeyEvent.
-         */
-        this.getAncestorWindow().processKeyEvent(ke);
-    }
-    else if (evt_ instanceof FocusEvent)
-        processFocusEvent((FocusEvent) evt_);
-    else if (evt_ instanceof MouseEvent) {
+	    /* Find the ancestor Window that contains the component that
+	     * generated the keystroke. 
+	     * Then we call the processKeyEvent method
+	     * of the ancestor Window, which calls the same method in its
+	     * current-focus container, and so on, until the KeyEvent
+	     * gets down to the component that generated the keystroke.
+	     * This allows KeyEvents to be processed by outer enclosing
+	     * containers, then by inner containers, and finally by the
+	     * component that generated the KeyEvent.
+	     */
+	    this.getAncestorWindow().processKeyEvent(ke);
+	}
+	else if (evt_ instanceof FocusEvent)
+	    processFocusEvent((FocusEvent) evt_);
+	else if (evt_ instanceof MouseEvent) {
 
-        MouseEvent e = (MouseEvent) evt_;
-//        if (e.getModifiers() != MouseEvent.MOUSE_PRESSED)
-//        return;
+	    MouseEvent e = (MouseEvent) evt_;
+//	    if (e.getModifiers() != MouseEvent.MOUSE_PRESSED)
+//		return;
 
-        processMouseEvent(e);
-    }
+	    processMouseEvent(e);
+	}
     }
 
     /** Invoke all the KeyListener callbacks that may have been registered
@@ -269,20 +269,20 @@ public abstract class Component
      * keycodes, and can also set the "consumed" flag.
      */
     public void processKeyEvent(KeyEvent ke_) {
-    if (_keyListeners != null) {
-        for (Enumeration<KeyListener> e = _keyListeners.elements(); 
-            e.hasMoreElements(); ) {
+	if (_keyListeners != null) {
+	    for (Enumeration<KeyListener> e = _keyListeners.elements(); 
+		    e.hasMoreElements(); ) {
 
-        KeyListener kl = (KeyListener) e.nextElement();
-        if (ke_.getID() == AWTEvent.KEY_PRESSED)
-            kl.keyPressed(ke_);
-        else if (ke_.getID() == AWTEvent.KEY_TYPED)
-            kl.keyTyped(ke_);
+		KeyListener kl = (KeyListener) e.nextElement();
+		if (ke_.getID() == AWTEvent.KEY_PRESSED)
+		    kl.keyPressed(ke_);
+		else if (ke_.getID() == AWTEvent.KEY_TYPED)
+		    kl.keyTyped(ke_);
 
-        if (ke_.isConsumed())
-            break;
-        }
-    }
+		if (ke_.isConsumed())
+		    break;
+	    }
+	}
     }
 
     /** Process a MouseEvent that was generated by clicking the mouse
@@ -290,13 +290,13 @@ public abstract class Component
      */
     public void processMouseEvent(MouseEvent e) {
 
-    // The default for a left-button-press is to request the focus; 
-    // this is overridden by components such as buttons.
-    if (e.getButton() == MouseEvent.BUTTON1 &&
-        e.getModifiers() == MouseEvent.MOUSE_PRESSED &&
-        this.isFocusTraversable())
+	// The default for a left-button-press is to request the focus; 
+	// this is overridden by components such as buttons.
+	if (e.getButton() == MouseEvent.BUTTON1 &&
+		e.getModifiers() == MouseEvent.MOUSE_PRESSED &&
+		this.isFocusTraversable())
 
-        requestFocus();
+	    requestFocus();
     }
 
     /**
@@ -304,39 +304,39 @@ public abstract class Component
      * for this component. 
      */
     public void processFocusEvent(FocusEvent fe_) {
-    if (_focusListeners != null) {
-        for (Enumeration<FocusListener> e = _focusListeners.elements(); 
-            e.hasMoreElements(); ) {
+	if (_focusListeners != null) {
+	    for (Enumeration<FocusListener> e = _focusListeners.elements(); 
+		    e.hasMoreElements(); ) {
 
-        FocusListener fl = (FocusListener) e.nextElement();
-        if (fe_.getID() == AWTEvent.FOCUS_GAINED)
-            fl.focusGained(fe_);
-        else
-            fl.focusLost(fe_);
-        }
-    }
+		FocusListener fl = (FocusListener) e.nextElement();
+		if (fe_.getID() == AWTEvent.FOCUS_GAINED)
+		    fl.focusGained(fe_);
+		else
+		    fl.focusLost(fe_);
+	    }
+	}
     }
 
     /** Get the Window that contains this component.
      */
     public Window getAncestorWindow() {
-    Container ancestor;
-    Container nextancestor;
+	Container ancestor;
+	Container nextancestor;
 
-    if (this instanceof Window)
-        return (Window) this;
+	if (this instanceof Window)
+	    return (Window) this;
 
-    for (ancestor = getParent(); 
-        (ancestor instanceof Window) == false;
-        ancestor = nextancestor) {
+	for (ancestor = getParent(); 
+	    (ancestor instanceof Window) == false;
+	    ancestor = nextancestor) {
 
-        if (ancestor == null)
-        return null;
+	    if (ancestor == null)
+		return null;
 
-        if ((nextancestor = ancestor.getParent()) == null)
-        return null;
-    }
-    return (Window) ancestor;
+	    if ((nextancestor = ancestor.getParent()) == null)
+		return null;
+	}
+	return (Window) ancestor;
     }
 
     /** This method should be invoked by all subclasses of Component
@@ -345,26 +345,26 @@ public abstract class Component
      */
     public void requestFocus() {
 
-    /* Generate the FOCUS_GAINED only if the component does not 
-     * already have the focus.
-     */
-    Window ancestor = getAncestorWindow();
-    Component currentFocus = ancestor.getCurrentFocus();
-    if ( currentFocus != this) {
-        EventQueue evtQueue =
-            Toolkit.getDefaultToolkit().getSystemEventQueue();
-        FocusEvent evt = new FocusEvent(AWTEvent.FOCUS_LOST, currentFocus);
-        evtQueue.postEvent(evt);
+	/* Generate the FOCUS_GAINED only if the component does not 
+	 * already have the focus.
+	 */
+	Window ancestor = getAncestorWindow();
+	Component currentFocus = ancestor.getCurrentFocus();
+	if ( currentFocus != this) {
+	    EventQueue evtQueue =
+		    Toolkit.getDefaultToolkit().getSystemEventQueue();
+	    FocusEvent evt = new FocusEvent(AWTEvent.FOCUS_LOST, currentFocus);
+	    evtQueue.postEvent(evt);
 
-        evt = new FocusEvent(AWTEvent.FOCUS_GAINED, this);
-        evtQueue.postEvent(evt);
+	    evt = new FocusEvent(AWTEvent.FOCUS_GAINED, this);
+	    evtQueue.postEvent(evt);
 
-//        if (getParent() != null)
-        getParent().setFocus(this);
+//	    if (getParent() != null)
+		getParent().setFocus(this);
 
-//        requestSync();
-        repaint();
-    }
+//	    requestSync();
+	    repaint();
+	}
     }
 
     /**
@@ -372,12 +372,12 @@ public abstract class Component
      */
     public boolean hasFocus()
     {
-    // Modified 19-Feb-02 by rgittens to handle null ancestor.
-    Window ancestor = getAncestorWindow();
-    if (ancestor == null)
-        return false;
+	// Modified 19-Feb-02 by rgittens to handle null ancestor.
+	Window ancestor = getAncestorWindow();
+	if (ancestor == null)
+	    return false;
 
-    return (ancestor.getCurrentFocus() == this);
+	return (ancestor.getCurrentFocus() == this);
     }
 
     /**
@@ -389,7 +389,7 @@ public abstract class Component
      */
     public boolean isFocusTraversable()
     {
-    return (_enabled && _visible);
+	return (_enabled && _visible);
     }
 
     /**
@@ -397,38 +397,38 @@ public abstract class Component
      * windows that are stacked above it.
      */
     public boolean isTotallyObscured() {
-    Rectangle bounds = getBounds();
-    Window ancestor = getAncestorWindow();
+	Rectangle bounds = getBounds();
+	Window ancestor = getAncestorWindow();
 
-    Vector<Window> windowList = Toolkit.getDefaultToolkit().getWindowList();
-    boolean obscured = false;
-    synchronized (windowList) {
+	Vector<Window> windowList = Toolkit.getDefaultToolkit().getWindowList();
+	boolean obscured = false;
+	synchronized (windowList) {
 
-        /* Ignore windows that are stacked below this component's 
-         * ancestor.
-         */
-        int i;
-        for (i=0; i<windowList.size(); i++) {
-        Window w = (Window) windowList.elementAt(i);
+	    /* Ignore windows that are stacked below this component's 
+	     * ancestor.
+	     */
+	    int i;
+	    for (i=0; i<windowList.size(); i++) {
+		Window w = (Window) windowList.elementAt(i);
 
-        if (w == ancestor)
-            break;
-        }
-        i++;
+		if (w == ancestor)
+		    break;
+	    }
+	    i++;
 
-        /* Return true if any of the overlying windows totally obscures
-         * this component.
-         */
-        for ( ; i<windowList.size(); i++) {
-        Window w = (Window) windowList.elementAt(i);
-        Rectangle windowRect = w.getBounds();
-        if (bounds.equals(windowRect.intersection(bounds))) {
-            obscured = true;
-            break;
-        }
-        }
-    }
-    return obscured;
+	    /* Return true if any of the overlying windows totally obscures
+	     * this component.
+	     */
+	    for ( ; i<windowList.size(); i++) {
+		Window w = (Window) windowList.elementAt(i);
+		Rectangle windowRect = w.getBounds();
+		if (bounds.equals(windowRect.intersection(bounds))) {
+		    obscured = true;
+		    break;
+		}
+	    }
+	}
+	return obscured;
     }
 
     /** Returns the alignment along the X axis.  This indicates how the
@@ -451,7 +451,7 @@ public abstract class Component
      * parent container.
      */
     public Color getForeground() {
-    return _foreground;
+	return _foreground;
     }
 
     /**
@@ -460,33 +460,33 @@ public abstract class Component
      * parent container.
      */
     public Color getBackground() {
-    return _background;
+	return _background;
     }
 
     /** Set the foreground color of this component.
      */
     public void setForeground(Color color_) { 
-    _foreground = color_;
-    validateCursesColor();
+	_foreground = color_;
+	validateCursesColor();
     }
 
     /** Set the background color of this component.
      */
     public void setBackground(Color color_) { 
-    _background = color_;
-    validateCursesColor();
+	_background = color_;
+	validateCursesColor();
     }
 
     /** Enable this component to react to user input. Components
      * are enabled by default.
      */
     public void setEnabled(boolean flag_) {
-    _enabled = flag_;
+	_enabled = flag_;
 
-    /* If this component is already displayed, generate a PaintEvent
-     * and post it onto the queue.
-     */
-    this.repaint();
+	/* If this component is already displayed, generate a PaintEvent
+	 * and post it onto the queue.
+	 */
+	this.repaint();
     }
 
     /**
@@ -499,9 +499,9 @@ public abstract class Component
      * again. This method is overridden by Container.
      */
     public void invalidate() {
-    Container parent = getParent();
-    if (parent != null)
-        parent.invalidate();
+	Container parent = getParent();
+	if (parent != null)
+	    parent.invalidate();
     }
 
     /**
@@ -517,21 +517,21 @@ public abstract class Component
      */
     public void repaint()
     {
-    if (isDisplayed() == false)
-        return;
+	if (isDisplayed() == false)
+	    return;
 
-    PaintEvent evt = new PaintEvent(this, getBounds());
-    EventQueue queue = Toolkit.getDefaultToolkit().getSystemEventQueue();
-    queue.postEvent(evt);
+	PaintEvent evt = new PaintEvent(this, getBounds());
+	EventQueue queue = Toolkit.getDefaultToolkit().getSystemEventQueue();
+	queue.postEvent(evt);
     }
 
     /** Causes a SyncEvent to be posted onto the AWT queue, thus requesting
      * a refresh of the physical screen.
      */
     public void requestSync() {
-    SyncEvent evt = new SyncEvent(this);
-    EventQueue queue = Toolkit.getDefaultToolkit().getSystemEventQueue();
-    queue.postEvent(evt);
+	SyncEvent evt = new SyncEvent(this);
+	EventQueue queue = Toolkit.getDefaultToolkit().getSystemEventQueue();
+	queue.postEvent(evt);
     }
 
     /**
@@ -548,13 +548,13 @@ public abstract class Component
     /** Sets the name of the component.
      */
     public void setName(String name_) {
-    _name = name_;
+	_name = name_;
     }
 
     /** Returns the name of the component.
      */
     public String getName() {
-    return _name;
+	return _name;
     }
 
     /** Compute the component's ncurses color-pair from its foreground
@@ -564,14 +564,14 @@ public abstract class Component
      * to the container).
      */
     public void validateCursesColor() {
-    if (_foreground == null || _background == null)
-        return;
+	if (_foreground == null || _background == null)
+	    return;
 
-    _cursesColor = Color.getCursesColor(_foreground, _background);
+	_cursesColor = Color.getCursesColor(_foreground, _background);
     }
 
     public int getCursesColor() {
-    return _cursesColor;
+	return _cursesColor;
     }
 
     //====================================================================

@@ -32,8 +32,8 @@ public class PaintEvent extends AWTEvent
     Rectangle _updateRect;
 
     public PaintEvent(Component source_, Rectangle rect_) {
-    super(source_, AWTEvent.PAINT_EVENT);
-    _updateRect = rect_;
+	super(source_, AWTEvent.PAINT_EVENT);
+	_updateRect = rect_;
     }
 
     /**

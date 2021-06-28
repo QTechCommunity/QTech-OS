@@ -33,7 +33,7 @@ public class FlowLayout
      * and vgap to 0.
      */
     public FlowLayout() { 
-    this(CENTER, 1, 0);
+	this(CENTER, 1, 0);
     }
 
     /**
@@ -41,16 +41,16 @@ public class FlowLayout
      * horizontal and vertical gaps.
      */
     public FlowLayout(int align_, int hgap_, int vgap_) {
-    _align = align_;
-    _hgap = hgap_;
-    _vgap = vgap_;
+	_align = align_;
+	_hgap = hgap_;
+	_vgap = vgap_;
     }
 
     /** Sets the alignment for this layout. Allowable values are
      * FlowLayout.LEFT, FlowLayout.CENTER and FlowLayout.RIGHT.
      */
     public void setAlignment(int align_) {
-    _align = align_;
+	_align = align_;
     }
 
     /** Gets the alignment for this layout.
@@ -63,31 +63,31 @@ public class FlowLayout
      */
     public Dimension minimumSize(Container container_) {
 
-    int width = 0;
-    int height = 0;
+	int width = 0;
+	int height = 0;
 
-    Component[] components = container_.getComponents();
-    for (int i=0; i<components.length; i++) {
-        Dimension d = components[i].minimumSize();
+	Component[] components = container_.getComponents();
+	for (int i=0; i<components.length; i++) {
+	    Dimension d = components[i].minimumSize();
 
-        /* Make allowance for the gap between this component and the
-         * previous component.
-         */
-        if (i!= 0)
-        width += _hgap;
+	    /* Make allowance for the gap between this component and the
+	     * previous component.
+	     */
+	    if (i!= 0)
+		width += _hgap;
 
-        width += d.width;
-        if (d.height > height)
-        height = d.height;
-    }
+	    width += d.width;
+	    if (d.height > height)
+		height = d.height;
+	}
 
-    /* Take into account the border frame (if any).
-     */
-    Insets insets = container_.getInsets();
-    height += insets.top + insets.bottom;
-    width += insets.left + insets.right;
+	/* Take into account the border frame (if any).
+	 */
+	Insets insets = container_.getInsets();
+	height += insets.top + insets.bottom;
+	width += insets.left + insets.right;
 
-    return new Dimension(width, height);
+	return new Dimension(width, height);
     }
 
     /**
@@ -104,56 +104,56 @@ public class FlowLayout
      */
     public void doLayout(Container container_) {
 
-    Insets insets = container_.getInsets();
-    int availableWidth = container_.getSize().width -
-        insets.left - insets.right;
-    int widthLeft = availableWidth;
-    int heightLeft = container_.getSize().height -
-        insets.top - insets.bottom;
+	Insets insets = container_.getInsets();
+	int availableWidth = container_.getSize().width -
+		insets.left - insets.right;
+	int widthLeft = availableWidth;
+	int heightLeft = container_.getSize().height -
+		insets.top - insets.bottom;
 
-    int voffset = insets.top;
+	int voffset = insets.top;
 
-    Component[] components = container_.getComponents();
-    Vector<Component> localvector = new Vector<Component>();
-    for (int i=0; i<components.length; i++) {
-        Component c = components[i];
+	Component[] components = container_.getComponents();
+	Vector<Component> localvector = new Vector<Component>();
+	for (int i=0; i<components.length; i++) {
+	    Component c = components[i];
 
-        /* Get the contained container to lay itself out at its
-         * preferred size, if it is not already laid out.
-         */
-        if (c instanceof Container) {
-        Container cont = (Container) c;
-        if (cont.isValid() == false) {
-            cont.setSize(cont.minimumSize());
-            cont.doLayout();
-        }
-        }
+	    /* Get the contained container to lay itself out at its
+	     * preferred size, if it is not already laid out.
+	     */
+	    if (c instanceof Container) {
+		Container cont = (Container) c;
+		if (cont.isValid() == false) {
+		    cont.setSize(cont.minimumSize());
+		    cont.doLayout();
+		}
+	    }
 
-        /* Determine the width required to lay out the current 
-         * component (including the gap between this component and
-         * the previous component).
-         */
-        int requiredWidth = c.getSize().width;
-        if (i != 0)
-        requiredWidth += _hgap;
+	    /* Determine the width required to lay out the current 
+	     * component (including the gap between this component and
+	     * the previous component).
+	     */
+	    int requiredWidth = c.getSize().width;
+	    if (i != 0)
+		requiredWidth += _hgap;
 
-        if (requiredWidth > widthLeft) {
-        int rowHeight = 0;
-        if (localvector.size() != 0) {
-            rowHeight = layoutRow(container_, localvector, 
-                widthLeft, heightLeft, voffset);
-            localvector.removeAllElements();
-        }
-        voffset += rowHeight + _vgap;
-        widthLeft = availableWidth;
-        heightLeft -= rowHeight + _vgap;
-        }
-        widthLeft -= requiredWidth;
+	    if (requiredWidth > widthLeft) {
+		int rowHeight = 0;
+		if (localvector.size() != 0) {
+		    rowHeight = layoutRow(container_, localvector, 
+			    widthLeft, heightLeft, voffset);
+		    localvector.removeAllElements();
+		}
+		voffset += rowHeight + _vgap;
+		widthLeft = availableWidth;
+		heightLeft -= rowHeight + _vgap;
+	    }
+	    widthLeft -= requiredWidth;
 
-        // Build up a temporary list of components for this row.
-        localvector.add(c);
-    }
-    layoutRow(container_, localvector, widthLeft, heightLeft, voffset);
+	    // Build up a temporary list of components for this row.
+	    localvector.add(c);
+	}
+	layoutRow(container_, localvector, widthLeft, heightLeft, voffset);
 
     }
 
@@ -161,39 +161,39 @@ public class FlowLayout
      * @return The height of the laid-out row.
      */
     private int layoutRow(Container container_, Vector<Component> components_, 
-    int widthleft_, int heightleft_, int voffset_) {
+	int widthleft_, int heightleft_, int voffset_) {
 
-    int hoffset = 0;
-    int rowHeight = 0;
-    Insets insets = container_.getInsets();
+	int hoffset = 0;
+	int rowHeight = 0;
+	Insets insets = container_.getInsets();
 
-    switch (_align) {
-        case LEFT:
-        hoffset = insets.left;
-        break;
-        case CENTER:
-        hoffset = insets.left + widthleft_/2;
-        break;
-        case RIGHT:
-        hoffset = insets.left + widthleft_;
-        break;
-    }
+	switch (_align) {
+	    case LEFT:
+		hoffset = insets.left;
+		break;
+	    case CENTER:
+		hoffset = insets.left + widthleft_/2;
+		break;
+	    case RIGHT:
+		hoffset = insets.left + widthleft_;
+		break;
+	}
 
-    Enumeration<Component> e = components_.elements();
-    while (e.hasMoreElements()) {
-        Component c = (Component) e.nextElement();
-        if (c.getSize().height > rowHeight)
-        rowHeight = c.getSize().height;
+	Enumeration<Component> e = components_.elements();
+	while (e.hasMoreElements()) {
+	    Component c = (Component) e.nextElement();
+	    if (c.getSize().height > rowHeight)
+		rowHeight = c.getSize().height;
 
-        if (rowHeight > heightleft_) {
-        container_.remove(c);    // we have run out of space
-        continue;
-        }
+	    if (rowHeight > heightleft_) {
+		container_.remove(c);	// we have run out of space
+		continue;
+	    }
 
-        c.setLocation(hoffset, voffset_);
-        hoffset += c.getSize().width + _hgap;
-    }
-    return rowHeight;
+	    c.setLocation(hoffset, voffset_);
+	    hoffset += c.getSize().width + _hgap;
+	}
+	return rowHeight;
     }
 
     //====================================================================
