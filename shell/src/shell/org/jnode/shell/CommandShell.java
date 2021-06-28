@@ -118,7 +118,7 @@ public class CommandShell implements Runnable, Shell, ConsoleListener {
     public static final String FALLBACK_INVOKER = "default";
     public static final String FALLBACK_INTERPRETER = "default";
 
-    private static String DEFAULT_PROMPT = "Q-OS $P$G";
+    private static String DEFAULT_PROMPT = "QTechOS $P$G";
     private static final String COMMAND_KEY = "cmd=";
 
     /**

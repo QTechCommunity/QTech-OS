@@ -46,7 +46,7 @@ public class JNodeCursors {
             "TTTTTBWWBTTTTTTT" +
             "TTTTTBBBTTTTTTTT";
 
-    private static HardwareCursorImage ARROW_16x16 = new HardwareCursorImage(16, 16, ARROW_IMAGE_16x16, 0, 0);
+    private static final HardwareCursorImage ARROW_16x16 = new HardwareCursorImage(16, 16, ARROW_IMAGE_16x16, 0, 0);
 
     private static final String ARROW_IMAGE_20x20 =
         "BTTTTTTTTTTTTTTTTTTT" +
@@ -70,7 +70,7 @@ public class JNodeCursors {
             "TTTTTTTBBTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage ARROW_20x20 = new HardwareCursorImage(20, 20, ARROW_IMAGE_20x20, 0, 0);
+    private static final HardwareCursorImage ARROW_20x20 = new HardwareCursorImage(20, 20, ARROW_IMAGE_20x20, 0, 0);
 
     private static final String ARROW_IMAGE_32x32 =
         "BTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" +
@@ -105,7 +105,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
-    private static HardwareCursorImage ARROW_32x32 = new HardwareCursorImage(32, 32, ARROW_IMAGE_32x32, 0, 0);
+    private static final HardwareCursorImage ARROW_32x32 = new HardwareCursorImage(32, 32, ARROW_IMAGE_32x32, 0, 0);
     public static HardwareCursor ARROW =
         new HardwareCursor(new HardwareCursorImage[]{ARROW_16x16, ARROW_20x20, ARROW_32x32});
 
@@ -293,7 +293,7 @@ public class JNodeCursors {
             "TTTTBWWWWWWWWWBTTTTT" +
             "TTTTBBBBBBBBBBBTTTTT";
 
-    private static HardwareCursorImage HAND_20x20 = new HardwareCursorImage(20, 20, HAND_IMAGE_20x20, 5, 0);
+    private static final HardwareCursorImage HAND_20x20 = new HardwareCursorImage(20, 20, HAND_IMAGE_20x20, 5, 0);
 
     private static final String HAND_IMAGE_32x32 =
         "TTTTTBBTTTTTTTTTTTTTTTTTTTTTTTTT" +
@@ -329,7 +329,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage HAND_32x32 = new HardwareCursorImage(32, 32, HAND_IMAGE_32x32, 5, 0);
+    private static final HardwareCursorImage HAND_32x32 = new HardwareCursorImage(32, 32, HAND_IMAGE_32x32, 5, 0);
     public static HardwareCursor HAND = new HardwareCursor(new HardwareCursorImage[]{HAND_20x20, HAND_32x32});
 
     private static final String RESIZE_HORIZONTAL_IMAGE_16x16 =
@@ -350,7 +350,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage RESIZE_HORIZONTAL_16x16 =
+    private static final HardwareCursorImage RESIZE_HORIZONTAL_16x16 =
         new HardwareCursorImage(16, 16, RESIZE_HORIZONTAL_IMAGE_16x16, 7, 7);
 
     private static final String RESIZE_HORIZONTAL_IMAGE_20x20 =
@@ -375,7 +375,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage RESIZE_HORIZONTAL_20x20 =
+    private static final HardwareCursorImage RESIZE_HORIZONTAL_20x20 =
         new HardwareCursorImage(20, 20, RESIZE_HORIZONTAL_IMAGE_20x20, 9, 5);
 
     private static final String RESIZE_HORIZONTAL_IMAGE_32x32 =
@@ -412,7 +412,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage RESIZE_HORIZONTAL_32x32 =
+    private static final HardwareCursorImage RESIZE_HORIZONTAL_32x32 =
         new HardwareCursorImage(32, 32, RESIZE_HORIZONTAL_IMAGE_32x32, 9, 5);
     public static HardwareCursor RESIZE_HORIZONTAL = new HardwareCursor(
         new HardwareCursorImage[]{RESIZE_HORIZONTAL_16x16, RESIZE_HORIZONTAL_20x20, RESIZE_HORIZONTAL_32x32});
@@ -439,7 +439,7 @@ public class JNodeCursors {
             "TTTTTBTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage RESIZE_VERTICAL_20x20 =
+    private static final HardwareCursorImage RESIZE_VERTICAL_20x20 =
         new HardwareCursorImage(20, 20, RESIZE_VERTICAL_IMAGE_20x20, 5, 9);
 
     private static final String RESIZE_VERTICAL_IMAGE_32x32 =
@@ -476,7 +476,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage RESIZE_VERTICAL_32x32 =
+    private static final HardwareCursorImage RESIZE_VERTICAL_32x32 =
         new HardwareCursorImage(32, 32, RESIZE_VERTICAL_IMAGE_32x32, 5, 9);
     public static HardwareCursor RESIZE_VERTICAL =
         new HardwareCursor(new HardwareCursorImage[]{RESIZE_VERTICAL_20x20, RESIZE_VERTICAL_32x32});
@@ -504,7 +504,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage RESIZE_NORTHWEST_20x20 =
+    private static final HardwareCursorImage RESIZE_NORTHWEST_20x20 =
         new HardwareCursorImage(20, 20, RESIZE_NORTHWEST_IMAGE_20x20, 7, 7);
 
     private static final String RESIZE_NORTHWEST_IMAGE_32x32 =
@@ -541,7 +541,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage RESIZE_NORTHWEST_32x32 =
+    private static final HardwareCursorImage RESIZE_NORTHWEST_32x32 =
         new HardwareCursorImage(32, 32, RESIZE_NORTHWEST_IMAGE_32x32, 7, 7);
     public static HardwareCursor RESIZE_NORTHWEST =
         new HardwareCursor(new HardwareCursorImage[]{RESIZE_NORTHWEST_20x20, RESIZE_NORTHWEST_32x32});
@@ -568,7 +568,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage RESIZE_NORTHEAST_20x20 =
+    private static final HardwareCursorImage RESIZE_NORTHEAST_20x20 =
         new HardwareCursorImage(20, 20, RESIZE_NORTHEAST_IMAGE_20x20, 7, 7);
 
     private static final String RESIZE_NORTHEAST_IMAGE_32x32 =
@@ -605,7 +605,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage RESIZE_NORTHEAST_32x32 =
+    private static final HardwareCursorImage RESIZE_NORTHEAST_32x32 =
         new HardwareCursorImage(32, 32, RESIZE_NORTHEAST_IMAGE_32x32, 7, 7);
     public static HardwareCursor RESIZE_NORTHEAST =
         new HardwareCursor(new HardwareCursorImage[]{RESIZE_NORTHEAST_20x20, RESIZE_NORTHEAST_32x32});
@@ -632,7 +632,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage TEXT_20x20 = new HardwareCursorImage(20, 20, TEXT_IMAGE_20x20, 3, 7);
+    private static final HardwareCursorImage TEXT_20x20 = new HardwareCursorImage(20, 20, TEXT_IMAGE_20x20, 3, 7);
 
     private static final String TEXT_IMAGE_32x32 =
         "BBBBBBBTTTTTTTTTTTTTTTTTTTTTTTTT" +
@@ -668,7 +668,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage TEXT_32x32 = new HardwareCursorImage(32, 32, TEXT_IMAGE_32x32, 3, 7);
+    private static final HardwareCursorImage TEXT_32x32 = new HardwareCursorImage(32, 32, TEXT_IMAGE_32x32, 3, 7);
     public static HardwareCursor TEXT = new HardwareCursor(new HardwareCursorImage[]{TEXT_20x20, TEXT_32x32});
 
     private static final String CROSSHAIR_IMAGE_20x20 =
@@ -693,7 +693,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage CROSSHAIR_20x20 = new HardwareCursorImage(20, 20, CROSSHAIR_IMAGE_20x20, 7, 7);
+    private static final HardwareCursorImage CROSSHAIR_20x20 = new HardwareCursorImage(20, 20, CROSSHAIR_IMAGE_20x20, 7, 7);
 
     private static final String CROSSHAIR_IMAGE_32x32 =
         "TTTTTTBBBTTTTTTTTTTTTTTTTTTTTTTT" +
@@ -729,7 +729,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage CROSSHAIR_32x32 = new HardwareCursorImage(32, 32, CROSSHAIR_IMAGE_32x32, 7, 7);
+    private static final HardwareCursorImage CROSSHAIR_32x32 = new HardwareCursorImage(32, 32, CROSSHAIR_IMAGE_32x32, 7, 7);
     public static HardwareCursor CROSSHAIR =
         new HardwareCursor(new HardwareCursorImage[]{CROSSHAIR_20x20, CROSSHAIR_32x32});
 
@@ -755,7 +755,7 @@ public class JNodeCursors {
             "TTTTTTTTTBTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage MOVE_20x20 = new HardwareCursorImage(20, 20, MOVE_IMAGE_20x20, 9, 9);
+    private static final HardwareCursorImage MOVE_20x20 = new HardwareCursorImage(20, 20, MOVE_IMAGE_20x20, 9, 9);
 
     private static final String MOVE_IMAGE_32x32 =
         "TTTTTTTTTBTTTTTTTTTTTTTTTTTTTTTT" +
@@ -791,7 +791,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage MOVE_32x32 = new HardwareCursorImage(32, 32, MOVE_IMAGE_32x32, 9, 9);
+    private static final HardwareCursorImage MOVE_32x32 = new HardwareCursorImage(32, 32, MOVE_IMAGE_32x32, 9, 9);
     public static HardwareCursor MOVE = new HardwareCursor(new HardwareCursorImage[]{MOVE_20x20, MOVE_32x32});
 
     private static final String WAIT_IMAGE_20x20 =
@@ -816,7 +816,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage WAIT_20x20 = new HardwareCursorImage(20, 20, WAIT_IMAGE_20x20, 7, 8);
+    private static final HardwareCursorImage WAIT_20x20 = new HardwareCursorImage(20, 20, WAIT_IMAGE_20x20, 7, 8);
 
     private static final String WAIT_IMAGE_32x32 =
         "TBBBBBBBBBBBBBTTTTTTTTTTTTTTTTTT" +
@@ -852,7 +852,7 @@ public class JNodeCursors {
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" +
             "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT";
 
-    private static HardwareCursorImage WAIT_32x32 = new HardwareCursorImage(32, 32, WAIT_IMAGE_32x32, 7, 8);
+    private static final HardwareCursorImage WAIT_32x32 = new HardwareCursorImage(32, 32, WAIT_IMAGE_32x32, 7, 8);
     public static HardwareCursor WAIT = new HardwareCursor(new HardwareCursorImage[]{WAIT_20x20, WAIT_32x32});
 
     // --- Templates ---

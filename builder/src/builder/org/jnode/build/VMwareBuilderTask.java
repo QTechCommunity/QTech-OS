@@ -283,7 +283,7 @@ public class VMwareBuilderTask extends Task {
         props.put("usb.present", "TRUE");
         props.put("sound.present", "FALSE");
         props.put("sound.virtualDev", "es1371");
-        props.put("displayName", (name != null) ? name : "Q-OS");
+        props.put("displayName", (name != null) ? name : "QTechOS");
         props.put("guestOS", "dos");
 
         props.put("nvram", "JNode.nvram");  

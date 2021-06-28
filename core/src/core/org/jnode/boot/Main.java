@@ -71,7 +71,7 @@ public final class Main {
     public static int vmMain() {
         //return 15;
         try {
-            Unsafe.debug("Starting Q-OS\n");
+            Unsafe.debug("Starting QTechOS\n");
             final long start = VmSystem.currentKernelMillis();
 
             Unsafe.debug("VmSystem.initialize\n");
@@ -97,7 +97,7 @@ public final class Main {
             }
 
             final long end = VmSystem.currentKernelMillis();
-            System.out.println("Q-OS initialization finished in " + (end - start) + "ms.");
+            System.out.println("QTechOS initialization finished in " + (end - start) + "ms.");
 
             File file = new File("/jnode/user/shared/boot/message.txt");
             if (!file.exists()) {
@@ -114,7 +114,7 @@ public final class Main {
                 PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(outputStream));
 
                 printWriter.println("#==========================================#");
-                printWriter.println("| Welcome to Q-OS!                         |");
+                printWriter.println("| Welcome to QTechOS!                         |");
                 printWriter.println("| WARNING: This project is in development. |");
                 printWriter.println("#==========================================#");
                 printWriter.flush();

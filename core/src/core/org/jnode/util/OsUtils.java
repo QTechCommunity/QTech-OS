@@ -32,7 +32,7 @@ public class OsUtils {
      */
     public static final boolean isQOS() {
         final String osName = System.getProperty("os.name", "");
-        return osName.equals("Q-OS");
+        return osName.equals("QTechOS");
     }
 
 }

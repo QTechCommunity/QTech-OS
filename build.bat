@@ -21,3 +21,4 @@ pause
 GOTO :END
 
 :END
+exit
