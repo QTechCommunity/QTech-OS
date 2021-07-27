@@ -222,7 +222,7 @@ public abstract class BasePropertyFileAdapter implements FileAdapter {
             os = new FileOutputStream(toFile);
             if (templateFile == null && saveSupported) {
                 saveToFile(properties, new BufferedOutputStream(os),
-                        "Expanded by JNode 'configure' tool");
+                        "Expanded by QTech OS 'configure' tool");
             } else {
                 try {
                     is = new FileInputStream(templateFile);

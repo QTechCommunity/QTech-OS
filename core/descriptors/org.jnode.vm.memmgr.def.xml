@@ -21,11 +21,11 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.vm.memmgr.def" 
-        name="JNode default memory manager"
+        name="QTech OS default memory manager"
         version="@VERSION@"
         system="true"
         license-name="lgpl"
-        provider-name="JNode.org">
+        provider-name="QTechOS">
         
   <requires>
     <import plugin="org.jnode.vm.core"/>

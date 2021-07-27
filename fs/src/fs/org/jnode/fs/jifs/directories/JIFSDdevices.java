@@ -41,7 +41,7 @@ import org.jnode.naming.InitialNaming;
 public class JIFSDdevices extends JIFSDirectory {
 
     public JIFSDdevices() throws IOException {
-        super("rawdevices");
+        super("rdev");
         refresh();
     }
 

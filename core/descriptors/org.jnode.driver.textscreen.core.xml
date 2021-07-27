@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver.textscreen.core" 
-        name="JNode Platform independent TextScreen interfaces"
+        name="QTech OS Platform independent TextScreen interfaces"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="JNode.org">
+        provider-name="QTechOS">
         
   <requires>
     <import plugin="org.jnode.driver.input"/>

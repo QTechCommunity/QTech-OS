@@ -24,7 +24,7 @@
        name="JPartition"
        version="@VERSION@"
        license-name="lgpl"
-       provider-name="JNode.org">
+       provider-name="QTechOS">
 
   <runtime>
 	<library name="jnode-distr.jar">

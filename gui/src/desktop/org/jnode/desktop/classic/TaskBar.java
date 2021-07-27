@@ -20,8 +20,10 @@
  
 package org.jnode.desktop.classic;
 
+import com.qtech.os.ui.dark.QButton;
+import com.qtech.os.ui.old.dark.DefaultQUITheme;
+import com.qtech.os.ui.old.dark.QUILookAndFeel;
 import gnu.java.security.action.SetPropertyAction;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GraphicsConfiguration;
@@ -35,7 +37,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
@@ -50,12 +51,10 @@ import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.plaf.metal.OceanTheme;
-
 import org.apache.log4j.Logger;
 import org.jnode.awt.JNodeGraphicsConfiguration;
 import org.jnode.awt.JNodeToolkit;
@@ -85,10 +84,14 @@ public class TaskBar extends JPanel {
         layout.setHgap(5);
         layout.setVgap(0);
         setLayout(layout);
-        setBorder(new BevelBorder(BevelBorder.RAISED));
-        startButton = new JButton("QOS", new ImageIcon(Desktop.loadImage("qtech_icon.png")));
-        startButton.setToolTipText("JNode Menu");
-        startButton.setBorder(new EmptyBorder(1, 3, 1, 3));
+//        setBorder(new BevelBorder(BevelBorder.RAISED));
+        setBackground(new Color(0x5f5f5f));
+        startButton = new QButton("QTech", new ImageIcon(Desktop.loadImage("qtech_icon.png")));
+        startButton.setToolTipText("QTech OS Menu");
+//        startButton.setBorder(new EmptyBorder(1, 3, 1, 3));
+        startButton.setBorder(new EmptyBorder(0, 0, 0, 0));
+        startButton.setBackground(new Color(0x5f5f5f));
+        startButton.setForeground(new Color(0xafafaf));
 
         add(startButton, BorderLayout.WEST);
         startMenu = new JPopupMenu();
@@ -164,6 +167,15 @@ public class TaskBar extends JPanel {
         metal_theme.addActionListener(new SetLFAction("javax.swing.plaf.metal.MetalLookAndFeel") {
             public void actionPerformed(ActionEvent e) {
                 MetalLookAndFeel.setCurrentTheme(new DefaultMetalTheme());
+                super.actionPerformed(e);
+            }
+        });
+
+        JMenuItem qui_theme = new JMenuItem("QTech UI");
+        lfMenu.add(qui_theme);
+        qui_theme.addActionListener(new SetLFAction("com.qtech.os.ui.old.dark.QUILookAndFeel") {
+            public void actionPerformed(ActionEvent e) {
+                QUILookAndFeel.setCurrentTheme(new DefaultQUITheme());
                 super.actionPerformed(e);
             }
         });
@@ -317,7 +329,7 @@ public class TaskBar extends JPanel {
 
     static class Clock extends JLabel {
         private static final long serialVersionUID = 1L;
-        private Timer timer;
+        private final Timer timer;
         private TimerTask task;
 
         Clock() {
@@ -342,7 +354,7 @@ public class TaskBar extends JPanel {
 
         private void startTimer() {
             timer.schedule(task = new TimerTask() {
-                Calendar calendar = new GregorianCalendar();
+                final Calendar calendar = new GregorianCalendar();
 
                 public void run() {
                     calendar.setTimeInMillis(System.currentTimeMillis());

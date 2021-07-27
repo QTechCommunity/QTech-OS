@@ -23,7 +23,6 @@ package charva.awt.event;
  * The listener interface for receiving action events.
  */
 public interface ActionListener
-    extends EventListener
-{
+    extends EventListener {
     void actionPerformed(ActionEvent ae_);
 }

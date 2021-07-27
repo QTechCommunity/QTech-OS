@@ -4,7 +4,7 @@ dir=`dirname $0`
 
 if [ $# -eq 0 ] ; then
     echo "usage: ./test.sh <project> [ <test> ... ]"
-    echo " where <project> is \"all\" or a JNode component project, and"
+    echo " where <project> is \"all\" or a QTech OS component project, and"
     echo " the <test>s are targets in the respective \"build-tests.xml\" files"
     exit
 fi

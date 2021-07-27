@@ -35,27 +35,28 @@ import charva.awt.Container;
  * A convenience container that uses a BoxLayout object as its LayoutManager.
  */
 public class Box
-    extends Container
-{
+    extends Container {
     public Box(int axis_) {
-    setLayout(new BoxLayout(this, axis_));
+        setLayout(new BoxLayout(this, axis_));
     }
 
-    /** Does nothing; it's here for compatibility with Swing.
+    /**
+     * Does nothing; it's here for compatibility with Swing.
      */
-    public void createGlue() {}
+    public void createGlue() {
+    }
 
     /**
      * Convenience method for creating a Box with vertical axis.
      */
     public static Box createVerticalBox() {
-    return new Box(BoxLayout.Y_AXIS);
+        return new Box(BoxLayout.Y_AXIS);
     }
 
     /**
      * Convenience method for creating a Box with horizontal axis.
      */
     public static Box createHorizontalBox() {
-    return new Box(BoxLayout.X_AXIS);
+        return new Box(BoxLayout.X_AXIS);
     }
 }

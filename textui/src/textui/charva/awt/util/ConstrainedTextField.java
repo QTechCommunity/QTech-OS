@@ -27,14 +27,13 @@ import charva.awt.event.KeyEvent;
  * the length of the text.
  */
 public class ConstrainedTextField
-    extends CapsTextField
-{
-    /** 
+    extends CapsTextField {
+    /**
      * Use this constructor when you want to leave the text field empty
      * but set its length.
      */
     public ConstrainedTextField(int length_) {
-    super(length_);
+        super(length_);
     }
 
     /**
@@ -42,23 +41,23 @@ public class ConstrainedTextField
      * length.
      */
     public ConstrainedTextField(String text_, int length_) {
-    super(text_, length_);
+        super(text_, length_);
     }
 
-    /** 
+    /**
      * Check the length of the text before calling the superclass'
      * processKeyEvent() method. If the text is already maximum length
      * and it is a printing character, ring the bell.
      */
     public void processKeyEvent(KeyEvent ke_) {
-    int key = ke_.getKeyCode();
-    if (super._document.length() >= _columns &&
-        ke_.isActionKey() == false &&
-        key >= ' ') {
-        ke_.consume();
-        Toolkit.getDefaultToolkit().beep();
-    }
+        int key = ke_.getKeyCode();
+        if (super._document.length() >= _columns &&
+            ke_.isActionKey() == false &&
+            key >= ' ') {
+            ke_.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
 
-    super.processKeyEvent(ke_);
+        super.processKeyEvent(ke_);
     }
 }

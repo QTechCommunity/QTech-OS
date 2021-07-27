@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.partitions" 
-        name="JNode Partition Service"
+        name="QTech OS Partition Service"
         version="@VERSION@"
-        provider-name="JNode.org"
+        provider-name="QTechOS"
         license-name="lgpl"
         class="org.jnode.partitions.service.def.PartitionTablePlugin">
         

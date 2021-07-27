@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver.block.usb.storage" 
-        name="JNode USB Mass Storage drivers"
+        name="QTech OS USB Mass Storage drivers"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="JNode.org">
+        provider-name="QTechOS">
         
   <requires>
     <import plugin="org.jnode.driver.bus.usb"/>

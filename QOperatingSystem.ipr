@@ -4,7 +4,8 @@
     <buildFile url="file://$PROJECT_DIR$/all/build.xml">
       <antReference name="Apache Ant version 1.7.1" />
       <customJdkName value="JNode JDK" />
-      <maximumStackSize value="32" />
+      <maximumHeapSize value="3072" />
+      <maximumStackSize value="512" />
     </buildFile>
   </component>
   <component name="BuildJarProjectSettings">
@@ -167,6 +168,7 @@
     <option name="USE_PER_PROJECT_SETTINGS" value="true" />
   </component>
   <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_HEAP_SIZE" value="1024" />
     <resourceExtensions>
       <entry name=".+\.(properties|xml|html|dtd|tld)" />
       <entry name=".+\.(gif|png|jpeg|jpg)" />
@@ -219,6 +221,10 @@
     <option name="PRINT_LINE_NUMBERS" value="false" />
     <option name="OPEN_IN_BROWSER" value="false" />
     <option name="OUTPUT_DIRECTORY" />
+  </component>
+  <component name="ExternalDependencies">
+    <plugin id="AntSupport" />
+    <plugin id="com.intellij.java" />
   </component>
   <component name="IdProvider" IDEtalkID="435AAC2234C36B0F2257FA7F02C447FB" />
   <component name="InspectionProjectProfileManager">
@@ -410,9 +416,6 @@
       <ScalaCodeStyleSettings>
         <option name="MULTILINE_STRING_CLOSING_QUOTES_ON_NEW_LINE" value="true" />
       </ScalaCodeStyleSettings>
-      <XML>
-        <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
-      </XML>
       <codeStyleSettings language="CFML">
         <option name="CALL_PARAMETERS_WRAP" value="1" />
         <option name="METHOD_PARAMETERS_WRAP" value="1" />
@@ -630,12 +633,19 @@
   <component name="ProjectResources">
     <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" project-jdk-name="JNode JDK" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
   <component name="ResourceManagerContainer">
     <option name="myResourceBundles">
       <value>
         <list size="0" />
       </value>
+    </option>
+  </component>
+  <component name="RunConfigurationProducerService">
+    <option name="ignoredProducers">
+      <set>
+        <option value="com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer" />
+      </set>
     </option>
   </component>
   <component name="SessionConfiguration">

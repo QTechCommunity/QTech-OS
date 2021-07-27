@@ -30,9 +30,9 @@ import org.jnode.install.cmdline.CommandLineInstaller;
 public class Main implements Runnable {
 
     public void run() {
-        System.out.println("JNode Installation");
+        System.out.println("QTech OS Installation");
         CommandLineInstaller.main();
-        System.out.println("JNode installation completed.");
+        System.out.println("QTech OS installation completed.");
         /*
         while (true) {
             try {

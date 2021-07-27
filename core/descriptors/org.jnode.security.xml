@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.security" 
-        name="JNode security system"
+        name="QTech OS security system"
         version="@VERSION@"
         system="true"
-        provider-name="JNode.org"
+        provider-name="QTechOS"
         license-name="lgpl"
         class="org.jnode.security.SecurityPlugin">
         

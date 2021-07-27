@@ -22,15 +22,15 @@ package charvax.swing.event;
 import charva.awt.event.EventListener;
 
 /**
- * Classes that need to be notified of changes in the contents of a list 
+ * Classes that need to be notified of changes in the contents of a list
  * must implement this interface.
  */
 public interface ListDataListener
-    extends EventListener
-{
-    /** This method is called when the contents of the list have changed.
+    extends EventListener {
+    /**
+     * This method is called when the contents of the list have changed.
      */
-    public void contentsChanged(ListDataEvent evt);
+    void contentsChanged(ListDataEvent evt);
 
     // This method is not used in CHARVA.
     //public void intervalAdded(ListDataEvent evt);

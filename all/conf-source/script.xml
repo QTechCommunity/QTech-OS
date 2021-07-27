@@ -85,7 +85,7 @@
 	  default=""/>
   </propFile>
 
-  <screen title="Main JNode Build Settings">
+  <screen title="Main QTech OS Build Settings">
     <item property="jnode.virtualization.platform">
       The JNode build can generate configuration files for running on a
       hardware emulation / virtualization platform.

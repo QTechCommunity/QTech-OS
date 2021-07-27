@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.awt.swingpeers" 
-        name="JNode AWT Swing based peers implementation"
+        name="QTech OS AWT Swing based peers implementation"
         version="@VERSION@"
-        provider-name="JNode.org"
+        provider-name="QTechOS"
         license-name="lgpl"
         class="org.jnode.awt.swingpeers.SwingPeersPlugin">
         

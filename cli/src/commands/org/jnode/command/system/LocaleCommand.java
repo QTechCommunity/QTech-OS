@@ -45,7 +45,7 @@ public class LocaleCommand extends AbstractCommand {
     private static final String help_variant = "the locale's variant";
     @SuppressWarnings("unused")
     private static final String help_list = "if set, list the available Locales";
-    private static final String help_super = "Print or change JNode's default Locale";
+    private static final String help_super = "Print or change QTech OS's default Locale";
     private static final String err_no_locale = "No Locale is available for %s %s %s%n";
     private static final String fmt_set = "Setting default Locale to %s%n";
     private static final String fmt_get = "Current default Locale is %s%n";

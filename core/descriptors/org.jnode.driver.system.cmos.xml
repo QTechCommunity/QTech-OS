@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver.system.cmos"
-    name="JNode CMOS driver classes"
+    name="QTech OS CMOS driver classes"
     version="@VERSION@"
-    provider-name="JNode.org"
+    provider-name="QTechOS"
     license-name="lgpl"
     class="org.jnode.driver.system.cmos.def.CMOSPlugin">
 

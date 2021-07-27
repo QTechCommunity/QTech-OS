@@ -18,7 +18,7 @@
     along with this library; If not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -->
-<project name="JNode-x86" default="all" basedir=".">
+<project name="QTechOS-x86" default="all" basedir=".">
 
 	<property name="my-build.dir" value="${build.dir}/x86" />
 	<property name="my-lib.dir" value="${basedir}/lib/x86" />
@@ -312,7 +312,7 @@
                 <then>
                     <!-- Fail on a Windows platform if there are spaces in the root dir's pathname.  It will
             	     lead to mkisofs dying with a misleading error message.  bluebit / crawley 2008-05-03 -->
-    	            <fail message="Cannot build JNode from a directory with spaces in the pathname.">
+    	            <fail message="Cannot build QTech OS from a directory with spaces in the pathname.">
                 	  <condition>
     	                <and>
                 	      <contains string="${os.name}" substring="windows" casesensitive="false" />

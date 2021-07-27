@@ -23,9 +23,9 @@
 <fragment id="org.jnode.awt.font.bdf"
         plugin-id="org.jnode.awt.font"
         plugin-version="@VERSION@"
-        name="JNode BDF Font Provider"
+        name="QTech OS BDF Font Provider"
         version="@VERSION@"
-        provider-name="JNode.org"
+        provider-name="QTechOS"
         license-name="classpath">
 
   <requires>
@@ -41,7 +41,7 @@
     </library>
   </runtime>
 
-  <extension-point id="fonts" name="JNode BDF Font URLs"/>
+  <extension-point id="fonts" name="QTech OS BDF Font URLs"/>
 
   <extension point="org.jnode.awt.font.providers">
     <mapper class="org.jnode.awt.font.bdf.BDFFontProvider"/>

@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.shell.command.bsh"
-        name="JNode BeanShell Commands"
+        name="QTech OS BeanShell Commands"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="JNode.org">
+        provider-name="QTechOS">
 
   <requires>
     <import plugin="org.jnode.shell.help"/>

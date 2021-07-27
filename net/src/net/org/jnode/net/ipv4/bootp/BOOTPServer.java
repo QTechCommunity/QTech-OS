@@ -96,7 +96,7 @@ public class BOOTPServer {
     }
 
     private void run() throws SocketException {
-        System.out.println("JNode BOOTP Server");
+        System.out.println("QTech OS BOOTP Server");
         socket = new DatagramSocket(SERVER_PORT);
         try {
             socket.setBroadcast(true);

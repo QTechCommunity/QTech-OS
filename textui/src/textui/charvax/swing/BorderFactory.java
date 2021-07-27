@@ -30,20 +30,19 @@ import charvax.swing.border.TitledBorder;
  * In the Charva library, all the borders (except TitleBorders) are actually
  * just LineBorders.
  */
-public class BorderFactory
-{
+public class BorderFactory {
     public static Border createLineBorder(Color color_) {
-    return new LineBorder(color_);
+        return new LineBorder(color_);
     }
 
-    /** Create a LineBorder - ignore the thickness.
+    /**
+     * Create a LineBorder - ignore the thickness.
      */
     public static Border createLineBorder(Color color_, int thickness_) {
-    return new LineBorder(color_);
+        return new LineBorder(color_);
     }
 
-    public static TitledBorder createTitledBorder(String title)
-    {
-    return new TitledBorder(title);
+    public static TitledBorder createTitledBorder(String title) {
+        return new TitledBorder(title);
     }
 }

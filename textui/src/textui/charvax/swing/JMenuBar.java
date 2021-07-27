@@ -45,9 +45,8 @@ public class JMenuBar extends Container {
 
     /**
      * Appends the specified menu to the end of the JMenuBar.
-     * 
-     * @param menu_
-     *            the menu to be added.
+     *
+     * @param menu_ the menu to be added.
      * @return the menu that was added.
      */
     public JMenu add(JMenu menu_) {
@@ -76,14 +75,17 @@ public class JMenuBar extends Container {
     public JMenu getMenu(String text_) {
         for (int i = 0; i < getMenuCount(); i++) {
             JMenu menu = getMenu(i);
-            if (menu.getText().equals(text_)) { return menu; }
+            if (menu.getText().equals(text_)) {
+                return menu;
+            }
         }
         throw new IllegalArgumentException("menubar does not contain menu \""
-                + text_ + "\"");
+            + text_ + "\"");
     }
 
     /**
      * Draw this menubar.
+     *
      * @param toolkit
      */
     public void draw(Toolkit toolkit) {
@@ -108,9 +110,9 @@ public class JMenuBar extends Container {
         Component[] menus = super.getComponents();
         int x = 0;
         for (int i = 0; i < menus.length; i++) {
-            menus[ i].setLocation(x, 0);
-            menus[ i].draw(toolkit);
-            x += menus[ i].getWidth();
+            menus[i].setLocation(x, 0);
+            menus[i].draw(toolkit);
+            x += menus[i].getWidth();
         }
     }
 
@@ -166,11 +168,11 @@ public class JMenuBar extends Container {
                 JMenu menu = getMenu(i);
                 if (menu != null) {
                     if (menu.getMnemonic() == -1) continue; // this menu
-                                                            // doesn't have a
-                                                            // mnemonic
+                    // doesn't have a
+                    // mnemonic
 
                     char mnemonicLower = Character.toLowerCase((char) menu
-                            .getMnemonic());
+                        .getMnemonic());
                     if (keyLower == mnemonicLower) {
                         menu.doClick();
                         ke_.consume();
@@ -200,9 +202,11 @@ public class JMenuBar extends Container {
     public int getWidth() {
         // get the width of our parent JFrame.
         Container parent = getParent();
-        if (parent == null) { throw new IllegalComponentStateException(
+        if (parent == null) {
+            throw new IllegalComponentStateException(
                 "can't get menubar size before "
-                        + "it has been added to a frame"); }
+                    + "it has been added to a frame");
+        }
 
         int parentwidth = parent.getWidth() - 2;
         int minwidth = minimumSize().width;
@@ -220,7 +224,7 @@ public class JMenuBar extends Container {
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println(this.toString());
+        System.err.println(this);
     }
 
     public String toString() {
@@ -261,7 +265,9 @@ public class JMenuBar extends Container {
         int offset = 0;
         for (int i = 0; i < getMenuCount(); i++) {
             JMenu menu = getMenu(i);
-            if (menu == menu_) { return origin.addOffset(offset, 1); }
+            if (menu == menu_) {
+                return origin.addOffset(offset, 1);
+            }
             String menutext = menu.getText();
             offset += menutext.length() + 1;
         }

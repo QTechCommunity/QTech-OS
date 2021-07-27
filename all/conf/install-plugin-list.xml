@@ -24,7 +24,7 @@
     <attribute key="Main-Class" value="org.jnode.install.Main"/>
   </manifest>
 
-  <plugin id="org.apache.jakarta.commons.net"/>
+<!--  <plugin id="org.apache.jakarta.commons.net"/>-->
   <plugin id="org.xbill.dns"/>
 
   <plugin id="org.jnode.driver.console"/>
@@ -82,6 +82,7 @@
   <plugin id="org.jnode.fs.jifs.def"/>
   <plugin id="edtftpj"/>
   <plugin id="org.jnode.fs.ftpfs"/>
+  <plugin id="org.jnode.protocol"/>
   <plugin id="jcifs"/>
   <plugin id="org.jnode.fs.smbfs"/>
 
@@ -89,6 +90,10 @@
   <plugin id="org.jnode.partitions"/>
   <plugin id="org.jnode.partitions.ibm"/>
 
+  <plugin id="org.jnode.shell.syntax"/>
+  <plugin id="org.apache.commons.net"/>
+  <plugin id="org.jnode.fs.ramfs"/>
+  <plugin id="org.jnode.fs.ramfs.def"/>
   <plugin id="org.jnode.shell.help"/>
   <plugin id="org.jnode.fs.command"/> <!-- needed by JFat format command-->
   <plugin id="org.jnode.fs.jfat"/>

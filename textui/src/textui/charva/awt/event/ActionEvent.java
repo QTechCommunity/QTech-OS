@@ -25,14 +25,13 @@ import charva.awt.Component;
  * An event which indicates that a component-defined action (typically
  * the pressing of a button) occurred.
  */
-public class ActionEvent extends AWTEvent
-{
+public class ActionEvent extends AWTEvent {
     private static final long serialVersionUID = 1L;
     String _command;
 
     public ActionEvent(Component source_, String command_) {
-    super(source_, AWTEvent.ACTION_PERFORMED);
-    _command = command_;
+        super(source_, AWTEvent.ACTION_PERFORMED);
+        _command = command_;
     }
 
     /**
@@ -40,5 +39,7 @@ public class ActionEvent extends AWTEvent
      * allows a component to specify one of several commands, depending on
      * its state.
      */
-    public String getActionCommand() { return _command; }
+    public String getActionCommand() {
+        return _command;
+    }
 }

@@ -23,17 +23,17 @@ import charva.awt.Component;
 
 /**
  * An event which can be posted onto the event queue by an application
- * to trigger garbage-collection. If the event is posted onto the event 
+ * to trigger garbage-collection. If the event is posted onto the event
  * queue as the last action in an actionPerformed() method (e.g. after
  * a menu option or button is invoked), the garbage collection will
- * take place <strong>after</strong> the actionPerformed() method has 
- * returned. This is a useful but optional way of limiting the growth 
+ * take place <strong>after</strong> the actionPerformed() method has
+ * returned. This is a useful but optional way of limiting the growth
  * of the heap without causing noticeable delays.
  */
-public class GarbageCollectionEvent extends AWTEvent
-{
+public class GarbageCollectionEvent extends AWTEvent {
     private static final long serialVersionUID = 1L;
+
     public GarbageCollectionEvent(Component source_) {
-    super(source_, AWTEvent.GARBAGE_COLLECTION);
+        super(source_, AWTEvent.GARBAGE_COLLECTION);
     }
 }

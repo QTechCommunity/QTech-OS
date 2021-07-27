@@ -22,42 +22,48 @@ package charvax.swing.tree;
 import charvax.swing.event.TreeSelectionListener;
 
 /**
- * This interface represents the current state of the selection for 
- * the tree component. 
- *
+ * This interface represents the current state of the selection for
+ * the tree component.
+ * <p>
  * The Charva version of the TreeSelectionModel supports
- * SINGLE_TREE_SELECTION only. As a result, the state of the tree selection 
- * is characterized by a single TreePath, 
+ * SINGLE_TREE_SELECTION only. As a result, the state of the tree selection
+ * is characterized by a single TreePath,
  */
-public interface TreeSelectionModel
-{
-    /** Returns the first path in the selection.
+public interface TreeSelectionModel {
+    /**
+     * Returns the first path in the selection.
      */
-    public TreePath getSelectionPath();
+    TreePath getSelectionPath();
 
-    /** Sets the selection to "path".
+    /**
+     * Sets the selection to "path".
      */
-    public void setSelectionPath(TreePath path);
+    void setSelectionPath(TreePath path);
 
-    /** Empties the current selection.
+    /**
+     * Empties the current selection.
      */
-    public void clearSelection();
+    void clearSelection();
 
-    /** Returns true if "path" is in the current selection.
+    /**
+     * Returns true if "path" is in the current selection.
      */
-    public boolean isPathSelected(TreePath path);
+    boolean isPathSelected(TreePath path);
 
-    /** Returns true if the selection is currently empty.
+    /**
+     * Returns true if the selection is currently empty.
      */
-    public boolean isSelectionEmpty();
+    boolean isSelectionEmpty();
 
-    /** Adds "listener" to the list of listeners that are notified each 
+    /**
+     * Adds "listener" to the list of listeners that are notified each
      * time the set of selected TreePaths changes.
      */
-    public void addTreeSelectionListener(TreeSelectionListener listener);
+    void addTreeSelectionListener(TreeSelectionListener listener);
 
-    /** Removes "listener" from the list of listeners that are notified 
+    /**
+     * Removes "listener" from the list of listeners that are notified
      * each time the set of selected TreePaths changes.
      */
-    public void removeTreeSelectionListener(TreeSelectionListener listener);
+    void removeTreeSelectionListener(TreeSelectionListener listener);
 }

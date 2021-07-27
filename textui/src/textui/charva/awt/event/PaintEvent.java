@@ -26,19 +26,20 @@ import charva.awt.Rectangle;
  * An event which is used to ensure that painting of components is
  * serialized, i.e that it occurs in the main event-processing loop.
  */
-public class PaintEvent extends AWTEvent
-{
+public class PaintEvent extends AWTEvent {
     private static final long serialVersionUID = 1L;
     Rectangle _updateRect;
 
     public PaintEvent(Component source_, Rectangle rect_) {
-    super(source_, AWTEvent.PAINT_EVENT);
-    _updateRect = rect_;
+        super(source_, AWTEvent.PAINT_EVENT);
+        _updateRect = rect_;
     }
 
     /**
      * Returns the rectangle representing the area that needs to be
      * repainted in response to this event.
      */
-    public Rectangle getUpdateRect() { return new Rectangle(_updateRect); }
+    public Rectangle getUpdateRect() {
+        return new Rectangle(_updateRect);
+    }
 }

@@ -22,11 +22,10 @@ package charvax.swing;
 /**
  * A collection of constants used for positioning components on the screen.
  */
-public interface SwingConstants
-{
-    public static final int TOP = 300;
-    public static final int CENTER = 301;
-    public static final int BOTTOM = 302;
-    public static final int LEFT = 303;
-    public static final int RIGHT = 304;
+public interface SwingConstants {
+    int TOP = 300;
+    int CENTER = 301;
+    int BOTTOM = 302;
+    int LEFT = 303;
+    int RIGHT = 304;
 }

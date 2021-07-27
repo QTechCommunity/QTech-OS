@@ -3,70 +3,70 @@ default 0
 timeout 5
 
 # ---------------------------
-title Q-OS (default)
+title QTech OS (default)
 kernel (hd0,0)/jnode32.gz mp=no
 module (hd0,0)/default.jgz
 
 # ---------------------------
-title Q-OS (all plugins)
+title QTech OS (all plugins)
 kernel (hd0,0)/jnode32.gz mp=no
 module (hd0,0)/full.jgz
 
 # ---------------------------
-#title Q-OS GUI (all plugins)
+#title QTech OS GUI (all plugins)
 #kernel /jnode32.gz mp=no
 #module /fullgui.jgz
 
 # ---------------------------
 # -- disabled
-title Q-OS (all plugins) (VESA mode)
+title QTech OS (all plugins) (VESA mode)
 kernel /jnode32.gz mp=no fb
 vbematch 800 600 32
 module /full.jgz
 
 # ---------------------------
-title Q-OS (default with MP)
+title QTech OS (default with MP)
 kernel (hd0,0)/jnode32.gz
 module (hd0,0)/default.jgz
 
 # ---------------------------
-title Q-OS (all plugins with MP)
+title QTech OS (all plugins with MP)
 kernel (hd0,0)/jnode32.gz
 module (hd0,0)/full.jgz
 
 # ---------------------------
 # -- disabled
-#title Q-OS GUI (all plugins with MP)
-#kernel (hd0,0)/jnode32.gz
-#module (hd0,0)/fullgui.jgz
+title QTech OS GUI (all plugins with MP)
+kernel (hd0,0)/jnode32.gz
+module (hd0,0)/fullgui.jgz
 
 # ---------------------------
-title Q-OS via dhcp (default with MP)
+title QTech OS via dhcp (default with MP)
 dhcp
 kernel (nd)/jnode32.gz
 module (nd)/default.jgz
 
 # ---------------------------
-title Q-OS via dhcp (all plugins with MP)
+title QTech OS via dhcp (all plugins with MP)
 dhcp
 kernel (nd)/jnode32.gz
 module (nd)/full.jgz
 
 # ---------------------------
 # -- disabled
-#title Q-OS GUI via dhcp (all plugins with MP)
+#title QTech OS GUI via dhcp (all plugins with MP)
 #dhcp
 #kernel (nd)/jnode32.gz
 #module (nd)/fullgui.jgz
 
 # ---------------------------
-title Q-OS tests (all plugins + tests with MP)
+title QTech OS tests (all plugins + tests with MP)
 kernel (hd0,0)/jnode32.gz
 module (hd0,0)/tests.jgz
 
 # ---------------------------
 # -- disabled
-#title Q-OS Install
-#kernel (hd0,0)/jnode32.gz
-#module (hd0,0)/install.jgz
+title QTech OS Install
+kernel (hd0,0)/jnode32.gz
+module (hd0,0)/install.jgz
 

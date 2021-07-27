@@ -77,7 +77,7 @@ public class JDialog extends Dialog {
         Rectangle bounds = component_.getBounds(); // bounds of component
         int x = ((bounds.getLeft() + bounds.getRight()) / 2) - (size.width / 2);
         int y = ((bounds.getTop() + bounds.getBottom()) / 2)
-                - (size.height / 2);
+            - (size.height / 2);
         super.setLocation(x, y);
     }
 

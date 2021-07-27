@@ -26,34 +26,35 @@ import charva.awt.Toolkit;
 import charvax.swing.border.Border;
 
 /**
- * The base class for charva.swing components. JComponent provides a 
+ * The base class for charva.swing components. JComponent provides a
  * border property that implicitly defines the component's insets.
  * Note that JComponent is a subclass of Component, not of Container
  * (whereas java.swing.JComponent is a subclass of java.awt.Container).
  */
 public abstract class JComponent
-    extends Component
-{
+    extends Component {
     public JComponent() {
     }
 
     public void setBorder(Border border_) {
-    _border = border_;
+        _border = border_;
     }
 
-    public Border getBorder() { return _border; }
-
-    public Insets getInsets() { 
-    if (_border != null) {
-        return _border.getBorderInsets(this);
+    public Border getBorder() {
+        return _border;
     }
-    else
-        return new Insets(0,0,0,0);
+
+    public Insets getInsets() {
+        if (_border != null) {
+            return _border.getBorderInsets(this);
+        } else
+            return new Insets(0, 0, 0, 0);
     }
 
 
     /**
      * Draws the border of the component (if there is one).
+     *
      * @param toolkit
      */
     public void draw(Toolkit toolkit) {

@@ -21,7 +21,7 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.command.util"
-        name="JNode command utilities"
+        name="QTech OS command utilities"
         version="@VERSION@"
         provider-name="@PROVIDER@"
         license-name="lgpl">

@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.net"
-  name="JNode Network System"
+  name="QTech OS Network System"
   version="@VERSION@"
-  provider-name="JNode.org"
+  provider-name="QTechOS"
         license-name="lgpl"
   class="org.jnode.net.service.NetPlugin">
 
@@ -46,7 +46,7 @@
     </library>
   </runtime>
 
-  <extension-point id="networkLayers" name="JNode Network layers"/>
+  <extension-point id="networkLayers" name="QTech OS Network layers"/>
 
 
 </plugin>

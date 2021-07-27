@@ -236,8 +236,8 @@ public class CompareTask extends Task {
             }
             if (diffJNode > 0) {
                 out.println("Found " + diffJNode
-                    + " changes with JNode in it<br/>");
-                log("Found " + diffJNode + " changes with JNode in it");
+                    + " changes with QTech OS in it<br/>");
+                log("Found " + diffJNode + " changes with QTech OS in it");
             }
 
             reportFooter(out);

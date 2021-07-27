@@ -43,8 +43,8 @@ public class JIFSFversion extends JIFSFile {
 
     public void refresh() {
         super.refresh();
-        addStringln("JNode Version :\n\t" + System.getProperty("os.version"));
-        addStringln("JNode Java Version :\n\t" + System.getProperty("java.version"));
-        addStringln("JNode Java Class Version :\n\t" + System.getProperty("java.class.version"));
+        addStringln("QTech OS Version :\n\t" + System.getProperty("os.version"));
+        addStringln("QTech OS Java Version :\n\t" + System.getProperty("java.version"));
+        addStringln("QTech OS Java Class Version :\n\t" + System.getProperty("java.class.version"));
     }
 }

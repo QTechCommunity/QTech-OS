@@ -26,7 +26,7 @@ public enum OsType {
     /**
      * An OS that is the JNode OS
      */
-    JNODE_OS("JNodeOS"),
+    QTECH_OS("QTechOS"),
 
     /**
      * An OS that is or is not the JNode OS
@@ -50,7 +50,7 @@ public enum OsType {
 
         if (this == BOTH_OS)
             isCurrOS = true;
-        else if (OsUtils.isQOS() && (this == JNODE_OS))
+        else if (OsUtils.isQOS() && (this == QTECH_OS))
             isCurrOS = true;
         else if (!OsUtils.isQOS() && (this == OTHER_OS))
             isCurrOS = true;

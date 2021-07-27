@@ -25,7 +25,7 @@
   version="@VERSION@"
   system="true"
   plugin-version="@VERSION@"
-  provider-name="JNode.org"
+  provider-name="QTechOS"
   provider-url="http://jnode.org"
   license-name="classpath">
 
