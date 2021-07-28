@@ -1,7 +1,7 @@
 ; -----------------------------------------------
 ; $Id: unsafe-cpuid.asm 1036 2005-01-30 10:41:32Z epr $
 ;
-; Native method implementation for org.jnode.vm.x86.UnsafeX86
+; Native method implementation for UnsafeX86
 ; of the CPU identification methods.
 ;
 ; Author       : E. Prangsma

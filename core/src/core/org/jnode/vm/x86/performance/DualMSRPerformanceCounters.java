@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -112,14 +112,14 @@ class DualMSRPerformanceCounters extends X86PerformanceCounters {
     }
 
     /**
-     * @see org.jnode.vm.x86.performance.X86PerformanceCounters#getAvailableEvents()
+     * @see X86PerformanceCounters#getAvailableEvents()
      */
     public final Set<PerformanceCounterEvent> getAvailableEvents() {
         return eventSet;
     }
 
     /**
-     * @see org.jnode.vm.x86.performance.X86PerformanceCounters#getAvailableEvent(java.lang.String)
+     * @see X86PerformanceCounters#getAvailableEvent(java.lang.String)
      */
     public final PerformanceCounterEvent getAvailableEvent(String id) {
         for (PerformanceCounterEvent e : events) {
@@ -131,7 +131,7 @@ class DualMSRPerformanceCounters extends X86PerformanceCounters {
     }
 
     /**
-     * @see org.jnode.vm.x86.performance.X86PerformanceCounters#getCounterValues(long[])
+     * @see X86PerformanceCounters#getCounterValues(long[])
      */
     protected final void getCounterValues(long[] counters, VmX86Thread thread)
         throws UninterruptiblePragma {
@@ -151,8 +151,8 @@ class DualMSRPerformanceCounters extends X86PerformanceCounters {
     }
 
     /**
-     * @see org.jnode.vm.x86.performance.X86PerformanceCounters
-     * #startCounters(org.jnode.vm.performance.PerformanceCounterEvent[])
+     * @see X86PerformanceCounters
+     * #startCounters(com.qtech.os.vm.performance.PerformanceCounterEvent[])
      */
     protected final void startCounters(PerformanceCounterEvent[] events,
                                        VmX86Thread thread) throws IllegalArgumentException {
@@ -171,7 +171,7 @@ class DualMSRPerformanceCounters extends X86PerformanceCounters {
     }
 
     /**
-     * @see org.jnode.vm.x86.performance.X86PerformanceCounters#stopCounters(org.jnode.vm.x86.VmX86Thread)
+     * @see X86PerformanceCounters#stopCounters(VmX86Thread)
      */
     protected void stopCounters(VmX86Thread thread) throws IllegalArgumentException {
         final MSR[] selectMSRs = thread.getWriteOnlyMSRs();

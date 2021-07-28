@@ -1,8 +1,8 @@
 package com.qtech.os.ui;
 
-import org.jnode.plugin.Plugin;
-import org.jnode.plugin.PluginDescriptor;
-import org.jnode.plugin.PluginException;
+import com.qtech.os.plugin.Plugin;
+import com.qtech.os.plugin.PluginDescriptor;
+import com.qtech.os.plugin.PluginException;
 
 public class QTechUIPlugin extends Plugin {
     /**

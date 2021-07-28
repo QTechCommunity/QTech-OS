@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -25,6 +25,8 @@ import org.jnode.annotation.KernelSpace;
 import org.jnode.annotation.MagicPermission;
 import org.jnode.vm.classmgr.VmClassType;
 import org.jnode.vm.scheduler.VmProcessor;
+import org.jnode.vm.classmgr.VmType;
+import org.jnode.vm.compiler.BaseMagicHelper;
 import org.vmmagic.unboxed.Address;
 import org.vmmagic.unboxed.Word;
 
@@ -35,8 +37,8 @@ import org.vmmagic.unboxed.Word;
  * <p/>
  * Methods in this class can also be called from inside JNode.
  * <p/>
- * See {@link org.jnode.vm.classmgr.VmType VmType} to get the list of "magic" classes and
- * {@link org.jnode.vm.compiler.BaseMagicHelper.MagicMethod MagicMethod}
+ * See {@link VmType VmType} to get the list of "magic" classes and
+ * {@link BaseMagicHelper.MagicMethod MagicMethod}
  * to get the list of "magic" methods.
  *
  * @author Ewout Prangsma (epr@users.sourceforge.net)

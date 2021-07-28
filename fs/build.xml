@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -66,21 +66,21 @@
     </copy>
 
 	<!-- copy (if exists) image of file systems (*.img.WORK files are temporary) -->
-    <copy todir="${my-testclasses.dir}/org/jnode/test/fs/">
-	  <fileset dir="${my-src.dir}/test/org/jnode/test/fs/">
+    <copy todir="${my-testclasses.dir}/com/qtech/os/test/fs/">
+	  <fileset dir="${my-src.dir}/test/com/qtech/os/test/fs/">
 	    <include name="**/*.img" />
 	    <exclude name="**/*.img.WORK"/>
 	  </fileset>	    
     </copy>  
 	<!-- copy properties files -->
-    <copy todir="${my-testclasses.dir}/org/jnode/test/">
-	  <fileset dir="${my-src.dir}/test/org/jnode/test/">
+    <copy todir="${my-testclasses.dir}/com/qtech/os/test/">
+	  <fileset dir="${my-src.dir}/test/com/qtech/os/test/">
 	    <include name="**/*.properties" />
 	  </fileset>	    
     </copy>    	
 	<!-- copy test config files -->
-    <copy todir="${my-testclasses.dir}/org/jnode/test/fs/">
-	  <fileset dir="${my-src.dir}/test/org/jnode/test/fs/">
+    <copy todir="${my-testclasses.dir}/com/qtech/os/test/fs/">
+	  <fileset dir="${my-src.dir}/test/com/qtech/os/test/fs/">
 	    <include name="**/*.xml" />
 	  </fileset>	    
     </copy>    	
@@ -104,7 +104,7 @@
 	  <junit haltonerror="false" haltonfailure="false" printsummary="on" includeantruntime="true">
 	    <classpath refid="cp-jnode" />
 	  	<formatter type="xml" />
-	    <test name="org.jnode.test.fs.filesystem.FSTestSuite" todir="${my-report.dir}" outfile="TEST-fs"/>
+	    <test name="com.qtech.os.test.fs.filesystem.FSTestSuite" todir="${my-report.dir}" outfile="TEST-fs"/>
 	  </junit>
 	  <junitreport todir="${my-report.dir}">
 	    <fileset dir="${my-report.dir}">

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2014 JNode.org
+ * Copyright (C) 2003-2014 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,7 +20,7 @@
  
 package org.jnode.vm.classmgr;
 
-import org.jnode.assembler.ObjectResolver;
+import com.qtech.os.assembler.ObjectResolver;
 import org.jnode.vm.facade.VmArchitecture;
 
 

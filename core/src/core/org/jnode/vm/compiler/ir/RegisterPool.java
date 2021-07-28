@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -28,7 +28,7 @@ public abstract class RegisterPool<T> {
     /**
      * @param type - one of the types found in Operand
      * @return an available register or null if none available
-     * @see org.jnode.vm.compiler.ir.Operand
+     * @see Operand
      */
     public abstract T request(int type);
 

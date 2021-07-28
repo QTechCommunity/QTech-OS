@@ -1,7 +1,7 @@
 ; -----------------------------------------------
 ; $Id$
 ;
-; Native method implementation for org.jnode.vm.Unsafe
+; Native method implementation for Unsafe
 ;
 ; Author       : E. Prangsma
 ; -----------------------------------------------

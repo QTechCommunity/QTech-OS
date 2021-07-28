@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -27,10 +27,10 @@ import org.jnode.annotation.MagicPermission;
 import org.jnode.annotation.NoFieldAlignments;
 import org.jnode.annotation.PrivilegedActionPragma;
 import org.jnode.annotation.Uninterruptible;
-import org.jnode.bootlog.BootLogInstance;
-import org.jnode.system.resource.ResourceManager;
-import org.jnode.system.resource.ResourceNotFreeException;
-import org.jnode.util.NumberUtils;
+import com.qtech.os.bootlog.BootLogInstance;
+import com.qtech.os.system.resource.ResourceManager;
+import com.qtech.os.system.resource.ResourceNotFreeException;
+import com.qtech.os.util.NumberUtils;
 import org.jnode.vm.CpuID;
 import org.jnode.vm.Unsafe;
 import org.jnode.vm.VmSystem;

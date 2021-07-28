@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -29,7 +29,7 @@ import org.jnode.annotation.LoadStatics;
 import org.jnode.annotation.MagicPermission;
 import org.jnode.annotation.NoFieldAlignments;
 import org.jnode.annotation.Uninterruptible;
-import org.jnode.util.NumberUtils;
+import com.qtech.os.util.NumberUtils;
 import org.jnode.vm.CpuID;
 import org.jnode.vm.MathSupport;
 import org.jnode.vm.Unsafe;
@@ -212,7 +212,7 @@ public abstract class VmProcessor extends VmSystemObject implements org.jnode.vm
      * @return the current processor
      */
     @Inline
-    @org.jnode.annotation.Uninterruptible
+    @Uninterruptible
     @KernelSpace
     public static VmProcessor current() {
         return VmMagic.currentProcessor();

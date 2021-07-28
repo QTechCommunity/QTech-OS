@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -22,6 +22,7 @@ package org.jnode.vm.classmgr;
 
 import org.jnode.annotation.KernelSpace;
 import org.jnode.vm.InternString;
+import org.jnode.vm.objects.VmSystemObject;
 import org.vmmagic.pragma.Uninterruptible;
 
 /**
@@ -217,14 +218,14 @@ abstract class VmMember extends VmAnnotatedElement implements Uninterruptible {
 
     /**
      * @return String
-     * @see org.jnode.vm.objects.VmSystemObject#getExtraInfo()
+     * @see VmSystemObject#getExtraInfo()
      */
     public final String getExtraInfo() {
         return "Modifiers: " + Modifier.toString(modifiers);
     }
 
     /**
-     * @see org.jnode.vm.objects.VmSystemObject#verifyBeforeEmit()
+     * @see VmSystemObject#verifyBeforeEmit()
      */
     public void verifyBeforeEmit() {
         super.verifyBeforeEmit();
@@ -234,14 +235,14 @@ abstract class VmMember extends VmAnnotatedElement implements Uninterruptible {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmAnnotatedElement#getLoader()
+     * @see VmAnnotatedElement#getLoader()
      */
     protected final VmClassLoader getLoader() {
         return declaringClass.getLoader();
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmAnnotatedElement#getSuperElement()
+     * @see VmAnnotatedElement#getSuperElement()
      */
     @Override
     protected final VmAnnotatedElement getSuperElement() {

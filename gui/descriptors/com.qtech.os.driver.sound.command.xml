@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Copyright (C) 2003-2015 QTech Community
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; If not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<!DOCTYPE plugin SYSTEM "jnode.dtd">
+
+<plugin id="com.qtech.os.driver.sound.command"
+        name="QTech OS speaker commands"
+        version="@VERSION@"
+        license-name="lgpl"
+        provider-name="QTechOS">
+        
+  <requires>
+    <import plugin="com.qtech.os.driver.sound.speaker"/>
+    <import plugin="com.qtech.os.shell.help"/>
+  </requires>
+        
+  <runtime>
+    <library name="jnode-gui.jar">
+      <export name="com.qtech.os.driver.sound.command.*"/>
+    </library>
+  </runtime>
+        
+  <extension point="com.qtech.os.shell.aliases">
+    <alias name="beep" class="com.qtech.os.driver.sound.command.BeepCommand"/>
+    <alias name="play" class="com.qtech.os.driver.sound.command.PlayCommand"/>
+  </extension>
+  
+  <extension point="com.qtech.os.shell.syntaxes">
+    <syntax alias="beep">
+      <empty description="Play a system beep"/>
+    </syntax>
+    <syntax alias="play">
+      <empty description="Play a scale"/>
+      <option argLabel="tune" shortName="t" longName="tune" description="Play a tune"/>
+    </syntax>
+  </extension>
+
+</plugin>

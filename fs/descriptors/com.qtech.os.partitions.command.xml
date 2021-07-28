@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Copyright (C) 2003-2015 QTech Community
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; If not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<!DOCTYPE plugin SYSTEM "jnode.dtd">
+
+<plugin id="com.qtech.os.partitions.command"
+        name="QTech OS partitioning commands"
+        version="@VERSION@"
+        license-name="lgpl"
+        provider-name="QTechOS">
+        
+  <requires>
+    <import plugin="com.qtech.os.driver.bus.ide"/>
+    <import plugin="com.qtech.os.fs.fat"/>
+    <import plugin="com.qtech.os.partitions.ibm"/>
+    <import plugin="com.qtech.os.shell.help"/>
+  </requires>
+        
+  <runtime>
+    <library name="jnode-fs.jar">
+      <export name="com.qtech.os.partitions.command.*"/>
+    </library>
+  </runtime>
+        
+  <extension point="com.qtech.os.shell.aliases">
+    <alias name="fdisk" class="com.qtech.os.partitions.command.FdiskCommand"/>
+  </extension>
+  
+  <extension point="com.qtech.os.shell.syntaxes">
+    <syntax alias="fdisk">
+      <empty description="list all block devices"/>
+      <argument argLabel="deviceId" description="show a device's partition table"/>
+      <sequence description="initialize a device's master boot record">
+        <option argLabel="initMBR" shortName="i" longName="initMBR"/>
+        <argument argLabel="deviceId"/>
+      </sequence>
+      <sequence description="modify (or create) a partition">
+        <option argLabel="modify" shortName="m" longName="modify"/>
+        <argument argLabel="deviceId"/>
+        <argument argLabel="partition"/>
+        <argument argLabel="start"/>
+        <alternatives>
+          <argument argLabel="sectors"/>
+          <argument argLabel="bytes"/>
+        </alternatives>
+        <argument argLabel="type"/>
+      </sequence>
+      <sequence description="toggle a partition's bootable flag">
+        <option argLabel="bootable" shortName="b" longName="bootable"/>
+        <argument argLabel="deviceId"/>
+        <argument argLabel="partition"/>
+      </sequence>
+      <sequence description="delete a partition">
+        <option argLabel="delete" shortName="d" longName="delete"/>
+        <argument argLabel="deviceId"/>
+        <argument argLabel="partition"/>
+      </sequence>
+    </syntax>
+  </extension>
+
+</plugin>

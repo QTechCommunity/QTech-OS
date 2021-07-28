@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -27,11 +27,11 @@ import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86BinaryAssembler;
-import org.jnode.assembler.x86.X86Constants;
-import org.jnode.assembler.x86.X86Register;
-import org.jnode.assembler.x86.X86TextAssembler;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86BinaryAssembler;
+import com.qtech.os.assembler.x86.X86Constants;
+import com.qtech.os.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86TextAssembler;
 import org.jnode.vm.VmImpl;
 import org.jnode.vm.VmSystemClassLoader;
 import org.jnode.vm.bytecode.BytecodeParser;
@@ -63,7 +63,7 @@ public class IRTest {
         boolean binary = false;
 
         String className = "org.jnode.vm.compiler.ir.PrimitiveTest";
-//        String className = "org.jnode.games.tetris.Tetris";
+//        String className = "com.qtech.os.games.tetris.Tetris";
         if (args.length > 0) {
             String arg0 = args[0];
             if ("-b".equals(arg0)) {

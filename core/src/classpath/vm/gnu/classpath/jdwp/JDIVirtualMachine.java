@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2014 JNode.org
+ * Copyright (C) 2003-2014 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -28,11 +28,7 @@ import java.security.ProtectionDomain;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.jnode.annotation.NoInline;
-import org.jnode.vm.BaseVmArchitecture;
-import org.jnode.vm.VmSystem;
-import org.jnode.vm.VmSystemClassLoader;
 import org.jnode.vm.classmgr.ClassDecoder;
-import org.jnode.vm.classmgr.VmByteCode;
 import org.jnode.vm.classmgr.VmClassLoader;
 import org.jnode.vm.classmgr.VmIsolatedStatics;
 import org.jnode.vm.classmgr.VmMethod;

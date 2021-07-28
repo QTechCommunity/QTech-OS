@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,7 +20,7 @@
  
 package org.jnode.vm.x86.compiler.l1a;
 
-import org.jnode.assembler.Label;
+import com.qtech.os.assembler.Label;
 import org.jnode.vm.bytecode.TypeStack;
 import org.jnode.vm.classmgr.VmMethod;
 import org.jnode.vm.x86.compiler.X86CompilerHelper;

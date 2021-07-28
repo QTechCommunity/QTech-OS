@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -83,7 +83,7 @@ public class PhiOperand<T> extends Operand<T> {
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.Operand#getAddressingMode()
+     * @see Operand#getAddressingMode()
      */
     public AddressingMode getAddressingMode() {
         Variable<T> first = (Variable<T>) sources.get(0);
@@ -91,7 +91,7 @@ public class PhiOperand<T> extends Operand<T> {
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.Operand#simplify()
+     * @see Operand#simplify()
      */
     public Operand<T> simplify() {
         int n = sources.size();

@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -21,7 +21,7 @@
 
 <plugin-list name="tests">
     <manifest>
-        <attribute key="Main-Class" value="org.jnode.shell.CommandShell"/>
+        <attribute key="Main-Class" value="com.qtech.os.shell.CommandShell"/>
             <attribute key="Main-Class-Arg" value="boot"/>
     </manifest>
 
@@ -37,12 +37,12 @@
   <plugin id="org.jmock"/>  
   <plugin id="net.n3.nanoxml"/>  
   
-  <plugin id="org.jnode.emu"/>
-  <plugin id="org.jnode.test"/>
-  <plugin id="org.jnode.test.fs"/>
-  <plugin id="org.jnode.test.net"/>
-  <plugin id="org.jnode.test.shell"/>
-  <plugin id="org.jnode.shell.command.test"/>
+  <plugin id="com.qtech.os.emu"/>
+  <plugin id="com.qtech.os.test"/>
+  <plugin id="com.qtech.os.test.fs"/>
+  <plugin id="com.qtech.os.test.net"/>
+  <plugin id="com.qtech.os.test.shell"/>
+  <plugin id="com.qtech.os.shell.command.test"/>
 	
-  <plugin id="org.jnode.testrunner"/>
+  <plugin id="com.qtech.os.testrunner"/>
 </plugin-list>

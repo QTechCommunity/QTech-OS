@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -21,6 +21,7 @@
 package org.jnode.vm.classmgr;
 
 import org.jnode.annotation.Inline;
+import org.jnode.vm.BaseVmArchitecture;
 
 /**
  * <description>
@@ -31,21 +32,21 @@ public class ObjectLayout {
 
     /**
      * The offset of the flags of an object from the start of the object. This
-     * value must be multiplied by {@link org.jnode.vm.BaseVmArchitecture#getReferenceSize() SLOT_SIZE}
+     * value must be multiplied by {@link BaseVmArchitecture#getReferenceSize() SLOT_SIZE}
      * to get the offset in bytes.
      */
     public static final int FLAGS_SLOT = -2;
 
     /**
      * The offset of the TIB of an object from the start of the object. This
-     * value must be multiplied by {@link org.jnode.vm.BaseVmArchitecture#getReferenceSize() SLOT_SIZE}
+     * value must be multiplied by {@link BaseVmArchitecture#getReferenceSize() SLOT_SIZE}
      * to get the offset in bytes.
      */
     public static final int TIB_SLOT = -1;
 
     /**
      * The size of the header of an object. This value must be multiplied by
-     * {@link org.jnode.vm.BaseVmArchitecture#getReferenceSize() SLOT_SIZE} to get the size in bytes.
+     * {@link BaseVmArchitecture#getReferenceSize() SLOT_SIZE} to get the size in bytes.
      */
     public static final int HEADER_SLOTS = 2;
 

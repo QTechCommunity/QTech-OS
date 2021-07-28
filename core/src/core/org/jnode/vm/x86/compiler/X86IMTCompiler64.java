@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,11 +20,12 @@
  
 package org.jnode.vm.x86.compiler;
 
-import org.jnode.assembler.ObjectResolver;
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86Register;
-import org.jnode.assembler.x86.X86Register.GPR;
-import org.jnode.util.LittleEndian;
+import com.qtech.os.assembler.ObjectResolver;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86Constants;
+import com.qtech.os.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86Register.GPR;
+import com.qtech.os.util.LittleEndian;
 import org.jnode.vm.classmgr.ObjectLayout;
 import org.jnode.vm.classmgr.TIBLayout;
 import org.jnode.vm.classmgr.VmArray;
@@ -32,8 +33,6 @@ import org.jnode.vm.classmgr.VmClassLoader;
 import org.jnode.vm.classmgr.VmMethod;
 import org.jnode.vm.compiler.CompiledIMT;
 import org.jnode.vm.compiler.IMTCompiler;
-
-import static org.jnode.vm.x86.compiler.X86CompilerConstants.BITS64;
 
 /**
  * @author Ewout Prangsma (epr@users.sourceforge.net)
@@ -67,11 +66,11 @@ public final class X86IMTCompiler64 extends IMTCompiler {
         final GPR rdx = X86Register.RDX;
 
         // Get tib into RAX
-        os.writeMOV(BITS64, rax, rax, ObjectLayout.TIB_SLOT * 8);
+        os.writeMOV(X86Constants.BITS64, rax, rax, ObjectLayout.TIB_SLOT * 8);
         // Get selector into RDX
         os.writeMOV_Const(rdx, selector);
         // Get compiled IMT into EAX
-        os.writeMOV(BITS64, rax, rax,
+        os.writeMOV(X86Constants.BITS64, rax, rax,
             (TIBLayout.COMPILED_IMT_INDEX + VmArray.DATA_OFFSET) * 8);
         // Call to offset within compiled IMT
         os.writeLEA(rax, rax, offset);

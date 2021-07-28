@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -23,7 +23,7 @@ package org.jnode.vm.isolate;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-import org.jnode.plugin.PluginManager;
+import com.qtech.os.plugin.PluginManager;
 
 /**
  * Thread type that is used to start new isolated.

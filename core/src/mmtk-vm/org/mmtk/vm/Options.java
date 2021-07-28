@@ -13,8 +13,7 @@
 
 package org.mmtk.vm;
 
-import org.jnode.bootlog.BootLog;
-import org.jnode.bootlog.BootLogInstance;
+import com.qtech.os.bootlog.BootLogInstance;
 import org.jnode.vm.Unsafe;
 import org.mmtk.utility.options.Option;
 

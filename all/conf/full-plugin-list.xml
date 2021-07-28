@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -21,7 +21,7 @@
 
 <plugin-list name="full">
   <manifest>
-    <attribute key="Main-Class" value="org.jnode.shell.CommandShell"/>
+    <attribute key="Main-Class" value="com.qtech.os.shell.CommandShell"/>
     <attribute key="Main-Class-Arg" value="boot"/>
   </manifest>
 
@@ -32,25 +32,25 @@
   <plugin id="com.sun.tools.javac"/>
   <plugin id="com.sun.tools.jdi"/>
     
-  <plugin id="org.jnode.install"/>
+  <plugin id="com.qtech.os.install"/>
 
   <plugin id="charva"/>
-  <plugin id="org.jnode.apps.edit"/>
-  <plugin id="org.jnode.apps.editor"/>  
-  <plugin id="org.jnode.apps.charvabsh"/>
-  <plugin id="org.jnode.apps.commander"/>
-  <plugin id="org.jnode.apps.debug"/>
-  <plugin id="org.jnode.apps.httpd"/>
+  <plugin id="com.qtech.os.apps.edit"/>
+  <plugin id="com.qtech.os.apps.editor"/>
+  <plugin id="com.qtech.os.apps.charvabsh"/>
+  <plugin id="com.qtech.os.apps.commander"/>
+  <plugin id="com.qtech.os.apps.debug"/>
+  <plugin id="com.qtech.os.apps.httpd"/>
 
   <plugin id="org.apache.tools.ant-launcher"/>
   <plugin id="org.apache.tools.ant"/>
-  <plugin id="org.jnode.command.dev.ant"/>
+  <plugin id="com.qtech.os.command.dev.ant"/>
   <plugin id="ejc"/>
     
 
   <plugin id="thinlet"/>
 
-  <plugin id="org.jnode.apps.jpartition"/>
+  <plugin id="com.qtech.os.apps.jpartition"/>
 
   <plugin id="org.apache.commons.logging"/>
   <plugin id="net.wimpi.telnetd"/>

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -45,7 +45,7 @@ public class CompilerBytecodeParser extends BytecodeParser implements BytecodeFl
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeParser#fireStartInstruction(int)
+     * @see BytecodeParser#fireStartInstruction(int)
      */
     protected void fireStartInstruction(int address) {
         final int flags = cfg.getOpcodeFlags(address);

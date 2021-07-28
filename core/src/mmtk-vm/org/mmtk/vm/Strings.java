@@ -14,7 +14,6 @@
 package org.mmtk.vm;
 
 import org.jnode.vm.Unsafe;
-import org.jnode.vm.VmImpl;
 import org.jnode.vm.facade.VmUtils;
 import org.vmmagic.pragma.UninterruptiblePragma;
 

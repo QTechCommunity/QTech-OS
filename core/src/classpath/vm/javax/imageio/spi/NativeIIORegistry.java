@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,7 +20,7 @@
  
 package javax.imageio.spi;
 
-import org.jnode.imageio.jpeg.JPEGImageReaderSpi;
+import com.qtech.os.imageio.jpeg.JPEGImageReaderSpi;
 
 /**
  *

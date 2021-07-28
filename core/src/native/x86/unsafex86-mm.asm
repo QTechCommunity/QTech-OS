@@ -1,7 +1,7 @@
 ; -----------------------------------------------
 ; $Id$
 ;
-; Native multi media methods implementation for org.jnode.vm.x86.UnsafeX86
+; Native multi media methods implementation for UnsafeX86
 ;
 ; Author       : E. Prangsma
 ; -----------------------------------------------

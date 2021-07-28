@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -107,14 +107,14 @@ public class ConditionalBranchQuad<T> extends BranchQuad<T> {
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.quad.Quad#getDefinedOp()
+     * @see Quad#getDefinedOp()
      */
     public Operand<T> getDefinedOp() {
         return null;
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.quad.Quad#getReferencedOps()
+     * @see Quad#getReferencedOps()
      */
     public Operand<T>[] getReferencedOps() {
         return refs;
@@ -194,7 +194,7 @@ public class ConditionalBranchQuad<T> extends BranchQuad<T> {
      * Code generation is complicated by the permutations of addressing modes.
      * This is not as nice as it could be, but it could be worse!
      *
-     * @see org.jnode.vm.compiler.ir.quad.Quad#generateCode(org.jnode.vm.compiler.ir.CodeGenerator)
+     * @see Quad#generateCode(CodeGenerator)
      */
     public void generateCodeForBinary(CodeGenerator<T> cg) {
         cg.checkLabel(getAddress());

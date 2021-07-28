@@ -1,2 +1,2 @@
 @echo off
-java -cp core\build\classes org.jnode.debug.RemoteReceiver --udp udpout.log
+java -cp core\build\classes com.qtech.os.debug.RemoteReceiver --udp udpout.log

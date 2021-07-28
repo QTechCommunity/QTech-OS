@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -41,37 +41,37 @@ help            Output these messages
 	    <junit showoutput="off" printsummary="on" fork="on" haltonfailure="on">
 	        <formatter type="xml"/>
 			<classpath refid="cp-test"/>
-			<test name="org.jnode.test.cli.CLITestSuite" todir="${basedir}/build/reports/junit"/>
+			<test name="com.qtech.os.test.cli.CLITestSuite" todir="${basedir}/build/reports/junit"/>
 		</junit>
 		-->
 	</target>
 	
 	<target name="blackbox-common">
-	    <java classpathref="cp-test" classname="org.jnode.test.shell.harness.TestHarness">
+	    <java classpathref="cp-test" classname="com.qtech.os.test.shell.harness.TestHarness">
 	        <arg value="-E"/>
 	        <arg value="-F"/>
 			<arg value="-s"/>
 	        <arg value="${root.dir}"/>
-	        <arg value="${basedir}/src/test/org/jnode/test/command/common/all-common-tests.xml"/>
+	        <arg value="${basedir}/src/test/com/qtech/os/test/command/common/all-common-tests.xml"/>
 	    </java>
 	</target>
 	
 	<target name="blackbox-file">
-	    <java classpathref="cp-test" classname="org.jnode.test.shell.harness.TestHarness">
+	    <java classpathref="cp-test" classname="com.qtech.os.test.shell.harness.TestHarness">
 	        <arg value="-E"/>
 	        <arg value="-F"/>
 	        <arg value="-s"/>
 	        <arg value="${root.dir}"/>
-	        <arg value="${basedir}/src/test/org/jnode/test/command/file/all-file-tests.xml"/>
+	        <arg value="${basedir}/src/test/com/qtech/os/test/command/file/all-file-tests.xml"/>
 	    </java>
 	</target>
 	
 	<target name="all-blackbox">
-	    <java classpathref="cp-test" classname="org.jnode.test.shell.harness.TestHarness">
+	    <java classpathref="cp-test" classname="com.qtech.os.test.shell.harness.TestHarness">
 			<arg value="-E"/>
 			<arg value="-s"/>
 			<arg value="${root.dir}"/>
-			<arg value="${basedir}/src/test/org/jnode/test/command/all-tests.xml"/>
+			<arg value="${basedir}/src/test/com/qtech/os/test/command/all-tests.xml"/>
 		</java>
 	</target>
 	

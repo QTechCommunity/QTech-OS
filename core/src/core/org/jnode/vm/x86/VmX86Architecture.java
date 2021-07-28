@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -24,11 +24,11 @@ import java.nio.ByteOrder;
 import java.util.HashMap;
 import org.jnode.annotation.Internal;
 import org.jnode.annotation.MagicPermission;
-import org.jnode.assembler.x86.X86Constants;
-import org.jnode.bootlog.BootLogInstance;
-import org.jnode.system.resource.ResourceManager;
-import org.jnode.system.resource.ResourceNotFreeException;
-import org.jnode.system.resource.ResourceOwner;
+import com.qtech.os.assembler.x86.X86Constants;
+import com.qtech.os.bootlog.BootLogInstance;
+import com.qtech.os.system.resource.ResourceManager;
+import com.qtech.os.system.resource.ResourceNotFreeException;
+import com.qtech.os.system.resource.ResourceOwner;
 import org.jnode.vm.BaseVmArchitecture;
 import org.jnode.vm.Unsafe;
 import org.jnode.vm.VmMagic;
@@ -240,7 +240,7 @@ public abstract class VmX86Architecture extends BaseVmArchitecture {
     }
 
     /**
-     * @see org.jnode.vm.BaseVmArchitecture#initializeProcessors(ResourceManager)
+     * @see BaseVmArchitecture#initializeProcessors(ResourceManager)
      */
     protected final void initializeProcessors(ResourceManager rm) {
         // Mark current cpu as bootprocessor
@@ -439,7 +439,7 @@ public abstract class VmX86Architecture extends BaseVmArchitecture {
     }
 
     /**
-     * @see org.jnode.vm.BaseVmArchitecture#createMemoryMap()
+     * @see BaseVmArchitecture#createMemoryMap()
      */
     protected MemoryMapEntry[] createMemoryMap() {
         final int cnt = UnsafeX86.getMultibootMMapLength();
@@ -462,7 +462,7 @@ public abstract class VmX86Architecture extends BaseVmArchitecture {
     }
 
     /**
-     * @see org.jnode.vm.BaseVmArchitecture#createMultiMediaSupport()
+     * @see BaseVmArchitecture#createMultiMediaSupport()
      */
     protected VmMultiMediaSupport createMultiMediaSupport() {
         final X86CpuID id = (X86CpuID) VmProcessor.current().getCPUID();

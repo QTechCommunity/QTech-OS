@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -44,7 +44,7 @@ public class CompilerBytecodeViewer extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.compiler.InlineBytecodeVisitor#endInlinedMethod(org.jnode.vm.classmgr.VmMethod)
+     * @see InlineBytecodeVisitor#endInlinedMethod(VmMethod)
      */
     public void endInlinedMethod(VmMethod previousMethod) {
         viewer.out("-- end of inlined method");
@@ -52,7 +52,7 @@ public class CompilerBytecodeViewer extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.compiler.InlineBytecodeVisitor#startInlinedMethodHeader(VmMethod, int)
+     * @see InlineBytecodeVisitor#startInlinedMethodHeader(VmMethod, int)
      */
     public void startInlinedMethodHeader(VmMethod inlinedMethod, int newMaxLocals) {
         viewer.indent();
@@ -61,7 +61,7 @@ public class CompilerBytecodeViewer extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.compiler.InlineBytecodeVisitor#startInlinedMethodCode(VmMethod, int)
+     * @see InlineBytecodeVisitor#startInlinedMethodCode(VmMethod, int)
      */
     public void startInlinedMethodCode(VmMethod inlinedMethod, int newMaxLocals) {
         viewer.indent();
@@ -70,14 +70,14 @@ public class CompilerBytecodeViewer extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.compiler.CompilerBytecodeVisitor#endBasicBlock()
+     * @see CompilerBytecodeVisitor#endBasicBlock()
      */
     public void endBasicBlock() {
         viewer.out("-- end of basic block");
     }
 
     /**
-     * @see org.jnode.vm.compiler.CompilerBytecodeVisitor#startBasicBlock(org.jnode.vm.bytecode.BasicBlock)
+     * @see CompilerBytecodeVisitor#startBasicBlock(BasicBlock)
      */
     public void startBasicBlock(BasicBlock bb) {
         viewer.out("-- start of basic block");
@@ -98,7 +98,7 @@ public class CompilerBytecodeViewer extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.compiler.CompilerBytecodeVisitor#yieldPoint()
+     * @see CompilerBytecodeVisitor#yieldPoint()
      */
     public void yieldPoint() {
         viewer.out("-- yieldpoint");

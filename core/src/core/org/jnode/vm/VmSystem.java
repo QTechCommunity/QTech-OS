@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -37,15 +37,15 @@ import org.jnode.annotation.MagicPermission;
 import org.jnode.annotation.PrivilegedActionPragma;
 import org.jnode.annotation.SharedStatics;
 import org.jnode.annotation.Uninterruptible;
-import org.jnode.bootlog.BootLogInstance;
-import org.jnode.naming.InitialNaming;
-import org.jnode.permission.JNodePermission;
-import org.jnode.plugin.PluginManager;
-import org.jnode.system.resource.MemoryResource;
-import org.jnode.system.resource.ResourceManager;
-import org.jnode.system.resource.ResourceNotFreeException;
-import org.jnode.system.resource.ResourceOwner;
-import org.jnode.system.resource.SimpleResourceOwner;
+import com.qtech.os.bootlog.BootLogInstance;
+import com.qtech.os.naming.InitialNaming;
+import com.qtech.os.permission.JNodePermission;
+import com.qtech.os.plugin.PluginManager;
+import com.qtech.os.system.resource.MemoryResource;
+import com.qtech.os.system.resource.ResourceManager;
+import com.qtech.os.system.resource.ResourceNotFreeException;
+import com.qtech.os.system.resource.ResourceOwner;
+import com.qtech.os.system.resource.SimpleResourceOwner;
 import org.jnode.vm.classmgr.AbstractExceptionHandler;
 import org.jnode.vm.classmgr.VmArray;
 import org.jnode.vm.classmgr.VmByteCode;
@@ -63,6 +63,7 @@ import org.jnode.vm.facade.VmWriteBarrier;
 import org.jnode.vm.isolate.VmIsolate;
 import org.jnode.vm.scheduler.VmProcessor;
 import org.jnode.vm.scheduler.VmThread;
+import org.jnode.vm.facade.Vm;
 import org.vmmagic.unboxed.Address;
 import org.vmmagic.unboxed.Extent;
 import org.vmmagic.unboxed.ObjectReference;
@@ -137,7 +138,7 @@ public final class VmSystem {
             // Initialize VmThread
             VmThread.initialize();
 
-            final org.jnode.vm.facade.Vm vm = VmUtils.getVm();
+            final Vm vm = VmUtils.getVm();
 
             // Initialize the monitors for the heap manager
             vm.getHeapManager().start();
@@ -279,13 +280,13 @@ public final class VmSystem {
      */
     public static void insertSystemProperties(Properties res) {
 
-        final org.jnode.vm.facade.Vm vm = VmUtils.getVm();
+        final Vm vm = VmUtils.getVm();
         final VmArchitecture arch = vm.getArch();
 
         // Standard Java properties
         res.put("file.separator", "/");
 //        res.put("file.encoding", "ISO-8859-1");
-        res.put("java.awt.graphicsenv", "org.jnode.awt.JNodeGraphicsEnvironment");
+        res.put("java.awt.graphicsenv", "com.qtech.os.awt.JNodeGraphicsEnvironment");
         //todo
 //        res.put("java.awt.printerjob", "");
         //todo
@@ -338,13 +339,13 @@ public final class VmSystem {
         res.put("log4j.defaultInitOverride", "true");
 
         // keep this property until transparency support works fine with all drivers
-        res.put("org.jnode.awt.transparency", "true");
+        res.put("com.qtech.os.awt.transparency", "true");
 
         //internal classpath for javac
         res.put("sun.boot.class.path", ":");
 
         res.put("swing.handleTopLevelPaint", "false");
-        res.put("java.protocol.handler.pkgs", "org.jnode.protocol|gnu.java.net.protocol|gnu.inet");
+        res.put("java.protocol.handler.pkgs", "com.qtech.os.protocol|gnu.java.net.protocol|gnu.inet");
         res.put("java.content.handler.pkgs", "gnu.java.net.content");
         //todo fix MethodAccessorGenerator issue with isolates
         //Setting it to max value to avoid the bugs with isolates & MethodAccessorGenerator,
@@ -500,7 +501,7 @@ public final class VmSystem {
 
     /**
      * Gets the current stacktrace as array of classes excluding the calls to
-     * java.lang.reflect.Method.invoke() and org.jnode.vm.VmReflection.invoke().
+     * java.lang.reflect.Method.invoke() and com.qtech.os.vm.VmReflection.invoke().
      *
      * @return Class[]
      */

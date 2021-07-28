@@ -1,6 +1,6 @@
 # Welcome to JNode!
 
-[![Build Status](https://travis-ci.org/jnode/jnode.svg?branch=master)](https://travis-ci.org/jnode/jnode)
+[![Build Status](https://travis-ci.com/qtech/os/jnode.svg?branch=master)](https://travis-ci.com/qtech/os/jnode)
 
 In this file, you find the instructions needed to setup a JNode development environment.
 

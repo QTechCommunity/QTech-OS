@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -89,9 +89,9 @@
   <macrodef name="ExpandTest">
     <attribute name="classname"/>
     <attribute name="type"/>
-    <attribute name="template" default="${my-src.dir}/test/org/jnode/test/PrimitiveTest.jtemplate"/>
+    <attribute name="template" default="${my-src.dir}/test/com/qtech/os/test/PrimitiveTest.jtemplate"/>
     <sequential>
-      <copy tofile="${my-gen.dir}/org/jnode/test/@{classname}.java" file="@{template}">
+      <copy tofile="${my-gen.dir}/com/qtech/os/test/@{classname}.java" file="@{template}">
         <filterset>
           <filter token="classname" value="@{classname}"/>
           <filter token="type" value="@{type}"/>
@@ -143,15 +143,15 @@
     <ExpandTest classname="PrimitiveFloatTest" type="float"/>
     <ExpandTest classname="PrimitiveDoubleTest" type="double"/>
 
-    <taskdef name="template" classname="org.jnode.ant.taskdefs.TemplateTask" classpathref="cp-jnode"/>
-    <template file="${my-src.dir}/template/org/jnode/vm/VmSystemSettings.java"
-          tofile="${my-gen.dir}/org/jnode/vm/VmSystemSettings.java">
+    <taskdef name="template" classname="com.qtech.os.ant.taskdefs.TemplateTask" classpathref="cp-jnode"/>
+    <template file="${my-src.dir}/template/com/qtech/os/vm/VmSystemSettings.java"
+          tofile="${my-gen.dir}/com/qtech/os/vm/VmSystemSettings.java">
         <token name="@java.home@" value="${jnode.java.home}"/>
         <token name="@java.io.tmpdir@" value="${jnode.java.io.tmpdir}"/>
         <token name="@user.home@" value="${jnode.user.home}"/>
     </template>
-    <template file="${my-src.dir}/template/org/jnode/security/JNodeSecurityManagerSettings.java"
-          tofile="${my-gen.dir}/org/jnode/security/JNodeSecurityManagerSettings.java">
+    <template file="${my-src.dir}/template/com/qtech/os/security/JNodeSecurityManagerSettings.java"
+          tofile="${my-gen.dir}/com/qtech/os/security/JNodeSecurityManagerSettings.java">
         <token name="@jnode.security.enabled@" value="${jnode.security.enabled}"/>
     </template>
   </target>

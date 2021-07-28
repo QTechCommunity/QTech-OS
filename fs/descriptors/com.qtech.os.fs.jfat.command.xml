@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Copyright (C) 2003-2015 QTech Community
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; If not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<!DOCTYPE plugin SYSTEM "jnode.dtd">
+
+<plugin id="com.qtech.os.fs.jfat.command"
+        name="JFAT specific commands"
+        version="@VERSION@"
+        provider-name="QTechOS"
+        license-name="lgpl">
+
+  <requires>
+	<import plugin="com.qtech.os.fs.jfat"/>
+	<import plugin="com.qtech.os.fs.command"/>
+    <import plugin="com.qtech.os.shell.help"/>
+    <import plugin="com.qtech.os.partitions.ibm"/>
+  </requires>
+
+  <runtime>
+    <library name="jnode-fs.jar">
+      <export name="com.qtech.os.fs.jfat.command.*"/>
+    </library>
+  </runtime>
+
+  <extension point="com.qtech.os.shell.aliases">
+    <alias name="grub"  class="com.qtech.os.fs.jfat.command.JGrubInstallCommand"/>
+    <alias name="formatJFat" class="com.qtech.os.fs.jfat.command.FatFormatCommand"/>
+  </extension>
+  
+  <extension point="com.qtech.os.shell.syntaxes">
+    <syntax alias="formatJFat">
+      <sequence description="format a JFat file system">
+        <optional><option argLabel="clusterSize" shortName="c" longName="clustersize"/></optional>
+        <argument argLabel="device"/>
+      </sequence>
+    </syntax>
+    <syntax alias="grub">
+      <sequence description="install a grub stage2 loader">
+        <argument argLabel="device"/>
+      </sequence>
+    </syntax>
+  </extension>
+
+  <extension point="com.qtech.os.security.permissions">
+    <permission class="java.io.FilePermission" name="&lt;&lt;ALL FILES&gt;&gt;" actions="read,write,delete"/>
+  </extension>
+</plugin>

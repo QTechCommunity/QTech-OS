@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -22,6 +22,7 @@ package org.jnode.vm.facade;
 
 import java.nio.ByteOrder;
 
+import org.jnode.vm.VirtualMemoryRegion;
 import org.vmmagic.unboxed.Address;
 import org.vmmagic.unboxed.Extent;
 
@@ -49,7 +50,7 @@ public interface VmArchitecture {
     /**
      * Gets the start address of the given space.
      *
-     * @param space a {@link org.jnode.vm.VirtualMemoryRegion}.
+     * @param space a {@link VirtualMemoryRegion}.
      * @return the start address of the region
      */
     Address getStart(int space);
@@ -57,7 +58,7 @@ public interface VmArchitecture {
     /**
      * Gets the end address of the given space.
      *
-     * @param space a {@link org.jnode.vm.VirtualMemoryRegion}.
+     * @param space a {@link VirtualMemoryRegion}.
      * @return the end address of the region
      */
     Address getEnd(int space);
@@ -85,7 +86,7 @@ public interface VmArchitecture {
     /**
      * Gets the log base two of the size in bytes of an OS page in a given region
      *
-     * @param region a {@link org.jnode.vm.VirtualMemoryRegion} value
+     * @param region a {@link VirtualMemoryRegion} value
      * @return the log base two page size
      */
     byte getLogPageSize(int region);
@@ -106,7 +107,7 @@ public interface VmArchitecture {
     /**
      * Page align a given address (represented as an Address) in a given region.
      *
-     * @param region a {@link org.jnode.vm.VirtualMemoryRegion}.
+     * @param region a {@link VirtualMemoryRegion}.
      * @param start  an address value
      * @param up     If true, the value will be rounded up, otherwise rounded down.
      * @return the corresponding page aligned address represented as a Address.

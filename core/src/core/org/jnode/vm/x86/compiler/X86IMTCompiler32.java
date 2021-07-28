@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,10 +20,11 @@
  
 package org.jnode.vm.x86.compiler;
 
-import org.jnode.assembler.ObjectResolver;
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86Register;
-import org.jnode.util.LittleEndian;
+import com.qtech.os.assembler.ObjectResolver;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86Constants;
+import com.qtech.os.assembler.x86.X86Register;
+import com.qtech.os.util.LittleEndian;
 import org.jnode.vm.classmgr.ObjectLayout;
 import org.jnode.vm.classmgr.TIBLayout;
 import org.jnode.vm.classmgr.VmArray;
@@ -31,8 +32,6 @@ import org.jnode.vm.classmgr.VmClassLoader;
 import org.jnode.vm.classmgr.VmMethod;
 import org.jnode.vm.compiler.CompiledIMT;
 import org.jnode.vm.compiler.IMTCompiler;
-
-import static org.jnode.vm.x86.compiler.X86CompilerConstants.BITS32;
 
 /**
  * @author Ewout Prangsma (epr@users.sourceforge.net)
@@ -72,12 +71,12 @@ public final class X86IMTCompiler32 extends IMTCompiler {
         // os.writeMOV_Const(Register.ESI, offset);
 
         // Get tib into EAX
-        os.writeMOV(BITS32, X86Register.EAX, X86Register.EAX,
+        os.writeMOV(X86Constants.BITS32, X86Register.EAX, X86Register.EAX,
             ObjectLayout.TIB_SLOT * 4);
         // Get selector into EDX
         os.writeMOV_Const(X86Register.EDX, selector);
         // Get compiled IMT into EAX
-        os.writeMOV(BITS32, X86Register.EAX, X86Register.EAX,
+        os.writeMOV(X86Constants.BITS32, X86Register.EAX, X86Register.EAX,
             (TIBLayout.COMPILED_IMT_INDEX + VmArray.DATA_OFFSET) * 4);
         // Call to offset within compiled IMT
         os.writeLEA(X86Register.EAX, X86Register.EAX, offset);
@@ -94,7 +93,7 @@ public final class X86IMTCompiler32 extends IMTCompiler {
     }
 
     /**
-     * @see org.jnode.vm.compiler.IMTCompiler#compile(ObjectResolver, Object[],
+     * @see IMTCompiler#compile(ObjectResolver, Object[],
      *      boolean[])
      */
     public CompiledIMT compile(ObjectResolver resolver__, Object[] imt, boolean[] imtCollisions) {

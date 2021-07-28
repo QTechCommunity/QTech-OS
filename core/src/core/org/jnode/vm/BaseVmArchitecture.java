@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -25,8 +25,8 @@ import java.nio.ByteOrder;
 import org.jnode.annotation.Internal;
 import org.jnode.annotation.KernelSpace;
 import org.jnode.annotation.MagicPermission;
-import org.jnode.permission.JNodePermission;
-import org.jnode.system.resource.ResourceManager;
+import com.qtech.os.permission.JNodePermission;
+import com.qtech.os.system.resource.ResourceManager;
 import org.jnode.vm.classmgr.VmIsolatedStatics;
 import org.jnode.vm.classmgr.VmSharedStatics;
 import org.jnode.vm.compiler.IMTCompiler;
@@ -38,6 +38,7 @@ import org.jnode.vm.objects.VmSystemObject;
 import org.jnode.vm.scheduler.IRQManager;
 import org.jnode.vm.scheduler.VmProcessor;
 import org.jnode.vm.scheduler.VmScheduler;
+import org.jnode.vm.facade.VmArchitecture;
 import org.vmmagic.pragma.UninterruptiblePragma;
 import org.vmmagic.unboxed.Address;
 import org.vmmagic.unboxed.Extent;
@@ -49,7 +50,7 @@ import org.vmmagic.unboxed.Word;
  * @author Ewout Prangsma (epr@users.sourceforge.net)
  */
 @MagicPermission
-public abstract class BaseVmArchitecture extends VmSystemObject implements org.jnode.vm.facade.VmArchitecture {
+public abstract class BaseVmArchitecture extends VmSystemObject implements VmArchitecture {
 
     private final JNodePermission MMAP_PERM = new JNodePermission("getMemoryMap");
     private transient MemoryMapEntry[] memoryMap;

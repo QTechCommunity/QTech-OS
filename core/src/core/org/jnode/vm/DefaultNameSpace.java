@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -30,7 +30,7 @@ import javax.naming.NameNotFoundException;
 import javax.naming.NamingException;
 
 import org.jnode.annotation.PrivilegedActionPragma;
-import org.jnode.naming.AbstractNameSpace;
+import com.qtech.os.naming.AbstractNameSpace;
 import org.jnode.vm.classmgr.VmType;
 
 class DefaultNameSpace extends AbstractNameSpace {

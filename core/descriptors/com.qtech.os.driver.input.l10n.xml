@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Copyright (C) 2003-2015 QTech Community
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; If not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<!DOCTYPE plugin SYSTEM "jnode.dtd">
+
+<plugin id="com.qtech.os.driver.input.l10n"
+        name="QTech OS input l10n driver"
+        version="@VERSION@"
+        license-name="lgpl"
+        provider-name="QTechOS">
+        
+  <requires>
+    <import plugin="com.qtech.os.driver.input"/>
+  </requires>
+        
+  <runtime>
+    <library name="jnode-core.jar">
+      <export name="com.qtech.os.driver.input.l10n.*"/>
+    </library>
+  </runtime>
+  
+  <extension point="com.qtech.os.driver.input.keyboard-layouts">
+    <layout name="BE_fr" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_BE_fr"/>
+    <layout name="CH_fr" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_CH_fr"/>
+    <layout name="DE" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_DE"/>
+    <layout name="DE_de" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_DE"/>
+    <layout name="DK" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_DK"/>
+    <layout name="DK_dk" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_DK"/>
+    <layout name="ES" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_ES"/>
+    <layout name="ES_es" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_ES"/>
+    <layout name="FR" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_FR"/>
+    <layout name="FR_fr" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_FR"/>
+    <layout name="GB" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_GB_en"/>
+    <layout name="GB_en" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_GB_en"/>
+    <layout name="HU" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_HU"/>
+    <layout name="HU_hu" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_HU"/>
+    <layout name="HU_hu_101" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_HU"/>
+    <layout name="HU_101" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_HU"/>
+    <layout name="IT" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_IT"/>
+    <layout name="IT_it" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_IT"/>
+    <layout name="NO" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_NO"/>
+    <layout name="NO_no" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_NO"/>
+    <layout name="RU" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_RU"/>
+    <layout name="RU_ru" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_RU"/>
+    <layout name="SE" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_SE"/>
+    <layout name="SE_se" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_SE"/>
+    <layout name="US" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_US_en"/>
+    <layout name="US_en" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_US_en"/>
+    <layout name="DV" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_DV"/> <!-- deprecated -->
+    <layout name="US_en_dvorak" class="com.qtech.os.driver.input.l10n.KeyboardInterpreter_DV"/>
+  </extension>
+        
+</plugin>

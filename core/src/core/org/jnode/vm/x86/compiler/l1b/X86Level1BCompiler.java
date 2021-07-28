@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,9 +20,9 @@
  
 package org.jnode.vm.x86.compiler.l1b;
 
-import org.jnode.assembler.NativeStream;
-import org.jnode.assembler.ObjectResolver;
-import org.jnode.assembler.x86.X86BinaryAssembler;
+import com.qtech.os.assembler.NativeStream;
+import com.qtech.os.assembler.ObjectResolver;
+import com.qtech.os.assembler.x86.X86BinaryAssembler;
 import org.jnode.vm.classmgr.VmClassLoader;
 import org.jnode.vm.classmgr.VmMethod;
 import org.jnode.vm.compiler.CompiledMethod;
@@ -34,8 +34,8 @@ import org.jnode.vm.compiler.OptimizingBytecodeVisitor;
 import org.jnode.vm.scheduler.VmProcessor;
 import org.jnode.vm.x86.X86CpuID;
 import org.jnode.vm.x86.compiler.AbstractX86Compiler;
-
-import static org.jnode.vm.x86.compiler.X86CompilerConstants.L1B_COMPILER_MAGIC;
+import org.jnode.vm.compiler.NativeCodeCompiler;
+import org.jnode.vm.x86.compiler.X86CompilerConstants;
 
 /**
  * Native code compiler for the Intel x86 architecture.
@@ -129,10 +129,10 @@ public final class X86Level1BCompiler extends AbstractX86Compiler {
     }
 
     /**
-     * @see org.jnode.vm.compiler.NativeCodeCompiler#getMagic()
+     * @see NativeCodeCompiler#getMagic()
      */
     public final int getMagic() {
-        return L1B_COMPILER_MAGIC;
+        return X86CompilerConstants.L1B_COMPILER_MAGIC;
     }
 
     /**
@@ -145,7 +145,7 @@ public final class X86Level1BCompiler extends AbstractX86Compiler {
     }
 
     /**
-     * @see org.jnode.vm.compiler.NativeCodeCompiler#createGCMapIterator()
+     * @see NativeCodeCompiler#createGCMapIterator()
      */
     @Override
     public GCMapIterator createGCMapIterator() {
@@ -153,7 +153,7 @@ public final class X86Level1BCompiler extends AbstractX86Compiler {
     }
 
     /**
-     * @see org.jnode.vm.compiler.NativeCodeCompiler#getCompilerPackages()
+     * @see NativeCodeCompiler#getCompilerPackages()
      */
     @Override
     public String[] getCompilerPackages() {

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -21,7 +21,7 @@
 package org.jnode.vm.bytecode;
 
 import java.util.TreeMap;
-import org.jnode.bootlog.BootLogInstance;
+import com.qtech.os.bootlog.BootLogInstance;
 import org.jnode.vm.JvmType;
 import org.jnode.vm.classmgr.VmByteCode;
 import org.jnode.vm.classmgr.VmInterpretedExceptionHandler;
@@ -89,7 +89,7 @@ public class DeadBlockFinder extends BytecodeVisitorSupport implements BytecodeF
 
     /**
      * @param method
-     * @see BytecodeVisitor#startMethod(org.jnode.vm.classmgr.VmMethod)
+     * @see BytecodeVisitor#startMethod(VmMethod)
      */
     public void startMethod(VmMethod method) {
         final VmByteCode bc = method.getBytecode();

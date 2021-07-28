@@ -13,7 +13,6 @@
  
 package org.mmtk.vm;
 
-import org.jnode.vm.VmImpl;
 import org.jnode.vm.facade.VmUtils;
 import org.jnode.annotation.Inline;
 import org.mmtk.utility.Constants;

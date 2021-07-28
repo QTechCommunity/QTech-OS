@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -33,7 +33,7 @@ import org.jnode.vm.classmgr.VmType;
 abstract class VmAbstractClassLoader extends VmClassLoader {
 
     /**
-     * @see org.jnode.vm.classmgr.VmClassLoader#defineClass(java.lang.String, byte[], int, int,
+     * @see VmClassLoader#defineClass(java.lang.String, byte[], int, int,
      * java.security.ProtectionDomain)
      */
     public final VmType<?> defineClass(String name, byte[] data, int offset, int length, ProtectionDomain protDomain) {
@@ -42,7 +42,7 @@ abstract class VmAbstractClassLoader extends VmClassLoader {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmClassLoader#defineClass(java.lang.String, ByteBuffer,
+     * @see VmClassLoader#defineClass(java.lang.String, ByteBuffer,
      * java.security.ProtectionDomain)
      */
     public final VmType<?> defineClass(String name, ByteBuffer data, ProtectionDomain protDomain) {

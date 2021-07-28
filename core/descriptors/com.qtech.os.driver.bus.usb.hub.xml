@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Copyright (C) 2003-2015 QTech Community
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; If not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<!DOCTYPE plugin SYSTEM "jnode.dtd">
+
+<plugin id="com.qtech.os.driver.bus.usb.hub"
+        name="QTech OS USB HUB driver"
+        version="@VERSION@"
+        license-name="lgpl"
+        provider-name="QTechOS">
+        
+  <requires>
+    <import plugin="com.qtech.os.driver.bus.usb"/>
+  </requires>
+        
+  <runtime>
+    <library name="jnode-core.jar">
+      <export name="com.qtech.os.driver.bus.usb.hub.*"/>
+    </library>
+  </runtime>
+
+  <extension point="com.qtech.os.driver.mappers">
+    <mapper class="com.qtech.os.driver.bus.usb.hub.USBHubDeviceToDriverMapper"/>
+  </extension>
+        
+</plugin>

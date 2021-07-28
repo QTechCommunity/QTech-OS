@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -52,7 +52,7 @@ public final class VmInterfaceClass<T> extends VmType<T> {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmType#prepareForInstantiation()
+     * @see VmType#prepareForInstantiation()
      */
     protected void prepareForInstantiation() {
         // Nothing to do here, since I cannot be instantiated
@@ -61,7 +61,7 @@ public final class VmInterfaceClass<T> extends VmType<T> {
     /**
      * @param allInterfaces
      * @return The tib
-     * @see org.jnode.vm.classmgr.VmType#prepareTIB(HashSet)
+     * @see VmType#prepareTIB(HashSet)
      */
     protected Object[] prepareTIB(HashSet allInterfaces) {
         // Nothing to do here, since I don't have a TIB
@@ -71,7 +71,7 @@ public final class VmInterfaceClass<T> extends VmType<T> {
     /**
      * @param allInterfaces
      * @return The IMT builder
-     * @see org.jnode.vm.classmgr.VmType#prepareIMT(HashSet)
+     * @see VmType#prepareIMT(HashSet)
      */
     protected IMTBuilder prepareIMT(HashSet allInterfaces) {
         // Nothing to do here, since I don't have a IMT's
@@ -83,7 +83,7 @@ public final class VmInterfaceClass<T> extends VmType<T> {
      * @param signature
      * @param hashCode
      * @return The method
-     * @see org.jnode.vm.classmgr.VmType#getSyntheticAbstractMethod(java.lang.String, java.lang.String, int)
+     * @see VmType#getSyntheticAbstractMethod(java.lang.String, java.lang.String, int)
      */
     protected VmMethod getSyntheticAbstractMethod(
         String name,

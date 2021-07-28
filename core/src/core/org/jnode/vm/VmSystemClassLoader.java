@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -36,8 +36,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import org.jnode.annotation.PrivilegedActionPragma;
-import org.jnode.assembler.ObjectResolver;
-import org.jnode.util.ByteBufferInputStream;
+import com.qtech.os.assembler.ObjectResolver;
+import com.qtech.os.util.ByteBufferInputStream;
 import org.jnode.vm.classmgr.ClassDecoder;
 import org.jnode.vm.classmgr.IMTBuilder;
 import org.jnode.vm.classmgr.SelectorMap;
@@ -52,6 +52,7 @@ import org.jnode.vm.facade.VmUtils;
 import org.jnode.vm.isolate.VmIsolate;
 import org.jnode.vm.objects.BootableArrayList;
 import org.jnode.vm.scheduler.VmProcessor;
+import org.jnode.vm.classmgr.VmClassLoader;
 
 /**
  * Default classloader.
@@ -296,7 +297,7 @@ public final class VmSystemClassLoader extends VmAbstractClassLoader {
      * @param resolve
      * @return The loaded class
      * @throws ClassNotFoundException
-     * @see org.jnode.vm.classmgr.VmClassLoader#loadClass(String, boolean)
+     * @see VmClassLoader#loadClass(String, boolean)
      */
     @PrivilegedActionPragma
     public VmType<?> loadClass(String name, boolean resolve)
@@ -477,7 +478,7 @@ public final class VmSystemClassLoader extends VmAbstractClassLoader {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmClassLoader#resourceExists(java.lang.String)
+     * @see VmClassLoader#resourceExists(java.lang.String)
      */
     public final boolean resourceExists(String resName) {
         try {
@@ -656,7 +657,7 @@ public final class VmSystemClassLoader extends VmAbstractClassLoader {
     /**
      * (non-Javadoc)
      *
-     * @see org.jnode.vm.classmgr.VmClassLoader#disassemble(org.jnode.vm.classmgr.VmMethod,
+     * @see VmClassLoader#disassemble(VmMethod,
      * int, boolean, java.io.Writer)
      */
     public void disassemble(VmMethod vmMethod, int optLevel,

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2014 JNode.org
+ * Copyright (C) 2003-2014 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,9 +20,9 @@
  
 package org.jnode.vm.x86.compiler.l1a;
 
-import org.jnode.assembler.NativeStream;
-import org.jnode.assembler.ObjectResolver;
-import org.jnode.assembler.x86.X86BinaryAssembler;
+import com.qtech.os.assembler.NativeStream;
+import com.qtech.os.assembler.ObjectResolver;
+import com.qtech.os.assembler.x86.X86BinaryAssembler;
 import org.jnode.vm.classmgr.VmClassLoader;
 import org.jnode.vm.classmgr.VmMethod;
 import org.jnode.vm.compiler.CompiledMethod;
@@ -32,6 +32,7 @@ import org.jnode.vm.compiler.GCMapIterator;
 import org.jnode.vm.compiler.InlineBytecodeVisitor;
 import org.jnode.vm.compiler.OptimizingBytecodeVisitor;
 import org.jnode.vm.isolate.VmIsolateLocal;
+import org.jnode.vm.compiler.NativeCodeCompiler;
 import org.jnode.vm.scheduler.VmProcessor;
 import org.jnode.vm.x86.X86CpuID;
 import org.jnode.vm.x86.compiler.AbstractX86Compiler;
@@ -161,7 +162,7 @@ public final class X86Level1ACompiler extends AbstractX86Compiler {
     }
 
     /**
-     * @see org.jnode.vm.compiler.NativeCodeCompiler#getMagic()
+     * @see NativeCodeCompiler#getMagic()
      */
     public final int getMagic() {
         return L1A_COMPILER_MAGIC;
@@ -177,7 +178,7 @@ public final class X86Level1ACompiler extends AbstractX86Compiler {
     }
 
     /**
-     * @see org.jnode.vm.compiler.NativeCodeCompiler#createGCMapIterator()
+     * @see NativeCodeCompiler#createGCMapIterator()
      */
     @Override
     public GCMapIterator createGCMapIterator() {
@@ -185,7 +186,7 @@ public final class X86Level1ACompiler extends AbstractX86Compiler {
     }
 
     /**
-     * @see org.jnode.vm.compiler.NativeCodeCompiler#getCompilerPackages()
+     * @see NativeCodeCompiler#getCompilerPackages()
      */
     @Override
     public String[] getCompilerPackages() {

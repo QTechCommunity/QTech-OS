@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -24,12 +24,13 @@ import java.io.PrintWriter;
 import java.nio.ByteOrder;
 
 import org.jnode.annotation.MagicPermission;
-import org.jnode.assembler.Label;
-import org.jnode.assembler.ObjectResolver;
+import com.qtech.os.assembler.Label;
+import com.qtech.os.assembler.ObjectResolver;
 import org.jnode.vm.VmAddress;
 import org.jnode.vm.facade.ObjectVisitor;
 import org.jnode.vm.facade.VmArchitecture;
 import org.jnode.vm.facade.VmUtils;
+import org.jnode.vm.objects.VmSystemObject;
 import org.vmmagic.unboxed.Address;
 import org.vmmagic.unboxed.ObjectReference;
 import org.vmmagic.unboxed.UnboxedObject;
@@ -106,7 +107,7 @@ public abstract class VmStatics extends VmStaticsBase {
     }
 
     /**
-     * Allocate an org.jnode.vm.Address type entry.
+     * Allocate an com.qtech.os.vm.Address type entry.
      *
      * @return the index of the allocated entry.
      */
@@ -136,7 +137,7 @@ public abstract class VmStatics extends VmStaticsBase {
     }
 
     /**
-     * Allocate an {@link org.jnode.vm.classmgr.VmType} type entry.
+     * Allocate an {@link VmType} type entry.
      *
      * @return the index of the allocated entry.
      */
@@ -369,7 +370,7 @@ public abstract class VmStatics extends VmStaticsBase {
     }
 
     /**
-     * @see org.jnode.vm.objects.VmSystemObject#verifyBeforeEmit()
+     * @see VmSystemObject#verifyBeforeEmit()
      */
     public void verifyBeforeEmit() {
         //System.out.println("VmStatics#verifyBeforeEmit " + slotLength + ", " + resolver);

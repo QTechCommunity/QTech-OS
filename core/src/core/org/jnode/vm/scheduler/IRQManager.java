@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -24,11 +24,11 @@ import org.jnode.annotation.Internal;
 import org.jnode.annotation.KernelSpace;
 import org.jnode.annotation.PrivilegedActionPragma;
 import org.jnode.annotation.Uninterruptible;
-import org.jnode.system.resource.IRQHandler;
-import org.jnode.system.resource.IRQResource;
-import org.jnode.system.resource.Resource;
-import org.jnode.system.resource.ResourceNotFreeException;
-import org.jnode.system.resource.ResourceOwner;
+import com.qtech.os.system.resource.IRQHandler;
+import com.qtech.os.system.resource.IRQResource;
+import com.qtech.os.system.resource.Resource;
+import com.qtech.os.system.resource.ResourceNotFreeException;
+import com.qtech.os.system.resource.ResourceOwner;
 
 /**
  * IRQ manager implementation.
@@ -209,7 +209,7 @@ public abstract class IRQManager {
 
         /**
          * @return int
-         * @see org.jnode.system.resource.IRQResource#getIRQ()
+         * @see com.qtech.os.system.resource.IRQResource#getIRQ()
          */
         public int getIRQ() {
             return irq;
@@ -226,7 +226,7 @@ public abstract class IRQManager {
 
         /**
          * @return The owner
-         * @see org.jnode.system.resource.Resource#getOwner()
+         * @see com.qtech.os.system.resource.Resource#getOwner()
          */
         public ResourceOwner getOwner() {
             return owner;
@@ -237,7 +237,7 @@ public abstract class IRQManager {
         }
 
         /**
-         * @see org.jnode.system.resource.Resource#release()
+         * @see com.qtech.os.system.resource.Resource#release()
          */
         public void release() {
             releaseIRQ(this);

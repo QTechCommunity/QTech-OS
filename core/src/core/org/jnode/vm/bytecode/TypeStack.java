@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,8 +20,10 @@
  
 package org.jnode.vm.bytecode;
 
+import org.jnode.vm.JvmType;
+
 /**
- * A TypeStack is a stack of internal type numbers represented as {@link org.jnode.vm.JvmType} 
+ * A TypeStack is a stack of internal type numbers represented as {@link JvmType}
  * values; i.e. integers.
  *
  * @author Ewout Prangsma (epr@users.sourceforge.net)
@@ -112,7 +114,7 @@ public final class TypeStack {
     /**
      * Push a type onto the TypeStack.
      *
-     * @param type a {@link org.jnode.vm.JvmType} value
+     * @param type a {@link JvmType} value
      */
     public final void push(int type) {
         if (tos == stack.length) grow();
@@ -122,7 +124,7 @@ public final class TypeStack {
     /**
      * Pop a type from the TypeStack and return it.
      * 
-     * @return a {@link org.jnode.vm.JvmType} value
+     * @return a {@link JvmType} value
      * @throws Error if the stack is empty
      */
     public final int pop() {
@@ -135,7 +137,7 @@ public final class TypeStack {
     /**
      * Pop a type from the stack and check that it is the expected type.
      *
-     * @param type the expected {@link org.jnode.vm.JvmType} value.
+     * @param type the expected {@link JvmType} value.
      * @throws Error if there is a type mismatch
      */
     public final void pop(int type) throws Error {
@@ -164,7 +166,7 @@ public final class TypeStack {
      * @param stackIndex the stack index.  This should be a number in the range
      * {@code 0 .. size() - 1} inclusive where {@code size() - 1} is the top element 
      * on the stack.
-     * @return the {@link org.jnode.vm.JvmType} value at the given offset.
+     * @return the {@link JvmType} value at the given offset.
      */
     public final int getType(int stackIndex) {
         return stack[stackIndex];

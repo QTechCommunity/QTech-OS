@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -35,6 +35,7 @@ import org.jnode.vm.memmgr.VmHeapManager;
 import org.jnode.vm.scheduler.Monitor;
 import org.jnode.vm.scheduler.MonitorManager;
 import org.jnode.vm.scheduler.VmProcessor;
+import org.jnode.vm.facade.Vm;
 import org.vmmagic.unboxed.Address;
 import org.vmmagic.unboxed.Extent;
 import org.vmmagic.unboxed.ObjectReference;
@@ -84,7 +85,7 @@ final class HeapHelperImpl extends HeapHelper {
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#allocateBlock(Extent)
+     * @see HeapHelper#allocateBlock(Extent)
      */
     public final Address allocateBlock(Extent size) {
         return MemoryBlockManager.allocateBlock(size);
@@ -120,28 +121,28 @@ final class HeapHelperImpl extends HeapHelper {
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#clear(Address, Extent)
+     * @see HeapHelper#clear(Address, Extent)
      */
     public final void clear(Address dst, Extent size) {
         Unsafe.clear(dst, size);
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#clear(Address, int)
+     * @see HeapHelper#clear(Address, int)
      */
     public final void clear(Address dst, int size) {
         Unsafe.clear(dst, Extent.fromIntSignExtend(size));
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#copy(Address, Address, int)
+     * @see HeapHelper#copy(Address, Address, int)
      */
     public final void copy(Address src, Address dst, Extent size) {
         Unsafe.copy(src, dst, size);
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#die(java.lang.String)
+     * @see HeapHelper#die(java.lang.String)
      */
     public final void die(String msg) {
         try {
@@ -153,35 +154,35 @@ final class HeapHelperImpl extends HeapHelper {
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#getBootHeapEnd()
+     * @see HeapHelper#getBootHeapEnd()
      */
     public final Address getBootHeapEnd() {
         return Unsafe.getBootHeapEnd();
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#getBootHeapStart()
+     * @see HeapHelper#getBootHeapStart()
      */
     public final Address getBootHeapStart() {
         return Unsafe.getBootHeapStart();
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#getBootImageEnd()
+     * @see HeapHelper#getBootImageEnd()
      */
     public final Address getBootImageEnd() {
         return Unsafe.getBootHeapEnd();
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#getBootImageStart()
+     * @see HeapHelper#getBootImageStart()
      */
     public final Address getBootImageStart() {
         return Unsafe.getKernelStart();
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#getHeapSize()
+     * @see HeapHelper#getHeapSize()
      */
     public Extent getHeapSize() {
         final Word end = Unsafe.getMemoryEnd().toWord();
@@ -190,15 +191,15 @@ final class HeapHelperImpl extends HeapHelper {
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#getInflatedMonitor(java.lang.Object,
-     *      org.jnode.vm.BaseVmArchitecture)
+     * @see HeapHelper#getInflatedMonitor(java.lang.Object,
+     *      BaseVmArchitecture)
      */
     public final Monitor getInflatedMonitor(Object object, BaseVmArchitecture arch) {
         return MonitorManager.getInflatedMonitor(object);
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#invokeFinalizer(org.jnode.vm.classmgr.VmMethod,
+     * @see HeapHelper#invokeFinalizer(VmMethod,
      *      java.lang.Object)
      */
     public final void invokeFinalizer(VmMethod finalizer, Object object) {
@@ -248,7 +249,7 @@ final class HeapHelperImpl extends HeapHelper {
      * @param visitor
      */
     public void visitAllRoots(ObjectVisitor visitor, VmHeapManager heapManager) {
-        final org.jnode.vm.facade.Vm vm = VmUtils.getVm();
+        final Vm vm = VmUtils.getVm();
         if (!vm.getSharedStatics().walk(visitor)) {
             return;
         }
@@ -263,7 +264,7 @@ final class HeapHelperImpl extends HeapHelper {
     }
 
     /**
-     * @see org.jnode.vm.memmgr.HeapHelper#bootArchitecture(boolean)
+     * @see HeapHelper#bootArchitecture(boolean)
      */
     public final void bootArchitecture(boolean emptyMMap) {
         ((BaseVmArchitecture) VmUtils.getVm().getArch()).boot(emptyMMap);

@@ -29,9 +29,9 @@
 # -----------------------------------------------
 # Settings for the memory manager
 
-# Default memory manager: org.jnode.vm.memmgr.def
-# MMTk NoGC based memory manager (still very beta): org.jnode.vm.memmgr.mmtk.nogc
-# MMTk GenRC based memory manager (still very alpha):  org.jnode.vm.memmgr.mmtk.genrc
+# Default memory manager: com.qtech.os.vm.memmgr.def
+# MMTk NoGC based memory manager (still very beta): com.qtech.os.vm.memmgr.mmtk.nogc
+# MMTk GenRC based memory manager (still very alpha):  com.qtech.os.vm.memmgr.mmtk.genrc
 @jnode.memmgr.plugin.id/=@
 
 # -----------------------------------------------

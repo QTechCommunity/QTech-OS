@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -39,7 +39,7 @@ final class X86CompiledIMT extends CompiledIMT {
     }
 
     /**
-     * @see org.jnode.vm.compiler.CompiledIMT#getIMTAddress()
+     * @see CompiledIMT#getIMTAddress()
      */
     public Object getIMTAddress() {
         return code;

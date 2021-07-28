@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -47,7 +47,7 @@ public class CounterGroup extends Statistic {
     }
 
     /**
-     * @see org.jnode.vm.objects.Statistic#getValue()
+     * @see Statistic#getValue()
      */
     @Override
     public Object getValue() {
@@ -55,7 +55,7 @@ public class CounterGroup extends Statistic {
     }
 
     /**
-     * @see org.jnode.vm.objects.Statistic#toString()
+     * @see Statistic#toString()
      */
     @Override
     public String toString() {

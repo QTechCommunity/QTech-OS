@@ -1,10 +1,10 @@
 package org.jnode.vm.x86.compiler.l2;
 
-import org.jnode.assembler.Label;
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86Constants;
-import org.jnode.assembler.x86.X86Register;
-import org.jnode.assembler.x86.X86Register.GPR;
+import com.qtech.os.assembler.Label;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86Constants;
+import com.qtech.os.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86Register.GPR;
 import org.jnode.vm.compiler.ir.AddressingMode;
 import org.jnode.vm.compiler.ir.DoubleConstant;
 import org.jnode.vm.compiler.ir.FloatConstant;

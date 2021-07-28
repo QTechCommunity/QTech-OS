@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,11 +20,11 @@
  
 package org.jnode.vm.x86.compiler.l1a;
 
-import org.jnode.assembler.Label;
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86Register;
-import org.jnode.assembler.x86.X86Register.GPR;
-import org.jnode.assembler.x86.X86Register.GPR64;
+import com.qtech.os.assembler.Label;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86Register.GPR;
+import com.qtech.os.assembler.x86.X86Register.GPR64;
 import org.jnode.vm.JvmType;
 import org.jnode.vm.classmgr.VmConstString;
 import org.jnode.vm.facade.VmUtils;
@@ -56,7 +56,7 @@ final class RefItem extends WordItem {
     }
 
     /**
-     * @see org.jnode.vm.x86.compiler.l1a.WordItem#cloneConstant(EmitterContext)
+     * @see WordItem#cloneConstant(EmitterContext)
      */
     protected WordItem cloneConstant(EmitterContext ec) {
         return factory.createAConst(ec, getValue());

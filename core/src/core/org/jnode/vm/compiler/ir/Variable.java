@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -129,7 +129,7 @@ public abstract class Variable<T> extends Operand<T> implements Cloneable {
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.Operand#getAddressingMode()
+     * @see Operand#getAddressingMode()
      */
     public AddressingMode getAddressingMode() {
         if (location instanceof StackLocation) {

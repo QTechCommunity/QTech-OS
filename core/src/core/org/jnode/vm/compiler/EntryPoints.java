@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,6 +20,7 @@
  
 package org.jnode.vm.compiler;
 
+import org.jnode.vm.SoftByteCodes;
 import org.jnode.vm.classmgr.VmClassLoader;
 import org.jnode.vm.classmgr.VmField;
 import org.jnode.vm.classmgr.VmInstanceField;
@@ -145,31 +146,31 @@ public class EntryPoints extends VmSystemObject {
                 "org.jnode.vm.SoftByteCodes", true);
             anewarrayMethod = testMethod(vmSoftByteCodesClass.getMethod(
                 "anewarray",
-                "(Lorg/jnode/vm/classmgr/VmType;I)Ljava/lang/Object;"));
+                "(Lcom/qtech/os/vm/classmgr/VmType;I)Ljava/lang/Object;"));
             allocArrayMethod = testMethod(vmSoftByteCodesClass.getMethod(
                 "allocArray",
-                "(Lorg/jnode/vm/classmgr/VmType;I)Ljava/lang/Object;"));
+                "(Lcom/qtech/os/vm/classmgr/VmType;I)Ljava/lang/Object;"));
             allocMultiArrayMethod = testMethod(vmSoftByteCodesClass.getMethod(
                 "allocMultiArray",
-                "(Lorg/jnode/vm/classmgr/VmType;[I)Ljava/lang/Object;"));
+                "(Lcom/qtech/os/vm/classmgr/VmType;[I)Ljava/lang/Object;"));
             allocPrimitiveArrayMethod = testMethod(vmSoftByteCodesClass
-                .getMethod("allocPrimitiveArray", "(Lorg/jnode/vm/classmgr/VmType;II)Ljava/lang/Object;"));
+                .getMethod("allocPrimitiveArray", "(Lcom/qtech/os/vm/classmgr/VmType;II)Ljava/lang/Object;"));
             resolveFieldMethod = testMethod(vmSoftByteCodesClass.getMethod("resolveField",
-                "(Lorg/jnode/vm/classmgr/VmMethod;Lorg/jnode/vm/classmgr/VmConstFieldRef;Z)" +
-                    "Lorg/jnode/vm/classmgr/VmField;"));
+                "(Lcom/qtech/os/vm/classmgr/VmMethod;Lcom/qtech/os/vm/classmgr/VmConstFieldRef;Z)" +
+                    "Lcom/qtech/os/vm/classmgr/VmField;"));
             resolveMethodMethod = testMethod(vmSoftByteCodesClass.getMethod("resolveMethod",
-                "(Lorg/jnode/vm/classmgr/VmMethod;Lorg/jnode/vm/classmgr/VmConstMethodRef;)" +
-                    "Lorg/jnode/vm/classmgr/VmMethod;"));
+                "(Lcom/qtech/os/vm/classmgr/VmMethod;Lcom/qtech/os/vm/classmgr/VmConstMethodRef;)" +
+                    "Lcom/qtech/os/vm/classmgr/VmMethod;"));
             resolveClassMethod = testMethod(vmSoftByteCodesClass.getMethod("resolveClass",
-                "(Lorg/jnode/vm/classmgr/VmConstClass;)Lorg/jnode/vm/classmgr/VmType;"));
+                "(Lcom/qtech/os/vm/classmgr/VmConstClass;)Lcom/qtech/os/vm/classmgr/VmType;"));
             allocObjectMethod = testMethod(vmSoftByteCodesClass.getMethod("allocObject",
-                "(Lorg/jnode/vm/classmgr/VmType;I)Ljava/lang/Object;"));
+                "(Lcom/qtech/os/vm/classmgr/VmType;I)Ljava/lang/Object;"));
             classCastFailedMethod = testMethod(vmSoftByteCodesClass.getMethod(
-                "classCastFailed", "(Ljava/lang/Object;Lorg/jnode/vm/classmgr/VmType;)V"));
+                "classCastFailed", "(Ljava/lang/Object;Lcom/qtech/os/vm/classmgr/VmType;)V"));
             throwArrayOutOfBounds = testMethod(vmSoftByteCodesClass.getMethod(
                 "throwArrayOutOfBounds", "(Ljava/lang/Object;I)V"));
             getClassForVmTypeMethod = testMethod(vmSoftByteCodesClass.getMethod("getClassForVmType",
-                "(Lorg/jnode/vm/classmgr/VmType;)Ljava/lang/Class;"));
+                "(Lcom/qtech/os/vm/classmgr/VmType;)Ljava/lang/Class;"));
 
             // Write barrier
             writeBarrier = (heapManager != null) ? heapManager
@@ -609,7 +610,7 @@ public class EntryPoints extends VmSystemObject {
 
     /**
      * @return Returns the getClassForVmTypeMethod.
-     * @see org.jnode.vm.SoftByteCodes#getClassForVmType(VmType)
+     * @see SoftByteCodes#getClassForVmType(VmType)
      */
     public final VmMethod getGetClassForVmTypeMethod() {
         return getClassForVmTypeMethod;

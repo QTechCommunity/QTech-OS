@@ -5,7 +5,7 @@
 ; This table is used by the native code compiler to call
 ; native methods, without compromising code moveability.
 ;
-; When changing this file, also change org.jnode.vm.x86.compiler.X86JumpTable
+; When changing this file, also change X86JumpTable
 ; class.
 ;
 ; Author       : E. Prangsma

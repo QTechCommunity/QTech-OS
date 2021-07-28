@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -71,7 +71,7 @@ class NativeUnsafe {
     }
 
     /**
-     * @see org.jnode.vm.VmReflection#getObject(org.jnode.vm.classmgr.VmField, Object)
+     * @see VmReflection#getObject(VmField, Object)
      */
     public static Object getObject(Unsafe instance, Object o, long offset) {
         if(o instanceof StaticAccess){
@@ -82,7 +82,7 @@ class NativeUnsafe {
     }
 
     /**
-     * @see org.jnode.vm.VmReflection#setObject(org.jnode.vm.classmgr.VmField, Object, Object)
+     * @see VmReflection#setObject(VmField, Object, Object)
      */
     public static void putObject(Unsafe instance, Object o, long offset, Object x) {
         if(o instanceof StaticAccess){
@@ -371,7 +371,7 @@ class NativeUnsafe {
     }
 
     /**
-     * @see org.jnode.vm.VmReflection#getObject(org.jnode.vm.classmgr.VmField, Object)
+     * @see VmReflection#getObject(VmField, Object)
      */
     static class IrregularStaticAccess  extends StaticAccess {
 
@@ -398,7 +398,7 @@ class NativeUnsafe {
     }
 
     /**
-     * @see org.jnode.vm.VmReflection#getStaticFieldAddress(org.jnode.vm.classmgr.VmStaticField)
+     * @see VmReflection#getStaticFieldAddress(VmStaticField)
      */
     public static Object staticFieldBase(Unsafe instance, Field f) {
         final VmProcessor proc = VmProcessor.current();
@@ -418,7 +418,7 @@ class NativeUnsafe {
     }
 
     /**
-     * @see org.jnode.vm.VmReflection#getInstanceFieldAddress(Object, org.jnode.vm.classmgr.VmInstanceField)   
+     * @see VmReflection#getInstanceFieldAddress(Object, VmInstanceField)
      */
     public static long staticFieldOffset(Unsafe instance, Field f) {
         final int offset;

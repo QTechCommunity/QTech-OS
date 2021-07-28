@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -35,8 +35,8 @@ import org.jnode.annotation.MagicPermission;
 import org.jnode.annotation.NoInline;
 import org.jnode.annotation.SharedStatics;
 import org.jnode.annotation.Uninterruptible;
-import org.jnode.assembler.NativeStream;
-import org.jnode.permission.JNodePermission;
+import com.qtech.os.assembler.NativeStream;
+import com.qtech.os.permission.JNodePermission;
 import org.jnode.vm.InternString;
 import org.jnode.vm.JvmType;
 import org.jnode.vm.LoadCompileService;
@@ -49,6 +49,7 @@ import org.jnode.vm.compiler.CompiledIMT;
 import org.jnode.vm.compiler.NativeCodeCompiler;
 import org.jnode.vm.facade.VmUtils;
 import org.jnode.vm.isolate.VmIsolateLocal;
+import org.jnode.vm.objects.VmSystemObject;
 import org.vmmagic.unboxed.Address;
 import org.vmmagic.unboxed.ObjectReference;
 
@@ -2227,7 +2228,7 @@ public abstract class VmType<T> extends VmAnnotatedElement implements
      * Verify this object before it is written into the bootimage by the
      * bootimage builder.
      *
-     * @see org.jnode.vm.objects.VmSystemObject#verifyBeforeEmit()
+     * @see VmSystemObject#verifyBeforeEmit()
      */
     public void verifyBeforeEmit() {
         super.verifyBeforeEmit();
@@ -2327,7 +2328,7 @@ public abstract class VmType<T> extends VmAnnotatedElement implements
 
     /**
      * @return String
-     * @see org.jnode.vm.objects.VmSystemObject#getExtraInfo()
+     * @see VmSystemObject#getExtraInfo()
      */
     public String getExtraInfo() {
         return "Modifiers: " + Modifier.toString(modifiers);
@@ -2434,7 +2435,7 @@ public abstract class VmType<T> extends VmAnnotatedElement implements
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmAnnotatedElement#getSuperElement()
+     * @see VmAnnotatedElement#getSuperElement()
      */
     @Override
     protected final VmAnnotatedElement getSuperElement() {
@@ -2474,7 +2475,7 @@ public abstract class VmType<T> extends VmAnnotatedElement implements
     /**
      * Index of the isolated type state. This refers to an int entry.
      *
-     * @see org.jnode.vm.classmgr.VmIsolatedStaticsEntry#getIsolatedStaticsIndex()
+     * @see VmIsolatedStaticsEntry#getIsolatedStaticsIndex()
      */
     public final int getIsolatedStaticsIndex() {
         return isolatedStaticsIndex;

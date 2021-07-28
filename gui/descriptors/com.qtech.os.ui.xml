@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -29,7 +29,7 @@
         
   <requires>  
     <import plugin="org.classpath.ext.imageio"/>
-    <import plugin="org.jnode.awt"/>
+    <import plugin="com.qtech.os.awt"/>
   </requires>
   
   <runtime>
@@ -45,7 +45,7 @@
 
   <extension-point id="apps" name="Applications that can be started from the desktop"/>
 
-  <extension point="org.jnode.security.permissions">
+  <extension point="com.qtech.os.security.permissions">
     <permission class="java.util.PropertyPermission" name="jnode.desktop" actions="read,write"/>
     
     <permission class="java.lang.RuntimePermission" name="getClassLoader" />

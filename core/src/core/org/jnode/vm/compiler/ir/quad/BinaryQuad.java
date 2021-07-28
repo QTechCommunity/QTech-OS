@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -32,20 +32,6 @@ import org.jnode.vm.compiler.ir.Variable;
 import static org.jnode.vm.compiler.ir.AddressingMode.CONSTANT;
 import static org.jnode.vm.compiler.ir.AddressingMode.REGISTER;
 import static org.jnode.vm.compiler.ir.AddressingMode.STACK;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.DADD;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.DMUL;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.FADD;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.FMUL;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IADD;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IAND;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IMUL;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IOR;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IXOR;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LADD;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LAND;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LMUL;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LOR;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LXOR;
 
 /**
  * This class represents binary operations of the form:
@@ -119,13 +105,13 @@ public class BinaryQuad<T> extends AssignQuad<T> {
         this.operation = operation;
         refs = new Operand[]{getOperand(varIndex1), getOperand(varIndex2)};
         this.commutative =
-            operation == IADD || operation == IMUL ||
-                operation == LADD || operation == LMUL ||
-                operation == FADD || operation == FMUL ||
-                operation == DADD || operation == DMUL ||
-                operation == IAND || operation == LAND ||
-                operation == IOR || operation == LOR ||
-                operation == IXOR || operation == LXOR;
+            operation == BinaryOperation.IADD || operation == BinaryOperation.IMUL ||
+                operation == BinaryOperation.LADD || operation == BinaryOperation.LMUL ||
+                operation == BinaryOperation.FADD || operation == BinaryOperation.FMUL ||
+                operation == BinaryOperation.DADD || operation == BinaryOperation.DMUL ||
+                operation == BinaryOperation.IAND || operation == BinaryOperation.LAND ||
+                operation == BinaryOperation.IOR || operation == BinaryOperation.LOR ||
+                operation == BinaryOperation.IXOR || operation == BinaryOperation.LXOR;
     }
 
     public BinaryQuad(int address, IRBasicBlock<T> block, int lhsIndex,
@@ -135,17 +121,17 @@ public class BinaryQuad<T> extends AssignQuad<T> {
         this.operation = operation;
         refs = new Operand[]{getOperand(varIndex1), op2};
         this.commutative =
-            operation == IADD || operation == IMUL ||
-                operation == LADD || operation == LMUL ||
-                operation == FADD || operation == FMUL ||
-                operation == DADD || operation == DMUL ||
-                operation == IAND || operation == LAND ||
-                operation == IOR || operation == LOR ||
-                operation == IXOR || operation == LXOR;
+            operation == BinaryOperation.IADD || operation == BinaryOperation.IMUL ||
+                operation == BinaryOperation.LADD || operation == BinaryOperation.LMUL ||
+                operation == BinaryOperation.FADD || operation == BinaryOperation.FMUL ||
+                operation == BinaryOperation.DADD || operation == BinaryOperation.DMUL ||
+                operation == BinaryOperation.IAND || operation == BinaryOperation.LAND ||
+                operation == BinaryOperation.IOR || operation == BinaryOperation.LOR ||
+                operation == BinaryOperation.IXOR || operation == BinaryOperation.LXOR;
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.quad.Quad#getReferencedOps()
+     * @see Quad#getReferencedOps()
      */
     public Operand<T>[] getReferencedOps() {
         return refs;
@@ -358,7 +344,7 @@ public class BinaryQuad<T> extends AssignQuad<T> {
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.quad.AssignQuad#propagate(org.jnode.vm.compiler.ir.Variable)
+     * @see AssignQuad#propagate(Variable)
      */
     public Operand<T> propagate(Variable<T> operand) {
         Quad<T> quad = foldConstants();
@@ -375,7 +361,7 @@ public class BinaryQuad<T> extends AssignQuad<T> {
      * simplify will combine phi references and propagate copies
      * This method will also update liveness of operands by setting last use addr
      *
-     * @see org.jnode.vm.compiler.ir.quad.Quad#doPass2()
+     * @see Quad#doPass2()
      */
     public void doPass2() {
         refs[0] = refs[0].simplify();
@@ -387,7 +373,7 @@ public class BinaryQuad<T> extends AssignQuad<T> {
      * Code generation is complicated by the permutations of addressing modes.
      * This is not as nice as it could be, but it could be worse!
      *
-     * @see org.jnode.vm.compiler.ir.quad.Quad#generateCode(org.jnode.vm.compiler.ir.CodeGenerator)
+     * @see Quad#generateCode(CodeGenerator)
      */
     public void generateCode(CodeGenerator<T> cg) {
         cg.checkLabel(getAddress());
@@ -527,7 +513,7 @@ public class BinaryQuad<T> extends AssignQuad<T> {
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.quad.AssignQuad#getLHSLiveAddress()
+     * @see AssignQuad#getLHSLiveAddress()
      */
     public int getLHSLiveAddress() {
         CodeGenerator<T> cg = CodeGenerator.getInstance();

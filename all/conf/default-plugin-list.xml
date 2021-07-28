@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -25,18 +25,18 @@ The default list of (non-system) plugins to be included in the init-jar.
 -->
 <plugin-list name="default">
     <manifest>
-        <attribute key="Main-Class" value="org.jnode.shell.CommandShell"/>
+        <attribute key="Main-Class" value="com.qtech.os.shell.CommandShell"/>
         <attribute key="Main-Class-Arg" value="boot"/>
     </manifest>
 
     <plugin id="org.classpath.ext.core.vm"/>
-    <plugin id="org.jnode.driver"/>
-    <plugin id="org.jnode.driver.block"/>
-    <plugin id="org.jnode.partitions"/>
-    <plugin id="org.jnode.fs.service"/>
-    <plugin id="org.jnode.fs"/>
-    <plugin id="org.jnode.fs.ramfs"/>
-    <plugin id="org.jnode.fs.ramfs.def"/>
+    <plugin id="com.qtech.os.driver"/>
+    <plugin id="com.qtech.os.driver.block"/>
+    <plugin id="com.qtech.os.partitions"/>
+    <plugin id="com.qtech.os.fs.service"/>
+    <plugin id="com.qtech.os.fs"/>
+    <plugin id="com.qtech.os.fs.ramfs"/>
+    <plugin id="com.qtech.os.fs.ramfs.def"/>
 
     <plugin id="org.classpath.ext"/>
     <plugin id="org.classpath.ext.awt"/>
@@ -54,165 +54,165 @@ The default list of (non-system) plugins to be included in the init-jar.
     <plugin id="org.apache.commons.net"/>
     <plugin id="org.xbill.dns"/>
 
-    <plugin id="org.jnode.driver.console"/>
-    <plugin id="org.jnode.driver.console.core"/>
-    <plugin id="org.jnode.driver.console.textscreen"/>
-    <plugin id="org.jnode.driver.console.swing"/>
-    <plugin id="org.jnode.driver.textscreen"/>
-    <plugin id="org.jnode.driver.textscreen.fb" />
-    <plugin id="org.jnode.driver.textscreen.swing"/>
-    <plugin id="org.jnode.driver.textscreen.core"/>
+    <plugin id="com.qtech.os.driver.console"/>
+    <plugin id="com.qtech.os.driver.console.core"/>
+    <plugin id="com.qtech.os.driver.console.textscreen"/>
+    <plugin id="com.qtech.os.driver.console.swing"/>
+    <plugin id="com.qtech.os.driver.textscreen"/>
+    <plugin id="com.qtech.os.driver.textscreen.fb" />
+    <plugin id="com.qtech.os.driver.textscreen.swing"/>
+    <plugin id="com.qtech.os.driver.textscreen.core"/>
 
-    <plugin id="org.jnode.awt"/>
-    <plugin id="org.jnode.awt.command"/>
-    <plugin id="org.jnode.awt.font"/>
-    <plugin id="org.jnode.awt.font.truetype"/>
-    <plugin id="org.jnode.awt.swingpeers"/>
+    <plugin id="com.qtech.os.awt"/>
+    <plugin id="com.qtech.os.awt.command"/>
+    <plugin id="com.qtech.os.awt.font"/>
+    <plugin id="com.qtech.os.awt.font.truetype"/>
+    <plugin id="com.qtech.os.awt.swingpeers"/>
     
     <plugin id="org.apache.tools.archive" />
-    <plugin id="org.jnode.command.argument"/>
-    <plugin id="org.jnode.command.archive"/>
-    <plugin id="org.jnode.command.common"/>
-    <plugin id="org.jnode.command.dev"/>
-    <plugin id="org.jnode.command.file"/>
-    <plugin id="org.jnode.command.net"/>
-    <plugin id="org.jnode.command.system"/>
-    <plugin id="org.jnode.command.util"/>
+    <plugin id="com.qtech.os.command.argument"/>
+    <plugin id="com.qtech.os.command.archive"/>
+    <plugin id="com.qtech.os.command.common"/>
+    <plugin id="com.qtech.os.command.dev"/>
+    <plugin id="com.qtech.os.command.file"/>
+    <plugin id="com.qtech.os.command.net"/>
+    <plugin id="com.qtech.os.command.system"/>
+    <plugin id="com.qtech.os.command.util"/>
     
-    <plugin id="org.jnode.debug"/>
-    <plugin id="org.jnode.debugger"/>
+    <plugin id="com.qtech.os.debug"/>
+    <plugin id="com.qtech.os.debugger"/>
 
     <plugin id="com.qtech.os.ui"/>
-    <plugin id="org.jnode.desktop"/>
+    <plugin id="com.qtech.os.desktop"/>
 
-    <plugin id="org.jnode.driver.character"/>
+    <plugin id="com.qtech.os.driver.character"/>
     <!-- temporally disabled
-    <plugin id="org.jnode.driver.block.floppy"/>
+    <plugin id="com.qtech.os.driver.block.floppy"/>
     -->
-    <plugin id="org.jnode.driver.block.ide.disk"/>
-    <plugin id="org.jnode.driver.block.ramdisk"/>
-    <plugin id="org.jnode.driver.block.ramdisk.command"/>
-    <plugin id="org.jnode.driver.block.scsi.cdrom"/>
-    <plugin id="org.jnode.driver.block.usb.storage"/>
-    <plugin id="org.jnode.driver.block.usb.storage.scsi"/>
-    <plugin id="org.jnode.driver.bus.firewire"/>
-    <plugin id="org.jnode.driver.bus.ide"/>
-    <plugin id="org.jnode.driver.bus.ide.atapi"/>
-    <plugin id="org.jnode.driver.bus.pci"/>
-    <plugin id="org.jnode.driver.bus.pcmcia"/>
-    <plugin id="org.jnode.driver.bus.scsi"/>
-    <plugin id="org.jnode.driver.bus.smbus"/>
-    <plugin id="org.jnode.driver.bus.usb"/>
-    <plugin id="org.jnode.driver.bus.usb.hub"/>
-    <plugin id="org.jnode.driver.bus.usb.uhci"/>
-    <plugin id="org.jnode.driver.chipset"/>
-    <plugin id="org.jnode.driver.chipset.i440BX"/>
-    <plugin id="org.jnode.driver.chipset.via"/>
-    <plugin id="org.jnode.driver.finder"/>
-    <plugin id="org.jnode.driver.input"/>
-    <plugin id="org.jnode.driver.input.l10n"/>
-    <plugin id="org.jnode.driver.input.usb"/>
-    <plugin id="org.jnode.driver.net.3c90x"/>
-    <plugin id="org.jnode.driver.net.ethernet"/>
-    <plugin id="org.jnode.driver.net.eepro100"/>
-    <plugin id="org.jnode.driver.net.lance"/>
-    <plugin id="org.jnode.driver.net.loopback"/>
-    <plugin id="org.jnode.driver.net.ne2k-pci"/>
-    <plugin id="org.jnode.driver.net.prism2"/>
-    <plugin id="org.jnode.driver.net.rtl8139"/>
-    <plugin id="org.jnode.driver.net.bcm570x"/>
-    <plugin id="org.jnode.driver.net.wireless"/>
-    <plugin id="org.jnode.driver.net.via_rhine"/>
-    <plugin id="org.jnode.driver.ps2"/>
-    <plugin id="org.jnode.driver.serial"/>
+    <plugin id="com.qtech.os.driver.block.ide.disk"/>
+    <plugin id="com.qtech.os.driver.block.ramdisk"/>
+    <plugin id="com.qtech.os.driver.block.ramdisk.command"/>
+    <plugin id="com.qtech.os.driver.block.scsi.cdrom"/>
+    <plugin id="com.qtech.os.driver.block.usb.storage"/>
+    <plugin id="com.qtech.os.driver.block.usb.storage.scsi"/>
+    <plugin id="com.qtech.os.driver.bus.firewire"/>
+    <plugin id="com.qtech.os.driver.bus.ide"/>
+    <plugin id="com.qtech.os.driver.bus.ide.atapi"/>
+    <plugin id="com.qtech.os.driver.bus.pci"/>
+    <plugin id="com.qtech.os.driver.bus.pcmcia"/>
+    <plugin id="com.qtech.os.driver.bus.scsi"/>
+    <plugin id="com.qtech.os.driver.bus.smbus"/>
+    <plugin id="com.qtech.os.driver.bus.usb"/>
+    <plugin id="com.qtech.os.driver.bus.usb.hub"/>
+    <plugin id="com.qtech.os.driver.bus.usb.uhci"/>
+    <plugin id="com.qtech.os.driver.chipset"/>
+    <plugin id="com.qtech.os.driver.chipset.i440BX"/>
+    <plugin id="com.qtech.os.driver.chipset.via"/>
+    <plugin id="com.qtech.os.driver.finder"/>
+    <plugin id="com.qtech.os.driver.input"/>
+    <plugin id="com.qtech.os.driver.input.l10n"/>
+    <plugin id="com.qtech.os.driver.input.usb"/>
+    <plugin id="com.qtech.os.driver.net.3c90x"/>
+    <plugin id="com.qtech.os.driver.net.ethernet"/>
+    <plugin id="com.qtech.os.driver.net.eepro100"/>
+    <plugin id="com.qtech.os.driver.net.lance"/>
+    <plugin id="com.qtech.os.driver.net.loopback"/>
+    <plugin id="com.qtech.os.driver.net.ne2k-pci"/>
+    <plugin id="com.qtech.os.driver.net.prism2"/>
+    <plugin id="com.qtech.os.driver.net.rtl8139"/>
+    <plugin id="com.qtech.os.driver.net.bcm570x"/>
+    <plugin id="com.qtech.os.driver.net.wireless"/>
+    <plugin id="com.qtech.os.driver.net.via_rhine"/>
+    <plugin id="com.qtech.os.driver.ps2"/>
+    <plugin id="com.qtech.os.driver.serial"/>
     <!-- temporally disabled
-    <plugin id="org.jnode.driver.system.acpi"/>
+    <plugin id="com.qtech.os.driver.system.acpi"/>
     -->
-    <plugin id="org.jnode.driver.system.cmos"/>
-    <plugin id="org.jnode.driver.system.firmware"/>
-    <plugin id="org.jnode.driver.system.firmware.bios"/>
-    <plugin id="org.jnode.driver.system.pnp"/>
-    <plugin id="org.jnode.driver.sound.speaker"/>
-    <plugin id="org.jnode.driver.sound.speaker.pc"/>
-    <plugin id="org.jnode.driver.sound.command"/>
-    <plugin id="org.jnode.driver.video"/>
-    <plugin id="org.jnode.driver.video.cursor"/>    
-    <plugin id="org.jnode.driver.video.ati.mach64"/>
-    <plugin id="org.jnode.driver.video.ati.radeon"/>
-    <plugin id="org.jnode.driver.video.cirrus"/>
-    <plugin id="org.jnode.driver.video.nvidia"/>
-    <plugin id="org.jnode.driver.video.vga"/>
-    <plugin id="org.jnode.driver.video.vgahw"/>
-    <plugin id="org.jnode.driver.video.vmware"/>
-    <plugin id="org.jnode.driver.video.vesa"/>
+    <plugin id="com.qtech.os.driver.system.cmos"/>
+    <plugin id="com.qtech.os.driver.system.firmware"/>
+    <plugin id="com.qtech.os.driver.system.firmware.bios"/>
+    <plugin id="com.qtech.os.driver.system.pnp"/>
+    <plugin id="com.qtech.os.driver.sound.speaker"/>
+    <plugin id="com.qtech.os.driver.sound.speaker.pc"/>
+    <plugin id="com.qtech.os.driver.sound.command"/>
+    <plugin id="com.qtech.os.driver.video"/>
+    <plugin id="com.qtech.os.driver.video.cursor"/>
+    <plugin id="com.qtech.os.driver.video.ati.mach64"/>
+    <plugin id="com.qtech.os.driver.video.ati.radeon"/>
+    <plugin id="com.qtech.os.driver.video.cirrus"/>
+    <plugin id="com.qtech.os.driver.video.nvidia"/>
+    <plugin id="com.qtech.os.driver.video.vga"/>
+    <plugin id="com.qtech.os.driver.video.vgahw"/>
+    <plugin id="com.qtech.os.driver.video.vmware"/>
+    <plugin id="com.qtech.os.driver.video.vesa"/>
 
-    <plugin id="org.jnode.fs.command"/>
-    <plugin id="org.jnode.fs.ext2"/>
-    <plugin id="org.jnode.fs.ext2.command"/>
-    <plugin id="org.jnode.fs.hfsplus"/>
-    <plugin id="org.jnode.fs.hfsplus.command"/>
-    <plugin id="org.jnode.fs.fat"/>
-    <plugin id="org.jnode.fs.fat.command"/>
-    <plugin id="org.jnode.fs.jfat"/>
-    <plugin id="org.jnode.fs.jfat.command"/>        
-    <plugin id="org.jnode.fs.iso9660"/>
-    <plugin id="org.jnode.fs.ntfs"/>    
-    <plugin id="org.jnode.fs.jifs"/>
-    <plugin id="org.jnode.fs.jifs.command"/>
-    <plugin id="org.jnode.fs.jifs.def"/>
-    <plugin id="org.jnode.fs.jifs.example"/>
+    <plugin id="com.qtech.os.fs.command"/>
+    <plugin id="com.qtech.os.fs.ext2"/>
+    <plugin id="com.qtech.os.fs.ext2.command"/>
+    <plugin id="com.qtech.os.fs.hfsplus"/>
+    <plugin id="com.qtech.os.fs.hfsplus.command"/>
+    <plugin id="com.qtech.os.fs.fat"/>
+    <plugin id="com.qtech.os.fs.fat.command"/>
+    <plugin id="com.qtech.os.fs.jfat"/>
+    <plugin id="com.qtech.os.fs.jfat.command"/>
+    <plugin id="com.qtech.os.fs.iso9660"/>
+    <plugin id="com.qtech.os.fs.ntfs"/>
+    <plugin id="com.qtech.os.fs.jifs"/>
+    <plugin id="com.qtech.os.fs.jifs.command"/>
+    <plugin id="com.qtech.os.fs.jifs.def"/>
+    <plugin id="com.qtech.os.fs.jifs.example"/>
     <plugin id="edtftpj"/>
-    <plugin id="org.jnode.fs.ftpfs"/>
-    <plugin id="org.jnode.fs.ftpfs.command"/>
+    <plugin id="com.qtech.os.fs.ftpfs"/>
+    <plugin id="com.qtech.os.fs.ftpfs.command"/>
     <plugin id="jcifs"/>
-    <plugin id="org.jnode.fs.smbfs"/>
-    <plugin id="org.jnode.fs.smbfs.command"/>
+    <plugin id="com.qtech.os.fs.smbfs"/>
+    <plugin id="com.qtech.os.fs.smbfs.command"/>
 
-    <plugin id="org.jnode.fs.nfs"/>
-    <plugin id="org.jnode.fs.nfs.command"/>
+    <plugin id="com.qtech.os.fs.nfs"/>
+    <plugin id="com.qtech.os.fs.nfs.command"/>
   
-    <plugin id="org.jnode.partitions.ibm"/>
-    <plugin id="org.jnode.partitions.command"/>
+    <plugin id="com.qtech.os.partitions.ibm"/>
+    <plugin id="com.qtech.os.partitions.command"/>
 
-    <plugin id="org.jnode.log4j"/>
+    <plugin id="com.qtech.os.log4j"/>
 
-    <plugin id="org.jnode.net"/>
-    <plugin id="org.jnode.net.arp"/>
-    <plugin id="org.jnode.net.ipv4"/>
-    <plugin id="org.jnode.net.ipv4.config"/>
-    <plugin id="org.jnode.net.ipv4.core"/>
-    <plugin id="org.jnode.net.nfs"/>
+    <plugin id="com.qtech.os.net"/>
+    <plugin id="com.qtech.os.net.arp"/>
+    <plugin id="com.qtech.os.net.ipv4"/>
+    <plugin id="com.qtech.os.net.ipv4.config"/>
+    <plugin id="com.qtech.os.net.ipv4.core"/>
+    <plugin id="com.qtech.os.net.nfs"/>
 
     <plugin id="com.jcraft.jsch"/>
 
-    <plugin id="org.jnode.protocol"/>
-    <plugin id="org.jnode.protocol.ftp"/>
-    <plugin id="org.jnode.protocol.tftp"/>
-    <plugin id="org.jnode.protocol.nfs"/>
+    <plugin id="com.qtech.os.protocol"/>
+    <plugin id="com.qtech.os.protocol.ftp"/>
+    <plugin id="com.qtech.os.protocol.tftp"/>
+    <plugin id="com.qtech.os.protocol.nfs"/>
     
     <plugin id="org.acplt.oncrpc"/>
 
-    <plugin id="org.jnode.shell"/>
-    <plugin id="org.jnode.shell.bjorne"/>
-    <plugin id="org.jnode.shell.help"/>
-    <plugin id="org.jnode.shell.syntax"/>
-    <plugin id="org.jnode.shell.command.bsh"/>
-    <plugin id="org.jnode.shell.command.driver"/>
+    <plugin id="com.qtech.os.shell"/>
+    <plugin id="com.qtech.os.shell.bjorne"/>
+    <plugin id="com.qtech.os.shell.help"/>
+    <plugin id="com.qtech.os.shell.syntax"/>
+    <plugin id="com.qtech.os.shell.command.bsh"/>
+    <plugin id="com.qtech.os.shell.command.driver"/>
     <!-- temporally disabled
-    <plugin id="org.jnode.shell.command.driver.system.acpi"/>
+    <plugin id="com.qtech.os.shell.command.driver.system.acpi"/>
     -->
-    <plugin id="org.jnode.shell.command.driver.system.bus"/>
-    <plugin id="org.jnode.shell.command.driver.console"/>
+    <plugin id="com.qtech.os.shell.command.driver.system.bus"/>
+    <plugin id="com.qtech.os.shell.command.driver.console"/>
     <plugin id="org.beanshell"/>
     <plugin id="js"/>
 
-    <plugin id="org.jnode.system.repository"/>
-    <plugin id="org.jnode.test.core"/>    
+    <plugin id="com.qtech.os.system.repository"/>
+    <plugin id="com.qtech.os.test.core"/>
 
-    <plugin id="org.jnode.font.bdf"/>
-	<plugin id="org.jnode.awt.font.bdf"/>
+    <plugin id="com.qtech.os.font.bdf"/>
+	<plugin id="com.qtech.os.awt.font.bdf"/>
 
-    <plugin id="org.jnode.games"/>
-    <plugin id="org.jnode.test.gui"/>
-    <plugin id="org.jnode.apps.console"/>
+    <plugin id="com.qtech.os.games"/>
+    <plugin id="com.qtech.os.test.gui"/>
+    <plugin id="com.qtech.os.apps.console"/>
 </plugin-list>

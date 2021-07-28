@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Copyright (C) 2003-2015 QTech Community
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; If not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<!DOCTYPE plugin SYSTEM "jnode.dtd">
+
+<plugin id="com.qtech.os.test.shell"
+        name="QTech OS Shell Test classes"
+        version="@VERSION@"
+        license-name="lgpl"
+        provider-name="QTechOS">
+        
+  <requires>
+    <import plugin="com.qtech.os.runtime.core"/>
+    <import plugin="com.qtech.os.shell"/>
+    <import plugin="com.qtech.os.shell.help"/>
+    <import plugin="com.qtech.os.shell.syntax"/>
+    <import plugin="org.junit" version="4.5"/>
+    <import plugin="net.n3.nanoxml" version="2.2.3"/>
+    <import plugin="com.qtech.os.shell.help"/>
+    <import plugin="com.qtech.os.testrunner"/>
+  </requires>
+        
+  <runtime>
+    <library name="jnode-shell-test.jar">
+      <export name="com.qtech.os.test.shell.*"/>
+      <export name="com.qtech.os.test.shell.bjorne.*"/>
+      <export name="com.qtech.os.test.shell.harness.*"/>
+      <export name="com.qtech.os.test.shell.help.*"/>
+      <export name="com.qtech.os.test.shell.proclet.*"/>
+      <export name="com.qtech.os.test.shell.io.*"/>
+      <export name="com.qtech.os.test.shell.proclet.*"/>
+      <export name="com.qtech.os.test.shell.syntax.*"/>
+    </library>
+  </runtime>
+  
+  <extension point="com.qtech.os.testrunner.tests">
+    <suite class="com.qtech.os.test.shell.AllTests" category="shell"/>
+    <suite class="com.qtech.os.test.shell.syntax.AllTests" category="shell"/>
+    <test class="com.qtech.os.test.shell.help.DefaultHelpTest" category="shell"/>
+  </extension>  
+  
+  <extension point="com.qtech.os.security.permissions">
+    <permission class="java.lang.RuntimePermission" name="setIO"/> 
+    <permission class="java.lang.RuntimePermission" name="exitVM"/> 
+    <permission class="java.util.PropertyPermission" name="*" actions="read,write"/>
+    <permission class="com.qtech.os.permission.JNodePermission" name="loadPlugin"/>
+    <permission class="java.io.FilePermission" name="&lt;&lt;ALL FILES&gt;&gt;" actions="read"/>
+    <permission class="java.io.FilePermission" name="/jnode/tmp/test" actions="read,write,delete"/>
+    <permission class="java.io.FilePermission" name="/jnode/tmp/test/-" actions="read,write,delete"/>
+  </extension>
+</plugin>

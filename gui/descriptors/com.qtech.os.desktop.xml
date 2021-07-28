@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Copyright (C) 2003-2015 QTech Community
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; If not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<!DOCTYPE plugin SYSTEM "jnode.dtd">
+
+<plugin id="com.qtech.os.desktop"
+        name="QTech OS Desktop Implementation"
+        version="@VERSION@"
+        provider-name="QTechOS"
+        license-name="lgpl"
+        class="com.qtech.os.desktop.DesktopPlugin">
+        
+  <requires>  
+    <import plugin="org.classpath.ext.imageio"/>
+    <import plugin="com.qtech.os.awt"/>
+    <import plugin="com.qtech.os.awt.swingpeers"/>
+    <import plugin="com.qtech.os.ui"/>
+  </requires>
+  
+  <runtime>
+    <library name="jnode-gui.jar">
+      <export name="com.qtech.os.desktop.*"/>
+      <export name="com.qtech.os.desktop.classic.*"/>
+    </library>
+    
+    <library name="jnode-images.jar">
+      <export name="*"/>
+    </library>    
+  </runtime>
+
+  <extension-point id="apps" name="Applications that can be started from the desktop"/>
+
+  <extension point="com.qtech.os.security.permissions">
+    <permission class="java.util.PropertyPermission" name="jnode.desktop" actions="read,write"/>
+    
+    <permission class="java.lang.RuntimePermission" name="getClassLoader" />
+    <permission class="java.lang.RuntimePermission" name="accessDeclaredMembers" />
+    <permission class="java.lang.RuntimePermission" name="preferences" />
+    <permission class="java.util.PropertyPermission" name="java.util.logging.manager" actions="read"/>
+    <permission class="java.util.logging.LoggingPermission" name="control" actions="" />
+    <permission class="java.util.PropertyPermission" name="java.util.logging.config.class" actions="read" />
+    <permission class="java.util.PropertyPermission" name="java.util.logging.config.file" actions="read" />
+    <permission class="java.util.PropertyPermission" name="gnu.classpath.home.url" actions="read" />
+    <permission class="java.awt.AWTPermission" name="listenToAllAWTEvents" actions="read" />
+    <permission class="java.awt.AWTPermission" name="setWindowAlwaysOnTop" />
+  </extension>
+        
+</plugin>

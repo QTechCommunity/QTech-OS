@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,13 +20,13 @@
  
 package org.jnode.vm.x86.compiler.l1b;
 
-import org.jnode.assembler.Label;
-import org.jnode.assembler.NativeStream.ObjectRef;
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86BinaryAssembler;
-import org.jnode.assembler.x86.X86Constants;
-import org.jnode.assembler.x86.X86Register;
-import org.jnode.assembler.x86.X86Register.GPR;
+import com.qtech.os.assembler.Label;
+import com.qtech.os.assembler.NativeStream.ObjectRef;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86BinaryAssembler;
+import com.qtech.os.assembler.x86.X86Constants;
+import com.qtech.os.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86Register.GPR;
 import org.jnode.vm.classmgr.VmByteCode;
 import org.jnode.vm.classmgr.VmInterpretedExceptionHandler;
 import org.jnode.vm.classmgr.VmMethod;
@@ -38,6 +38,7 @@ import org.jnode.vm.facade.TypeSizeInfo;
 import org.jnode.vm.x86.compiler.X86CompilerConstants;
 import org.jnode.vm.x86.compiler.X86CompilerHelper;
 import org.jnode.vm.x86.compiler.X86JumpTable;
+import org.jnode.vm.x86.VmX86StackReader;
 
 /**
  * Utility class for generating the X86 method stack frame
@@ -374,7 +375,7 @@ final class X86StackFrame implements X86CompilerConstants {
      * Write code to save the callee saved registers.
      *
      * @see #SAVED_REGISTERSPACE
-     * @see org.jnode.vm.x86.VmX86StackReader
+     * @see VmX86StackReader
      */
     private final void saveRegisters() {
         //os.writePUSH(Register.EBX);
@@ -386,7 +387,7 @@ final class X86StackFrame implements X86CompilerConstants {
      * Write code to restore the callee saved registers.
      *
      * @see #SAVED_REGISTERSPACE
-     * @see org.jnode.vm.x86.VmX86StackReader
+     * @see VmX86StackReader
      */
     private final void restoreRegisters() {
         //os.writePOP(Register.ESI);

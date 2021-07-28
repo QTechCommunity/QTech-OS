@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -167,7 +167,7 @@ public class Modifier {
     }
 
     public static boolean isAddressType(String signature) {
-        return "Lorg/jnode/vm/VmAddress;".equals(signature) ||
+        return "Lcom/qtech/os/vm/VmAddress;".equals(signature) ||
             "Lorg/vmmagic/unboxed/Address;".equals(signature) ||
             "Lorg/vmmagic/unboxed/Extent;".equals(signature) ||
             "Lorg/vmmagic/unboxed/Offset;".equals(signature) ||

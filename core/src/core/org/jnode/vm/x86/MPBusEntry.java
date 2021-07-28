@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,8 +20,8 @@
  
 package org.jnode.vm.x86;
 
-import org.jnode.system.resource.MemoryResource;
-import org.jnode.util.NumberUtils;
+import com.qtech.os.system.resource.MemoryResource;
+import com.qtech.os.util.NumberUtils;
 
 
 /**
@@ -48,14 +48,14 @@ final class MPBusEntry extends MPEntry {
 
 
     /**
-     * @see org.jnode.vm.x86.MPEntry#toString()
+     * @see MPEntry#toString()
      */
     public String toString() {
         return super.toString() + " ID 0x" + NumberUtils.hex(getBusID(), 2) + ", Type " + getBusType();
     }
 
     /**
-     * @see org.jnode.vm.x86.MPEntry#getEntryTypeName()
+     * @see MPEntry#getEntryTypeName()
      */
     public String getEntryTypeName() {
         return "Bus";

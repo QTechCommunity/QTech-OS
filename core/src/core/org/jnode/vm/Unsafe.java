@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -27,8 +27,8 @@ import org.jnode.annotation.Inline;
 import org.jnode.annotation.Internal;
 import org.jnode.annotation.KernelSpace;
 import org.jnode.annotation.MagicPermission;
-import org.jnode.assembler.ObjectResolver;
-import org.jnode.permission.JNodePermission;
+import com.qtech.os.assembler.ObjectResolver;
+import com.qtech.os.permission.JNodePermission;
 import org.jnode.vm.classmgr.VmMethod;
 import org.jnode.vm.classmgr.VmType;
 import org.jnode.vm.facade.VmUtils;
@@ -61,7 +61,7 @@ public final class Unsafe {
         /**
          * @param object
          * @return int
-         * @see org.jnode.assembler.ObjectResolver#addressOf32(Object)
+         * @see com.qtech.os.assembler.ObjectResolver#addressOf32(Object)
          */
         public int addressOf32(Object object) {
             return ObjectReference.fromObject(object).toAddress().toInt();
@@ -70,7 +70,7 @@ public final class Unsafe {
         /**
          * @param object
          * @return long
-         * @see org.jnode.assembler.ObjectResolver#addressOf64(Object)
+         * @see com.qtech.os.assembler.ObjectResolver#addressOf64(Object)
          */
         public long addressOf64(Object object) {
             return ObjectReference.fromObject(object).toAddress().toLong();

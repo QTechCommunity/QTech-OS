@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -30,18 +30,18 @@ These (system) plugins are always included in the init-jar.
     <plugin id="rt"/>
     <plugin id="rt.vm"/>
 
-	<plugin id="org.jnode.permission"/>
-	<plugin id="org.jnode.plugin"/>
-	<plugin id="org.jnode.plugin.impl"/>
-    <plugin id="org.jnode.runtime"/>
-    <plugin id="org.jnode.runtime.core"/>
-    <plugin id="org.jnode.runtime.core.bootlog"/>
-    <plugin id="org.jnode.runtime.core.resource"/>
-    <plugin id="org.jnode.security"/>
-    <plugin id="org.jnode.util"/>
+	<plugin id="com.qtech.os.permission"/>
+	<plugin id="com.qtech.os.plugin"/>
+	<plugin id="com.qtech.os.plugin.impl"/>
+    <plugin id="com.qtech.os.runtime"/>
+    <plugin id="com.qtech.os.runtime.core"/>
+    <plugin id="com.qtech.os.runtime.core.bootlog"/>
+    <plugin id="com.qtech.os.runtime.core.resource"/>
+    <plugin id="com.qtech.os.security"/>
+    <plugin id="com.qtech.os.util"/>
     <plugin id="org.jnode.vm"/>
     <plugin id="org.jnode.vm.core"/>
-    <plugin id="org.jnode.work"/>
+    <plugin id="com.qtech.os.work"/>
 
             
     <!--

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,14 +20,15 @@
  
 package org.jnode.vm.x86.compiler.l1a;
 
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86Register;
-import org.jnode.assembler.x86.X86Register.GPR;
-import org.jnode.assembler.x86.X86Register.GPR32;
-import org.jnode.assembler.x86.X86Register.GPR64;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86Register.GPR;
+import com.qtech.os.assembler.x86.X86Register.GPR32;
+import com.qtech.os.assembler.x86.X86Register.GPR64;
 import org.jnode.vm.JvmType;
 import org.jnode.vm.bytecode.StackException;
 import org.jnode.vm.facade.VmUtils;
+import org.jnode.vm.x86.compiler.X86CompilerConstants;
 import org.jnode.vm.x86.compiler.X86CompilerHelper;
 
 /**
@@ -59,7 +60,7 @@ public abstract class WordItem extends Item {
     }
 
     /**
-     * @see org.jnode.vm.x86.compiler.l1a.Item#clone()
+     * @see Item#clone()
      */
     protected Item clone(EmitterContext ec) {
         final WordItem res;
@@ -123,7 +124,7 @@ public abstract class WordItem extends Item {
     }
 
     /**
-     * @see org.jnode.vm.x86.compiler.l1a.Item#load(EmitterContext)
+     * @see Item#load(EmitterContext)
      */
     final void load(EmitterContext ec) {
         if (!isGPR()) {
@@ -198,9 +199,9 @@ public abstract class WordItem extends Item {
                     stack.operandStack.makeTop(stack_loc);
 
                     //todo test it
-                    os.writeMOV(org.jnode.vm.x86.compiler.X86CompilerConstants.BITS32, reg, helper.SP, helper.SLOTSIZE);
-                    os.writeXCHG(helper.SP, org.jnode.vm.x86.compiler.X86CompilerConstants.BITS32 * stack_loc, reg);
-                    os.writeMOV(org.jnode.vm.x86.compiler.X86CompilerConstants.BITS32, helper.SP, helper.SLOTSIZE, reg);
+                    os.writeMOV(X86CompilerConstants.BITS32, reg, helper.SP, helper.SLOTSIZE);
+                    os.writeXCHG(helper.SP, X86CompilerConstants.BITS32 * stack_loc, reg);
+                    os.writeMOV(X86CompilerConstants.BITS32, helper.SP, helper.SLOTSIZE, reg);
                 }
 
                 if (VirtualStack.checkOperandStack) {
@@ -295,7 +296,7 @@ public abstract class WordItem extends Item {
     protected abstract void popFromFPU(X86Assembler os, GPR reg, int disp);
 
     /**
-     * @see org.jnode.vm.x86.compiler.l1a.Item#push(EmitterContext)
+     * @see Item#push(EmitterContext)
      */
     final void push(EmitterContext ec) {
         final X86Assembler os = ec.getStream();
@@ -364,7 +365,7 @@ public abstract class WordItem extends Item {
     protected abstract void pushToFPU(X86Assembler os, GPR reg, int disp);
 
     /**
-     * @see org.jnode.vm.x86.compiler.l1a.Item#pushToFPU(EmitterContext)
+     * @see Item#pushToFPU(EmitterContext)
      */
     final void pushToFPU(EmitterContext ec) {
         final X86Assembler os = ec.getStream();
@@ -413,7 +414,7 @@ public abstract class WordItem extends Item {
     }
 
     /**
-     * @see org.jnode.vm.x86.compiler.l1a.Item#release(EmitterContext)
+     * @see Item#release(EmitterContext)
      */
     final void release(EmitterContext ec) {
         cleanup(ec);
@@ -422,7 +423,7 @@ public abstract class WordItem extends Item {
 
     /**
      * @param ec
-     * @see org.jnode.vm.x86.compiler.l1a.Item#release(EmitterContext)
+     * @see Item#release(EmitterContext)
      */
     private void cleanup(EmitterContext ec) {
         // assertCondition(!ec.getVStack().contains(this), "Cannot release while
@@ -461,7 +462,7 @@ public abstract class WordItem extends Item {
     }
 
     /**
-     * @see org.jnode.vm.x86.compiler.l1a.Item#spill(EmitterContext, org.jnode.assembler.x86.X86Register)
+     * @see Item#spill(EmitterContext, com.qtech.os.assembler.x86.X86Register)
      */
     final void spill(EmitterContext ec, X86Register reg) {
         if (VmUtils.verifyAssertions()) {
@@ -486,7 +487,7 @@ public abstract class WordItem extends Item {
     }
 
     /**
-     * @see org.jnode.vm.x86.compiler.l1a.Item#uses(org.jnode.assembler.x86.X86Register)
+     * @see Item#uses(com.qtech.os.assembler.x86.X86Register)
      */
     final boolean uses(X86Register reg) {
         return (isGPR() && this.gpr.equals(reg));

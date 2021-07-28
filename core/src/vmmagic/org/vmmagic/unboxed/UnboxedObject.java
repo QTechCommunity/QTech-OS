@@ -1,8 +1,8 @@
 /*
  * $Id$
  *
- * JNode.org
- * Copyright (C) 2003-2006 JNode.org
+ * QTech Community
+ * Copyright (C) 2003-2006 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published

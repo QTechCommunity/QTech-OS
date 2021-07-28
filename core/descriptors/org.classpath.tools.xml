@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -42,21 +42,21 @@
     </library>
   </runtime>
 
-  <extension point="org.jnode.shell.aliases">
+  <extension point="com.qtech.os.shell.aliases">
     <alias name="native2ascii" class="gnu.classpath.tools.native2ascii.Native2ASCII"/>
     <alias name="rmid" class="gnu.classpath.tools.rmid.Main"/>
     <alias name="rmiregistry" class="gnu.classpath.tools.rmiregistry.Main"/>
     <alias name="serialver" class="gnu.classpath.tools.serialver.SerialVer"/>
   </extension>
   
-  <extension point="org.jnode.security.permissions">
+  <extension point="com.qtech.os.security.permissions">
       <permission class="java.lang.RuntimePermission" name="getProtectionDomain"/>
       <permission class="java.lang.RuntimePermission" name="createClassLoader"/>
       <permission class="java.lang.RuntimePermission" name="setContextClassLoader"/>
       <permission class="java.lang.RuntimePermission" name="modifyThreadGroup"/>
       <permission class="java.io.FilePermission" name="&lt;&lt;ALL FILES&gt;&gt;" actions="read,write"/>
-      <permission class="org.jnode.permission.JNodePermission" name="getVmThread"/>
-      <permission class="org.jnode.permission.JNodePermission" name="getVmClass"/>
+      <permission class="com.qtech.os.permission.JNodePermission" name="getVmThread"/>
+      <permission class="com.qtech.os.permission.JNodePermission" name="getVmClass"/>
       <permission class="java.net.SocketPermission" name="*" actions="resolve"/>
       <permission class="java.net.SocketPermission" name="*:0-" actions="connect,resolve"/>
       <permission class="java.lang.RuntimePermission" name="writeFileDescriptor"/>

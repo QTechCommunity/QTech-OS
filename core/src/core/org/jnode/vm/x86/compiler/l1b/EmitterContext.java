@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,7 +20,7 @@
  
 package org.jnode.vm.x86.compiler.l1b;
 
-import org.jnode.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86Assembler;
 import org.jnode.vm.compiler.EntryPoints;
 import org.jnode.vm.x86.compiler.X86CompilerHelper;
 

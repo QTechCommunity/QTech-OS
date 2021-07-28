@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -1171,35 +1171,35 @@ public class DelegatingCompilerBytecodeVisitor<T extends CompilerBytecodeVisitor
     }
 
     /**
-     * @see org.jnode.vm.compiler.CompilerBytecodeVisitor#visit_aloadStored(int)
+     * @see CompilerBytecodeVisitor#visit_aloadStored(int)
      */
     public void visit_aloadStored(int index) {
         delegate.visit_aloadStored(index);
     }
 
     /**
-     * @see org.jnode.vm.compiler.CompilerBytecodeVisitor#visit_dloadStored(int)
+     * @see CompilerBytecodeVisitor#visit_dloadStored(int)
      */
     public void visit_dloadStored(int index) {
         delegate.visit_dloadStored(index);
     }
 
     /**
-     * @see org.jnode.vm.compiler.CompilerBytecodeVisitor#visit_floadStored(int)
+     * @see CompilerBytecodeVisitor#visit_floadStored(int)
      */
     public void visit_floadStored(int index) {
         delegate.visit_floadStored(index);
     }
 
     /**
-     * @see org.jnode.vm.compiler.CompilerBytecodeVisitor#visit_iloadStored(int)
+     * @see CompilerBytecodeVisitor#visit_iloadStored(int)
      */
     public void visit_iloadStored(int index) {
         delegate.visit_iloadStored(index);
     }
 
     /**
-     * @see org.jnode.vm.compiler.CompilerBytecodeVisitor#visit_lloadStored(int)
+     * @see CompilerBytecodeVisitor#visit_lloadStored(int)
      */
     public void visit_lloadStored(int index) {
         delegate.visit_lloadStored(index);

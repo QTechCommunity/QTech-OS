@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -29,10 +29,10 @@ import java.util.TreeMap;
 import org.jnode.annotation.Internal;
 import org.jnode.annotation.KernelSpace;
 import org.jnode.annotation.SharedStatics;
-import org.jnode.plugin.Extension;
-import org.jnode.plugin.PluginDescriptor;
-import org.jnode.plugin.PluginRegistry;
-import org.jnode.system.resource.ResourceManager;
+import com.qtech.os.plugin.Extension;
+import com.qtech.os.plugin.PluginDescriptor;
+import com.qtech.os.plugin.PluginRegistry;
+import com.qtech.os.system.resource.ResourceManager;
 import org.jnode.vm.classmgr.CompiledCodeList;
 import org.jnode.vm.classmgr.VmClassLoader;
 import org.jnode.vm.classmgr.VmSharedStatics;
@@ -48,13 +48,14 @@ import org.jnode.vm.objects.Statistic;
 import org.jnode.vm.objects.Statistics;
 import org.jnode.vm.objects.VmSystemObject;
 import org.jnode.vm.scheduler.VmScheduler;
+import org.jnode.vm.facade.Vm;
 
 /**
  * @author Ewout Prangsma (epr@users.sourceforge.net)
  */
 @SharedStatics
 public
-final class VmImpl extends VmSystemObject implements Statistics, org.jnode.vm.facade.Vm {
+final class VmImpl extends VmSystemObject implements Statistics, Vm {
 
     /**
      * Are will in bootimage building phase?
@@ -227,7 +228,7 @@ final class VmImpl extends VmSystemObject implements Statistics, org.jnode.vm.fa
         return processors.size();
     }
 
-    // The following code has been moved to org.jnode.shell.command.system.VmInfoCommand
+    // The following code has been moved to com.qtech.os.shell.command.system.VmInfoCommand
 //    /**
 //     * Show VM info.
 //     * 
@@ -350,7 +351,7 @@ final class VmImpl extends VmSystemObject implements Statistics, org.jnode.vm.fa
     }
 
     /**
-     * @see org.jnode.vm.objects.Statistics#getStatistics()
+     * @see Statistics#getStatistics()
      */
     public synchronized Statistic[] getStatistics() {
         if (statistics != null) {

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2014 JNode.org
+ * Copyright (C) 2003-2014 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -24,7 +24,7 @@ import org.jnode.annotation.MagicPermission;
 import org.vmmagic.unboxed.Address;
 
 /**
- * The java implementation of {@link org.jnode.vm.VmMultiMediaSupport}.
+ * The java implementation of {@link VmMultiMediaSupport}.
  *
  * @author Ewout Prangsma (epr@users.sourceforge.net)
  */
@@ -32,7 +32,7 @@ import org.vmmagic.unboxed.Address;
 final class VmJavaMultiMediaSupport extends VmMultiMediaSupport {
 
     /**
-     * @see org.jnode.vm.VmMultiMediaSupport#setARGB32bpp(org.vmmagic.unboxed.Address, org.vmmagic.unboxed.Address, int)
+     * @see VmMultiMediaSupport#setARGB32bpp(org.vmmagic.unboxed.Address, org.vmmagic.unboxed.Address, int)
      */
     public void setARGB32bpp(Address src, Address dst, int length) {
         for (int i = length; i > 0; i--) {

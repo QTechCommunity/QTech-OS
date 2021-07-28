@@ -15,7 +15,6 @@ package org.mmtk.vm;
 
 import static org.jnode.vm.VirtualMemoryRegion.AVAILABLE;
 
-import org.jnode.vm.VmImpl;
 import org.jnode.vm.facade.VmUtils;
 
 /**

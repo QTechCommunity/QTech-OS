@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Copyright (C) 2003-2015 QTech Community
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; If not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<!DOCTYPE plugin SYSTEM "jnode.dtd">
+
+<plugin id="com.qtech.os.driver.net.eepro100"
+        name="QTech OS Intel EEPRO100 driver"
+        version="@VERSION@"
+        license-name="lgpl"
+        provider-name="QTechOS">
+        
+  <requires>
+    <import plugin="com.qtech.os.driver.net.ethernet"/>
+	<import plugin="com.qtech.os.driver.bus.pci"/>
+    <import plugin="com.qtech.os.net"/>
+  </requires>
+        
+  <runtime>
+    <library name="jnode-net.jar">
+      <export name="com.qtech.os.driver.net.eepro100.*"/>
+    </library>
+  </runtime>
+  
+  <extension point="com.qtech.os.driver.mappers">
+    <!-- <mapper class="com.qtech.os.driver.net.eepro100.EEPRO100DeviceToDriverMapper"/> -->
+    <mapper id="8086:1229" name="Intel PCI EtherExpress Pro100" driver-class="com.qtech.os.driver.net.eepro100.EEPRO100Driver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="8086:1209" name="Intel EtherExpress Pro/100+ i82559ER" driver-class="com.qtech.os.driver.net.eepro100.EEPRO100Driver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="8086:1029" name="Intel EtherExpress Pro/100 type 1029" driver-class="com.qtech.os.driver.net.eepro100.EEPRO100Driver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="8086:1030" name="Intel EtherExpress Pro/100 type 1030" driver-class="com.qtech.os.driver.net.eepro100.EEPRO100Driver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="8086:2449" name="Intel Pro/100 V Network" driver-class="com.qtech.os.driver.net.eepro100.EEPRO100Driver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="8086:1050" name="Intel 82562EZ 10/100 " driver-class="com.qtech.os.driver.net.eepro100.EEPRO100Driver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+  </extension>
+        
+  <extension point="com.qtech.os.security.permissions">
+    <permission class="com.qtech.os.system.resource.ResourcePermission" name="ioports"/>
+  </extension>
+        
+</plugin>

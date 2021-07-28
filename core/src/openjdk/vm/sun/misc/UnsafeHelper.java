@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,11 +20,13 @@
  
 package sun.misc;
 
+import org.jnode.annotation.MagicPermission;
+
 /**
  * @author Levente S\u00e1ntha
  *
  */
-@org.jnode.annotation.MagicPermission
+@MagicPermission
 class UnsafeHelper { //todo remove this class if not used
     /*
     private static final int OFFSET_OF_vmField_IN_Field = AccessController.doPrivileged(new PrivilegedAction<Integer>(){

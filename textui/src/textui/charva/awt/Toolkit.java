@@ -8,17 +8,17 @@ import charva.awt.event.MouseEvent;
 import java.util.Arrays;
 import java.util.LinkedList;
 import javax.naming.NameNotFoundException;
-import org.jnode.driver.console.ConsoleEvent;
-import org.jnode.driver.console.ConsoleListener;
-import org.jnode.driver.console.ConsoleManager;
-import org.jnode.driver.console.TextConsole;
-import org.jnode.driver.input.KeyboardAdapter;
-import org.jnode.driver.input.KeyboardEvent;
-import org.jnode.driver.input.KeyboardListener;
-import org.jnode.driver.input.PointerEvent;
-import org.jnode.driver.input.PointerListener;
-import org.jnode.naming.InitialNaming;
-import org.jnode.shell.ShellManager;
+import com.qtech.os.driver.console.ConsoleEvent;
+import com.qtech.os.driver.console.ConsoleListener;
+import com.qtech.os.driver.console.ConsoleManager;
+import com.qtech.os.driver.console.TextConsole;
+import com.qtech.os.driver.input.KeyboardAdapter;
+import com.qtech.os.driver.input.KeyboardEvent;
+import com.qtech.os.driver.input.KeyboardListener;
+import com.qtech.os.driver.input.PointerEvent;
+import com.qtech.os.driver.input.PointerListener;
+import com.qtech.os.naming.InitialNaming;
+import com.qtech.os.shell.ShellManager;
 
 /**
  * @author vali

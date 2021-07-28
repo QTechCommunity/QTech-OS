@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -44,7 +44,7 @@ public final class VmConstInt extends VmConstObject {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmConstObject#getConstType()
+     * @see VmConstObject#getConstType()
      */
     public final int getConstType() {
         return CONST_INT;

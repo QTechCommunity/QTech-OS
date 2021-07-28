@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Copyright (C) 2003-2015 QTech Community
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; If not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<!DOCTYPE plugin SYSTEM "jnode.dtd">
+
+<plugin id="com.qtech.os.test.gui"
+        name="QTech OS GUI Test classes"
+        version="@VERSION@"
+        license-name="lgpl"
+        provider-name="QTechOS">
+        
+  <requires>
+    <import plugin="com.qtech.os.awt"/>
+    <import plugin="com.qtech.os.awt.font.truetype"/>
+    <import plugin="com.qtech.os.desktop"/>
+    <import plugin="com.qtech.os.shell.help"/>
+  </requires>
+        
+  <runtime>
+    <library name="jnode-gui-test.jar">
+      <export name="com.qtech.os.test.gui.*"/>
+    </library>
+  </runtime>
+        
+  <extension point="com.qtech.os.desktop.apps">
+    <application name="AWT test"       class="com.qtech.os.test.gui.AWTTest"/>
+    <application name="AWT menu test"  class="com.qtech.os.test.gui.AWTMenuTest"/>
+    <application name="AWT frame test" class="com.qtech.os.test.gui.AWTFrameTest"/>
+    <application name="AWT demo"       class="com.qtech.os.test.gui.AWTDemo"/>
+    <application name="Swing test"     class="com.qtech.os.test.gui.SwingTest"/>
+    <application name="Swing menu test" class="com.qtech.os.test.gui.SwingMenuTest"/>
+    <application name="Console"        class="com.qtech.os.test.gui.ConsoleTest"/>
+    <!-- application name="Thinlet"        class="thinlet.ThinTest"/ -->
+    <!-- application name="GlyphTest"      class="com.qtech.os.test.gui.GlyphTest"/ -->
+  </extension>
+
+  <extension point="com.qtech.os.security.permissions">
+    <permission class="java.lang.RuntimePermission" name="accessDeclaredMembers"/>
+    <permission class="java.lang.RuntimePermission" name="setIO"/>
+    <permission class="java.lang.RuntimePermission" name="exitVM" actions="*" />
+    <permission class="java.awt.AWTPermission" name="createRobot"/>
+    <permission class="java.awt.AWTPermission" name="readDisplayPixels"/>
+    <permission class="java.util.PropertyPermission" name="user.home" actions="read"/>
+    <permission class="java.util.PropertyPermission" name="gnu.awt.dispatchthread.priority" actions="read"/>
+    <permission class="java.util.PropertyPermission" name="gnu.javax.swing.DebugGraphics" actions="read"/>
+    <permission class="java.io.FilePermission" name="&lt;&lt;ALL FILES&gt;&gt;" actions="read,write"/>
+  </extension>
+
+  <extension point="com.qtech.os.shell.aliases">
+    <alias name="AWTTest"       class="com.qtech.os.test.gui.AWTTest"/>
+    <alias name="AWTMenuTest"   class="com.qtech.os.test.gui.AWTMenuTest"/>
+    <alias name="AWTMenuBuilderTest"   class="com.qtech.os.test.gui.AWTMenuBuilderTest"/>
+    <alias name="AWTDemo"       class="com.qtech.os.test.gui.AWTDemo"/>
+    <alias name="JTableTest"    class="com.qtech.os.test.gui.JTableTest"/>
+    <alias name="JTreeTest"     class="com.qtech.os.test.gui.JTreeTest"/>
+    <alias name="DialogTest"    class="com.qtech.os.test.gui.DialogTest"/>
+    <alias name="FBTest"        class="com.qtech.os.test.gui.FBTest"/>
+    <alias name="SwingTest"     class="com.qtech.os.test.gui.SwingTest"/>
+    <alias name="MouseEventTest" class="com.qtech.os.test.gui.MouseEventTest"/>
+    <alias name="SwingMenuTest" class="com.qtech.os.test.gui.SwingMenuTest"/>
+    <alias name="TextFieldTest" class="com.qtech.os.test.gui.TextFieldTest"/>
+    <alias name="ThinTest"      class="thinlet.ThinTest"/>
+    <alias name="GlyphTest"     class="com.qtech.os.test.gui.GlyphTest"/>
+    <alias name="RobotTest"     class="com.qtech.os.test.gui.RobotTest"/>
+  </extension>
+        
+  <extension point="com.qtech.os.shell.syntaxes">
+    <syntax alias="FBTest">
+      <optionSet description="run framebuffer tests">
+        <option argLabel="device" shortName="d"/>
+        <option argLabel="loops" shortName="l"/>
+        <option argLabel="tests" shortName="t"/>
+      </optionSet>
+    </syntax>
+  </extension>
+
+</plugin>

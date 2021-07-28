@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -22,9 +22,9 @@ package org.jnode.vm.compiler;
 
 import java.io.PrintStream;
 
-import org.jnode.assembler.NativeStream;
-import org.jnode.assembler.UnresolvedObjectRefException;
-import org.jnode.util.NumberUtils;
+import com.qtech.os.assembler.NativeStream;
+import com.qtech.os.assembler.UnresolvedObjectRefException;
+import com.qtech.os.util.NumberUtils;
 
 /**
  * @author epr

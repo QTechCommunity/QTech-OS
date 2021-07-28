@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,86 +20,12 @@
  
 package org.jnode.vm.compiler.ir;
 
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.DADD;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.DCMPG;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.DCMPL;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.DDIV;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.DMUL;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.DREM;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.DSUB;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.FADD;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.FCMPG;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.FCMPL;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.FDIV;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.FMUL;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.FREM;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.FSUB;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IADD;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IAND;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IDIV;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IMUL;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IOR;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IREM;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.ISHL;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.ISHR;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.ISUB;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IUSHR;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.IXOR;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LADD;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LAND;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LCMP;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LDIV;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LMUL;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LOR;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LREM;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LSHL;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LSHR;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LSUB;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LUSHR;
-import static org.jnode.vm.compiler.ir.quad.BinaryOperation.LXOR;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IFEQ;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IFGE;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IFGT;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IFLE;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IFLT;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IFNE;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IFNONNULL;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IFNULL;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IF_ACMPEQ;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IF_ACMPNE;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IF_ICMPEQ;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IF_ICMPGE;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IF_ICMPGT;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IF_ICMPLE;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IF_ICMPLT;
-import static org.jnode.vm.compiler.ir.quad.BranchCondition.IF_ICMPNE;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.D2F;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.D2I;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.D2L;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.DNEG;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.F2D;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.F2I;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.F2L;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.FNEG;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.I2B;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.I2C;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.I2D;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.I2F;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.I2L;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.I2S;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.INEG;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.L2D;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.L2F;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.L2I;
-import static org.jnode.vm.compiler.ir.quad.UnaryOperation.LNEG;
-
 import java.util.Iterator;
 
 import java.util.List;
 import org.jnode.vm.JvmType;
 import org.jnode.vm.bytecode.BytecodeParser;
 import org.jnode.vm.bytecode.BytecodeVisitor;
-import org.jnode.vm.classmgr.Signature;
 import org.jnode.vm.classmgr.VmByteCode;
 import org.jnode.vm.classmgr.VmClassLoader;
 import org.jnode.vm.classmgr.VmConstClass;
@@ -150,6 +76,7 @@ import org.jnode.vm.compiler.ir.quad.VirtualCallAssignQuad;
 import org.jnode.vm.compiler.ir.quad.VirtualCallQuad;
 import org.jnode.vm.compiler.ir.quad.VoidReturnQuad;
 import org.jnode.vm.facade.TypeSizeInfo;
+import org.jnode.vm.compiler.ir.quad.UnaryOperation;
 
 /**
  * Intermediate Representation Generator.
@@ -580,111 +507,111 @@ public class IRGenerator<T> extends BytecodeVisitor {
     }
 
     public void visit_iadd() {
-        currentBlock.add(doBinaryQuad(IADD, Operand.INT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.IADD, Operand.INT));
     }
 
     public void visit_ladd() {
-        currentBlock.add(doBinaryQuad(LADD, Operand.LONG));
+        currentBlock.add(doBinaryQuad(BinaryOperation.LADD, Operand.LONG));
     }
 
     public void visit_fadd() {
-        currentBlock.add(doBinaryQuad(FADD, Operand.FLOAT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.FADD, Operand.FLOAT));
     }
 
     public void visit_dadd() {
-        currentBlock.add(doBinaryQuad(DADD, Operand.DOUBLE));
+        currentBlock.add(doBinaryQuad(BinaryOperation.DADD, Operand.DOUBLE));
     }
 
     public void visit_isub() {
-        currentBlock.add(doBinaryQuad(ISUB, Operand.INT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.ISUB, Operand.INT));
     }
 
     public void visit_lsub() {
-        currentBlock.add(doBinaryQuad(LSUB, Operand.LONG));
+        currentBlock.add(doBinaryQuad(BinaryOperation.LSUB, Operand.LONG));
     }
 
     public void visit_fsub() {
-        currentBlock.add(doBinaryQuad(FSUB, Operand.FLOAT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.FSUB, Operand.FLOAT));
     }
 
     public void visit_dsub() {
-        currentBlock.add(doBinaryQuad(DSUB, Operand.DOUBLE));
+        currentBlock.add(doBinaryQuad(BinaryOperation.DSUB, Operand.DOUBLE));
     }
 
     public void visit_imul() {
-        currentBlock.add(doBinaryQuad(IMUL, Operand.INT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.IMUL, Operand.INT));
     }
 
     public void visit_lmul() {
-        currentBlock.add(doBinaryQuad(LMUL, Operand.LONG));
+        currentBlock.add(doBinaryQuad(BinaryOperation.LMUL, Operand.LONG));
     }
 
     public void visit_fmul() {
-        currentBlock.add(doBinaryQuad(FMUL, Operand.FLOAT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.FMUL, Operand.FLOAT));
     }
 
     public void visit_dmul() {
-        currentBlock.add(doBinaryQuad(DMUL, Operand.DOUBLE));
+        currentBlock.add(doBinaryQuad(BinaryOperation.DMUL, Operand.DOUBLE));
     }
 
     public void visit_idiv() {
-        currentBlock.add(doBinaryQuad(IDIV, Operand.INT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.IDIV, Operand.INT));
     }
 
     public void visit_ldiv() {
-        currentBlock.add(doBinaryQuad(LDIV, Operand.LONG));
+        currentBlock.add(doBinaryQuad(BinaryOperation.LDIV, Operand.LONG));
     }
 
     public void visit_fdiv() {
-        currentBlock.add(doBinaryQuad(FDIV, Operand.FLOAT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.FDIV, Operand.FLOAT));
     }
 
     public void visit_ddiv() {
-        currentBlock.add(doBinaryQuad(DDIV, Operand.DOUBLE));
+        currentBlock.add(doBinaryQuad(BinaryOperation.DDIV, Operand.DOUBLE));
     }
 
     public void visit_irem() {
-        currentBlock.add(doBinaryQuad(IREM, Operand.INT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.IREM, Operand.INT));
     }
 
     public void visit_lrem() {
-        currentBlock.add(doBinaryQuad(LREM, Operand.LONG));
+        currentBlock.add(doBinaryQuad(BinaryOperation.LREM, Operand.LONG));
     }
 
     public void visit_frem() {
-        currentBlock.add(doBinaryQuad(FREM, Operand.FLOAT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.FREM, Operand.FLOAT));
     }
 
     public void visit_drem() {
-        currentBlock.add(doBinaryQuad(DREM, Operand.DOUBLE));
+        currentBlock.add(doBinaryQuad(BinaryOperation.DREM, Operand.DOUBLE));
     }
 
     public void visit_ineg() {
         int s1 = stackOffset - 1;
         variables[s1].setType(Operand.INT);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, s1, INEG, s1));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, s1, UnaryOperation.INEG, s1));
     }
 
     public void visit_lneg() {
         int s1 = stackOffset - 2;
         variables[s1].setType(Operand.LONG);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, s1, LNEG, s1));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, s1, UnaryOperation.LNEG, s1));
     }
 
     public void visit_fneg() {
         int s1 = stackOffset - 1;
         variables[s1].setType(Operand.FLOAT);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, s1, FNEG, s1));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, s1, UnaryOperation.FNEG, s1));
     }
 
     public void visit_dneg() {
         int s1 = stackOffset - 2;
         variables[s1].setType(Operand.DOUBLE);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, s1, DNEG, s1));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, s1, UnaryOperation.DNEG, s1));
     }
 
     public void visit_ishl() {
-        currentBlock.add(doBinaryQuad(ISHL, Operand.INT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.ISHL, Operand.INT));
     }
 
     public void visit_lshl() {
@@ -692,11 +619,11 @@ public class IRGenerator<T> extends BytecodeVisitor {
         int s1 = stackOffset - 2;
         variables[s1].setType(Operand.LONG);
         variables[stackOffset].setType(Operand.INT);
-        currentBlock.add(new BinaryQuad<T>(address, currentBlock, s1, s1, LSHL, stackOffset));
+        currentBlock.add(new BinaryQuad<T>(address, currentBlock, s1, s1, BinaryOperation.LSHL, stackOffset));
     }
 
     public void visit_ishr() {
-        currentBlock.add(doBinaryQuad(ISHR, Operand.INT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.ISHR, Operand.INT));
     }
 
     public void visit_lshr() {
@@ -704,11 +631,11 @@ public class IRGenerator<T> extends BytecodeVisitor {
         int s1 = stackOffset - 2;
         variables[s1].setType(Operand.LONG);
         variables[stackOffset].setType(Operand.INT);
-        currentBlock.add(new BinaryQuad<T>(address, currentBlock, s1, s1, LSHR, stackOffset));
+        currentBlock.add(new BinaryQuad<T>(address, currentBlock, s1, s1, BinaryOperation.LSHR, stackOffset));
     }
 
     public void visit_iushr() {
-        currentBlock.add(doBinaryQuad(IUSHR, Operand.INT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.IUSHR, Operand.INT));
     }
 
     public void visit_lushr() {
@@ -717,220 +644,220 @@ public class IRGenerator<T> extends BytecodeVisitor {
         variables[s1].setType(Operand.LONG);
         variables[s1 + 1].setType(Operand.LONG);
         variables[stackOffset + 1].setType(Operand.INT);
-        currentBlock.add(new BinaryQuad<T>(address, currentBlock, s1, s1, LUSHR, stackOffset + 1));
+        currentBlock.add(new BinaryQuad<T>(address, currentBlock, s1, s1, BinaryOperation.LUSHR, stackOffset + 1));
         stackOffset += 1;
     }
 
     public void visit_iand() {
-        currentBlock.add(doBinaryQuad(IAND, Operand.INT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.IAND, Operand.INT));
     }
 
     public void visit_land() {
-        currentBlock.add(doBinaryQuad(LAND, Operand.LONG));
+        currentBlock.add(doBinaryQuad(BinaryOperation.LAND, Operand.LONG));
     }
 
     public void visit_ior() {
-        currentBlock.add(doBinaryQuad(IOR, Operand.INT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.IOR, Operand.INT));
     }
 
     public void visit_lor() {
-        currentBlock.add(doBinaryQuad(LOR, Operand.LONG));
+        currentBlock.add(doBinaryQuad(BinaryOperation.LOR, Operand.LONG));
     }
 
     public void visit_ixor() {
-        currentBlock.add(doBinaryQuad(IXOR, Operand.INT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.IXOR, Operand.INT));
     }
 
     public void visit_lxor() {
-        currentBlock.add(doBinaryQuad(LXOR, Operand.LONG));
+        currentBlock.add(doBinaryQuad(BinaryOperation.LXOR, Operand.LONG));
     }
 
     public void visit_iinc(int index, int incValue) {
         variables[index].setType(Operand.INT);
         BinaryQuad<T> binaryQuad =
-            new BinaryQuad<T>(address, currentBlock, index, index, IADD, new IntConstant<T>(incValue));
+            new BinaryQuad<T>(address, currentBlock, index, index, BinaryOperation.IADD, new IntConstant<T>(incValue));
         currentBlock.add(binaryQuad.foldConstants());
     }
 
     public void visit_i2l() {
         stackOffset -= 1;
         variables[stackOffset].setType(Operand.LONG);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, I2L, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.I2L, stackOffset));
         stackOffset += 2;
     }
 
     public void visit_i2f() {
         stackOffset -= 1;
         variables[stackOffset].setType(Operand.FLOAT);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, I2F, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.I2F, stackOffset));
         stackOffset += 1;
     }
 
     public void visit_i2d() {
         stackOffset -= 1;
         variables[stackOffset].setType(Operand.DOUBLE);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, I2D, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.I2D, stackOffset));
         stackOffset += 2;
     }
 
     public void visit_l2i() {
         stackOffset -= 2;
         variables[stackOffset].setType(Operand.INT);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, L2I, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.L2I, stackOffset));
         stackOffset += 1;
     }
 
     public void visit_l2f() {
         stackOffset -= 2;
         variables[stackOffset].setType(Operand.FLOAT);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, L2F, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.L2F, stackOffset));
         stackOffset += 1;
     }
 
     public void visit_l2d() {
         stackOffset -= 2;
         variables[stackOffset].setType(Operand.DOUBLE);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, L2D, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.L2D, stackOffset));
         stackOffset += 2;
     }
 
     public void visit_f2i() {
         stackOffset -= 1;
         variables[stackOffset].setType(Operand.INT);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, F2I, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.F2I, stackOffset));
         stackOffset += 1;
     }
 
     public void visit_f2l() {
         stackOffset -= 1;
         variables[stackOffset].setType(Operand.LONG);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, F2L, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.F2L, stackOffset));
         stackOffset += 2;
     }
 
     public void visit_f2d() {
         stackOffset -= 1;
         variables[stackOffset].setType(Operand.DOUBLE);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, F2D, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.F2D, stackOffset));
         stackOffset += 2;
     }
 
     public void visit_d2i() {
         stackOffset -= 2;
         variables[stackOffset].setType(Operand.INT);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, D2I, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.D2I, stackOffset));
         stackOffset += 1;
     }
 
     public void visit_d2l() {
         stackOffset -= 2;
         variables[stackOffset].setType(Operand.LONG);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, D2L, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.D2L, stackOffset));
         stackOffset += 2;
     }
 
     public void visit_d2f() {
         stackOffset -= 2;
         variables[stackOffset].setType(Operand.FLOAT);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, D2F, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.D2F, stackOffset));
         stackOffset += 1;
     }
 
     public void visit_i2b() {
         stackOffset -= 1;
         variables[stackOffset].setType(Operand.BYTE);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, I2B, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.I2B, stackOffset));
         stackOffset += 1;
     }
 
     public void visit_i2c() {
         stackOffset -= 1;
         variables[stackOffset].setType(Operand.CHAR);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, I2C, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.I2C, stackOffset));
         stackOffset += 1;
     }
 
     public void visit_i2s() {
         stackOffset -= 1;
         variables[stackOffset].setType(Operand.SHORT);
-        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, I2S, stackOffset));
+        currentBlock.add(new UnaryQuad<T>(address, currentBlock, stackOffset, UnaryOperation.I2S, stackOffset));
         stackOffset += 1;
     }
 
     public void visit_lcmp() {
-        currentBlock.add(doBinaryQuad(LCMP, Operand.LONG));
+        currentBlock.add(doBinaryQuad(BinaryOperation.LCMP, Operand.LONG));
     }
 
     public void visit_fcmpl() {
-        currentBlock.add(doBinaryQuad(FCMPL, Operand.FLOAT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.FCMPL, Operand.FLOAT));
     }
 
     public void visit_fcmpg() {
-        currentBlock.add(doBinaryQuad(FCMPG, Operand.FLOAT));
+        currentBlock.add(doBinaryQuad(BinaryOperation.FCMPG, Operand.FLOAT));
     }
 
     public void visit_dcmpl() {
-        currentBlock.add(doBinaryQuad(DCMPL, Operand.DOUBLE));
+        currentBlock.add(doBinaryQuad(BinaryOperation.DCMPL, Operand.DOUBLE));
     }
 
     public void visit_dcmpg() {
-        currentBlock.add(doBinaryQuad(DCMPG, Operand.DOUBLE));
+        currentBlock.add(doBinaryQuad(BinaryOperation.DCMPG, Operand.DOUBLE));
     }
 
     public void visit_ifeq(int address) {
-        visitBranchCondition(address, IFEQ, Operand.INT);
+        visitBranchCondition(address, BranchCondition.IFEQ, Operand.INT);
     }
 
     public void visit_ifne(int address) {
-        visitBranchCondition(address, IFNE, Operand.INT);
+        visitBranchCondition(address, BranchCondition.IFNE, Operand.INT);
     }
 
     public void visit_iflt(int address) {
-        visitBranchCondition(address, IFLT, Operand.INT);
+        visitBranchCondition(address, BranchCondition.IFLT, Operand.INT);
     }
 
     public void visit_ifge(int address) {
-        visitBranchCondition(address, IFGE, Operand.INT);
+        visitBranchCondition(address, BranchCondition.IFGE, Operand.INT);
     }
 
     public void visit_ifgt(int address) {
-        visitBranchCondition(address, IFGT, Operand.INT);
+        visitBranchCondition(address, BranchCondition.IFGT, Operand.INT);
     }
 
     public void visit_ifle(int address) {
-        visitBranchCondition(address, IFLE, Operand.INT);
+        visitBranchCondition(address, BranchCondition.IFLE, Operand.INT);
     }
 
     public void visit_if_icmpeq(int address) {
-        visitBranchCondition(address, IF_ICMPEQ, Operand.INT);
+        visitBranchCondition(address, BranchCondition.IF_ICMPEQ, Operand.INT);
     }
 
     public void visit_if_icmpne(int address) {
-        visitBranchCondition(address, IF_ICMPNE, Operand.INT);
+        visitBranchCondition(address, BranchCondition.IF_ICMPNE, Operand.INT);
     }
 
     public void visit_if_icmplt(int address) {
-        visitBranchCondition(address, IF_ICMPLT, Operand.INT);
+        visitBranchCondition(address, BranchCondition.IF_ICMPLT, Operand.INT);
     }
 
     public void visit_if_icmpge(int address) {
-        visitBranchCondition(address, IF_ICMPGE, Operand.INT);
+        visitBranchCondition(address, BranchCondition.IF_ICMPGE, Operand.INT);
     }
 
     public void visit_if_icmpgt(int address) {
-        visitBranchCondition(address, IF_ICMPGT, Operand.INT);
+        visitBranchCondition(address, BranchCondition.IF_ICMPGT, Operand.INT);
     }
 
     public void visit_if_icmple(int address) {
-        visitBranchCondition(address, IF_ICMPLE, Operand.INT);
+        visitBranchCondition(address, BranchCondition.IF_ICMPLE, Operand.INT);
     }
 
     public void visit_if_acmpeq(int address) {
-        visitBranchCondition(address, IF_ACMPEQ, Operand.REFERENCE);
+        visitBranchCondition(address, BranchCondition.IF_ACMPEQ, Operand.REFERENCE);
     }
 
     public void visit_if_acmpne(int address) {
-        visitBranchCondition(address, IF_ACMPNE, Operand.REFERENCE);
+        visitBranchCondition(address, BranchCondition.IF_ACMPNE, Operand.REFERENCE);
     }
 
     public void visit_goto(int address) {
@@ -1311,11 +1238,11 @@ public class IRGenerator<T> extends BytecodeVisitor {
     }
 
     public void visit_ifnull(int address) {
-        visitBranchCondition(address, IFNULL, Operand.REFERENCE);
+        visitBranchCondition(address, BranchCondition.IFNULL, Operand.REFERENCE);
     }
 
     public void visit_ifnonnull(int address) {
-        visitBranchCondition(address, IFNONNULL, Operand.REFERENCE);
+        visitBranchCondition(address, BranchCondition.IFNONNULL, Operand.REFERENCE);
     }
 
     public void visit_jsr(int address) {

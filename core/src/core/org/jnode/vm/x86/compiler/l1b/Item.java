@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,8 +20,9 @@
  
 package org.jnode.vm.x86.compiler.l1b;
 
-import org.jnode.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86Register;
 import org.jnode.vm.facade.VmUtils;
+import org.jnode.vm.facade.Vm;
 
 /**
  * This class is the base of all virtual stack items. To improve performance and
@@ -121,7 +122,7 @@ abstract class Item {
     protected Item(ItemFactory factory) {
         this.factory = factory;
         if (false) {
-            final org.jnode.vm.facade.Vm vm = VmUtils.getVm();
+            final Vm vm = VmUtils.getVm();
             final String name = getClass().getName();
             vm.getCounterGroup(name).getCounter("new").inc();
         }

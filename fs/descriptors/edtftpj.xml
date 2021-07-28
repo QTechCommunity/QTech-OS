@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -28,7 +28,7 @@
         provider-url="http://www.enterprisedt.com/products/edtftpj/">
         
   <requires>
-    <import plugin="org.jnode.net" version="@VERSION@"/>
+    <import plugin="com.qtech.os.net" version="@VERSION@"/>
   </requires>
         
   <runtime>
@@ -37,7 +37,7 @@
     </library>
   </runtime>
         
-  <extension point="org.jnode.security.permissions">
+  <extension point="com.qtech.os.security.permissions">
     <permission class="java.net.SocketPermission" name="*:0-" actions="connect,resolve"/>
     <permission class="java.util.PropertyPermission" name="edtftp.log.level" actions="read"/>
     <permission class="java.util.PropertyPermission" name="edtftp.log.log4j" actions="read"/>

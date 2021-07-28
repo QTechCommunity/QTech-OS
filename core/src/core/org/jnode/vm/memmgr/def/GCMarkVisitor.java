@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -90,7 +90,7 @@ final class GCMarkVisitor extends ObjectVisitor implements ObjectFlags,
     /**
      * @param object
      * @return boolean
-     * @see org.jnode.vm.facade.ObjectVisitor#visit(java.lang.Object)
+     * @see ObjectVisitor#visit(java.lang.Object)
      */
     public boolean visit(Object object) {
 

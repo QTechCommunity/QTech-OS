@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -346,14 +346,14 @@ public abstract class Constant<T> extends Operand<T> {
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.Operand#simplify()
+     * @see Operand#simplify()
      */
     public Operand<T> simplify() {
         return this;
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.Operand#getAddressingMode()
+     * @see Operand#getAddressingMode()
      */
     public AddressingMode getAddressingMode() {
         return AddressingMode.CONSTANT;

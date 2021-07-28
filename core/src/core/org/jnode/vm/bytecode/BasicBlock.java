@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,6 +20,7 @@
  
 package org.jnode.vm.bytecode;
 
+import org.jnode.vm.JvmType;
 import org.jnode.vm.objects.BootableArrayList;
 import org.jnode.vm.objects.VmSystemObject;
 
@@ -160,7 +161,7 @@ public class BasicBlock extends VmSystemObject {
      * Gets the stack types at the start of this basic block.
      *
      * @return Returns the startStack.
-     * @see org.jnode.vm.JvmType
+     * @see JvmType
      */
     public final TypeStack getStartStack() {
         return this.startStack;
@@ -170,7 +171,7 @@ public class BasicBlock extends VmSystemObject {
      * Set the stack types at the start of this basic block.
      *
      * @param startStack The startStack to set.
-     * @see org.jnode.vm.JvmType
+     * @see JvmType
      */
     public final void setStartStack(TypeStack startStack) {
         this.startStack = startStack;

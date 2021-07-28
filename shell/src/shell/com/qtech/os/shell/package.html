@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>com.qtech.os.shell</title>
+</head>
+<body>
+
+This package contains the core of the JNode command line interface.
+<p>
+A JNode command shell is an instance of the {@link com.qtech.os.shell.CommandShell} class, or
+one of its subclasses.  A JNode command shell reads command lines from
+a {@link com.qtech.os.driver.console.TextConsole} instance, and uses a
+{@link com.qtech.os.shell.CommandInterpreter} to split the input into a command names
+and arguments.  These commands are then run using a
+{@link com.qtech.os.shell.CommandInvoker}.
+<p>
+A JNode command shell support history and command completion, and the 
+{@link com.qtech.os.shell.CommandInterpreter} and {@link com.qtech.os.shell.CommandInvoker}
+implementations support a variety of command line / scripting languages
+and a variety of mechanisms for launching commands.
+<p>
+The package also contains classes that provide infrastructure for JNode command
+classes.  The {@link com.qtech.os.shell.Command} interface and the corresponding
+{@link com.qtech.os.shell.AbstractCommand} class provide the entry point for a native
+JNode command class, the methods for getting the "standard io" streams and raw command
+arguments, and hooks for registering a command's abstract syntax.  The 
+{@link com.qtech.os.shell.CommandLine} provides a command class with the name or alias
+used to launch the class and the raw arguments.
+<p>
+The com.qtech.os.shell.* packages are organized as follows:
+<ul>
+<li>{@code com.qtech.os.shell} - the root package contains code command shell infrastructure as
+described above.</li>
+<li>{@code com.qtech.os.shell.alias.*} - this package implements JNode's alias infrastructure that
+maps simple command names to fully-qualified Java class names.</li>
+<li>{@code com.qtech.os.shell.bjorne} - this package implements the JNode "bjorne" command interpreter.</li>
+<li>{@code com.qtech.os.shell.command.*} - these packages contain a wide range of utility commands
+implemented for JNode.</li>
+<li>{@code com.qtech.os.shell.help.*} - these packages implement JNode's online help system.</li>
+<li>{@code com.qtech.os.shell.io} - this package contains the CommandIO classes and other IO classes
+used by the shell, invokers and interpreters.</li>
+<li>{@code com.qtech.os.shell.isolate} - this package implements the JNode "isolate" command invoker.</li>
+<li>{@code com.qtech.os.shell.proclet} - this package implements the JNode "proclet" command invoker.</li>
+<li>{@code com.qtech.os.shell.syntax} - this package provides JNode's command argument parsing system.</li>
+</ul>
+</body>
+</html>

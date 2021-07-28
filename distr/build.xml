@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -70,8 +70,8 @@
     </jnode.compile.test>
     
 	<!-- copy properties files -->
-    <copy todir="${my-classes.dir}/org/jnode/apps/telnetd">
-	  <fileset dir="${my-src.dir}/apps/org/jnode/apps/telnetd">
+    <copy todir="${my-classes.dir}/com/qtech/os/apps/telnetd">
+	  <fileset dir="${my-src.dir}/apps/com/qtech/os/apps/telnetd">
 	    <include name="**/*.properties" />
 	  </fileset>
     </copy>

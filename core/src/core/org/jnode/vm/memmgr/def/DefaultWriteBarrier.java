@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -66,7 +66,7 @@ final class DefaultWriteBarrier extends VmSystemObject implements VmWriteBarrier
     }
 
     /**
-     * @see org.jnode.vm.facade.VmWriteBarrier#arrayCopyWriteBarrier(java.lang.Object[],
+     * @see VmWriteBarrier#arrayCopyWriteBarrier(java.lang.Object[],
      *      int, int)
      */
     public final void arrayCopyWriteBarrier(Object array, int start, int end)
@@ -78,7 +78,7 @@ final class DefaultWriteBarrier extends VmSystemObject implements VmWriteBarrier
     }
 
     /**
-     * @see org.jnode.vm.facade.VmWriteBarrier#arrayStoreWriteBarrier(java.lang.Object,
+     * @see VmWriteBarrier#arrayStoreWriteBarrier(java.lang.Object,
      *      int, java.lang.Object)
      */
     public final void arrayStoreWriteBarrier(Object ref, int index, Object value)
@@ -90,7 +90,7 @@ final class DefaultWriteBarrier extends VmSystemObject implements VmWriteBarrier
     }
 
     /**
-     * @see org.jnode.vm.facade.VmWriteBarrier#putfieldWriteBarrier(java.lang.Object,
+     * @see VmWriteBarrier#putfieldWriteBarrier(java.lang.Object,
      *      int, java.lang.Object)
      */
     public final void putfieldWriteBarrier(Object ref, int offset, Object value)
@@ -102,7 +102,7 @@ final class DefaultWriteBarrier extends VmSystemObject implements VmWriteBarrier
     }
 
     /**
-     * @see org.jnode.vm.facade.VmWriteBarrier#putstaticWriteBarrier(boolean, int,
+     * @see VmWriteBarrier#putstaticWriteBarrier(boolean, int,
      *      java.lang.Object)
      */
     public final void putstaticWriteBarrier(boolean shared, int staticsIndex, Object value)

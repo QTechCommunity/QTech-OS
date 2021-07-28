@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -41,7 +41,7 @@
         <export name="sun.java2d.loops.*"/>
         <export name="sun.java2d.pipe.*"/>
         <export name="sun.rmi.server.*"/>
-        <export name="org.jnode.imageio.jpeg.*"/>
+        <export name="com.qtech.os.imageio.jpeg.*"/>
     </library>
   </runtime>
 </fragment>

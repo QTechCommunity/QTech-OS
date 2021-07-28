@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Copyright (C) 2003-2015 QTech Community
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; If not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<!DOCTYPE plugin SYSTEM "jnode.dtd">
+
+<plugin id="com.qtech.os.apps.httpd"
+       name="QTech OS HTTPD Commands"
+       version="@VERSION@"
+       license-name="lgpl"
+       provider-name="QTechOS">
+
+  <requires>
+    <import plugin="com.qtech.os.net"/>
+    <import plugin="com.qtech.os.shell.help"/>
+  </requires>
+
+  <runtime>
+    <library name="jnode-distr.jar">
+      <export name="com.qtech.os.apps.httpd.*"/>
+      <export name="fi.iki.elonen.*"/>
+    </library>
+  </runtime>
+
+  <extension point="com.qtech.os.shell.aliases">
+    <alias name="nanohttpd" class="fi.iki.elonen.NanoHTTPD"/>
+  </extension>
+
+  <extension point="com.qtech.os.security.permissions">
+    <permission class="java.net.SocketPermission" name="*" actions="resolve"/>
+    <permission class="java.net.SocketPermission" name="*:53" actions="resolve,listen,connect"/>
+    <permission class="java.util.PropertyPermission" name="dns.server" actions="read"/>
+    <permission class="java.util.PropertyPermission" name="dns.search" actions="read"/>
+    <permission class="java.util.PropertyPermission" name="user.dir" actions="read"/>
+    <permission class="java.util.PropertyPermission" name="file.encoding" actions="read"/>      
+    <permission class="com.qtech.os.net.NetPermission" name="bootpClient"/>
+    <permission class="java.io.FilePermission" name="&lt;&lt;ALL FILES&gt;&gt;" actions="read,write"/>
+    <permission class="java.net.SocketPermission" name="*:80" actions="resolve,listen"/>
+  </extension>
+</plugin>

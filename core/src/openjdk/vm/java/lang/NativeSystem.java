@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -24,7 +24,7 @@ import java.io.PrintStream;
 import java.io.InputStream;
 import java.util.Properties;
 import org.jnode.vm.VmSystem;
-import org.jnode.util.SystemInputStream;
+import com.qtech.os.util.SystemInputStream;
 import gnu.classpath.SystemProperties;
 
 

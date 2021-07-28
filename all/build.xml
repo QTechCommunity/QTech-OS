@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -369,7 +369,7 @@
 	<!-- Assemble all plugins -->
 	<target name="assemble-plugins" depends="assemble-projects,openjdk-annotate">
 		<!-- Now assemble all plugins -->
-		<taskdef name="plugin" classname="org.jnode.build.PluginTask" classpathref="cp-jnode"/>
+		<taskdef name="plugin" classname="com.qtech.os.build.PluginTask" classpathref="cp-jnode"/>
 		<plugin todir="${plugins.dir}" tmpdir="${build.dir}/tmp/plugins" pluginDir="${descriptors.dir}">
 			<packager userApplicationsDir="${user.applications.dir}" pathRefId="cp"/>
 
@@ -448,7 +448,7 @@
 	<!-- Assemble all default initjars -->
 	<target name="assemble-default-initjars" depends="assemble-plugins" unless="no.default.initjars">
 		<!-- Build all default initjar's -->
-		<taskdef name="initjars" classname="org.jnode.build.InitJarsBuilder" classpathref="cp-jnode"/>
+		<taskdef name="initjars" classname="com.qtech.os.build.InitJarsBuilder" classpathref="cp-jnode"/>
 		<initjars destdir="${initjars.dir}"
             pluginDir="${plugins.dir}"
             systemPluginList="${root.dir}/all/conf/system-plugin-list.xml">
@@ -464,7 +464,7 @@
 	<!-- Assemble all custom initjars -->
 	<target name="assemble-custom-initjars" depends="assemble-plugins" if="custom.plugin-list.dir">
 		<!-- Build all custom initjar's -->
-		<taskdef name="initjars" classname="org.jnode.build.InitJarsBuilder" classpathref="cp-jnode"/>
+		<taskdef name="initjars" classname="com.qtech.os.build.InitJarsBuilder" classpathref="cp-jnode"/>
 		<initjars destdir="${initjars.dir}"
             pluginDir="${plugins.dir}"
             systemPluginList="${root.dir}/all/conf/system-plugin-list.xml">
@@ -621,10 +621,10 @@ clean             Remove all intermediate build results.
 				<pathelement location="${root.dir}/core/src/driver"/>
 				<pathelement location="${root.dir}/all/lib/classlib-src.jar"/>
 			</sourcepath>
-			<package name="org.jnode.driver"/>
-			<package name="org.jnode.naming"/>
-			<package name="org.jnode.plugin"/>
-			<package name="org.jnode.system"/>
+			<package name="com.qtech.os.driver"/>
+			<package name="com.qtech.os.naming"/>
+			<package name="com.qtech.os.plugin"/>
+			<package name="com.qtech.os.system"/>
 			<bootclasspath refid="cp-javadoc"/>
 		</jnode.javadoc>
 	</target>
@@ -681,7 +681,7 @@ clean             Remove all intermediate build results.
 				<pathelement location="${root.dir}/net/src/driver"/>
 				<pathelement location="${root.dir}/shell/src/shell"/>
 			</sourcepath>
-			<package name="org.jnode.*"/>
+			<package name="com.qtech.os.*"/>
 			<package name="org.mmtk.*"/>
 			<package name="org.vmmagic.*"/>
 			<bootclasspath refid="cp-javadoc"/>
@@ -701,7 +701,7 @@ clean             Remove all intermediate build results.
 
 	<!-- Compare classpath version of jnode with real classpath version -->
 	<target name="cp-compare" depends="assemble">
-		<taskdef name="cp-compare" classname="org.jnode.ant.taskdefs.classpath.CompareTask" classpathref="cp-jnode"/>
+		<taskdef name="cp-compare" classname="com.qtech.os.ant.taskdefs.classpath.CompareTask" classpathref="cp-jnode"/>
 
 		<patternset id="cp-includes-pattern">
 			<include name="**/*.java"/>
@@ -779,7 +779,7 @@ clean             Remove all intermediate build results.
 	<!-- Compare classpath version of jnode with real classpath version -->
 	<target name="header-fix" depends="assemble">
 		<!-- todo clean up the excludes -->
-		<taskdef name="header" classname="org.jnode.ant.taskdefs.HeaderTask" classpathref="cp-jnode"/>
+		<taskdef name="header" classname="com.qtech.os.ant.taskdefs.HeaderTask" classpathref="cp-jnode"/>
 
 		<header update="on" headerFile="${root.dir}/all/template/header.txt">
 			<fileset dir="${root.dir}/builder/src/builder" includes="**/*.java"/>
@@ -790,11 +790,11 @@ clean             Remove all intermediate build results.
 			<fileset dir="${root.dir}/core/src/classpath/vm" includes="**/*.java"
                      excludes="java/lang/VMProcess.java,java/lang/VMSystem.java"/>
 			<fileset dir="${root.dir}/core/src/openjdk/vm" includes="**/*.java" excludes="java/lang/NativeStrictMath.java"/>
-			<fileset dir="${root.dir}/core/src/core" includes="**/*.java" excludes="org/jnode/imageio/jpeg/JPEGDecoder"/>
+			<fileset dir="${root.dir}/core/src/core" includes="**/*.java" excludes="com/qtech/os/imageio/jpeg/JPEGDecoder"/>
 			<fileset dir="${root.dir}/core/src/mmtk-vm" includes="**/*.java" excludes="org/mmtk/vm/**/*.java"/>
 			<fileset dir="${root.dir}/core/src/driver" includes="**/*.java"/>
             <fileset dir="${root.dir}/core/src/emu" includes="**/*.java" excludes="gnu/**/*.java"/>
-			<fileset dir="${root.dir}/core/src/test" includes="**/*.java" excludes="org/jnode/test/mauve/**/*.java,org/jtestserver/**/*.java"/>
+			<fileset dir="${root.dir}/core/src/test" includes="**/*.java" excludes="com/qtech/os/test/mauve/**/*.java,org/jtestserver/**/*.java"/>
             <fileset dir="${root.dir}/core/src/template" includes="**/*.java"/>
 			<fileset dir="${root.dir}/distr/src/install" includes="**/*.java"/>
 			<fileset dir="${root.dir}/distr/src/apps" includes="**/*.java"/>
@@ -803,7 +803,7 @@ clean             Remove all intermediate build results.
 			<fileset dir="${root.dir}/fs/src/fs" includes="**/*.java"/>
 			<fileset dir="${root.dir}/fs/src/driver" includes="**/*.java"/>
 			<fileset dir="${root.dir}/fs/src/test" includes="**/*.java"/>
-			<fileset dir="${root.dir}/gui/src/awt" includes="**/*.java" excludes="org/jnode/awt/font/bdf/**/*.java"/>
+			<fileset dir="${root.dir}/gui/src/awt" includes="**/*.java" excludes="com/qtech/os/awt/font/bdf/**/*.java"/>
 			<fileset dir="${root.dir}/gui/src/desktop" includes="**/*.java"/>
 			<fileset dir="${root.dir}/gui/src/driver" includes="**/*.java"/>
 			<fileset dir="${root.dir}/gui/src/test" includes="**/*.java"/>
@@ -847,7 +847,7 @@ clean             Remove all intermediate build results.
 	</target>
 
 	<target name="hotswap" depends="check-debugger-properties,assemble-projects" description="hotswap the modified classes">
-		<taskdef name="hotswap" classname="org.jnode.ant.taskdefs.Hotswap" classpathref="cp-jnode" />
+		<taskdef name="hotswap" classname="com.qtech.os.ant.taskdefs.Hotswap" classpathref="cp-jnode" />
 		<hotswap verbose="true" host="${jnode.debugger.host}" port="${jnode.debugger.port}">
 			<fileset dir="../cli/build/classes/" includes="**/*.class">
 				<date datetime="${hotswap.class.tstamp}" pattern="MM/dd/yyyy kk:mm:ss" when="after" granularity="0"/>
@@ -901,7 +901,7 @@ clean             Remove all intermediate build results.
 	</target>
 
 	<target name="oj-compare" depends="assemble">
-		<taskdef name="cp-compare" classname="org.jnode.ant.taskdefs.classpath.CompareTask" classpathref="cp-jnode"/>
+		<taskdef name="cp-compare" classname="com.qtech.os.ant.taskdefs.classpath.CompareTask" classpathref="cp-jnode"/>
 
 		<patternset id="cp-includes-pattern">
 			<include name="**/*.java"/>
@@ -987,7 +987,7 @@ clean             Remove all intermediate build results.
 	</target>
 
 	<target name="openjdk-annotate" depends="assemble-projects">
-		<taskdef name="oj-annotate" classname="org.jnode.ant.taskdefs.AnnotateTask" 
+		<taskdef name="oj-annotate" classname="com.qtech.os.ant.taskdefs.AnnotateTask"
         		classpathref="cp-jnode"/>
 
 		<oj-annotate annotationFile="${root.dir}/all/conf/openjdk-annotations.properties"
@@ -1001,7 +1001,7 @@ clean             Remove all intermediate build results.
 	<!-- check that all native methods are properly implemented for JNode -->
 	<target name="native-method-check" depends="assemble-projects">
 		<echo message="native-method-check"/>
-		<taskdef name="native-check" classname="org.jnode.ant.taskdefs.NativeCheckTask" 
+		<taskdef name="native-check" classname="com.qtech.os.ant.taskdefs.NativeCheckTask"
         		classpathref="cp-jnode"/>
 
 		<native-check trace="false" failonerror="false">
@@ -1021,7 +1021,7 @@ clean             Remove all intermediate build results.
 
 	<!-- Check the encoding of all files -->
 	<target name="encoding-test" depends="assemble">
-		<taskdef name="n2a" classname="org.jnode.ant.taskdefs.Native2AsciiTask" classpathref="cp-jnode"/>
+		<taskdef name="n2a" classname="com.qtech.os.ant.taskdefs.Native2AsciiTask" classpathref="cp-jnode"/>
 
 		<n2a update="off">
 			<fileset dir="${root.dir}" includes="**/*.java"/>
@@ -1030,7 +1030,7 @@ clean             Remove all intermediate build results.
 
 	<!-- Check and fix the encoding of all files -->
 	<target name="encoding-fix" depends="assemble">
-		<taskdef name="n2a" classname="org.jnode.ant.taskdefs.Native2AsciiTask" classpathref="cp-jnode"/>
+		<taskdef name="n2a" classname="com.qtech.os.ant.taskdefs.Native2AsciiTask" classpathref="cp-jnode"/>
 
 		<n2a update="on">
 			<fileset dir="${root.dir}" includes="**/*.java"/>
@@ -1040,7 +1040,7 @@ clean             Remove all intermediate build results.
 	<!-- check plugin dependencies -->
 	<target name="check-plugins" depends="assemble-plugins">
 		<!-- Check all plugins -->
-		<taskdef name="checkDeps" classname="org.jnode.build.dependencies.PluginDependencyChecker" 
+		<taskdef name="checkDeps" classname="com.qtech.os.build.dependencies.PluginDependencyChecker"
 			classpathref="cp-jnode" />
 		<!--
         TODO: remove duplicate classes from mmtk related plugins and enable their checking. 
@@ -1104,7 +1104,7 @@ clean             Remove all intermediate build results.
 
 	<!-- Document all plugins -->
 	<target name="document-plugins" depends="assemble-projects">
-		<taskdef name="plugindocumentation" classname="org.jnode.build.documentation.PluginDocumentationTask" classpathref="cp-jnode"/>
+		<taskdef name="plugindocumentation" classname="com.qtech.os.build.documentation.PluginDocumentationTask" classpathref="cp-jnode"/>
 
 		<plugindocumentation
             destdir="${reports.dir}/plugins"
@@ -1178,13 +1178,13 @@ clean             Remove all intermediate build results.
 			<class location="./build/plugins/org.jnode.vm_${jnode-ver}.jar"/>
 			<class location="./build/plugins/org.jnode.vm.core_${jnode-ver}.jar"/>
 			<class location="./build/plugins/org.jnode.vm.memmgr.def_${jnode-ver}.jar"/>
-			<class location="./build/plugins/org.jnode.driver_${jnode-ver}.jar"/>
-			<class location="./build/plugins/org.jnode.runtime_${jnode-ver}.jar"/>
-			<class location="./build/plugins/org.jnode.runtime.core_${jnode-ver}.jar"/>
-			<class location="./build/plugins/org.jnode.util_${jnode-ver}.jar"/>
-			<class location="./build/plugins/org.jnode.work_${jnode-ver}.jar"/>
-			<class location="./build/plugins/org.jnode.security_${jnode-ver}.jar"/>
-			<class location="./build/plugins/org.jnode.system.repository_${jnode-ver}.jar"/>
+			<class location="./build/plugins/com.qtech.os.driver_${jnode-ver}.jar"/>
+			<class location="./build/plugins/com.qtech.os.runtime_${jnode-ver}.jar"/>
+			<class location="./build/plugins/com.qtech.os.runtime.core_${jnode-ver}.jar"/>
+			<class location="./build/plugins/com.qtech.os.util_${jnode-ver}.jar"/>
+			<class location="./build/plugins/com.qtech.os.work_${jnode-ver}.jar"/>
+			<class location="./build/plugins/com.qtech.os.security_${jnode-ver}.jar"/>
+			<class location="./build/plugins/com.qtech.os.system.repository_${jnode-ver}.jar"/>
 		</findbugs>
 	</target>
 

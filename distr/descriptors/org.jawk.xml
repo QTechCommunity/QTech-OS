@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -37,21 +37,21 @@
   </runtime>
   
   <requires>
-    <import plugin="org.jnode.shell" version="@VERSION@"/>
-    <import plugin="org.jnode.shell.syntax" version="@VERSION@"/>
+    <import plugin="com.qtech.os.shell" version="@VERSION@"/>
+    <import plugin="com.qtech.os.shell.syntax" version="@VERSION@"/>
     <import plugin="org.apache.commons.bcel" version="5.2"/>
   </requires>
   
-  <extension point="org.jnode.shell.aliases">
+  <extension point="com.qtech.os.shell.aliases">
     <alias name="awk" class="org.jawk.JawkMain"/>
   </extension>
   
-  <extension point="org.jnode.shell.syntaxes">
+  <extension point="com.qtech.os.shell.syntaxes">
     <argument-bundle alias="awk">
         <typedefs>
-            <typedef name="StringArgument" value="org.jnode.shell.syntax.StringArgument"/>
-            <typedef name="FileArgument"   value="org.jnode.shell.syntax.FileArgument"/>
-            <typedef name="FlagArgument"   value="org.jnode.shell.syntax.FlagArgument"/>
+            <typedef name="StringArgument" value="com.qtech.os.shell.syntax.StringArgument"/>
+            <typedef name="FileArgument"   value="com.qtech.os.shell.syntax.FileArgument"/>
+            <typedef name="FlagArgument"   value="com.qtech.os.shell.syntax.FlagArgument"/>
         </typedefs>
         <argument label="vars" type="StringArgument">
             <param type="flags" value="MULTIPLE"/>
@@ -108,7 +108,7 @@
     </syntax>
   </extension>
   
-  <extension point="org.jnode.security.permissions">
+  <extension point="com.qtech.os.security.permissions">
     <permission class="java.util.PropertyPermission" name="*" actions="read,write"/>
     <permission class="java.io.FilePermission" name="&lt;&lt;ALL FILES&gt;&gt;" actions="read,write"/>
     <permission class="java.lang.RuntimePermission" name="modifyThread"/>

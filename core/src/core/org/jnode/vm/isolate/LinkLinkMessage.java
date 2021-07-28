@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -37,7 +37,7 @@ final class LinkLinkMessage extends LinkMessageImpl {
     }
 
     /**
-     * @see org.jnode.vm.isolate.LinkMessageImpl#CloneMessage()
+     * @see LinkMessageImpl#CloneMessage()
      */
     @Override
     LinkMessageImpl cloneMessage() {

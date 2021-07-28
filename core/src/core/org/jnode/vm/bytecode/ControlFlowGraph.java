@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -22,7 +22,7 @@ package org.jnode.vm.bytecode;
 
 import java.util.Iterator;
 
-import org.jnode.util.ObjectArrayIterator;
+import com.qtech.os.util.ObjectArrayIterator;
 import org.jnode.vm.classmgr.VmByteCode;
 
 /**

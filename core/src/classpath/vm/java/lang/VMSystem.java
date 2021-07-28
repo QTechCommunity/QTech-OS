@@ -43,8 +43,7 @@ import java.nio.ByteOrder;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.jnode.util.SystemInputStream;
-import org.jnode.vm.VmImpl;
+import com.qtech.os.util.SystemInputStream;
 import org.jnode.vm.VmSystem;
 import org.jnode.vm.facade.VmUtils;
 

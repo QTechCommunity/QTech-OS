@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -256,7 +256,7 @@ abstract class P4FamilyPerformanceCounters extends X86PerformanceCounters {
     }
 
     /**
-     * @see org.jnode.vm.x86.performance.X86PerformanceCounters#getAvailableEvent(java.lang.String)
+     * @see X86PerformanceCounters#getAvailableEvent(java.lang.String)
      */
     public final PerformanceCounterEvent getAvailableEvent(String id) {
         for (PerformanceCounterEvent e : events) {
@@ -268,15 +268,15 @@ abstract class P4FamilyPerformanceCounters extends X86PerformanceCounters {
     }
 
     /**
-     * @see org.jnode.vm.x86.performance.X86PerformanceCounters#getAvailableEvents()
+     * @see X86PerformanceCounters#getAvailableEvents()
      */
     public final Set<PerformanceCounterEvent> getAvailableEvents() {
         return eventSet;
     }
 
     /**
-     * @see org.jnode.vm.x86.performance.X86PerformanceCounters#getCounterValues(long[],
-     *      org.jnode.vm.x86.VmX86Thread)
+     * @see X86PerformanceCounters#getCounterValues(long[],
+     *      VmX86Thread)
      */
     protected void getCounterValues(long[] counters, VmX86Thread thread) {
         final MSR[] countMSRs = thread.getReadWriteMSRs();
@@ -295,9 +295,9 @@ abstract class P4FamilyPerformanceCounters extends X86PerformanceCounters {
     }
 
     /**
-     * @see org.jnode.vm.x86.performance.X86PerformanceCounters#
-     * startCounters(org.jnode.vm.performance.PerformanceCounterEvent[],
-     *      org.jnode.vm.x86.VmX86Thread)
+     * @see X86PerformanceCounters#
+     * startCounters(com.qtech.os.vm.performance.PerformanceCounterEvent[],
+     *      com.qtech.os.vm.x86.VmX86Thread)
      */
     protected void startCounters(PerformanceCounterEvent[] events,
                                  VmX86Thread thread) throws IllegalArgumentException {
@@ -385,7 +385,7 @@ abstract class P4FamilyPerformanceCounters extends X86PerformanceCounters {
     }
 
     /**
-     * @see org.jnode.vm.x86.performance.X86PerformanceCounters#stopCounters(org.jnode.vm.x86.VmX86Thread)
+     * @see X86PerformanceCounters#stopCounters(VmX86Thread)
      */
     protected void stopCounters(VmX86Thread thread)
         throws IllegalArgumentException {

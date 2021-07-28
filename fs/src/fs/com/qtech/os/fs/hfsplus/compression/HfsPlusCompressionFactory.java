@@ -1,0 +1,22 @@
+package com.qtech.os.fs.hfsplus.compression;
+
+import com.qtech.os.fs.hfsplus.HfsPlusFile;
+import com.qtech.os.fs.hfsplus.attributes.AttributeData;
+
+/**
+ * A factory interface for creating HFS+ compression algorithm instances.
+ *
+ * @author Luke Quinane
+ */
+public interface HfsPlusCompressionFactory {
+    /**
+     * Creates a new compression algorithm instance.
+     *
+     * @param file the associated file.
+     * @param attributeData the attribute data.
+     * @param decmpfsDiskHeader the header for the compressed data.
+     * @return the instance.
+     */
+    HfsPlusCompression createDecompressor(HfsPlusFile file, AttributeData attributeData,
+                                          DecmpfsDiskHeader decmpfsDiskHeader);
+}

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -22,13 +22,14 @@ package org.jnode.vm.compiler;
 
 import java.io.Writer;
 
-import org.jnode.assembler.Label;
-import org.jnode.assembler.NativeStream;
-import org.jnode.assembler.ObjectResolver;
-import org.jnode.assembler.UnresolvedObjectRefException;
+import com.qtech.os.assembler.Label;
+import com.qtech.os.assembler.NativeStream;
+import com.qtech.os.assembler.ObjectResolver;
+import com.qtech.os.assembler.UnresolvedObjectRefException;
 import org.jnode.vm.VmAddress;
 import org.jnode.vm.VmMagic;
 import org.jnode.annotation.MagicPermission;
+import org.jnode.vm.VmStackFrame;
 import org.jnode.vm.bytecode.BasicBlock;
 import org.jnode.vm.bytecode.ControlFlowGraph;
 import org.jnode.vm.classmgr.VmAddressMap;
@@ -315,7 +316,7 @@ public abstract class NativeCodeCompiler extends VmSystemObject {
 
     /**
      * Returns an unused or newly created byte code visitor.
-     * @see #createBytecodeVisitor(org.jnode.vm.classmgr.VmMethod, CompiledMethod, org.jnode.assembler.NativeStream,
+     * @see #createBytecodeVisitor(VmMethod, CompiledMethod, com.qtech.os.assembler.NativeStream,
      * int, boolean)
      */
     protected CompilerBytecodeVisitor getBytecodeVisitor(VmMethod method, CompiledMethod cm, NativeStream os, 
@@ -347,8 +348,8 @@ public abstract class NativeCodeCompiler extends VmSystemObject {
      * Gets the magic value of this compiler.
      *
      * @return the magic value
-     * @see org.jnode.vm.VmStackFrame#MAGIC_COMPILED
-     * @see org.jnode.vm.VmStackFrame#MAGIC_MASK
+     * @see VmStackFrame#MAGIC_COMPILED
+     * @see VmStackFrame#MAGIC_MASK
      */
     public abstract int getMagic();
 

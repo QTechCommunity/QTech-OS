@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -27,6 +27,7 @@ import org.jnode.vm.classmgr.VmSharedStatics;
 import org.jnode.vm.objects.Counter;
 import org.jnode.vm.objects.CounterGroup;
 import org.jnode.vm.objects.Statistic;
+import org.jnode.vm.objects.Statistics;
 
 /**
  * Interface with the Virtual Machine.
@@ -41,7 +42,7 @@ public interface Vm {
     VmSharedStatics getSharedStatics();
 
     /**
-     * @see org.jnode.vm.objects.Statistics#getStatistics()
+     * @see Statistics#getStatistics()
      */
     Statistic[] getStatistics();
 

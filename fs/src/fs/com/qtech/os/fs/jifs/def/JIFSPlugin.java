@@ -1,0 +1,128 @@
+/*
+ * $Id$
+ *
+ * Copyright (C) 2003-2015 QTech Community
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation; either version 2.1 of the License, or
+ * (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but 
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public 
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; If not, write to the Free Software Foundation, Inc., 
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+ 
+package com.qtech.os.fs.jifs.def;
+
+import java.io.IOException;
+
+import javax.naming.NameNotFoundException;
+
+import org.apache.log4j.Logger;
+import com.qtech.os.driver.DeviceAlreadyRegisteredException;
+import com.qtech.os.driver.DeviceException;
+import com.qtech.os.driver.DeviceManager;
+import com.qtech.os.driver.DeviceNotFoundException;
+import com.qtech.os.driver.DeviceUtils;
+import com.qtech.os.driver.DriverException;
+import com.qtech.os.driver.virtual.VirtualDevice;
+import com.qtech.os.driver.virtual.VirtualDeviceFactory;
+import com.qtech.os.fs.FileSystemException;
+import com.qtech.os.fs.jifs.JIFileSystem;
+import com.qtech.os.fs.jifs.JIFileSystemType;
+import com.qtech.os.fs.service.FileSystemService;
+import com.qtech.os.naming.InitialNaming;
+import com.qtech.os.plugin.ExtensionPoint;
+import com.qtech.os.plugin.Plugin;
+import com.qtech.os.plugin.PluginDescriptor;
+import com.qtech.os.plugin.PluginException;
+
+/**
+ * @author Andreas H\u00e4nel
+ */
+@SuppressWarnings("FieldCanBeLocal")
+public class JIFSPlugin extends Plugin {
+
+    /**
+     * My logger
+     */
+    private static final Logger log = Logger.getLogger(JIFSPlugin.class);
+    
+    /**
+     * Manager of Extensions
+     */
+    @SuppressWarnings("unused")
+    private JIFSExtension jifsExtension;
+
+    public JIFSPlugin(PluginDescriptor descriptor) {
+        super(descriptor);
+        log.debug("JIFSPlugin created.");
+    }
+
+    /**
+     * Start this plugin
+     */
+    @SuppressWarnings("RedundantThrows")
+    protected void startPlugin() throws PluginException {
+        log.info("Start JIFS");
+        try {
+            JIFileSystemType type = null;
+            try {
+                VirtualDevice dev =
+                        VirtualDeviceFactory.createDevice(JIFileSystemType.VIRTUAL_DEVICE_NAME);
+                log.info(dev.getId() + " registered");
+                final FileSystemService fSS = InitialNaming.lookup(FileSystemService.NAME);
+                type = fSS.getFileSystemType(JIFileSystemType.ID);
+
+                final JIFileSystem fs = type.create(dev, true);
+                fSS.registerFileSystem(fs);
+
+                final String mountPath = "jifs";
+                fSS.mount(mountPath, fs, null);
+                log.info("Mounted " + type.getName() + " on " + mountPath);
+                final ExtensionPoint infoEP = getDescriptor().getExtensionPoint("info");
+                jifsExtension = new JIFSExtension(infoEP);
+            } catch (DeviceAlreadyRegisteredException ex) {
+                log.error("jifs is currently running.");
+            } catch (FileSystemException ex) {
+                log.error("Cannot mount " + (type != null ? type.getName() : "") + " filesystem ",
+                        ex);
+            } catch (DeviceException e) {
+                log.debug("Got DriverException, maybe jifs is running.");
+            } catch (IOException ex) {
+                log.error("Cannot mount jifs", ex);
+            }
+        } catch (NameNotFoundException e) {
+            log.error("FilSystemService / FileSystemType not found");
+        }
+    }
+
+    /**
+     * Stop this plugin
+     */
+    protected void stopPlugin() {
+        log.info("stop jifs");
+        try {
+            FileSystemService fSS = InitialNaming.lookup(FileSystemService.NAME);
+            final DeviceManager dm = DeviceUtils.getDeviceManager();
+            VirtualDevice dev = (VirtualDevice) dm.getDevice(JIFileSystemType.VIRTUAL_DEVICE_NAME);
+            fSS.unregisterFileSystem(dev);
+            log.info("jifs unmounted");
+            dm.unregister(dev);
+            log.info("jifs unregistered");
+        } catch (NameNotFoundException e) {
+            log.error("filsystemservice / filesystemtype not found");
+        } catch (DeviceNotFoundException ex) {
+            log.info("no jifs present");
+        } catch (DriverException ex) {
+            log.error(ex);
+        }
+    }
+
+}

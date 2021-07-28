@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -33,17 +33,17 @@
     </library>
 
     <library name="jnode-distr.jar">
-      <export name="org.jnode.apps.telnetd.*"/>
+      <export name="com.qtech.os.apps.telnetd.*"/>
     </library>
   </runtime>
 
   <requires>
   	<import plugin="org.apache.commons.logging" version="1.1.1"/>
   	<import plugin="org.apache.jakarta.log4j" version="1.2.8"/>
-  	<import plugin="org.jnode.shell" version="@VERSION@"/>
+  	<import plugin="com.qtech.os.shell" version="@VERSION@"/>
   </requires>
 
-  <extension point="org.jnode.security.permissions">
+  <extension point="com.qtech.os.security.permissions">
   	<permission class="java.lang.RuntimePermission" name="modifyThreadGroup"/>
 	<permission class="java.lang.RuntimePermission" name="exitVM"/>
 
@@ -58,7 +58,7 @@
     <permission class="java.util.PropertyPermission" name="user.dir" actions="read"/>
   </extension>
 
-  <extension point="org.jnode.shell.aliases">
-    <alias name="telnetd" class="org.jnode.apps.telnetd.TelnetServerCommand"/>
+  <extension point="com.qtech.os.shell.aliases">
+    <alias name="telnetd" class="com.qtech.os.apps.telnetd.TelnetServerCommand"/>
   </extension>
 </plugin>

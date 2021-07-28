@@ -10,7 +10,7 @@
         <file-match-pattern match-pattern="." include-pattern="true"/>
     </fileset>
     <filter name="FilesFromPackage" enabled="true">
-        <filter-data value="src/builder/org/jnode/jnasm/assembler/gen"/>
+        <filter-data value="src/builder/com/qtech/os/jnasm/assembler/gen"/>
     </filter>
     <filter name="NonSrcDirs" enabled="true"/>
 </fileset-config>

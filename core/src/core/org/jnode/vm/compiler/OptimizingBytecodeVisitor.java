@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -22,6 +22,7 @@ package org.jnode.vm.compiler;
 
 import org.jnode.vm.JvmType;
 import org.jnode.vm.bytecode.BasicBlock;
+import org.jnode.vm.bytecode.BytecodeVisitor;
 import org.jnode.vm.bytecode.ControlFlowGraph;
 import org.jnode.vm.classmgr.VmByteCode;
 import org.jnode.vm.classmgr.VmClassLoader;
@@ -169,7 +170,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#startMethod(org.jnode.vm.classmgr.VmMethod)
+     * @see BytecodeVisitor#startMethod(VmMethod)
      */
     public void startMethod(VmMethod method) {
         this.method = method;
@@ -182,7 +183,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.compiler.DelegatingCompilerBytecodeVisitor#startBasicBlock(org.jnode.vm.bytecode.BasicBlock)
+     * @see DelegatingCompilerBytecodeVisitor#startBasicBlock(BasicBlock)
      */
     public void startBasicBlock(BasicBlock bb) {
         // Reset optimize flags
@@ -193,7 +194,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.compiler.DelegatingCompilerBytecodeVisitor#startInstruction(int)
+     * @see DelegatingCompilerBytecodeVisitor#startInstruction(int)
      */
     public void startInstruction(int address) {
         // Set previos optimize flags & clear optimize flags
@@ -204,7 +205,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_invokespecial(org.jnode.vm.classmgr.VmConstMethodRef)
+     * @see BytecodeVisitor#visit_invokespecial(VmConstMethodRef)
      */
     public void visit_invokespecial(VmConstMethodRef methodRef) {
         methodRef.resolve(loader);
@@ -220,7 +221,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_invokestatic(org.jnode.vm.classmgr.VmConstMethodRef)
+     * @see BytecodeVisitor#visit_invokestatic(VmConstMethodRef)
      */
     public void visit_invokestatic(VmConstMethodRef methodRef) {
         methodRef.resolve(loader);
@@ -236,7 +237,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_invokevirtual(org.jnode.vm.classmgr.VmConstMethodRef)
+     * @see BytecodeVisitor#visit_invokevirtual(VmConstMethodRef)
      */
     public void visit_invokevirtual(VmConstMethodRef methodRef) {
         methodRef.resolve(loader);
@@ -461,7 +462,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_aload(int)
+     * @see BytecodeVisitor#visit_aload(int)
      */
     public void visit_aload(int index) {
         index += localDelta;
@@ -480,7 +481,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_areturn()
+     * @see BytecodeVisitor#visit_areturn()
      */
     public void visit_areturn() {
         if (inlineDepth == 0) {
@@ -492,7 +493,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_astore(int)
+     * @see BytecodeVisitor#visit_astore(int)
      */
     public void visit_astore(int index) {
         index += localDelta;
@@ -502,7 +503,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dload(int)
+     * @see BytecodeVisitor#visit_dload(int)
      */
     public void visit_dload(int index) {
         index += localDelta;
@@ -521,7 +522,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dreturn()
+     * @see BytecodeVisitor#visit_dreturn()
      */
     public void visit_dreturn() {
         if (inlineDepth == 0) {
@@ -533,7 +534,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dstore(int)
+     * @see BytecodeVisitor#visit_dstore(int)
      */
     public void visit_dstore(int index) {
         index += localDelta;
@@ -543,7 +544,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fload(int)
+     * @see BytecodeVisitor#visit_fload(int)
      */
     public void visit_fload(int index) {
         index += localDelta;
@@ -562,7 +563,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_freturn()
+     * @see BytecodeVisitor#visit_freturn()
      */
     public void visit_freturn() {
         if (inlineDepth == 0) {
@@ -574,7 +575,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fstore(int)
+     * @see BytecodeVisitor#visit_fstore(int)
      */
     public void visit_fstore(int index) {
         index += localDelta;
@@ -584,14 +585,14 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_iinc(int, int)
+     * @see BytecodeVisitor#visit_iinc(int, int)
      */
     public void visit_iinc(int index, int incValue) {
         super.visit_iinc(index + localDelta, incValue);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_iload(int)
+     * @see BytecodeVisitor#visit_iload(int)
      */
     public void visit_iload(int index) {
         index += localDelta;
@@ -610,7 +611,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ireturn()
+     * @see BytecodeVisitor#visit_ireturn()
      */
     public void visit_ireturn() {
         if (inlineDepth == 0) {
@@ -622,7 +623,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_istore(int)
+     * @see BytecodeVisitor#visit_istore(int)
      */
     public void visit_istore(int index) {
         index += localDelta;
@@ -632,7 +633,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lload(int)
+     * @see BytecodeVisitor#visit_lload(int)
      */
     public void visit_lload(int index) {
         index += localDelta;
@@ -651,7 +652,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lreturn()
+     * @see BytecodeVisitor#visit_lreturn()
      */
     public void visit_lreturn() {
         if (inlineDepth == 0) {
@@ -663,7 +664,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lstore(int)
+     * @see BytecodeVisitor#visit_lstore(int)
      */
     public void visit_lstore(int index) {
         index += localDelta;
@@ -673,14 +674,14 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ret(int)
+     * @see BytecodeVisitor#visit_ret(int)
      */
     public void visit_ret(int index) {
         super.visit_ret(index + localDelta);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_return()
+     * @see BytecodeVisitor#visit_return()
      */
     public void visit_return() {
         if (inlineDepth == 0) {
@@ -701,7 +702,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.compiler.DelegatingCompilerBytecodeVisitor#visit_monitorenter()
+     * @see DelegatingCompilerBytecodeVisitor#visit_monitorenter()
      */
     public void visit_monitorenter() {
         verifyMonitor();
@@ -709,7 +710,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.compiler.DelegatingCompilerBytecodeVisitor#visit_monitorexit()
+     * @see DelegatingCompilerBytecodeVisitor#visit_monitorexit()
      */
     public void visit_monitorexit() {
         verifyMonitor();
@@ -717,7 +718,7 @@ public final class OptimizingBytecodeVisitor extends
     }
 
     /**
-     * @see org.jnode.vm.compiler.DelegatingCompilerBytecodeVisitor#visit_new(org.jnode.vm.classmgr.VmConstClass)
+     * @see DelegatingCompilerBytecodeVisitor#visit_new(VmConstClass)
      */
     public void visit_new(VmConstClass clazz) {
         if (false) {

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,12 +20,12 @@
  
 package org.jnode.vm.x86.compiler.l1b;
 
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86Constants;
-import org.jnode.assembler.x86.X86Register;
-import org.jnode.assembler.x86.X86Register.GPR;
-import org.jnode.assembler.x86.X86Register.GPR32;
-import org.jnode.assembler.x86.X86Register.GPR64;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86Constants;
+import com.qtech.os.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86Register.GPR;
+import com.qtech.os.assembler.x86.X86Register.GPR32;
+import com.qtech.os.assembler.x86.X86Register.GPR64;
 import org.jnode.vm.JvmType;
 import org.jnode.vm.classmgr.ObjectFlags;
 import org.jnode.vm.classmgr.ObjectLayout;
@@ -36,13 +36,6 @@ import org.jnode.vm.facade.VmUtils;
 import org.jnode.vm.x86.compiler.BaseX86MagicHelper;
 import org.jnode.vm.x86.compiler.X86CompilerConstants;
 import org.jnode.vm.x86.compiler.X86CompilerHelper;
-
-import static org.jnode.vm.compiler.BaseMagicHelper.MagicMethod.ATTEMPTINT;
-import static org.jnode.vm.compiler.BaseMagicHelper.MagicMethod.FROMINTZEROEXTEND;
-import static org.jnode.vm.compiler.BaseMagicHelper.MagicMethod.INTBITSTOFLOAT;
-import static org.jnode.vm.compiler.BaseMagicHelper.MagicMethod.LOADCHAR;
-import static org.jnode.vm.compiler.BaseMagicHelper.MagicMethod.LOADCHAR_OFS;
-import static org.jnode.vm.compiler.BaseMagicHelper.MagicMethod.LONGBITSTODOUBLE;
 
 /**
  * @author Ewout Prangsma (epr@users.sourceforge.net)
@@ -328,7 +321,7 @@ final class MagicHelper extends BaseX86MagicHelper {
                 GPR r = addr.getRegister();
                 if (os.isCode64()) {
                     final GPR64 newR = (GPR64) pool.getRegisterInSameGroup(r, JvmType.REFERENCE);
-                    if (mcode == FROMINTZEROEXTEND) {
+                    if (mcode == MagicMethod.FROMINTZEROEXTEND) {
                         // Moving the register to itself in 32-bit mode, will
                         // zero extend the top 32-bits.
                         os.writeMOV(BITS32, r, r);
@@ -397,7 +390,7 @@ final class MagicHelper extends BaseX86MagicHelper {
                 final GPR r = addr.getRegister();
                 final WordItem result = L1AHelper.requestWordRegister(ec, methodToType(mcode), true);
                 final GPR resultr = result.getRegister();
-                if (mcode == LOADCHAR) {
+                if (mcode == MagicMethod.LOADCHAR) {
                     os.writeMOVZX(resultr, r, 0, methodToSize(mcode));
                 } else {
                     os.writeMOVSX(resultr, r, 0, methodToSize(mcode));
@@ -460,7 +453,7 @@ final class MagicHelper extends BaseX86MagicHelper {
                 os.writeLEA(r, r, ofsr, 1, 0);
                 final WordItem result = L1AHelper.requestWordRegister(ec, methodToType(mcode), true);
                 final GPR resultr = result.getRegister();
-                if (mcode == LOADCHAR_OFS) {
+                if (mcode == MagicMethod.LOADCHAR_OFS) {
                     os.writeMOVZX(resultr, r, 0, methodToSize(mcode));
                 } else {
                     os.writeMOVSX(resultr, r, 0, methodToSize(mcode));
@@ -648,7 +641,7 @@ final class MagicHelper extends BaseX86MagicHelper {
                 final WordItem old = (WordItem) vstack.pop();
                 final RefItem addr = vstack.popRef();
                 final X86Register.GPR aax;
-                if ((mcode == ATTEMPTINT) || os.isCode32()) {
+                if ((mcode == MagicMethod.ATTEMPTINT) || os.isCode32()) {
                     aax = X86Register.EAX;
                 } else {
                     aax = X86Register.RAX;
@@ -687,7 +680,7 @@ final class MagicHelper extends BaseX86MagicHelper {
                 final WordItem old = (WordItem) vstack.pop();
                 final RefItem addr = vstack.popRef();
                 final X86Register.GPR aax;
-                if ((mcode == ATTEMPTINT) || os.isCode32()) {
+                if ((mcode == MagicMethod.ATTEMPTINT) || os.isCode32()) {
                     aax = X86Register.EAX;
                 } else {
                     aax = X86Register.RAX;
@@ -863,7 +856,7 @@ final class MagicHelper extends BaseX86MagicHelper {
                 v.load(ec);
                 final X86Register.GPR r = v.getRegister();
                 v.release(ec);
-                final int resultType = (mcode == INTBITSTOFLOAT) ? JvmType.FLOAT : JvmType.INT;
+                final int resultType = (mcode == MagicMethod.INTBITSTOFLOAT) ? JvmType.FLOAT : JvmType.INT;
                 vstack.push(L1AHelper.requestWordRegister(ec, resultType, r));
                 break;
             }
@@ -872,7 +865,7 @@ final class MagicHelper extends BaseX86MagicHelper {
                 if (VmUtils.verifyAssertions()) VmUtils._assert(isstatic);
                 final DoubleWordItem v = (DoubleWordItem) vstack.pop();
                 v.load(ec);
-                final int resultType = (mcode == LONGBITSTODOUBLE) ? JvmType.DOUBLE : JvmType.LONG;
+                final int resultType = (mcode == MagicMethod.LONGBITSTODOUBLE) ? JvmType.DOUBLE : JvmType.LONG;
                 if (os.isCode32()) {
                     final X86Register.GPR lsb = v.getLsbRegister(ec);
                     final X86Register.GPR msb = v.getMsbRegister(ec);

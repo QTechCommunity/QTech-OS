@@ -10,8 +10,8 @@ $DIR/builder/lib/jnode-configure-dist.jar:\
 $DIR/shell/lib/nanoxml-2.2.3.jar
 
 if [ $# = 0 ] ; then
-    java -cp $CP org.jnode.configure.Configure $DIR/all/conf-source/script.xml
+    java -cp $CP com.qtech.os.configure.Configure $DIR/all/conf-source/script.xml
 else
-    java -cp $CP org.jnode.configure.Configure "$@"
+    java -cp $CP com.qtech.os.configure.Configure "$@"
 fi
 

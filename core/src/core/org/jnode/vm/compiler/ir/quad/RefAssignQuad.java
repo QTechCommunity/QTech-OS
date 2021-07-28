@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -57,7 +57,7 @@ public class RefAssignQuad<T> extends AssignQuad<T> {
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.quad.Quad#getReferencedOps()
+     * @see Quad#getReferencedOps()
      */
     public Operand<T>[] getReferencedOps() {
         return refs;

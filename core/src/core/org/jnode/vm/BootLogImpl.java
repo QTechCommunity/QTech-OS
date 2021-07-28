@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -25,8 +25,8 @@ import java.io.PrintStream;
 import javax.naming.NameAlreadyBoundException;
 import javax.naming.NamingException;
 
-import org.jnode.bootlog.BootLog;
-import org.jnode.bootlog.BootLogInstance;
+import com.qtech.os.bootlog.BootLog;
+import com.qtech.os.bootlog.BootLogInstance;
 import org.jnode.vm.objects.BootableObject;
 
 /**

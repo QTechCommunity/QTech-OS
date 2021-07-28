@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,11 +20,11 @@
  
 package org.jnode.vm;
 
-import org.jnode.system.resource.IOResource;
-import org.jnode.system.resource.Resource;
-import org.jnode.system.resource.ResourceNotFreeException;
-import org.jnode.system.resource.ResourceOwner;
-import org.jnode.util.NumberUtils;
+import com.qtech.os.system.resource.IOResource;
+import com.qtech.os.system.resource.Resource;
+import com.qtech.os.system.resource.ResourceNotFreeException;
+import com.qtech.os.system.resource.ResourceOwner;
+import com.qtech.os.util.NumberUtils;
 
 
 /**

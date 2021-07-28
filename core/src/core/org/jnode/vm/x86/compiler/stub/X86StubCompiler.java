@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,11 +20,11 @@
  
 package org.jnode.vm.x86.compiler.stub;
 
-import org.jnode.assembler.Label;
-import org.jnode.assembler.NativeStream;
-import org.jnode.assembler.ObjectResolver;
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86BinaryAssembler;
+import com.qtech.os.assembler.Label;
+import com.qtech.os.assembler.NativeStream;
+import com.qtech.os.assembler.ObjectResolver;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86BinaryAssembler;
 import org.jnode.vm.classmgr.VmMethod;
 import org.jnode.vm.classmgr.VmType;
 import org.jnode.vm.compiler.CompiledMethod;

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import org.jnode.vm.objects.VmSystemObject;
+import org.jnode.annotation.AllowedPackages;
 import sun.reflect.annotation.AnnotationParser;
 
 /**
@@ -99,7 +100,7 @@ public final class VmAnnotation extends VmSystemObject {
         if (value == null) {
             final VmType<? extends Annotation> annType = annotationType(loader);
             //todo will be obsolate when annotation paring is migrated to openjdk
-            if (!annType.getName().equals(org.jnode.annotation.AllowedPackages.class.getName())) {
+            if (!annType.getName().equals(AllowedPackages.class.getName())) {
                 int dmc = annType.getNoDeclaredMethods();
                 Map vmap = new HashMap();
                 for (int i = 0; i < dmc; i++) {

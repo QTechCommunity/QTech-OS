@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -28,9 +28,9 @@
         license-name="lgpl">
         
   <requires>
-    <import plugin="org.jnode.driver.console.core" version="@VERSION@"/>
-    <import plugin="org.jnode.driver.console" version="@VERSION@"/>
-    <import plugin="org.jnode.shell" version="@VERSION@"/>
+    <import plugin="com.qtech.os.driver.console.core" version="@VERSION@"/>
+    <import plugin="com.qtech.os.driver.console" version="@VERSION@"/>
+    <import plugin="com.qtech.os.shell" version="@VERSION@"/>
   </requires>
         
   <runtime>
@@ -48,7 +48,7 @@
     </library>
   </runtime>
 
-  <extension point="org.jnode.security.permissions">
+  <extension point="com.qtech.os.security.permissions">
     <permission class="java.util.PropertyPermission" name="user.home" actions="read"/>
     <permission class="java.security.AllPermission" />
   </extension>

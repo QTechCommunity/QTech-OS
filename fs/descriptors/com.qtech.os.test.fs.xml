@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Copyright (C) 2003-2015 QTech Community
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; If not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<!DOCTYPE plugin SYSTEM "jnode.dtd">
+
+<plugin id="com.qtech.os.test.fs"
+        name="QTech OS File System Test classes"
+        version="@VERSION@"
+        license-name="lgpl"
+        provider-name="QTechOS">
+        
+  <requires>
+    <import plugin="com.qtech.os.fs"/>
+    <import plugin="com.qtech.os.fs.ext2"/>
+    <import plugin="com.qtech.os.fs.fat"/>
+    <import plugin="com.qtech.os.fs.jfat"/>
+    <import plugin="com.qtech.os.fs.ntfs"/>
+    <import plugin="com.qtech.os.fs.iso9660"/>
+    <import plugin="com.qtech.os.fs.hfsplus"/>
+    <import plugin="com.qtech.os.shell"/>
+    <import plugin="com.qtech.os.driver.bus.ide"/>
+    <import plugin="com.qtech.os.driver.bus.scsi"/>
+    <import plugin="com.qtech.os.driver.block.ide.disk"/>
+    <import plugin="com.qtech.os.driver.block.scsi.cdrom"/>
+    <import plugin="com.qtech.os.driver.block.usb.storage"/>
+        
+	<import plugin="org.junit" version="4.5"/>
+	<import plugin="net.sf.cglib" version="2.1"/>	
+	<import plugin="org.jmock" version="1.0.1"/>
+	<import plugin="org.jmock.cglib" version="1.0.1"/>
+				
+    <import plugin="com.qtech.os.driver.block"/>
+    <import plugin="com.qtech.os.driver.block.ramdisk"/>
+    <import plugin="com.qtech.os.fs.service"/>
+    <import plugin="com.qtech.os.log4j"/>
+    <import plugin="org.apache.tools.ant" version="1.6.3"/>
+  </requires>
+        
+  <runtime>
+    <library name="jnode-fs-test.jar">
+      <export name="com.qtech.os.test.support.*"/>
+      <export name="com.qtech.os.test.fs.*"/>
+      
+      <export name="com.qtech.os.test.fs.driver.*"/>
+      <export name="com.qtech.os.test.fs.driver.context.*"/>
+	  <export name="com.qtech.os.test.fs.driver.factories.*"/>
+	  <export name="com.qtech.os.test.fs.driver.stubs.*"/>
+	  <export name="com.qtech.os.test.fs.driver.tests.*"/>
+      
+      <export name="com.qtech.os.test.fs.filesystem.*"/>
+      <export name="com.qtech.os.test.fs.filesystem.config.*"/>
+      <export name="com.qtech.os.test.fs.filesystem.tests.*"/>
+    </library>
+  </runtime>
+        
+  <extension point="com.qtech.os.shell.aliases">
+    <alias name="BlockDeviceStressTest"      class="com.qtech.os.test.fs.BlockDeviceStressTest"/>
+    <alias name="FileTest"      class="com.qtech.os.test.fs.FileTest"/>
+    <alias name="LfnTest"      class="com.qtech.os.test.fs.LfnTest"/>
+    <alias name="SCSITest"      class="com.qtech.os.test.fs.SCSITest"/>
+  </extension>
+
+  <extension point="com.qtech.os.security.permissions">
+    <permission class="java.util.PropertyPermission" name="user.home" actions="read"/>
+    <permission class="java.util.PropertyPermission" name="user.dir" actions="read"/>
+    <permission class="java.util.PropertyPermission" name="os.name" actions="read"/>
+    <permission class="java.util.PropertyPermission" name="java.io.tmpdir" actions="read"/>
+    
+	<permission class="java.io.FilePermission" name="&lt;&lt;ALL FILES&gt;&gt;" actions="read,write,delete"/>
+	<permission class="java.lang.reflect.ReflectPermission" name="*" actions="suppressAccessChecks"/>	
+	
+    <permission class="java.net.SocketPermission" name="*" actions="resolve,listen,connect"/>    
+    <permission class="java.util.PropertyPermission" name="jnode.cmdline" actions="read,write"/>
+    <permission class="java.util.PropertyPermission" name="jnode.prompt" actions="read,write"/>
+    
+	<permission class="java.lang.RuntimePermission" name="exitVM" actions="*" />
+  </extension>
+  
+  <extension point="com.qtech.os.testrunner.tests">
+    <test class="com.qtech.os.test.fs.filesystem.FSTestSuite" category="fs"/>
+    <test class="com.qtech.os.test.fs.driver.BlockDeviceAPITestSuite" category="fs,driver"/>
+  </extension>  
+</plugin>

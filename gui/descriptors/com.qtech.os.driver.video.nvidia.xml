@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Copyright (C) 2003-2015 QTech Community
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; If not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<!DOCTYPE plugin SYSTEM "jnode.dtd">
+
+<plugin id="com.qtech.os.driver.video.nvidia"
+        name="QTech OS Video NVidia SVGA driver"
+        version="@VERSION@"
+        license-name="lgpl"
+        provider-name="QTechOS">
+        
+  <requires>
+    <import plugin="com.qtech.os.awt"/>
+    <!-- import plugin="com.qtech.os.driver"/ -->
+    <import plugin="com.qtech.os.driver.bus.pci"/>
+    <!-- import plugin="com.qtech.os.driver.video"/ -->
+    <import plugin="com.qtech.os.driver.video.vgahw"/>
+  </requires>
+        
+  <runtime>
+    <library name="jnode-gui.jar">
+      <export name="com.qtech.os.driver.video.nvidia.*"/>
+    </library>
+  </runtime>
+
+  <extension point="com.qtech.os.driver.mappers">
+    <!-- mapper class="com.qtech.os.driver.video.nvidia.NVidiaDeviceToDriverMapper"/ -->
+    <mapper id="10de:0020" architecture="NV04A" name="Riva TNT" driver-class="com.qtech.os.driver.video.nvidia.NVidiaDriver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="10de:0028" architecture="NV04A" name="RIVA TNT2/TNT2 Pro" driver-class="com.qtech.os.driver.video.nvidia.NVidiaDriver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="10de:0029" architecture="NV04A" name="RIVA TNT2 Ultra" driver-class="com.qtech.os.driver.video.nvidia.NVidiaDriver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="10de:002c" architecture="NV04A" name="Vanta/Vanta LT" driver-class="com.qtech.os.driver.video.nvidia.NVidiaDriver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="10de:002d" architecture="NV04A" name="RIVA TNT2 Model 64/Model 64 Pro" driver-class="com.qtech.os.driver.video.nvidia.NVidiaDriver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="10de:00a0" architecture="NV04A" name="Aladdin TNT2" driver-class="com.qtech.os.driver.video.nvidia.NVidiaDriver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="10de:0100" architecture="NV10A" name="GeForce 256" driver-class="com.qtech.os.driver.video.nvidia.NVidiaDriver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="10de:0101" architecture="NV10A" name="GeForce DDR" driver-class="com.qtech.os.driver.video.nvidia.NVidiaDriver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="10de:0110" architecture="NV11" name="GeForce2 MX/MX 400" driver-class="com.qtech.os.driver.video.nvidia.NVidiaDriver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="10de:0111" architecture="NV11DDR" name="GeForce2 MX 100 DDR/200 DDR" driver-class="com.qtech.os.driver.video.nvidia.NVidiaDriver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="10de:0202" architecture="NV10A" name="GeForce 3Ti500" driver-class="com.qtech.os.driver.video.nvidia.NVidiaDriver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+    <mapper id="10de:0286" architecture="NV28M" name="GeForce4 4200 Go" driver-class="com.qtech.os.driver.video.nvidia.NVidiaDriver" class="com.qtech.os.driver.bus.pci.PCIDeviceToDriverMapper"/>
+  </extension>
+        
+</plugin>

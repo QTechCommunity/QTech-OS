@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -36,7 +36,7 @@ final class X86GCMapIterator extends GCMapIterator {
 //    private Address framePtr;
 
     /**
-     * @see org.jnode.vm.compiler.GCMapIterator#getNextReferenceAddress()
+     * @see GCMapIterator#getNextReferenceAddress()
      */
     @Override
     public Address getNextReferenceAddress() {
@@ -45,7 +45,7 @@ final class X86GCMapIterator extends GCMapIterator {
     }
 
     /**
-     * @see org.jnode.vm.compiler.GCMapIterator#iterationComplete()
+     * @see GCMapIterator#iterationComplete()
      */
     @Override
     public void iterationComplete() {
@@ -53,7 +53,7 @@ final class X86GCMapIterator extends GCMapIterator {
     }
 
     /**
-     * @see org.jnode.vm.compiler.GCMapIterator#setupIteration(org.jnode.vm.classmgr.VmCompiledCode,
+     * @see GCMapIterator#setupIteration(VmCompiledCode,
      *      org.vmmagic.unboxed.Offset, org.vmmagic.unboxed.Address)
      */
     @Override

@@ -73,34 +73,34 @@ java.util.zip
 
 gnu.classpath
 
-org.jnode.assembler
-org.jnode.boot
-org.jnode.bootlog
-org.jnode.naming
-org.jnode.permission
-org.jnode.plugin
-org.jnode.plugin.manager
-org.jnode.plugin.model
-org.jnode.security
-org.jnode.system.resource
-org.jnode.system.event
-org.jnode.util
-org.jnode.vm
-org.jnode.vm.bytecode
-org.jnode.vm.classmgr
-org.jnode.vm.compiler
-org.jnode.vm.facade
-org.jnode.vm.isolate
-org.jnode.vm.objects
-org.jnode.vm.scheduler
+com.qtech.os.assembler
+com.qtech.os.boot
+com.qtech.os.bootlog
+com.qtech.os.naming
+com.qtech.os.permission
+com.qtech.os.plugin
+com.qtech.os.plugin.manager
+com.qtech.os.plugin.model
+com.qtech.os.security
+com.qtech.os.system.resource
+com.qtech.os.system.event
+com.qtech.os.util
+com.qtech.os.vm
+com.qtech.os.vm.bytecode
+com.qtech.os.vm.classmgr
+com.qtech.os.vm.compiler
+com.qtech.os.vm.facade
+com.qtech.os.vm.isolate
+com.qtech.os.vm.objects
+com.qtech.os.vm.scheduler
         
-org.jnode.vm.memmgr
-org.jnode.vm.memmgr.def
+com.qtech.os.vm.memmgr
+com.qtech.os.vm.memmgr.def
 
-//org.jnode.vm.memmgr.mmtk
-//org.jnode.vm.memmgr.mmtk.genrc
-//org.jnode.vm.memmgr.mmtk.nogc
-//org.jnode.vm.memmgr.mmtk.ms
+//com.qtech.os.vm.memmgr.mmtk
+//com.qtech.os.vm.memmgr.mmtk.genrc
+//com.qtech.os.vm.memmgr.mmtk.nogc
+//com.qtech.os.vm.memmgr.mmtk.ms
 
 //todo review for boot image size reduction
 //sun.misc
@@ -173,8 +173,8 @@ sun.nio.cs.UTF*
 // javax.swing.filechooser
 // javax.swing.undo
 // 
-// org.jnode.awt
-// org.jnode.awt.swingpeers
+// com.qtech.os.awt
+// com.qtech.os.awt.swingpeers
 // 
 // gnu.java.locale
 // 

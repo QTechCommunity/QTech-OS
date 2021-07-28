@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,19 +20,20 @@
  
 package org.jnode.vm.x86.compiler.l1a;
 
-import org.jnode.assembler.Label;
-import org.jnode.assembler.NativeStream;
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86Constants;
-import org.jnode.assembler.x86.X86Operation;
-import org.jnode.assembler.x86.X86Register;
-import org.jnode.assembler.x86.X86Register.GPR;
-import org.jnode.assembler.x86.X86Register.GPR32;
-import org.jnode.assembler.x86.X86Register.GPR64;
-import org.jnode.bootlog.BootLogInstance;
+import com.qtech.os.assembler.Label;
+import com.qtech.os.assembler.NativeStream;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86Constants;
+import com.qtech.os.assembler.x86.X86Operation;
+import com.qtech.os.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86Register.GPR;
+import com.qtech.os.assembler.x86.X86Register.GPR32;
+import com.qtech.os.assembler.x86.X86Register.GPR64;
+import com.qtech.os.bootlog.BootLogInstance;
 import org.jnode.vm.JvmType;
 import org.jnode.vm.bytecode.BasicBlock;
 import org.jnode.vm.bytecode.BytecodeParser;
+import org.jnode.vm.bytecode.BytecodeVisitor;
 import org.jnode.vm.bytecode.TypeStack;
 import org.jnode.vm.classmgr.ObjectLayout;
 import org.jnode.vm.classmgr.Signature;
@@ -62,6 +63,7 @@ import org.jnode.vm.compiler.InlineBytecodeVisitor;
 import org.jnode.vm.facade.TypeSizeInfo;
 import org.jnode.vm.facade.VmUtils;
 import org.jnode.vm.objects.CounterGroup;
+import org.jnode.vm.compiler.CompilerBytecodeVisitor;
 import org.jnode.vm.x86.compiler.AbstractX86StackManager;
 import org.jnode.vm.x86.compiler.X86CompilerHelper;
 import org.jnode.vm.x86.compiler.X86IMTCompiler32;
@@ -526,7 +528,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.compiler.InlineBytecodeVisitor#endInlinedMethod(org.jnode.vm.classmgr.VmMethod)
+     * @see InlineBytecodeVisitor#endInlinedMethod(VmMethod)
      */
     public void endInlinedMethod(VmMethod previousMethod) {
         if (log) {
@@ -553,7 +555,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#endInstruction()
+     * @see BytecodeVisitor#endInstruction()
      */
     public void endInstruction() {
         // In debug mode, do a lot of verifications
@@ -653,7 +655,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#endMethod()
+     * @see BytecodeVisitor#endMethod()
      */
     public synchronized void endMethod() {
         stackFrame.emitTrailer(typeSizeInfo, maxLocals);
@@ -841,7 +843,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
      *
      * @param operation
      * @param commutative
-     * @see org.jnode.assembler.x86.X86Operation
+     * @see com.qtech.os.assembler.x86.X86Operation
      */
     private void ioperation(int operation, boolean commutative) {
         IntItem v2 = vstack.popInt();
@@ -967,7 +969,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
      * @param operationLsb
      * @param operationMsb
      * @param commutative
-     * @see org.jnode.assembler.x86.X86Operation
+     * @see com.qtech.os.assembler.x86.X86Operation
      */
     private void loperation(int operationLsb, int operationMsb, boolean commutative) {
         LongItem v2 = vstack.popLong();
@@ -1058,7 +1060,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param parser
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#setParser(org.jnode.vm.bytecode.BytecodeParser)
+     * @see BytecodeVisitor#setParser(BytecodeParser)
      */
     public void setParser(BytecodeParser parser) {
         this.parser = parser;
@@ -1092,7 +1094,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.compiler.InlineBytecodeVisitor#startInlinedMethodCode(VmMethod,
+     * @see InlineBytecodeVisitor#startInlinedMethodCode(VmMethod,
      *      int)
      */
     public void startInlinedMethodCode(VmMethod inlinedMethod, int newMaxLocals) {
@@ -1111,7 +1113,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.compiler.InlineBytecodeVisitor#startInlinedMethodHeader(VmMethod,
+     * @see InlineBytecodeVisitor#startInlinedMethodHeader(VmMethod,
      *      int)
      */
     public void startInlinedMethodHeader(VmMethod inlinedMethod,
@@ -1135,7 +1137,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#startInstruction(int)
+     * @see BytecodeVisitor#startInstruction(int)
      */
     public void startInstruction(int address) {
         if (debug) {
@@ -1161,7 +1163,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param method
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#startMethod(org.jnode.vm.classmgr.VmMethod)
+     * @see BytecodeVisitor#startMethod(VmMethod)
      */
     public synchronized void startMethod(VmMethod method) {
         working = true;
@@ -1186,21 +1188,21 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_aaload()
+     * @see BytecodeVisitor#visit_aaload()
      */
     public final void visit_aaload() {
         waload(JvmType.REFERENCE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_aastore()
+     * @see BytecodeVisitor#visit_aastore()
      */
     public final void visit_aastore() {
         wastore(JvmType.REFERENCE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_aconst_null()
+     * @see BytecodeVisitor#visit_aconst_null()
      */
     public final void visit_aconst_null() {
         vstack.push(ifac.createAConst(eContext, null));
@@ -1208,14 +1210,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param index
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_aload(int)
+     * @see BytecodeVisitor#visit_aload(int)
      */
     public final void visit_aload(int index) {
         wload(JvmType.REFERENCE, index, false);
     }
 
     /**
-     * @see org.jnode.vm.compiler.CompilerBytecodeVisitor#visit_aloadStored(int)
+     * @see CompilerBytecodeVisitor#visit_aloadStored(int)
      */
     public void visit_aloadStored(int index) {
         wload(JvmType.REFERENCE, index, true);
@@ -1223,7 +1225,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param classRef
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_anewarray(org.jnode.vm.classmgr.VmConstClass)
+     * @see BytecodeVisitor#visit_anewarray(VmConstClass)
      */
     public final void visit_anewarray(VmConstClass classRef) {
         counters.getCounter("anewarray").inc();
@@ -1261,14 +1263,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_areturn()
+     * @see BytecodeVisitor#visit_areturn()
      */
     public final void visit_areturn() {
         wreturn(JvmType.REFERENCE, true);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_arraylength()
+     * @see BytecodeVisitor#visit_arraylength()
      */
     public final void visit_arraylength() {
         final RefItem ref = vstack.popRef();
@@ -1292,14 +1294,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param index
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_astore(int)
+     * @see BytecodeVisitor#visit_astore(int)
      */
     public final void visit_astore(int index) {
         wstore(JvmType.REFERENCE, index);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_athrow()
+     * @see BytecodeVisitor#visit_athrow()
      */
     public final void visit_athrow() {
         final RefItem ref = vstack.popRef();
@@ -1318,28 +1320,28 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_baload()
+     * @see BytecodeVisitor#visit_baload()
      */
     public final void visit_baload() {
         waload(JvmType.BYTE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_bastore()
+     * @see BytecodeVisitor#visit_bastore()
      */
     public final void visit_bastore() {
         wastore(JvmType.BYTE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_caload()
+     * @see BytecodeVisitor#visit_caload()
      */
     public final void visit_caload() {
         waload(JvmType.CHAR);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_castore()
+     * @see BytecodeVisitor#visit_castore()
      */
     public final void visit_castore() {
         wastore(JvmType.CHAR);
@@ -1347,7 +1349,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param classRef
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_checkcast(org.jnode.vm.classmgr.VmConstClass)
+     * @see BytecodeVisitor#visit_checkcast(VmConstClass)
      */
     public final void visit_checkcast(VmConstClass classRef) {
         // Resolve classRef
@@ -1450,56 +1452,56 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_d2f()
+     * @see BytecodeVisitor#visit_d2f()
      */
     public final void visit_d2f() {
         fpCompiler.convert(JvmType.DOUBLE, JvmType.FLOAT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_d2i()
+     * @see BytecodeVisitor#visit_d2i()
      */
     public final void visit_d2i() {
         fpCompiler.convert(JvmType.DOUBLE, JvmType.INT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_d2l()
+     * @see BytecodeVisitor#visit_d2l()
      */
     public final void visit_d2l() {
         fpCompiler.convert(JvmType.DOUBLE, JvmType.LONG);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dadd()
+     * @see BytecodeVisitor#visit_dadd()
      */
     public final void visit_dadd() {
         fpCompiler.add(JvmType.DOUBLE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_daload()
+     * @see BytecodeVisitor#visit_daload()
      */
     public final void visit_daload() {
         fpCompiler.fpaload(JvmType.DOUBLE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dastore()
+     * @see BytecodeVisitor#visit_dastore()
      */
     public final void visit_dastore() {
         dwastore(JvmType.DOUBLE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dcmpg()
+     * @see BytecodeVisitor#visit_dcmpg()
      */
     public final void visit_dcmpg() {
         fpCompiler.compare(true, JvmType.DOUBLE, getCurInstrLabel());
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dcmpl()
+     * @see BytecodeVisitor#visit_dcmpl()
      */
     public final void visit_dcmpl() {
         fpCompiler.compare(false, JvmType.DOUBLE, getCurInstrLabel());
@@ -1507,14 +1509,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param value
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dconst(double)
+     * @see BytecodeVisitor#visit_dconst(double)
      */
     public final void visit_dconst(double value) {
         vstack.push(ifac.createDConst(eContext, value));
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ddiv()
+     * @see BytecodeVisitor#visit_ddiv()
      */
     public final void visit_ddiv() {
         fpCompiler.div(JvmType.DOUBLE);
@@ -1522,7 +1524,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param index
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dload(int)
+     * @see BytecodeVisitor#visit_dload(int)
      */
     public final void visit_dload(int index) {
         vstack.push(ifac.createLocal(JvmType.DOUBLE, stackFrame
@@ -1530,28 +1532,28 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dmul()
+     * @see BytecodeVisitor#visit_dmul()
      */
     public final void visit_dmul() {
         fpCompiler.mul(JvmType.DOUBLE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dneg()
+     * @see BytecodeVisitor#visit_dneg()
      */
     public final void visit_dneg() {
         fpCompiler.neg(JvmType.DOUBLE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_drem()
+     * @see BytecodeVisitor#visit_drem()
      */
     public final void visit_drem() {
         fpCompiler.rem(JvmType.DOUBLE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dreturn()
+     * @see BytecodeVisitor#visit_dreturn()
      */
     public final void visit_dreturn() {
         dwreturn(JvmType.DOUBLE, true);
@@ -1559,21 +1561,21 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param index
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dstore(int)
+     * @see BytecodeVisitor#visit_dstore(int)
      */
     public final void visit_dstore(int index) {
         dwstore(JvmType.DOUBLE, index);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dsub()
+     * @see BytecodeVisitor#visit_dsub()
      */
     public final void visit_dsub() {
         fpCompiler.sub(JvmType.DOUBLE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dup()
+     * @see BytecodeVisitor#visit_dup()
      */
     public final void visit_dup() {
         final Item v1 = vstack.pop();
@@ -1583,7 +1585,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dup_x1()
+     * @see BytecodeVisitor#visit_dup_x1()
      */
     public final void visit_dup_x1() {
         final Item v1 = vstack.pop();
@@ -1596,7 +1598,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dup_x2()
+     * @see BytecodeVisitor#visit_dup_x2()
      */
     public final void visit_dup_x2() {
         final Item v1 = vstack.pop();
@@ -1620,7 +1622,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dup2()
+     * @see BytecodeVisitor#visit_dup2()
      */
     public final void visit_dup2() {
         final Item v1 = vstack.pop();
@@ -1641,7 +1643,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dup2_x1()
+     * @see BytecodeVisitor#visit_dup2_x1()
      */
     public final void visit_dup2_x1() {
         final Item v1 = vstack.pop();
@@ -1665,7 +1667,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_dup2_x2()
+     * @see BytecodeVisitor#visit_dup2_x2()
      */
     public final void visit_dup2_x2() {
         // TODO: port to ORP style (http://orp.sourceforge.net/)
@@ -1730,56 +1732,56 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_f2d()
+     * @see BytecodeVisitor#visit_f2d()
      */
     public final void visit_f2d() {
         fpCompiler.convert(JvmType.FLOAT, JvmType.DOUBLE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_f2i()
+     * @see BytecodeVisitor#visit_f2i()
      */
     public final void visit_f2i() {
         fpCompiler.convert(JvmType.FLOAT, JvmType.INT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_f2l()
+     * @see BytecodeVisitor#visit_f2l()
      */
     public final void visit_f2l() {
         fpCompiler.convert(JvmType.FLOAT, JvmType.LONG);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fadd()
+     * @see BytecodeVisitor#visit_fadd()
      */
     public final void visit_fadd() {
         fpCompiler.add(JvmType.FLOAT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_faload()
+     * @see BytecodeVisitor#visit_faload()
      */
     public final void visit_faload() {
         fpCompiler.fpaload(JvmType.FLOAT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fastore()
+     * @see BytecodeVisitor#visit_fastore()
      */
     public final void visit_fastore() {
         wastore(JvmType.FLOAT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fcmpg()
+     * @see BytecodeVisitor#visit_fcmpg()
      */
     public final void visit_fcmpg() {
         fpCompiler.compare(true, JvmType.FLOAT, getCurInstrLabel());
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fcmpl()
+     * @see BytecodeVisitor#visit_fcmpl()
      */
     public final void visit_fcmpl() {
         fpCompiler.compare(false, JvmType.FLOAT, getCurInstrLabel());
@@ -1787,14 +1789,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param value
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fconst(float)
+     * @see BytecodeVisitor#visit_fconst(float)
      */
     public final void visit_fconst(float value) {
         vstack.push(ifac.createFConst(eContext, value));
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fdiv()
+     * @see BytecodeVisitor#visit_fdiv()
      */
     public final void visit_fdiv() {
         fpCompiler.div(JvmType.FLOAT);
@@ -1802,42 +1804,42 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param index
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fload(int)
+     * @see BytecodeVisitor#visit_fload(int)
      */
     public final void visit_fload(int index) {
         wload(JvmType.FLOAT, index, false);
     }
 
     /**
-     * @see org.jnode.vm.compiler.CompilerBytecodeVisitor#visit_floadStored(int)
+     * @see CompilerBytecodeVisitor#visit_floadStored(int)
      */
     public void visit_floadStored(int index) {
         wload(JvmType.FLOAT, index, true);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fmul()
+     * @see BytecodeVisitor#visit_fmul()
      */
     public final void visit_fmul() {
         fpCompiler.mul(JvmType.FLOAT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fneg()
+     * @see BytecodeVisitor#visit_fneg()
      */
     public final void visit_fneg() {
         fpCompiler.neg(JvmType.FLOAT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_frem()
+     * @see BytecodeVisitor#visit_frem()
      */
     public final void visit_frem() {
         fpCompiler.rem(JvmType.FLOAT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_freturn()
+     * @see BytecodeVisitor#visit_freturn()
      */
     public final void visit_freturn() {
         wreturn(JvmType.FLOAT, true);
@@ -1845,14 +1847,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param index
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fstore(int)
+     * @see BytecodeVisitor#visit_fstore(int)
      */
     public final void visit_fstore(int index) {
         wstore(JvmType.FLOAT, index);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_fsub()
+     * @see BytecodeVisitor#visit_fsub()
      */
     public final void visit_fsub() {
         fpCompiler.sub(JvmType.FLOAT);
@@ -1860,7 +1862,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param fieldRef
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_getfield(org.jnode.vm.classmgr.VmConstFieldRef)
+     * @see BytecodeVisitor#visit_getfield(VmConstFieldRef)
      */
     public final void visit_getfield(VmConstFieldRef fieldRef) {
         fieldRef.resolve(loader);
@@ -1944,7 +1946,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param fieldRef
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_getstatic(org.jnode.vm.classmgr.VmConstFieldRef)
+     * @see BytecodeVisitor#visit_getstatic(VmConstFieldRef)
      */
     public final void visit_getstatic(VmConstFieldRef fieldRef) {
         final Label curInstrLabel = getCurInstrLabel();
@@ -2019,7 +2021,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_goto(int)
+     * @see BytecodeVisitor#visit_goto(int)
      */
     public final void visit_goto(int address) {
         vstack.push(eContext);
@@ -2027,7 +2029,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_i2b()
+     * @see BytecodeVisitor#visit_i2b()
      */
     public final void visit_i2b() {
         final IntItem v = vstack.popInt();
@@ -2043,7 +2045,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_i2c()
+     * @see BytecodeVisitor#visit_i2c()
      */
     public final void visit_i2c() {
         final IntItem v = vstack.popInt();
@@ -2059,21 +2061,21 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_i2d()
+     * @see BytecodeVisitor#visit_i2d()
      */
     public final void visit_i2d() {
         fpCompiler.convert(JvmType.INT, JvmType.DOUBLE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_i2f()
+     * @see BytecodeVisitor#visit_i2f()
      */
     public final void visit_i2f() {
         fpCompiler.convert(JvmType.INT, JvmType.FLOAT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_i2l()
+     * @see BytecodeVisitor#visit_i2l()
      */
     public final void visit_i2l() {
         final IntItem v = vstack.popInt();
@@ -2111,7 +2113,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_i2s()
+     * @see BytecodeVisitor#visit_i2s()
      */
     public final void visit_i2s() {
         final IntItem v = vstack.popInt();
@@ -2127,28 +2129,28 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_iadd()
+     * @see BytecodeVisitor#visit_iadd()
      */
     public final void visit_iadd() {
         ioperation(X86Operation.ADD, true);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_iaload()
+     * @see BytecodeVisitor#visit_iaload()
      */
     public final void visit_iaload() {
         waload(JvmType.INT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_iand()
+     * @see BytecodeVisitor#visit_iand()
      */
     public final void visit_iand() {
         ioperation(X86Operation.AND, true);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_iastore()
+     * @see BytecodeVisitor#visit_iastore()
      */
     public final void visit_iastore() {
         wastore(JvmType.INT);
@@ -2156,14 +2158,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param value
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_iconst(int)
+     * @see BytecodeVisitor#visit_iconst(int)
      */
     public final void visit_iconst(int value) {
         vstack.push(ifac.createIConst(eContext, value));
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_idiv()
+     * @see BytecodeVisitor#visit_idiv()
      */
     public final void visit_idiv() {
         final X86RegisterPool pool = eContext.getGPRPool();
@@ -2269,7 +2271,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_if_acmpeq(int)
+     * @see BytecodeVisitor#visit_if_acmpeq(int)
      */
     public final void visit_if_acmpeq(int address) {
         visit_if_acmp(address, X86Constants.JE); // JE
@@ -2277,7 +2279,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_if_acmpne(int)
+     * @see BytecodeVisitor#visit_if_acmpne(int)
      */
     public final void visit_if_acmpne(int address) {
         visit_if_acmp(address, X86Constants.JNE); // JNE
@@ -2326,7 +2328,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_if_icmpeq(int)
+     * @see BytecodeVisitor#visit_if_icmpeq(int)
      */
     public final void visit_if_icmpeq(int address) {
         visit_if_icmp(address, X86Constants.JE); // JE
@@ -2334,7 +2336,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_if_icmpge(int)
+     * @see BytecodeVisitor#visit_if_icmpge(int)
      */
     public final void visit_if_icmpge(int address) {
         visit_if_icmp(address, X86Constants.JGE); // JGE
@@ -2342,7 +2344,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_if_icmpgt(int)
+     * @see BytecodeVisitor#visit_if_icmpgt(int)
      */
     public final void visit_if_icmpgt(int address) {
         visit_if_icmp(address, X86Constants.JG); // JG
@@ -2350,7 +2352,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_if_icmple(int)
+     * @see BytecodeVisitor#visit_if_icmple(int)
      */
     public final void visit_if_icmple(int address) {
         visit_if_icmp(address, X86Constants.JLE); // JLE
@@ -2358,7 +2360,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_if_icmplt(int)
+     * @see BytecodeVisitor#visit_if_icmplt(int)
      */
     public final void visit_if_icmplt(int address) {
         visit_if_icmp(address, X86Constants.JL); // JL
@@ -2366,7 +2368,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_if_icmpne(int)
+     * @see BytecodeVisitor#visit_if_icmpne(int)
      */
     public final void visit_if_icmpne(int address) {
         visit_if_icmp(address, X86Constants.JNE); // JNE
@@ -2374,7 +2376,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ifeq(int)
+     * @see BytecodeVisitor#visit_ifeq(int)
      */
     public final void visit_ifeq(int address) {
         visit_ifxx(JvmType.INT, address, X86Constants.JE); // JE
@@ -2382,7 +2384,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ifge(int)
+     * @see BytecodeVisitor#visit_ifge(int)
      */
     public final void visit_ifge(int address) {
         visit_ifxx(JvmType.INT, address, X86Constants.JGE); // JGE
@@ -2390,7 +2392,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ifgt(int)
+     * @see BytecodeVisitor#visit_ifgt(int)
      */
     public final void visit_ifgt(int address) {
         visit_ifxx(JvmType.INT, address, X86Constants.JG); // JG
@@ -2398,7 +2400,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ifle(int)
+     * @see BytecodeVisitor#visit_ifle(int)
      */
     public final void visit_ifle(int address) {
         visit_ifxx(JvmType.INT, address, X86Constants.JLE); // JLE
@@ -2406,7 +2408,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_iflt(int)
+     * @see BytecodeVisitor#visit_iflt(int)
      */
     public final void visit_iflt(int address) {
         visit_ifxx(JvmType.INT, address, X86Constants.JL); // JL
@@ -2414,7 +2416,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ifne(int)
+     * @see BytecodeVisitor#visit_ifne(int)
      */
     public final void visit_ifne(int address) {
         visit_ifxx(JvmType.INT, address, X86Constants.JNE); // JNE
@@ -2422,7 +2424,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ifnonnull(int)
+     * @see BytecodeVisitor#visit_ifnonnull(int)
      */
     public final void visit_ifnonnull(int address) {
         visit_ifxx(JvmType.REFERENCE, address, X86Constants.JNE);
@@ -2430,7 +2432,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ifnull(int)
+     * @see BytecodeVisitor#visit_ifnull(int)
      */
     public final void visit_ifnull(int address) {
         visit_ifxx(JvmType.REFERENCE, address, X86Constants.JE);
@@ -2488,7 +2490,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     /**
      * @param index
      * @param incValue
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_iinc(int, int)
+     * @see BytecodeVisitor#visit_iinc(int, int)
      */
     public final void visit_iinc(int index, int incValue) {
         final int ebpOfs = stackFrame.getEbpOffset(typeSizeInfo, index);
@@ -2505,14 +2507,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param index
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_iload(int)
+     * @see BytecodeVisitor#visit_iload(int)
      */
     public final void visit_iload(int index) {
         wload(JvmType.INT, index, false);
     }
 
     /**
-     * @see org.jnode.vm.compiler.CompilerBytecodeVisitor#visit_iloadStored(int)
+     * @see CompilerBytecodeVisitor#visit_iloadStored(int)
      */
     public void visit_iloadStored(int index) {
         wload(JvmType.INT, index, true);
@@ -2536,7 +2538,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_imul()
+     * @see BytecodeVisitor#visit_imul()
      */
     public final void visit_imul() {
         IntItem v2 = vstack.popInt();
@@ -2592,7 +2594,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ineg()
+     * @see BytecodeVisitor#visit_ineg()
      */
     public final void visit_ineg() {
         final IntItem val = vstack.popInt();
@@ -2606,7 +2608,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.compiler.InlineBytecodeVisitor#visit_inlinedReturn(int)
+     * @see InlineBytecodeVisitor#visit_inlinedReturn(int)
      */
     public void visit_inlinedReturn(int jvmType) {
         if (debug) {
@@ -2639,7 +2641,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param classRef
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_instanceof(org.jnode.vm.classmgr.VmConstClass)
+     * @see BytecodeVisitor#visit_instanceof(VmConstClass)
      */
     public final void visit_instanceof(VmConstClass classRef) {
         // Resolve the classRef
@@ -2728,7 +2730,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     /**
      * @param methodRef
      * @param count
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_invokeinterface(VmConstIMethodRef, int)
+     * @see BytecodeVisitor#visit_invokeinterface(VmConstIMethodRef, int)
      */
     public final void visit_invokeinterface(VmConstIMethodRef methodRef, int count) {
         vstack.push(eContext);
@@ -2757,7 +2759,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param methodRef
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_invokespecial(org.jnode.vm.classmgr.VmConstMethodRef)
+     * @see BytecodeVisitor#visit_invokespecial(VmConstMethodRef)
      */
     public final void visit_invokespecial(VmConstMethodRef methodRef) {
         // Flush the stack before an invoke
@@ -2781,7 +2783,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param methodRef
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_invokestatic(org.jnode.vm.classmgr.VmConstMethodRef)
+     * @see BytecodeVisitor#visit_invokestatic(VmConstMethodRef)
      */
     public final void visit_invokestatic(VmConstMethodRef methodRef) {
         methodRef.resolve(loader);
@@ -2804,7 +2806,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param methodRef
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_invokevirtual(org.jnode.vm.classmgr.VmConstMethodRef)
+     * @see BytecodeVisitor#visit_invokevirtual(VmConstMethodRef)
      */
     public final void visit_invokevirtual(VmConstMethodRef methodRef) {
         methodRef.resolve(loader);
@@ -2861,14 +2863,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ior()
+     * @see BytecodeVisitor#visit_ior()
      */
     public final void visit_ior() {
         ioperation(X86Operation.OR, true);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_irem()
+     * @see BytecodeVisitor#visit_irem()
      */
     public final void visit_irem() {
         // Pre-claim result in EDX
@@ -2904,21 +2906,21 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ireturn()
+     * @see BytecodeVisitor#visit_ireturn()
      */
     public final void visit_ireturn() {
         wreturn(JvmType.INT, true);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ishl()
+     * @see BytecodeVisitor#visit_ishl()
      */
     public final void visit_ishl() {
         ishift(X86Operation.SAL);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ishr()
+     * @see BytecodeVisitor#visit_ishr()
      */
     public final void visit_ishr() {
         ishift(X86Operation.SAR);
@@ -2926,28 +2928,28 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param index
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_istore(int)
+     * @see BytecodeVisitor#visit_istore(int)
      */
     public final void visit_istore(int index) {
         wstore(JvmType.INT, index);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_isub()
+     * @see BytecodeVisitor#visit_isub()
      */
     public final void visit_isub() {
         ioperation(X86Operation.SUB, false);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_iushr()
+     * @see BytecodeVisitor#visit_iushr()
      */
     public final void visit_iushr() {
         ishift(X86Operation.SHR);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ixor()
+     * @see BytecodeVisitor#visit_ixor()
      */
     public final void visit_ixor() {
         ioperation(X86Operation.XOR, true);
@@ -2955,28 +2957,28 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
 
     /**
      * @param address
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_jsr(int)
+     * @see BytecodeVisitor#visit_jsr(int)
      */
     public final void visit_jsr(int address) {
         os.writeCALL(helper.getInstrLabel(address));
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_l2d()
+     * @see BytecodeVisitor#visit_l2d()
      */
     public final void visit_l2d() {
         fpCompiler.convert(JvmType.LONG, JvmType.DOUBLE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_l2f()
+     * @see BytecodeVisitor#visit_l2f()
      */
     public final void visit_l2f() {
         fpCompiler.convert(JvmType.LONG, JvmType.FLOAT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_l2i()
+     * @see BytecodeVisitor#visit_l2i()
      */
     public final void visit_l2i() {
         final LongItem v = vstack.popLong();
@@ -3006,14 +3008,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ladd()
+     * @see BytecodeVisitor#visit_ladd()
      */
     public final void visit_ladd() {
         loperation(X86Operation.ADD, X86Operation.ADC, true);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_laload()
+     * @see BytecodeVisitor#visit_laload()
      */
     public final void visit_laload() {
         final IntItem idx = vstack.popInt();
@@ -3053,21 +3055,21 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_land()
+     * @see BytecodeVisitor#visit_land()
      */
     public final void visit_land() {
         loperation(X86Operation.AND, X86Operation.AND, true);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lastore()
+     * @see BytecodeVisitor#visit_lastore()
      */
     public final void visit_lastore() {
         dwastore(JvmType.LONG);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lcmp()
+     * @see BytecodeVisitor#visit_lcmp()
      */
     public final void visit_lcmp() {
         final LongItem v2 = vstack.popLong();
@@ -3121,14 +3123,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lconst(long)
+     * @see BytecodeVisitor#visit_lconst(long)
      */
     public final void visit_lconst(long v) {
         vstack.push(ifac.createLConst(eContext, v));
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ldc(VmConstClass)
+     * @see BytecodeVisitor#visit_ldc(VmConstClass)
      */
     public final void visit_ldc(VmConstClass classRef) {
         counters.getCounter("ldc-class").inc();
@@ -3172,14 +3174,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ldc(VmConstString)
+     * @see BytecodeVisitor#visit_ldc(VmConstString)
      */
     public final void visit_ldc(VmConstString value) {
         vstack.push(ifac.createAConst(eContext, value));
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ldiv()
+     * @see BytecodeVisitor#visit_ldiv()
      */
     public final void visit_ldiv() {
         // Maintain counter
@@ -3227,7 +3229,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lload(int)
+     * @see BytecodeVisitor#visit_lload(int)
      */
     public final void visit_lload(int index) {
         vstack.push(ifac.createLocal(JvmType.LONG, stackFrame
@@ -3235,7 +3237,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lmul()
+     * @see BytecodeVisitor#visit_lmul()
      */
     public final void visit_lmul() {
         // Maintain counter
@@ -3307,7 +3309,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lneg()
+     * @see BytecodeVisitor#visit_lneg()
      */
     public final void visit_lneg() {
         final LongItem v = vstack.popLong();
@@ -3337,7 +3339,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lookupswitch(int, int[], int[])
+     * @see BytecodeVisitor#visit_lookupswitch(int, int[], int[])
      */
     public final void visit_lookupswitch(int defAddress, int[] matchValues, int[] addresses) {
         final int n = matchValues.length;
@@ -3359,14 +3361,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lor()
+     * @see BytecodeVisitor#visit_lor()
      */
     public final void visit_lor() {
         loperation(X86Operation.OR, X86Operation.OR, true);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lrem()
+     * @see BytecodeVisitor#visit_lrem()
      */
     public final void visit_lrem() {
         if (os.isCode32()) {
@@ -3413,14 +3415,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lreturn()
+     * @see BytecodeVisitor#visit_lreturn()
      */
     public final void visit_lreturn() {
         dwreturn(JvmType.LONG, true);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lshl()
+     * @see BytecodeVisitor#visit_lshl()
      */
     public final void visit_lshl() {
         final GPR ECX = X86Register.ECX;
@@ -3466,7 +3468,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lshr()
+     * @see BytecodeVisitor#visit_lshr()
      */
     public final void visit_lshr() {
         final GPR ECX = X86Register.ECX;
@@ -3517,21 +3519,21 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lstore(int)
+     * @see BytecodeVisitor#visit_lstore(int)
      */
     public final void visit_lstore(int index) {
         dwstore(JvmType.LONG, index);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lsub()
+     * @see BytecodeVisitor#visit_lsub()
      */
     public final void visit_lsub() {
         loperation(X86Operation.SUB, X86Operation.SBB, false);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lushr()
+     * @see BytecodeVisitor#visit_lushr()
      */
     public final void visit_lushr() {
         final GPR ECX = X86Register.ECX;
@@ -3583,14 +3585,14 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_lxor()
+     * @see BytecodeVisitor#visit_lxor()
      */
     public final void visit_lxor() {
         loperation(X86Operation.XOR, X86Operation.XOR, true);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_monitorenter()
+     * @see BytecodeVisitor#visit_monitorenter()
      */
     public final void visit_monitorenter() {
         counters.getCounter("monitor-enter").inc();
@@ -3604,7 +3606,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_monitorexit()
+     * @see BytecodeVisitor#visit_monitorexit()
      */
     public final void visit_monitorexit() {
         counters.getCounter("monitor-exit").inc();
@@ -3618,7 +3620,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_multianewarray(VmConstClass, int)
+     * @see BytecodeVisitor#visit_multianewarray(VmConstClass, int)
      */
     public final void visit_multianewarray(VmConstClass clazz, int dimensions) {
         counters.getCounter("multianewarray").inc();
@@ -3666,7 +3668,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_new(org.jnode.vm.classmgr.VmConstClass)
+     * @see BytecodeVisitor#visit_new(VmConstClass)
      */
     public final void visit_new(VmConstClass classRef) {
         counters.getCounter("new").inc();
@@ -3690,7 +3692,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_newarray(int)
+     * @see BytecodeVisitor#visit_newarray(int)
      */
     public final void visit_newarray(int type) {
         counters.getCounter("newarray").inc();
@@ -3713,7 +3715,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_nop()
+     * @see BytecodeVisitor#visit_nop()
      */
     public final void visit_nop() {
         // Nothing
@@ -3721,21 +3723,21 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_pop()
+     * @see BytecodeVisitor#visit_pop()
      */
     public final void visit_pop() {
         generic_pop(helper.SLOTSIZE);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_pop2()
+     * @see BytecodeVisitor#visit_pop2()
      */
     public final void visit_pop2() {
         generic_pop(helper.SLOTSIZE * 2);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_putfield(org.jnode.vm.classmgr.VmConstFieldRef)
+     * @see BytecodeVisitor#visit_putfield(VmConstFieldRef)
      */
     public final void visit_putfield(VmConstFieldRef fieldRef) {
         fieldRef.resolve(loader);
@@ -3809,7 +3811,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_putstatic(org.jnode.vm.classmgr.VmConstFieldRef)
+     * @see BytecodeVisitor#visit_putstatic(VmConstFieldRef)
      */
     public final void visit_putstatic(VmConstFieldRef fieldRef) {
         final Label curInstrLabel = getCurInstrLabel();
@@ -3881,7 +3883,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_ret(int)
+     * @see BytecodeVisitor#visit_ret(int)
      */
     public final void visit_ret(int index) {
         // Calc EBP offset
@@ -3892,7 +3894,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_return()
+     * @see BytecodeVisitor#visit_return()
      */
     public final void visit_return() {
         // Discard vstack first
@@ -3914,21 +3916,21 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_saload()
+     * @see BytecodeVisitor#visit_saload()
      */
     public final void visit_saload() {
         waload(JvmType.SHORT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_sastore()
+     * @see BytecodeVisitor#visit_sastore()
      */
     public final void visit_sastore() {
         wastore(JvmType.SHORT);
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_swap()
+     * @see BytecodeVisitor#visit_swap()
      */
     public final void visit_swap() {
         final Item v1 = vstack.pop();
@@ -3949,7 +3951,7 @@ final class X86BytecodeVisitor extends InlineBytecodeVisitor {
     }
 
     /**
-     * @see org.jnode.vm.bytecode.BytecodeVisitor#visit_tableswitch(int, int, int, int[])
+     * @see BytecodeVisitor#visit_tableswitch(int, int, int, int[])
      */
     public final void visit_tableswitch(int defAddress, int lowValue, int highValue, int[] addresses) {
         // IMPROVE: check Jaos implementation

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -32,6 +32,7 @@ import org.jnode.vm.classmgr.VmSharedStatics;
 import org.jnode.vm.classmgr.VmType;
 import org.jnode.vm.compiler.CompiledIMT;
 import org.jnode.vm.scheduler.VmProcessor;
+import org.jnode.vm.classmgr.VmClassLoader;
 
 /**
  * @author Ewout Prangsma (epr@users.sourceforge.net)
@@ -64,7 +65,7 @@ public final class VmJavaClassLoader extends VmAbstractClassLoader {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmClassLoader#asClassLoader()
+     * @see VmClassLoader#asClassLoader()
      */
     public final ClassLoader asClassLoader() {
         return loader;
@@ -82,7 +83,7 @@ public final class VmJavaClassLoader extends VmAbstractClassLoader {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmClassLoader#findLoadedClass(java.lang.String)
+     * @see VmClassLoader#findLoadedClass(java.lang.String)
      */
     public final VmType findLoadedClass(String className) {
         return (VmType) loadedClasses.get(className);
@@ -99,21 +100,21 @@ public final class VmJavaClassLoader extends VmAbstractClassLoader {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmClassLoader#getArchitecture()
+     * @see VmClassLoader#getArchitecture()
      */
     public final BaseVmArchitecture getArchitecture() {
         return systemLoader.getArchitecture();
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmClassLoader#isCompileRequired()
+     * @see VmClassLoader#isCompileRequired()
      */
     public final boolean isCompileRequired() {
         return systemLoader.isCompileRequired();
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmClassLoader#loadClass(java.lang.String,
+     * @see VmClassLoader#loadClass(java.lang.String,
      *      boolean)
      */
     @PrivilegedActionPragma
@@ -134,21 +135,21 @@ public final class VmJavaClassLoader extends VmAbstractClassLoader {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmClassLoader#isSystemClassLoader()
+     * @see VmClassLoader#isSystemClassLoader()
      */
     public final boolean isSystemClassLoader() {
         return false;
     }
 
     /**
-     * @see org.jnode.vm.VmAbstractClassLoader#getSelectorMap()
+     * @see VmAbstractClassLoader#getSelectorMap()
      */
     protected final SelectorMap getSelectorMap() {
         return systemLoader.getSelectorMap();
     }
 
     /**
-     * @see org.jnode.vm.VmAbstractClassLoader#getSharedStatics()
+     * @see VmAbstractClassLoader#getSharedStatics()
      */
     public final VmSharedStatics getSharedStatics() {
         return systemLoader.getSharedStatics();
@@ -164,7 +165,7 @@ public final class VmJavaClassLoader extends VmAbstractClassLoader {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmClassLoader#resourceExists(java.lang.String)
+     * @see VmClassLoader#resourceExists(java.lang.String)
      */
     public final boolean resourceExists(String resName) {
         return false;

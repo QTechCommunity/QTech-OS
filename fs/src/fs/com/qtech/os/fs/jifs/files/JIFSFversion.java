@@ -1,0 +1,50 @@
+/*
+ * $Id$
+ *
+ * Copyright (C) 2003-2015 QTech Community
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation; either version 2.1 of the License, or
+ * (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but 
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public 
+ * License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; If not, write to the Free Software Foundation, Inc., 
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+ 
+package com.qtech.os.fs.jifs.files;
+
+
+import com.qtech.os.fs.FSDirectory;
+import com.qtech.os.fs.jifs.JIFSFile;
+
+/**
+ * File, which contains the version of JNode.
+ * 
+ * @author Andreas H\u00e4nel
+ */
+public class JIFSFversion extends JIFSFile {
+
+    public JIFSFversion() {
+        super("version");
+        refresh();
+    }
+
+    public JIFSFversion(FSDirectory parent) {
+        this();
+        setParent(parent);
+    }
+
+    public void refresh() {
+        super.refresh();
+        addStringln("QTech OS Version :\n\t" + System.getProperty("os.version"));
+        addStringln("QTech OS Java Version :\n\t" + System.getProperty("java.version"));
+        addStringln("QTech OS Java Class Version :\n\t" + System.getProperty("java.class.version"));
+    }
+}

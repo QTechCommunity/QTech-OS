@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -26,12 +26,12 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.naming.NameNotFoundException;
 
-import org.jnode.bootlog.BootLogInstance;
-import org.jnode.naming.InitialNaming;
-import org.jnode.system.resource.MemoryResource;
-import org.jnode.system.resource.ResourceManager;
-import org.jnode.system.resource.ResourceNotFreeException;
-import org.jnode.system.resource.ResourceOwner;
+import com.qtech.os.bootlog.BootLogInstance;
+import com.qtech.os.naming.InitialNaming;
+import com.qtech.os.system.resource.MemoryResource;
+import com.qtech.os.system.resource.ResourceManager;
+import com.qtech.os.system.resource.ResourceNotFreeException;
+import com.qtech.os.system.resource.ResourceOwner;
 import org.jnode.vm.Unsafe;
 import org.jnode.vm.classmgr.ObjectLayout;
 import org.jnode.vm.classmgr.VmArrayClass;

@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -21,7 +21,7 @@
 
 <plugin-list name="fullgui">
   <manifest>
-    <attribute key="Main-Class" value="org.jnode.awt.StartAwt"/>
+    <attribute key="Main-Class" value="com.qtech.os.awt.StartAwt"/>
   </manifest>
 
   <include file="full-plugin-list.xml"/>

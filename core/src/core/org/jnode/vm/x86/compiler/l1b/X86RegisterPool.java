@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,9 +20,10 @@
  
 package org.jnode.vm.x86.compiler.l1b;
 
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86Register;
 import org.jnode.vm.JvmType;
+import org.jnode.vm.compiler.ir.RegisterPool;
 
 /**
  * @author Madhu Siddalingaiah
@@ -119,14 +120,14 @@ abstract class X86RegisterPool {
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.RegisterPool#request(int)
+     * @see RegisterPool#request(int)
      */
     public final X86Register request(int type) {
         return request(type, null, false);
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.RegisterPool#request(int)
+     * @see RegisterPool#request(int)
      */
     public final X86Register request(int type, boolean supportsBits8) {
         return request(type, null, supportsBits8);
@@ -198,7 +199,7 @@ abstract class X86RegisterPool {
     }
 
     /**
-     * @see org.jnode.vm.compiler.ir.RegisterPool#release(java.lang.Object)
+     * @see RegisterPool#release(java.lang.Object)
      */
     public final void release(X86Register register) {
         get(register).release();

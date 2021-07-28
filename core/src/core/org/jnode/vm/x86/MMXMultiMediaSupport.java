@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -31,7 +31,7 @@ import org.vmmagic.unboxed.Address;
 final class MMXMultiMediaSupport extends VmMultiMediaSupport {
 
     /**
-     * @see org.jnode.vm.VmMultiMediaSupport#setARGB32bpp(org.vmmagic.unboxed.Address, org.vmmagic.unboxed.Address, int)
+     * @see VmMultiMediaSupport#setARGB32bpp(org.vmmagic.unboxed.Address, org.vmmagic.unboxed.Address, int)
      */
     public final void setARGB32bpp(Address src, Address dst, int length) {
         UnsafeX86.setARGB32bppMMX(src, dst, length);

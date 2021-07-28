@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -473,7 +473,7 @@ public final class DefaultHeapManager extends VmHeapManager {
     }
     
     /**
-     * @see org.jnode.vm.memmgr.VmHeapManager#createProcessorHeapData(org.jnode.vm.facade.VmProcessor)
+     * @see VmHeapManager#createProcessorHeapData(VmProcessor)
      */
     public Object createProcessorHeapData(VmProcessor cpu) {
         // No need here, so return null.
@@ -481,14 +481,14 @@ public final class DefaultHeapManager extends VmHeapManager {
     }
 
     /**
-     * @see org.jnode.vm.memmgr.VmHeapManager#notifyClassResolved(org.jnode.vm.classmgr.VmType)
+     * @see VmHeapManager#notifyClassResolved(VmType)
      */
     public void notifyClassResolved(VmType<?> vmType) {
         // Do nothing
     }
 
     /**
-     * @see org.jnode.vm.memmgr.VmHeapManager#loadClasses(org.jnode.vm.classmgr.VmClassLoader)
+     * @see VmHeapManager#loadClasses(VmClassLoader)
      */
     public void loadClasses(VmClassLoader loader) throws ClassNotFoundException {
         loader.loadClass("org.jnode.vm.memmgr.def.VmBootHeap", true);

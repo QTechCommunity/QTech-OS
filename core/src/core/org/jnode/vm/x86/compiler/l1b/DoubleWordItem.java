@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,11 +20,11 @@
  
 package org.jnode.vm.x86.compiler.l1b;
 
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86Register;
-import org.jnode.assembler.x86.X86Register.GPR;
-import org.jnode.assembler.x86.X86Register.GPR32;
-import org.jnode.assembler.x86.X86Register.GPR64;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86Register.GPR;
+import com.qtech.os.assembler.x86.X86Register.GPR32;
+import com.qtech.os.assembler.x86.X86Register.GPR64;
 import org.jnode.vm.JvmType;
 import org.jnode.vm.facade.VmUtils;
 import org.jnode.vm.x86.compiler.X86CompilerConstants;
@@ -740,7 +740,7 @@ public abstract class DoubleWordItem extends Item implements
 
     /**
      * @see org.jnode.vm.x86.compiler.l1a.Item#spill(org.jnode.vm.x86.compiler.l1a.EmitterContext,
-     *      org.jnode.assembler.x86.X86Register)
+     *      com.qtech.os.assembler.x86.X86Register)
      */
     final void spill(EmitterContext ec, X86Register reg) {
         final X86Assembler os = ec.getStream();
@@ -775,7 +775,7 @@ public abstract class DoubleWordItem extends Item implements
     }
 
     /**
-     * @see org.jnode.vm.x86.compiler.l1a.Item#uses(org.jnode.assembler.x86.X86Register)
+     * @see org.jnode.vm.x86.compiler.l1a.Item#uses(com.qtech.os.assembler.x86.X86Register)
      */
     final boolean uses(X86Register reg) {
         return (isGPR() && ((this.msb == reg) || (this.lsb == reg) || (this.reg == reg)));

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,8 +20,8 @@
  
 package org.jnode.vm.x86.compiler.l1b;
 
-import org.jnode.assembler.x86.X86Assembler;
-import org.jnode.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86Assembler;
+import com.qtech.os.assembler.x86.X86Register;
 import org.jnode.vm.JvmType;
 import org.jnode.vm.bytecode.TypeStack;
 import org.jnode.vm.facade.VmUtils;
@@ -435,8 +435,8 @@ final class VirtualStack {
         }
 
         /**
-         * @see org.jnode.vm.x86.compiler.AbstractX86StackManager#writePUSH(int,
-         *      org.jnode.assembler.x86.Register)
+         * @see AbstractX86StackManager#writePUSH(int,
+         *      com.qtech.os.assembler.x86.Register)
          */
         public void writePUSH(int jvmType, X86Register.GPR reg) {
             final Item item = ifac.createReg(ec, jvmType, reg);
@@ -447,9 +447,9 @@ final class VirtualStack {
         }
 
         /**
-         * @see org.jnode.vm.x86.compiler.AbstractX86StackManager#writePUSH64(int,
-         *      org.jnode.assembler.x86.Register,
-         *      org.jnode.assembler.x86.Register)
+         * @see AbstractX86StackManager#writePUSH64(int,
+         *      com.qtech.os.assembler.x86.Register,
+         *      com.qtech.os.assembler.x86.Register)
          */
         public void writePUSH64(int jvmType, X86Register.GPR lsbReg,
                                 X86Register.GPR msbReg) {
@@ -464,7 +464,7 @@ final class VirtualStack {
         }
 
         /**
-         * @see org.jnode.vm.x86.compiler.AbstractX86StackManager#writePUSH64(int,
+         * @see AbstractX86StackManager#writePUSH64(int,
          *      GPR64)
          */
         public void writePUSH64(int jvmType, X86Register.GPR64 reg) {

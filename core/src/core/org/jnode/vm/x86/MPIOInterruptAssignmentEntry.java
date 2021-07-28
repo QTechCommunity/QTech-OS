@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,7 +20,7 @@
  
 package org.jnode.vm.x86;
 
-import org.jnode.system.resource.MemoryResource;
+import com.qtech.os.system.resource.MemoryResource;
 
 /**
  * @author Ewout Prangsma (epr@users.sourceforge.net)
@@ -35,7 +35,7 @@ public class MPIOInterruptAssignmentEntry extends MPInterruptAssignmentEntry {
     }
 
     /**
-     * @see org.jnode.vm.x86.MPEntry#getEntryTypeName()
+     * @see MPEntry#getEntryTypeName()
      */
     public String getEntryTypeName() {
         return "I/O Int.Ass.";

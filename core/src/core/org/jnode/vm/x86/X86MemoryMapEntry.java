@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -45,35 +45,35 @@ final class X86MemoryMapEntry implements MemoryMapEntry {
     }
 
     /**
-     * @see org.jnode.vm.facade.MemoryMapEntry#getSize()
+     * @see MemoryMapEntry#getSize()
      */
     public Extent getSize() {
         return size;
     }
 
     /**
-     * @see org.jnode.vm.facade.MemoryMapEntry#getStart()
+     * @see MemoryMapEntry#getStart()
      */
     public Address getStart() {
         return start;
     }
 
     /**
-     * @see org.jnode.vm.facade.MemoryMapEntry#isAcpi()
+     * @see MemoryMapEntry#isAcpi()
      */
     public boolean isAcpi() {
         return (type == VmX86Architecture.MMAP_TYPE_ACPI);
     }
 
     /**
-     * @see org.jnode.vm.facade.MemoryMapEntry#isAcpiNVS()
+     * @see MemoryMapEntry#isAcpiNVS()
      */
     public boolean isAcpiNVS() {
         return (type == VmX86Architecture.MMAP_TYPE_NVS);
     }
 
     /**
-     * @see org.jnode.vm.facade.MemoryMapEntry#isAvailable()
+     * @see MemoryMapEntry#isAvailable()
      */
     public boolean isAvailable() {
         return (type == VmX86Architecture.MMAP_TYPE_MEMORY);

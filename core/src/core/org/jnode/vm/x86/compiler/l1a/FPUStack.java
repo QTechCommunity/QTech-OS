@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,8 +20,8 @@
  
 package org.jnode.vm.x86.compiler.l1a;
 
-import org.jnode.assembler.x86.X86Register;
-import org.jnode.assembler.x86.X86Register.FPU;
+import com.qtech.os.assembler.x86.X86Register;
+import com.qtech.os.assembler.x86.X86Register.FPU;
 import org.jnode.vm.bytecode.StackException;
 
 /**
@@ -45,7 +45,7 @@ final class FPUStack extends ItemStack {
      *
      * @param item
      * @return
-     * @see org.jnode.assembler.x86.X86Register#ST1
+     * @see com.qtech.os.assembler.x86.X86Register#ST1
      */
     final FPU getRegister(Item item) {
         for (int i = 0; i < tos; i++) {

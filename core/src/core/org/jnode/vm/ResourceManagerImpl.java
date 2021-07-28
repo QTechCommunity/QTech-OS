@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -22,17 +22,17 @@ package org.jnode.vm;
 
 import javax.naming.NamingException;
 
-import org.jnode.naming.InitialNaming;
-import org.jnode.system.resource.IOResource;
-import org.jnode.system.resource.IRQHandler;
-import org.jnode.system.resource.IRQResource;
-import org.jnode.system.resource.MemoryResource;
-import org.jnode.system.resource.MemoryScanner;
-import org.jnode.system.resource.ResourceManager;
-import org.jnode.system.resource.ResourceNotFreeException;
-import org.jnode.system.resource.ResourceOwner;
-import org.jnode.system.resource.ResourcePermission;
-import org.jnode.system.resource.SimpleResourceOwner;
+import com.qtech.os.naming.InitialNaming;
+import com.qtech.os.system.resource.IOResource;
+import com.qtech.os.system.resource.IRQHandler;
+import com.qtech.os.system.resource.IRQResource;
+import com.qtech.os.system.resource.MemoryResource;
+import com.qtech.os.system.resource.MemoryScanner;
+import com.qtech.os.system.resource.ResourceManager;
+import com.qtech.os.system.resource.ResourceNotFreeException;
+import com.qtech.os.system.resource.ResourceOwner;
+import com.qtech.os.system.resource.ResourcePermission;
+import com.qtech.os.system.resource.SimpleResourceOwner;
 import org.jnode.annotation.MagicPermission;
 import org.jnode.vm.scheduler.VmProcessor;
 import org.vmmagic.unboxed.Address;

@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -148,30 +148,30 @@
 	</target>
 
 	<target name="asm-native" depends="prepare">
-		<taskdef name="genconst" classname="org.jnode.build.x86.AsmConstBuilder" classpathref="cp-x86" />
-		<taskdef name="asm" classname="org.jnode.ant.taskdefs.Asm" classpathref="cp-x86" />
+		<taskdef name="genconst" classname="com.qtech.os.build.x86.AsmConstBuilder" classpathref="cp-x86" />
+		<taskdef name="asm" classname="com.qtech.os.ant.taskdefs.Asm" classpathref="cp-x86" />
 
 		<genconst destfile="${build.native.dir}/src/java.inc" bits="${jnode.bits}"
                   classesURL="file:///${jnode-core.jar}/,jar:file:///${classlib.jar}!/,file:///${root.dir}/builder/build/classes/">
 			<class classname="java.lang.Throwable" />
-			<class classname="org.jnode.build.x86.BootImageBuilder" static="on" />
-			<class classname="org.jnode.vm.SoftByteCodes" static="on" />
-			<class classname="org.jnode.vm.scheduler.VmProcessor" />
-			<class classname="org.jnode.vm.scheduler.VmProcessor" static="on" />
-			<class classname="org.jnode.vm.scheduler.VmThread" />
-			<class classname="org.jnode.vm.scheduler.VmThread" static="on" />
-			<class classname="org.jnode.vm.classmgr.ObjectLayout" static="on" />
-			<class classname="org.jnode.vm.classmgr.TIBLayout" static="on" />
-			<class classname="org.jnode.vm.classmgr.VmArray" static="on" />
-			<class classname="org.jnode.vm.classmgr.VmMethod" />
-			<class classname="org.jnode.vm.classmgr.VmStatics" /> 
-			<class classname="org.jnode.vm.classmgr.VmType" /> 
-			<class classname="org.jnode.vm.x86.MSR" />
-			<class classname="org.jnode.vm.x86.VmX86Processor" />
-			<class classname="org.jnode.vm.x86.VmX86StackReader" static="on" /> 
-			<class classname="org.jnode.vm.x86.VmX86Thread" />
-			<class classname="org.jnode.vm.x86.VmX86Thread" static="on" />
-			<class classname="org.jnode.vm.x86.VmX86Thread64" />
+			<class classname="com.qtech.os.build.x86.BootImageBuilder" static="on" />
+			<class classname="SoftByteCodes" static="on" />
+			<class classname="VmProcessor" />
+			<class classname="VmProcessor" static="on" />
+			<class classname="VmThread" />
+			<class classname="VmThread" static="on" />
+			<class classname="ObjectLayout" static="on" />
+			<class classname="TIBLayout" static="on" />
+			<class classname="VmArray" static="on" />
+			<class classname="VmMethod" />
+			<class classname="VmStatics" />
+			<class classname="VmType" />
+			<class classname="MSR" />
+			<class classname="VmX86Processor" />
+			<class classname="VmX86StackReader" static="on" />
+			<class classname="VmX86Thread" />
+			<class classname="VmX86Thread" static="on" />
+			<class classname="VmX86Thread64" />
 		</genconst>
 
 		<dependset>
@@ -196,7 +196,7 @@
 
 	<!-- Build the java object file  -->
 	<target name="java-image" depends="asm-native">
-		<taskdef name="bootimage" classname="org.jnode.build.x86.BootImageBuilder" classpathref="cp-x86" />
+		<taskdef name="bootimage" classname="com.qtech.os.build.x86.BootImageBuilder" classpathref="cp-x86" />
 
 		<bootimage 
 			destfile="${build.bootimage.dir}/bootimage.bin" 
@@ -228,7 +228,7 @@
 
 	<!-- Build the boot disk -->
 	<target name="boot-disk" depends="java-image" unless="no.bootdisk">
-		<taskdef name="bootdisk" classname="org.jnode.build.BootDiskBuilder" classpathref="cp-x86" />
+		<taskdef name="bootdisk" classname="com.qtech.os.build.BootDiskBuilder" classpathref="cp-x86" />
 
 		<property name="bootdisk.dir" value="${my-build.dir}/${jnode.bits}bits/bootdisk" />
 
@@ -344,7 +344,7 @@
 		<copy file="${sources.dist.tar.gz}" todir="${my-build.dir}/cdrom-full" />
 		<create-cdrom destfile="${qos-x86.iso}" dir="${my-build.dir}/cdrom-full" />
 
-		<taskdef name="vmware" classname="org.jnode.build.VMwareBuilderTask" classpathref="cp-x86" />
+		<taskdef name="vmware" classname="com.qtech.os.build.VMwareBuilderTask" classpathref="cp-x86" />
 		<vmware 
 			isoFile="${qos-x86.iso}"
 			logFile="${logFile}"
@@ -360,7 +360,7 @@
 	<target name="cdrom-lite" depends="prepare">
 		<create-cdrom destfile="${qos-x86-lite.iso}" dir="${my-build.dir}/cdrom-lite" />
 
-		<taskdef name="vmware" classname="org.jnode.build.VMwareBuilderTask" classpathref="cp-x86" />
+		<taskdef name="vmware" classname="com.qtech.os.build.VMwareBuilderTask" classpathref="cp-x86" />
 		<vmware 
 			isoFile="${qos-x86-lite.iso}"
 			logFile="${logFile}"
@@ -375,7 +375,7 @@
 	<target name="cdrom_64-lite" depends="prepare">
 		<create-cdrom destfile="${qos-x86_64-lite.iso}" dir="${my-build.dir}/cdrom-lite" />
 
-		<taskdef name="vmware" classname="org.jnode.build.VMwareBuilderTask" classpathref="cp-x86" />
+		<taskdef name="vmware" classname="com.qtech.os.build.VMwareBuilderTask" classpathref="cp-x86" />
 		<vmware
 			isoFile="${qos-x86_64-lite.iso}"
 			logFile="${logFile}"

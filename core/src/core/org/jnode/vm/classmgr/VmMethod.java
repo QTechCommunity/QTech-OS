@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -28,6 +28,7 @@ import org.jnode.vm.LoadCompileService;
 import org.jnode.vm.VmAddress;
 import org.jnode.vm.facade.VmUtils;
 import org.jnode.vm.isolate.VmIsolateLocal;
+import org.jnode.vm.objects.VmSystemObject;
 import org.vmmagic.unboxed.Address;
 import sun.reflect.ReflectionFactory;
 
@@ -665,7 +666,7 @@ public abstract class VmMethod extends VmMember implements VmSharedStaticsEntry 
     }
 
     /**
-     * @see org.jnode.vm.objects.VmSystemObject#verifyBeforeEmit()
+     * @see VmSystemObject#verifyBeforeEmit()
      */
     public void verifyBeforeEmit() {
         super.verifyBeforeEmit();

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -43,8 +43,8 @@ import javax.naming.NameNotFoundException;
 import org.jnode.annotation.MagicPermission;
 import org.jnode.annotation.PrivilegedActionPragma;
 import org.jnode.annotation.SharedStatics;
-import org.jnode.naming.InitialNaming;
-import org.jnode.plugin.PluginManager;
+import com.qtech.os.naming.InitialNaming;
+import com.qtech.os.plugin.PluginManager;
 import org.jnode.vm.IOContext;
 import org.jnode.vm.Unsafe;
 import org.jnode.vm.VmIOContext;
@@ -248,8 +248,8 @@ public final class VmIsolate {
         static final VmIsolate getRoot() {
             if (rootIsolate == null) {
                 rootIsolate = new VmIsolate(null/*Thread.currentThread().getVmThread().getIsolatedStatics()*/);
-//                org.jnode.vm.Unsafe.debug("getRoot() istatics: " + rootIsolate.isolatedStaticsTable + "\n");
-//                org.jnode.vm.Unsafe.debugStackTrace();
+//                com.qtech.os.vm.Unsafe.debug("getRoot() istatics: " + rootIsolate.isolatedStaticsTable + "\n");
+//                com.qtech.os.vm.Unsafe.debugStackTrace();
             }
             return rootIsolate;
         }
@@ -319,7 +319,7 @@ public final class VmIsolate {
             //initialize the root executor on the creation of the first child
             getRoot().invokeAndWait(new Runnable() {
                 public void run() {
-                    //org.jnode.vm.Unsafe.debug("Root executor ready\n");
+                    //com.qtech.os.vm.Unsafe.debug("Root executor ready\n");
                 }
             });
         }
@@ -816,16 +816,16 @@ public final class VmIsolate {
      * @param task the task as a Runnable object
      */
     public synchronized void invokeLater(final Runnable task) {
-        org.jnode.vm.Unsafe.debug("invokeLater Called - 0\n");
+        Unsafe.debug("invokeLater Called - 0\n");
         if (executor == null) {
             executor = java.util.concurrent.Executors.newSingleThreadExecutor(new IsolateThreadFactory(this));
-            org.jnode.vm.Unsafe.debug("invokeAndWait executor created - 0\n");
+            Unsafe.debug("invokeAndWait executor created - 0\n");
         }
         if (task == null)
             return;
 
         try {
-            org.jnode.vm.Unsafe.debug("invokeAndWait submitting task - 0\n");
+            Unsafe.debug("invokeAndWait submitting task - 0\n");
             executor.submit(task);
         } catch (Exception x) {
             throw new RuntimeException(x);
@@ -843,14 +843,14 @@ public final class VmIsolate {
             if (eq == null)
                 return false;
 
-            org.jnode.vm.Unsafe.debug("isEDT - 1\n");
+            Unsafe.debug("isEDT - 1\n");
 
             Object t = eq.getClass().getField("dispatchThread").get(eq);
             if (t == null)
                 return false;
 
-            org.jnode.vm.Unsafe.debug("isEDT edt=" + t + '\n');
-            org.jnode.vm.Unsafe.debug("isEDT currenThread=" + Thread.currentThread() + '\n');
+            Unsafe.debug("isEDT edt=" + t + '\n');
+            Unsafe.debug("isEDT currenThread=" + Thread.currentThread() + '\n');
 
             return t == Thread.currentThread();
         } catch (Exception x) {
@@ -890,23 +890,23 @@ public final class VmIsolate {
             appContext = this.appContext;
             this.appContext = null;
         }
-        org.jnode.vm.Unsafe.debug("disposeAppContextCalled - 000\n");
-        org.jnode.vm.Unsafe.debugStackTrace();
-        org.jnode.vm.Unsafe.debug("disposeAppContextCalled  - 000 " + intraIsolate + '\n');
+        Unsafe.debug("disposeAppContextCalled - 000\n");
+        Unsafe.debugStackTrace();
+        Unsafe.debug("disposeAppContextCalled  - 000 " + intraIsolate + '\n');
         if (appContext != null) {
-            org.jnode.vm.Unsafe.debug("disposeAppContextCalled - 0001\n");
-            org.jnode.vm.Unsafe.debug("disposeAppContextCalled - 0002\n");
+            Unsafe.debug("disposeAppContextCalled - 0001\n");
+            Unsafe.debug("disposeAppContextCalled - 0002\n");
             if (intraIsolate && is_edt) {
-                org.jnode.vm.Unsafe.debug("disposeAppContextCalled - 0003\n");
+                Unsafe.debug("disposeAppContextCalled - 0003\n");
                 Thread t = new Thread(new Runnable() {
                     public void run() {
-                        org.jnode.vm.Unsafe.debug("disposeAppContextCalled - 00\n");
+                        Unsafe.debug("disposeAppContextCalled - 00\n");
                         getRoot().invokeAndWait(new Runnable() {
                             public void run() {
                                 try {
-                                    org.jnode.vm.Unsafe.debug("disposeAppContextCalled - 01\n");
+                                    Unsafe.debug("disposeAppContextCalled - 01\n");
                                     appContext.getClass().getMethod("dispose").invoke(appContext);
-                                    org.jnode.vm.Unsafe.debug("disposeAppContextCalled - 02\n");
+                                    Unsafe.debug("disposeAppContextCalled - 02\n");
                                 } catch (Exception x) {
                                     x.printStackTrace();
                                 }
@@ -918,19 +918,19 @@ public final class VmIsolate {
                 }, "isolate-" + getId() + "-AWT-stopper");
                 t.start();
             } else {
-                org.jnode.vm.Unsafe.debug("disposeAppContextCalled - 0004\n");
-                org.jnode.vm.Unsafe.debug("disposeAppContextCalled - 0\n");
+                Unsafe.debug("disposeAppContextCalled - 0004\n");
+                Unsafe.debug("disposeAppContextCalled - 0\n");
                 getRoot().invokeAndWait(new Runnable() {
                     public void run() {
                         try {
-                            org.jnode.vm.Unsafe.debug("disposeAppContextCalled - 1\n");
-                            org.jnode.vm.Unsafe.debug("disposeAppContextCalled appcontext: " + appContext + '\n');
-                            org.jnode.vm.Unsafe.debug(
+                            Unsafe.debug("disposeAppContextCalled - 1\n");
+                            Unsafe.debug("disposeAppContextCalled appcontext: " + appContext + '\n');
+                            Unsafe.debug(
                                 "disposeAppContextCalled appcontext.getClass(): " + appContext.getClass() + '\n');
-                            org.jnode.vm.Unsafe.debug("disposeAppContextCalled appcontext.getClass().dispose: " +
+                            Unsafe.debug("disposeAppContextCalled appcontext.getClass().dispose: " +
                                 appContext.getClass().getMethod("dispose") + '\n');
                             appContext.getClass().getMethod("dispose").invoke(appContext);
-                            org.jnode.vm.Unsafe.debug("disposeAppContextCalled - 2\n");
+                            Unsafe.debug("disposeAppContextCalled - 2\n");
                         } catch (Exception x) {
                             x.printStackTrace();
                         }

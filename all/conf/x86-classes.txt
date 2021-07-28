@@ -5,6 +5,6 @@
 # This file supplements core-classes.txt with classes / packages that are specific
 # to the x86 architecture
 
-org.jnode.assembler.x86
-org.jnode.system.x86
-org.jnode.vm.x86
+com.qtech.os.assembler.x86
+com.qtech.os.system.x86
+com.qtech.os.vm.x86

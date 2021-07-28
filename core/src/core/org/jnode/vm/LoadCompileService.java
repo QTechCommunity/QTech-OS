@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -24,7 +24,7 @@ import java.nio.ByteBuffer;
 import java.security.ProtectionDomain;
 import java.util.ArrayList;
 
-import org.jnode.assembler.ObjectResolver;
+import com.qtech.os.assembler.ObjectResolver;
 import org.jnode.annotation.Inline;
 import org.jnode.annotation.Internal;
 import org.jnode.annotation.KernelSpace;
@@ -105,7 +105,7 @@ public final class LoadCompileService {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmClassLoader#defineClass(java.lang.String,
+     * @see VmClassLoader#defineClass(java.lang.String,
      *      ByteBuffer, java.security.ProtectionDomain)
      */
     public static final VmType<?> defineClass(String name, ByteBuffer data,
@@ -238,7 +238,7 @@ public final class LoadCompileService {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmClassLoader#defineClass(java.lang.String,
+     * @see VmClassLoader#defineClass(java.lang.String,
      *      ByteBuffer, java.security.ProtectionDomain)
      */
     final VmType<?> doDefineClass(String name, ByteBuffer data,
@@ -318,14 +318,14 @@ public final class LoadCompileService {
         /**
          * Execute this request.
          *
-         * @see org.jnode.vm.LoadCompileService.Request#execute()
+         * @see LoadCompileService.Request#execute()
          */
         void doExecute() {
             service.doCompile(method, optLevel, enableTestCompilers);
         }
 
         /**
-         * @see org.jnode.vm.LoadCompileService.Request#errorMessage()
+         * @see LoadCompileService.Request#errorMessage()
          */
         @Override
         String errorMessage() {
@@ -361,7 +361,7 @@ public final class LoadCompileService {
         /**
          * Execute this request.
          *
-         * @see org.jnode.vm.LoadCompileService.Request#execute()
+         * @see LoadCompileService.Request#execute()
          */
         void doExecute() {
             definedType = service.doDefineClass(name, data, protDomain, loader);
@@ -375,7 +375,7 @@ public final class LoadCompileService {
         }
 
         /**
-         * @see org.jnode.vm.LoadCompileService.Request#errorMessage()
+         * @see LoadCompileService.Request#errorMessage()
          */
         @Override
         String errorMessage() {

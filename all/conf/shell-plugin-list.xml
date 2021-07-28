@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -20,34 +20,34 @@
 -->
 <plugin-list name="shell">
     <manifest>
-      <attribute key="Main-Class" value="org.jnode.shell.CommandShell"/>
+      <attribute key="Main-Class" value="com.qtech.os.shell.CommandShell"/>
       <attribute key="Main-Class-Arg" value="boot"/>
     </manifest>
 
-    <plugin id="org.jnode.driver"/>
-    <plugin id="org.jnode.driver.block"/>
-    <plugin id="org.jnode.partitions"/>
-    <plugin id="org.jnode.fs.service"/>
-    <plugin id="org.jnode.fs"/>
-    <plugin id="org.jnode.fs.ramfs"/>
-    <plugin id="org.jnode.fs.ramfs.def"/>
+    <plugin id="com.qtech.os.driver"/>
+    <plugin id="com.qtech.os.driver.block"/>
+    <plugin id="com.qtech.os.partitions"/>
+    <plugin id="com.qtech.os.fs.service"/>
+    <plugin id="com.qtech.os.fs"/>
+    <plugin id="com.qtech.os.fs.ramfs"/>
+    <plugin id="com.qtech.os.fs.ramfs.def"/>
 
-    <plugin id="org.jnode.command.common"/>
-    <plugin id="org.jnode.command.system"/>
+    <plugin id="com.qtech.os.command.common"/>
+    <plugin id="com.qtech.os.command.system"/>
     
-    <plugin id="org.jnode.driver.character"/>
-    <plugin id="org.jnode.driver.console"/>
-    <plugin id="org.jnode.driver.console.core"/>
-    <plugin id="org.jnode.driver.console.textscreen"/>
-    <plugin id="org.jnode.driver.finder"/>
-    <plugin id="org.jnode.driver.input"/>
-    <plugin id="org.jnode.driver.input.l10n"/>
-    <plugin id="org.jnode.driver.ps2"/>
-    <plugin id="org.jnode.driver.system.cmos"/>
-    <plugin id="org.jnode.driver.textscreen"/>
-    <plugin id="org.jnode.driver.textscreen.core"/>
-    <plugin id="org.jnode.log4j"/>
-    <plugin id="org.jnode.shell"/>
-    <plugin id="org.jnode.shell.help"/>
-    <plugin id="org.jnode.shell.syntax"/>
+    <plugin id="com.qtech.os.driver.character"/>
+    <plugin id="com.qtech.os.driver.console"/>
+    <plugin id="com.qtech.os.driver.console.core"/>
+    <plugin id="com.qtech.os.driver.console.textscreen"/>
+    <plugin id="com.qtech.os.driver.finder"/>
+    <plugin id="com.qtech.os.driver.input"/>
+    <plugin id="com.qtech.os.driver.input.l10n"/>
+    <plugin id="com.qtech.os.driver.ps2"/>
+    <plugin id="com.qtech.os.driver.system.cmos"/>
+    <plugin id="com.qtech.os.driver.textscreen"/>
+    <plugin id="com.qtech.os.driver.textscreen.core"/>
+    <plugin id="com.qtech.os.log4j"/>
+    <plugin id="com.qtech.os.shell"/>
+    <plugin id="com.qtech.os.shell.help"/>
+    <plugin id="com.qtech.os.shell.syntax"/>
 </plugin-list>

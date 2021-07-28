@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2003-2015 QTech Community
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -42,11 +42,11 @@
       </library>
   </runtime>
         
-  <extension point="org.jnode.security.permissions">
+  <extension point="com.qtech.os.security.permissions">
     <permission class="java.security.AllPermission" />  
   </extension>
 
-   <extension point="org.jnode.shell.aliases">
+   <extension point="com.qtech.os.shell.aliases">
     <alias name="TestServer" class="org.jtestserver.server.TestServer"/>
   </extension>
         

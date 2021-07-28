@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -88,7 +88,7 @@ public final class VmArrayClass<T> extends VmClassType<T> {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmType#prepareForInstantiation()
+     * @see VmType#prepareForInstantiation()
      */
     protected void prepareForInstantiation() {
         // Nothing to do here
@@ -99,7 +99,7 @@ public final class VmArrayClass<T> extends VmClassType<T> {
      *
      * @param allInterfaces
      * @return Super classes
-     * @see org.jnode.vm.classmgr.VmType#createSuperClassesArray(java.util.HashSet)
+     * @see VmType#createSuperClassesArray(java.util.HashSet)
      */
     protected VmType<?>[] createSuperClassesArray(HashSet<VmInterfaceClass<?>> allInterfaces) {
 
@@ -138,7 +138,7 @@ public final class VmArrayClass<T> extends VmClassType<T> {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmType#prepare()
+     * @see VmType#prepare()
      */
     void prepare() {
         componentType.prepare();
@@ -146,7 +146,7 @@ public final class VmArrayClass<T> extends VmClassType<T> {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmType#compile()
+     * @see VmType#compile()
      */
     void compile() {
         componentType.compile();
@@ -154,7 +154,7 @@ public final class VmArrayClass<T> extends VmClassType<T> {
     }
 
     /**
-     * @see org.jnode.vm.classmgr.VmType#verify()
+     * @see VmType#verify()
      */
     void verify() {
         componentType.verify();

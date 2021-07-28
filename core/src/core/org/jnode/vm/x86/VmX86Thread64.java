@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -20,11 +20,11 @@
  
 package org.jnode.vm.x86;
 
-import org.jnode.util.NumberUtils;
+import com.qtech.os.util.NumberUtils;
 import org.jnode.annotation.MagicPermission;
 import org.jnode.vm.classmgr.VmIsolatedStatics;
 import org.jnode.vm.facade.ObjectVisitor;
-import org.jnode.vm.memmgr.VmHeapManager;
+import org.jnode.vm.scheduler.VmThread;
 import org.vmmagic.unboxed.Address;
 import org.vmmagic.unboxed.Word;
 
@@ -82,9 +82,9 @@ public final class VmX86Thread64 extends VmX86Thread {
     }
 
     /**
-     * @see org.jnode.vm.scheduler.VmThread#accept(org.jnode.vm.facade.ObjectVisitor, org.jnode.vm.facade.VmHeapManager)
+     * @see VmThread#accept(ObjectVisitor, org.jnode.vm.facade.VmHeapManager)
      */
-    public boolean accept(ObjectVisitor visitor, VmHeapManager heapManager) {
+    public boolean accept(ObjectVisitor visitor, org.jnode.vm.memmgr.VmHeapManager heapManager) {
         if (!super.accept(visitor, heapManager)) {
             return false;
         }

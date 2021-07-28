@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2003-2015 QTech Community
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -64,7 +64,7 @@ public class VmUtils {
         boolean allowNatives = false;
         allowNatives |= className.equals("org.jnode.vm.Unsafe");
         /*
-        allowNatives |= className.equals("org.jnode.vm." + architectureName + ".Unsafe"
+        allowNatives |= className.equals("com.qtech.os.vm." + architectureName + ".Unsafe"
                 + architectureName.toUpperCase());
           */
         allowNatives |= className.contains("org.jnode.vm.") && className.contains(".Unsafe");
@@ -72,7 +72,7 @@ public class VmUtils {
     }
 
     /**
-     * @return Returns the {@link org.jnode.vm.facade.Vm} instance.
+     * @return Returns the {@link Vm} instance.
      */
     @KernelSpace
     @Uninterruptible
