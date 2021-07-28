@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.work" 
-        name="JNode Work management"
+        name="QTech OS Work management"
         version="@VERSION@"
         system="true"
-        provider-name="JNode.org"
+        provider-name="QTechOS"
         license-name="lgpl"
         class="org.jnode.work.WorkPlugin">
         

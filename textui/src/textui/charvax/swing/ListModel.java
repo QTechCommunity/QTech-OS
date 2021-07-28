@@ -24,25 +24,28 @@ import charvax.swing.event.ListDataListener;
 /**
  * This interface defines the methods by which components such as JList
  * get the value of each cell in a list, and the length of the list.<p>
- * Conceptually, the model is a Vector; indices vary from 0 to 
+ * Conceptually, the model is a Vector; indices vary from 0 to
  * <code>getSize() - 1</code>.
  */
-public interface ListModel
-{
-    /** Register an object that will be notified when the list contents
+public interface ListModel {
+    /**
+     * Register an object that will be notified when the list contents
      * change.
      */
-    public void addListDataListener(ListDataListener l);
+    void addListDataListener(ListDataListener l);
 
-    /** Returns the value at the specified index.
+    /**
+     * Returns the value at the specified index.
      */
-    public Object getElementAt(int index);
+    Object getElementAt(int index);
 
-    /** Returns the length of the list.
+    /**
+     * Returns the length of the list.
      */
-    public int getSize();
+    int getSize();
 
-    /** Remove the specified ListDataListener.
+    /**
+     * Remove the specified ListDataListener.
      */
-    public void removeListDataListener(ListDataListener l);
+    void removeListDataListener(ListDataListener l);
 }

@@ -21,12 +21,13 @@ package charvax.swing.event;
 
 import charva.awt.event.EventListener;
 
-/** The listener that's notified when the selection in a TreeSelectionModel changes. 
+/**
+ * The listener that's notified when the selection in a TreeSelectionModel changes.
  */
 public interface TreeSelectionListener
-    extends EventListener
-{
-    /** Called whenever the value of the selection changes.
+    extends EventListener {
+    /**
+     * Called whenever the value of the selection changes.
      */
-    public void valueChanged(TreeSelectionEvent evt);
+    void valueChanged(TreeSelectionEvent evt);
 }

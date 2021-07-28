@@ -23,55 +23,54 @@ package charva.awt;
  * A Frame is a top-level window with a title and a border.
  */
 public class Frame
-    extends Window
-{
+    extends Window {
     public Frame() {
-    this("");
+        this("");
     }
 
     public Frame(String title_) {
-    super(null);
-    _title = title_;
-    _insets = new Insets(1,1,1,1);
+        super(null);
+        _title = title_;
+        _insets = new Insets(1, 1, 1, 1);
     }
 
     public void setTitle(String title_) {
-    _title = title_;
+        _title = title_;
     }
 
-    /** Return this Frame's title, or an empty string if the
-     * frame does not have a tile. 
+    /**
+     * Return this Frame's title, or an empty string if the
+     * frame does not have a tile.
      */
     public String getTitle() {
-    if (_title == null)
-        return null;
-    else
-        return _title;
+        if (_title == null)
+            return null;
+        else
+            return _title;
     }
 
-    public void draw(Toolkit toolkit)
-    {
+    public void draw(Toolkit toolkit) {
 
-    /* Draw the enclosing frame (but only if the insets are nonzero).
-     */
-    int colorpair = super.getCursesColor();
-    _term.blankBox(_origin, _size, colorpair);
-    Insets insets = super.getInsets();
-    if (insets.top != 0 && insets.bottom != 0)
-        _term.drawBox(_origin, _size, colorpair);
+        /* Draw the enclosing frame (but only if the insets are nonzero).
+         */
+        int colorpair = super.getCursesColor();
+        _term.blankBox(_origin, _size, colorpair);
+        Insets insets = super.getInsets();
+        if (insets.top != 0 && insets.bottom != 0)
+            _term.drawBox(_origin, _size, colorpair);
 
-    /* Draw the title into the enclosing frame.
-     */
-    if (_title.equals("") == false) {
-        _term.setCursor(_origin.addOffset(1,0));
-        _term.addChar(' ', 0, colorpair);
-        _term.addString(_title, 0, colorpair);
-        _term.addChar(' ', 0, colorpair);
-    }
+        /* Draw the title into the enclosing frame.
+         */
+        if (_title.equals("") == false) {
+            _term.setCursor(_origin.addOffset(1, 0));
+            _term.addChar(' ', 0, colorpair);
+            _term.addString(_title, 0, colorpair);
+            _term.addChar(' ', 0, colorpair);
+        }
 
-    /* Draw all the contained components
-     */
-    super.draw(toolkit);
+        /* Draw all the contained components
+         */
+        super.draw(toolkit);
     }
 
     private String _title;

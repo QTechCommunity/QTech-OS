@@ -22,19 +22,18 @@ package charva.awt;
 import charva.awt.event.ScrollEvent;
 import charva.awt.event.ScrollListener;
 
-/** 
+/**
  * The interface for objects that can be contained in a ScrollPane
  * and scrolled within a Viewport.
  */
-public interface Scrollable
-{
-    public void addScrollListener(ScrollListener listener_);
+public interface Scrollable {
+    void addScrollListener(ScrollListener listener_);
 
-    public void removeScrollListener(ScrollListener listener_);
+    void removeScrollListener(ScrollListener listener_);
 
-    public void processScrollEvent(ScrollEvent evt_);
+    void processScrollEvent(ScrollEvent evt_);
 
-    public Point getLocation();
+    Point getLocation();
 
-    public Dimension getPreferredScrollableViewportSize();
+    Dimension getPreferredScrollableViewportSize();
 }

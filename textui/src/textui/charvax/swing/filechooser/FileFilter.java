@@ -10,9 +10,9 @@ import java.io.File;
  * An implementation of this class can be set on a JFileChooser to prevent
  * unwanted files from appearing in the directory listing.
  */
-public abstract class FileFilter
-{
-    public FileFilter() {}
+public abstract class FileFilter {
+    public FileFilter() {
+    }
 
     /**
      * Determines whether the specified file is accepted by this filter.

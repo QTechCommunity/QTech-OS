@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.awt" 
-        name="JNode AWT Implementation"
+        name="QTech OS AWT Implementation"
         version="@VERSION@"
-        provider-name="JNode.org"
+        provider-name="QTechOS"
         license-name="lgpl"
         class="org.jnode.awt.AWTPlugin">
         
@@ -49,6 +49,7 @@
     <permission class="java.util.PropertyPermission" name="jnode.desktop" actions="read"/>
     <permission class="java.util.PropertyPermission" name="gnu.awt.dispatchthread.priority" actions="read"/>
     <permission class="java.util.PropertyPermission" name="gnu.javax.swing.DebugGraphics" actions="read"/>  
+    <permission class="java.util.PropertyPermission" name="swing.systemlaf" actions="read,write"/>
   </extension>
         
 </plugin>

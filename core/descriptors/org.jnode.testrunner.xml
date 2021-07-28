@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.testrunner"
-    name="JNode Test runner"
+    name="QTech OS Test runner"
     version="@VERSION@"
     license-name="lgpl"
-    provider-name="JNode.org"
+    provider-name="QTechOS"
     auto-start="true"
     class="org.jnode.test.framework.TestRunnerPlugin"
     priority="1">

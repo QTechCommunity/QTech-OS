@@ -20,42 +20,48 @@
 package charvax.swing.tree;
 
 /**
- * Defines the requirements for a tree node object that can change -- 
- * by adding or removing child nodes, or by changing the contents of a 
- * user object stored in the node. 
+ * Defines the requirements for a tree node object that can change --
+ * by adding or removing child nodes, or by changing the contents of a
+ * user object stored in the node.
  */
 public interface MutableTreeNode
-    extends TreeNode
-{
-    /** Adds child to this MutableTreeNode at index. 
+    extends TreeNode {
+    /**
+     * Adds child to this MutableTreeNode at index.
      * The setParent() method of child will be called.
      */
-    public void insert(MutableTreeNode child, int index);
+    void insert(MutableTreeNode child, int index);
 
-    /** Removes the child at index from this MutableTreeNode.
+    /**
+     * Removes the child at index from this MutableTreeNode.
      */
-    public void remove(int index);
+    void remove(int index);
 
-    /** Removes node from this MutableTreeNode.
+    /**
+     * Removes node from this MutableTreeNode.
      * The setParent() method of "node" will be called.
      */
-    public void remove(MutableTreeNode node);
+    void remove(MutableTreeNode node);
 
-    /** Returns the user object associated with this MutableTreeNode.
+    /**
+     * Returns the user object associated with this MutableTreeNode.
      * (this method is not actually in java.swing.tree.MutableTreeNode).
      */
-    public Object getUserObject();
+    Object getUserObject();
 
-    /** Resets the user object of this MutableTreeNode to object. 
+    /**
+     * Resets the user object of this MutableTreeNode to object.
      */
-    public void setUserObject(Object object);
+    void setUserObject(Object object);
 
-    /** Removes this MutableTreeNode from its parent. 
+    /**
+     * Removes this MutableTreeNode from its parent.
      */
-    public void removeFromParent();
+    void removeFromParent();
 
-    /** Sets the parent of this MutableTreeNode to newParent. 
+    /**
+     * Sets the parent of this MutableTreeNode to newParent.
      */
-    public void setParent(MutableTreeNode newParent);
+    void setParent(MutableTreeNode newParent);
 
 }

@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.runtime" 
-        name="JNode core runtime classes specific to X86"
+        name="QTech OS core runtime classes specific to X86"
         version="@VERSION@"
-        provider-name="JNode.org"
+        provider-name="QTechOS"
         system="true"
         license-name="lgpl"
         class="org.jnode.system.x86.DMAPlugin">

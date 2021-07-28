@@ -30,66 +30,69 @@ import charva.awt.Toolkit;
  * A horizontal separator in a menu.
  */
 public class JSeparator
-    extends Component
-{
-    /** Create a separator
+    extends Component {
+    /**
+     * Create a separator
      */
-    public JSeparator()
-    {
+    public JSeparator() {
     }
 
-    public void draw(Toolkit toolkit)
-    {
-    /* Get the absolute origin of this component.
-     */
-    Point origin = getLocationOnScreen();
+    public void draw(Toolkit toolkit) {
+        /* Get the absolute origin of this component.
+         */
+        Point origin = getLocationOnScreen();
 
-    toolkit.setCursor(origin);
+        toolkit.setCursor(origin);
 
-    StringBuffer buf = new StringBuffer();
-    for (int i=0; i<getSize().width; i++) {
-        buf.append("-");
+        StringBuffer buf = new StringBuffer();
+        for (int i = 0; i < getSize().width; i++) {
+            buf.append("-");
+        }
+        toolkit.addString(buf.toString(), Toolkit.A_NORMAL, 0);
     }
-    toolkit.addString(buf.toString(), Toolkit.A_NORMAL, 0);
-    }
 
-    /** Determines whether this component will accept the keyboard focus
+    /**
+     * Determines whether this component will accept the keyboard focus
      * during keyboard traversal.
      */
-    public boolean isFocusTraversable() { return false; }
-
-    public Dimension minimumSize()
-    {
-    return this.getSize();
+    public boolean isFocusTraversable() {
+        return false;
     }
 
-    public Dimension getSize()
-    {
-    return new Dimension(this.getWidth(), this.getHeight());
+    public Dimension minimumSize() {
+        return this.getSize();
+    }
+
+    public Dimension getSize() {
+        return new Dimension(this.getWidth(), this.getHeight());
     }
 
     public int getWidth() {
-    Container parent = getParent();
-    Insets insets = parent.getInsets();
-    int availableWidth = parent.getSize().width -
-        insets.left - insets.right;
+        Container parent = getParent();
+        Insets insets = parent.getInsets();
+        int availableWidth = parent.getSize().width -
+            insets.left - insets.right;
 
-    return availableWidth;
+        return availableWidth;
     }
 
     public int getHeight() {
-    return 1;
+        return 1;
     }
 
-    /** This is never invoked. */
-    public void requestFocus() { }
+    /**
+     * This is never invoked.
+     */
+    public void requestFocus() {
+    }
 
-    /** Outputs a textual description of this component to stderr.
+    /**
+     * Outputs a textual description of this component to stderr.
      */
     public void debug(int level_) {
-    for (int i=0; i<level_; i++)
-        System.err.print("    ");
-    System.err.println("JSeparator origin=" + _origin );
+        for (int i = 0; i < level_; i++)
+            System.err.print("    ");
+        System.err.println("JSeparator origin=" + _origin);
     }
 
     //====================================================================

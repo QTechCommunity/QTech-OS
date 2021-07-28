@@ -21,11 +21,11 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.vm.core" 
-        name="JNode VM classes"
+        name="QTech OS VM classes"
         version="@VERSION@"
         system="true"
         license-name="lgpl"
-        provider-name="JNode.org">
+        provider-name="QTechOS">
         
   <requires>
     <import plugin="rt"/>

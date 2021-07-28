@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver.block.ide.disk" 
-        name="JNode IDE Disk drivers"
+        name="QTech OS IDE Disk drivers"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="JNode.org">
+        provider-name="QTechOS">
         
   <requires>
     <import plugin="org.jnode.driver.bus.ide"/>

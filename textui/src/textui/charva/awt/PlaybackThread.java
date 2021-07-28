@@ -24,50 +24,48 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 /**
- * This class reads a scriptfile line by line, parses each line 
+ * This class reads a scriptfile line by line, parses each line
  * into a keystroke-specifier and a time-interval, and fires the
  * specified keystroke after the specified delay.
  */
 public class PlaybackThread
-    extends Thread
-{
+    extends Thread {
     PlaybackThread(BufferedReader scriptReader_) {
-    _scriptReader = scriptReader_;
-    _toolkit = Toolkit.getDefaultToolkit();
+        _scriptReader = scriptReader_;
+        _toolkit = Toolkit.getDefaultToolkit();
     }
 
     public void run() {
-    String line;
+        String line;
 
-    try {
-        while ((line = _scriptReader.readLine()) != null) {
-        StringTokenizer st = new StringTokenizer(line);
-        String keycodeToken = st.nextToken();
-        int keycode = Integer.parseInt(keycodeToken, 16);
+        try {
+            while ((line = _scriptReader.readLine()) != null) {
+                StringTokenizer st = new StringTokenizer(line);
+                String keycodeToken = st.nextToken();
+                int keycode = Integer.parseInt(keycodeToken, 16);
 
-        String delayToken = st.nextToken();
-        long delay = Long.parseLong(delayToken);
+                String delayToken = st.nextToken();
+                long delay = Long.parseLong(delayToken);
 
-        if (delay != 0) {
-            try {
-            Thread.sleep(delay);
+                if (delay != 0) {
+                    try {
+                        Thread.sleep(delay);
+                    } catch (InterruptedException ei) {
+                    }
+                }
+
+                _toolkit.fireKeystroke(keycode);
             }
-            catch (InterruptedException ei) {}
+        } catch (IOException ei) {
+            System.err.println("while reading script file: " +
+                ei.getMessage());
         }
-
-        _toolkit.fireKeystroke(keycode);
-        }
-    }
-    catch (IOException ei) {
-        System.err.println("while reading script file: " +
-            ei.getMessage());
-    }
     }
 
     //====================================================================
     // INSTANCE VARIABLES
 
-    private BufferedReader _scriptReader;
+    private final BufferedReader _scriptReader;
 
-    private Toolkit _toolkit;
+    private final Toolkit _toolkit;
 }

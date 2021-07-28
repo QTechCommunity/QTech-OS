@@ -25,6 +25,7 @@ import gnu.java.awt.EmbeddedWindow;
 import gnu.java.awt.peer.ClasspathFontPeer;
 import gnu.java.awt.peer.EmbeddedWindowPeer;
 import gnu.java.security.action.GetPropertyAction;
+import gnu.java.security.action.SetPropertyAction;
 import java.awt.AWTError;
 import java.awt.AWTEvent;
 import java.awt.AWTException;
@@ -67,6 +68,10 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.net.URL;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
@@ -78,6 +83,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import javax.imageio.ImageIO;
+import javax.naming.NameNotFoundException;
 import javax.naming.NamingException;
 import javax.swing.JDesktopPane;
 import org.apache.log4j.Logger;
@@ -85,6 +91,9 @@ import org.jnode.awt.font.FontManager;
 import org.jnode.awt.image.BufferedImageSurface;
 import org.jnode.awt.image.JNodeImage;
 import org.jnode.driver.DeviceException;
+import org.jnode.driver.console.ConsoleManager;
+import org.jnode.driver.console.TextConsole;
+import org.jnode.driver.console.textscreen.TextScreenConsole;
 import org.jnode.driver.sound.speaker.SpeakerUtils;
 import org.jnode.driver.video.AlreadyOpenException;
 import org.jnode.driver.video.FrameBufferAPI;
@@ -1153,7 +1162,12 @@ public abstract class JNodeToolkit extends ClasspathToolkit implements FrameBuff
             ((JNodeToolkit) Toolkit.getDefaultToolkit()).joinGUI();
             JNodeToolkit.waitUntilStopped();
         } else {
+
+            Void systemLAF = AccessController.doPrivileged(
+                new SetPropertyAction("swing.systemlaf", "com.qtech.os.ui.old.dark.QUILookAndFeel"));
+
             JNodeToolkit.startGui();
+
             try {
                 final String desktopClassName = System.getProperty("jnode.desktop");
                 if (desktopClassName != null) {
@@ -1171,11 +1185,46 @@ public abstract class JNodeToolkit extends ClasspathToolkit implements FrameBuff
                 log.error("Cannot instantiate desktop class", ex);
             } catch (IllegalAccessException ex) {
                 log.error("Cannot access desktop class", ex);
+            } catch (Throwable t) {
+                StringWriter str = new StringWriter();
+                PrintWriter w = new PrintWriter(str);
+                PrintWriter writer = new PrintWriter(System.out);
+                try {
+                    TextConsole focus = (TextConsole) (InitialNaming.lookup(ConsoleManager.NAME)).getFocus();
+                    focus.setCursor(0, 0);
+                    writer = new PrintWriter(focus.getOut());
+                } catch (NameNotFoundException e) {
+                    e.printStackTrace(writer);
+                }
+                t.printStackTrace(w);
+
+                String[] split = str.toString().split("\n");
+                for (String line : split) {
+                    String transformedLine = line.replaceAll(
+                        "^ {4}at ([a-z]+(?:\\.[a-zA-Z_$]*)+)(?:\\.([A-Za-z0-9$_]+))(?:\\.([a-zA-Z]+))(\\((?:([A-Za-z._$<>]*):(\\d*))\\))$",
+                        "  at $1.$2 : $5"
+                    );
+
+                    w.println(transformedLine);
+                }
             } finally {
+                try {
+                    JNodeToolkit.stopGui();
+                } catch (Throwable e) {
+//                    e.printStackTrace();
+                }
+
                 JNodeToolkit.waitUntilStopped();
             }
         }
         ((JNodeToolkit) Toolkit.getDefaultToolkit()).runExitAction();
+        while (true) {
+            try {
+                Thread.sleep(Long.MAX_VALUE);
+            } catch (InterruptedException ex) {
+                // Ignore
+            }
+        }
     }
 
     /**

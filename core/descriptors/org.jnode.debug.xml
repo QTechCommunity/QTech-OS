@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.debug" 
-        name="JNode debugging support"
+        name="QTech OS debugging support"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="JNode.org">
+        provider-name="QTechOS">
         
   <runtime>
     <library name="jnode-core.jar">

@@ -31,22 +31,21 @@ public class TreeSelectionEvent extends java.util.EventObject {
 
     /**
      * Represents a change in the selection of a TreeSelectionModel.
-     * 
-     * @param source_
-     *            the object that initiated this event (usually a
-     *            DefaultTreeSelectionModel).
-     * @param path_ -
-     *            the path that has changed in the selection.
-     * @param isNew_ -
-     *            whether or not the path is new to the selection; false means
-     *            path was removed from the selection.
+     *
+     * @param source_               the object that initiated this event (usually a
+     *                              DefaultTreeSelectionModel).
+     * @param path_                 -
+     *                              the path that has changed in the selection.
+     * @param isNew_                -
+     *                              whether or not the path is new to the selection; false means
+     *                              path was removed from the selection.
      * @param oldLeadSelectionPath_ -
-     *            not used.
+     *                              not used.
      * @param newLeadSelectionPath_ -
-     *            not used.
+     *                              not used.
      */
     public TreeSelectionEvent(Object source_, TreePath path_, boolean isNew_,
-            TreePath oldLeadSelectionPath_, TreePath newLeadSelectionPath_) {
+                              TreePath oldLeadSelectionPath_, TreePath newLeadSelectionPath_) {
         super(source_);
         //_source = source_;
         _path = path_;
@@ -71,5 +70,5 @@ public class TreeSelectionEvent extends java.util.EventObject {
     //private final Object _source;
     private boolean _isNew;
 
-    private TreePath _path;
+    private final TreePath _path;
 }

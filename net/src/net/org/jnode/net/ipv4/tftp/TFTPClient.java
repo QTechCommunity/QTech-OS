@@ -63,7 +63,7 @@ public class TFTPClient extends org.apache.commons.net.tftp.TFTPClient {
         // FIXME ... figure out to how to use JNode command argument parsing
         // (and completion) for our little TFTP interactive command syntax. 
         this.br = new BufferedReader(in);
-        out.println("JNode TFTP Client");
+        out.println("QTech OS TFTP Client");
         do {
             out.print("tftp> ");
             String line = br.readLine();

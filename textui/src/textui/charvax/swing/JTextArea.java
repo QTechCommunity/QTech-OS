@@ -19,12 +19,15 @@
 
 package charvax.swing;
 
-import charva.awt.*;
+import charva.awt.Component;
+import charva.awt.Dimension;
+import charva.awt.Insets;
+import charva.awt.Point;
+import charva.awt.Toolkit;
 import charva.awt.event.KeyEvent;
 import charva.awt.event.MouseEvent;
 import charva.awt.event.ScrollEvent;
 import charva.awt.event.ScrollListener;
-
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -44,41 +47,41 @@ import java.util.Vector;
  * input focus away from the JTextArea, whereas CHARVA has no mouse support.
  */
 public class JTextArea
-        extends charvax.swing.text.JTextComponent
-        implements charva.awt.Scrollable {
+    extends charvax.swing.text.JTextComponent
+    implements charva.awt.Scrollable {
     /**
      * The default constructor creates an empty text area with 10 rows
      * and 10 columns.
      */
     public JTextArea() {
-        this( "" );
+        this("");
     }
 
     /**
      * Construct a text area with 10 rows and 10 columns, and containing
      * the specified text.
      */
-    public JTextArea( String text_ ) {
-        this( text_, 10, 10 );
+    public JTextArea(String text_) {
+        this(text_, 10, 10);
     }
 
     /**
      * Construct a text area wth the specified number of rows and columns,
      * and containing the specified text.
      */
-    public JTextArea( String text_, int rows_, int columns_ ) {
-        setDocument( text_ );
+    public JTextArea(String text_, int rows_, int columns_) {
+        setDocument(text_);
         _rows = rows_;
         _preferredRows = rows_;
         _columns = columns_;
         _preferredColumns = columns_;
-        setCaretPosition( 0 );
+        setCaretPosition(0);
     }
 
     /**
      * Sets the number of columns in this JTextArea.
      */
-    public void setColumns( int columns_ ) {
+    public void setColumns(int columns_) {
         _columns = columns_;
         _preferredColumns = columns_;
     }
@@ -93,7 +96,7 @@ public class JTextArea
     /**
      * Sets the number of rows in this JTextArea.
      */
-    public void setRows( int rows_ ) {
+    public void setRows(int rows_) {
         _rows = rows_;
         _preferredRows = rows_;
     }
@@ -109,7 +112,7 @@ public class JTextArea
      * Returns the size of this component.
      */
     public Dimension getSize() {
-        return new Dimension( _columns, _rows );
+        return new Dimension(_columns, _rows);
     }
 
     public int getWidth() {
@@ -123,8 +126,8 @@ public class JTextArea
     /**
      * Appends the specified text to the end of the document.
      */
-    public synchronized void append( String text_ ) {
-        super._document.append( text_ );
+    public synchronized void append(String text_) {
+        super._document.append(text_);
         _caretPosition = super._document.length();
 
         refresh();
@@ -134,8 +137,8 @@ public class JTextArea
      * Inserts the specified text at the specified position (ie at the
      * specified offset from the start of the document)..
      */
-    public synchronized void insert( String text_, int pos_ ) {
-        super._document.insert( pos_, text_ );
+    public synchronized void insert(String text_, int pos_) {
+        super._document.insert(pos_, text_);
         _caretPosition = pos_ + text_.length();
 
         refresh();
@@ -145,14 +148,14 @@ public class JTextArea
      * Inserts the specified character at the specified position (ie at the
      * specified offset from the start of the document)..
      */
-    public synchronized void insert( char ch, int pos_ ) {
+    public synchronized void insert(char ch, int pos_) {
         try {
-            super._document.insert( pos_, ch );
+            super._document.insert(pos_, ch);
             _caretPosition = pos_ + 1;
             refresh();
-        }
-        catch( StringIndexOutOfBoundsException sioobe ) {
-            System.err.println( "Insert ch=" + ch + ", pos=" + pos_ + " in document of length" + super._document.length() + " failed" );
+        } catch (StringIndexOutOfBoundsException sioobe) {
+            System.err.println(
+                "Insert ch=" + ch + ", pos=" + pos_ + " in document of length" + super._document.length() + " failed");
         }
 
     }
@@ -161,8 +164,8 @@ public class JTextArea
      * Replaces the text from the specified start position to end position
      * with the specified text.
      */
-    public synchronized void replaceRange( String text_, int start_, int end_ ) {
-        super._document.replace( start_, end_, text_ );
+    public synchronized void replaceRange(String text_, int start_, int end_) {
+        super._document.replace(start_, end_, text_);
         _caretPosition = start_ + text_.length();
 
         refresh();
@@ -171,8 +174,8 @@ public class JTextArea
     /**
      * Sets the position of the text insertion caret for this JTextArea.
      */
-    public void setCaretPosition( int caret_ ) {
-        super.setCaretPosition( caret_ );
+    public void setCaretPosition(int caret_) {
+        super.setCaretPosition(caret_);
 
         refresh();
     }
@@ -181,30 +184,30 @@ public class JTextArea
      * Returns the number of lines of text displayed in the JTextArea.
      */
     public int getLineCount() {
-        return offsetCalc( LINE_COUNT, 0 );
+        return offsetCalc(LINE_COUNT, 0);
     }
 
     /**
      * Returns the offset of the first character in the specified line
      * of text.
      */
-    public int getLineStartOffset( int line_ ) {
-        return offsetCalc( LINE_START_OFFSET, line_ );
+    public int getLineStartOffset(int line_) {
+        return offsetCalc(LINE_START_OFFSET, line_);
     }
 
     /**
      * Returns the offset of the last character in the specified line.
      */
-    public int getLineEndOffset( int line_ ) {
-        return offsetCalc( LINE_END_OFFSET, line_ );
+    public int getLineEndOffset(int line_) {
+        return offsetCalc(LINE_END_OFFSET, line_);
     }
 
     /**
      * Translates an offset (relative to the start of the document)
      * to a line number.
      */
-    public int getLineOfOffset( int offset_ ) {
-        return offsetCalc( LINE_OF_OFFSET, offset_ );
+    public int getLineOfOffset(int offset_) {
+        return offsetCalc(LINE_OF_OFFSET, offset_);
     }
 
     /**
@@ -213,7 +216,7 @@ public class JTextArea
      * allocated width. If set to false, the lines will always be
      * unwrapped. The default value of this property is false.
      */
-    public void setLineWrap( boolean wrap_ ) {
+    public void setLineWrap(boolean wrap_) {
         _lineWrap = wrap_;
         _rows = _preferredRows;
         _columns = _preferredColumns;
@@ -236,7 +239,7 @@ public class JTextArea
      * false, lines will be wrapped at character boundaries. The default
      * value of this property is false.
      */
-    public void setWrapStyleWord( boolean wrapWord_ ) {
+    public void setWrapStyleWord(boolean wrapWord_) {
         _wrapStyleWord = wrapWord_;
     }
 
@@ -260,117 +263,101 @@ public class JTextArea
     /**
      * Process KeyEvents that have been generated by this JTextArea.
      */
-    public void processKeyEvent( KeyEvent ke_ ) {
+    public void processKeyEvent(KeyEvent ke_) {
 
         /* First call all KeyListener objects that may have been registered
          * for this component.
          */
-        super.processKeyEvent( ke_ );
+        super.processKeyEvent(ke_);
 
         /* Check if any of the KeyListeners consumed the KeyEvent.
          */
-        if( ke_.isConsumed() ) {
+        if (ke_.isConsumed()) {
             return;
         }
 
         int caret = getCaretPosition();
-        int line = getLineOfOffset( caret );
+        int line = getLineOfOffset(caret);
         int key = ke_.getKeyCode();
-        if( key == '\t' ) {
+        if (key == '\t') {
             getParent().nextFocus();
             return;
-        }
-        else if( key == KeyEvent.VK_BACK_TAB ) {
+        } else if (key == KeyEvent.VK_BACK_TAB) {
             getParent().previousFocus();
             return;
-        }
-        else if( key == KeyEvent.VK_LEFT && caret > 0 ) {
-            setCaretPosition( caret - 1 );
-        }
-        else if( key == KeyEvent.VK_RIGHT &&
-                 caret < getDocument().length() ) {
-            setCaretPosition( caret + 1 );
-        }
-        else if( key == KeyEvent.VK_HOME ) {
-            int lineStart = getLineStartOffset( line );
-            setCaretPosition( lineStart );
-        }
-        else if( key == KeyEvent.VK_END ) {
-            int lineEnd = getLineEndOffset( line );
-            setCaretPosition( lineEnd );
-        }
-        else if( ( key == KeyEvent.VK_PAGE_UP ||
-                   key == KeyEvent.VK_PAGE_DOWN ) &&
-                 ( getParent() instanceof JViewport ) ) {
+        } else if (key == KeyEvent.VK_LEFT && caret > 0) {
+            setCaretPosition(caret - 1);
+        } else if (key == KeyEvent.VK_RIGHT &&
+            caret < getDocument().length()) {
+            setCaretPosition(caret + 1);
+        } else if (key == KeyEvent.VK_HOME) {
+            int lineStart = getLineStartOffset(line);
+            setCaretPosition(lineStart);
+        } else if (key == KeyEvent.VK_END) {
+            int lineEnd = getLineEndOffset(line);
+            setCaretPosition(lineEnd);
+        } else if ((key == KeyEvent.VK_PAGE_UP ||
+            key == KeyEvent.VK_PAGE_DOWN) &&
+            (getParent() instanceof JViewport)) {
 
-            JViewport viewport = (JViewport)getParent();
+            JViewport viewport = (JViewport) getParent();
             int vertical_offset = -1 * viewport.getViewPosition().y;
             int viewport_height = viewport.getSize().height;
-            if( key == KeyEvent.VK_PAGE_UP ) {
-                if( line > vertical_offset ) {
+            if (key == KeyEvent.VK_PAGE_UP) {
+                if (line > vertical_offset) {
                     line = vertical_offset;
-                }
-                else {
+                } else {
                     line = vertical_offset - viewport_height;
                 }
 
-                line = ( line < 0 ) ? 0 : line;
-            }
-            else {
-                if( line < vertical_offset + viewport_height - 1 ) {
+                line = (line < 0) ? 0 : line;
+            } else {
+                if (line < vertical_offset + viewport_height - 1) {
                     line = vertical_offset + viewport_height - 1;
-                }
-                else {
-                    line = vertical_offset + ( 2 * viewport_height ) - 1;
+                } else {
+                    line = vertical_offset + (2 * viewport_height) - 1;
                 }
 
-                line = ( line > getLineCount() - 1 ) ?
-                       ( getLineCount() - 1 ) :
-                       line;
+                line = (line > getLineCount() - 1) ?
+                    (getLineCount() - 1) :
+                    line;
             }
-            setCaretPosition( getLineStartOffset( line ) );
-        }
-        else if( key == KeyEvent.VK_UP && line > 0 ) {
-            int column = caret - getLineStartOffset( line );
-            int prevlineStart = getLineStartOffset( line - 1 );
-            int prevlineEnd = getLineEndOffset( line - 1 );
-            if( column > prevlineEnd - prevlineStart ) {
+            setCaretPosition(getLineStartOffset(line));
+        } else if (key == KeyEvent.VK_UP && line > 0) {
+            int column = caret - getLineStartOffset(line);
+            int prevlineStart = getLineStartOffset(line - 1);
+            int prevlineEnd = getLineEndOffset(line - 1);
+            if (column > prevlineEnd - prevlineStart) {
                 column = prevlineEnd - prevlineStart;
             }
-            setCaretPosition( prevlineStart + column );
-        }
-        else if( key == KeyEvent.VK_DOWN &&
-                 line < getLineCount() - 1 ) {
-            int column = caret - getLineStartOffset( line );
-            int nextlineStart = getLineStartOffset( line + 1 );
-            int nextlineEnd = getLineEndOffset( line + 1 );
-            if( column > nextlineEnd - nextlineStart ) {
+            setCaretPosition(prevlineStart + column);
+        } else if (key == KeyEvent.VK_DOWN &&
+            line < getLineCount() - 1) {
+            int column = caret - getLineStartOffset(line);
+            int nextlineStart = getLineStartOffset(line + 1);
+            int nextlineEnd = getLineEndOffset(line + 1);
+            if (column > nextlineEnd - nextlineStart) {
                 column = nextlineEnd - nextlineStart;
             }
-            setCaretPosition( nextlineStart + column );
-        }
-        else if( super.isEditable() == false ) {
+            setCaretPosition(nextlineStart + column);
+        } else if (super.isEditable() == false) {
             Toolkit.getDefaultToolkit().beep();
-        }
-        else if( key >= ' ' && key <= 0177 ) {
-            insert( (char)key, caret );
-        }
-        else if( key == KeyEvent.VK_ENTER ) {
-            insert( '\n', caret );
-        }
-        else if( key == KeyEvent.VK_BACK_SPACE && caret > 0 ) {
-            replaceRange( "", caret - 1, caret );
-        }
-        else if( key == KeyEvent.VK_DELETE &&
-                 caret < getDocument().length() - 1 ) {
-            replaceRange( "", caret, caret + 1 );
+        } else if (key >= ' ' && key <= 0177) {
+            insert((char) key, caret);
+        } else if (key == KeyEvent.VK_ENTER) {
+            insert('\n', caret);
+        } else if (key == KeyEvent.VK_BACK_SPACE && caret > 0) {
+            replaceRange("", caret - 1, caret);
+        } else if (key == KeyEvent.VK_DELETE &&
+            caret < getDocument().length() - 1) {
+            replaceRange("", caret, caret + 1);
         }
 
         /* If this JTextArea is contained in a JViewport, let the JViewport
          * do the drawing, after setting the clip rectangle.
          */
-        if( ( getParent() instanceof JViewport ) == false ) {
-            draw( Toolkit.getDefaultToolkit() );
+        if ((getParent() instanceof JViewport) == false) {
+            draw(Toolkit.getDefaultToolkit());
             requestFocus();
             super.requestSync();
         }
@@ -382,31 +369,31 @@ public class JTextArea
      * Clicking the mouse inside the JTextArea moves the caret position
      * to where the mouse was clicked.
      */
-    public void processMouseEvent( MouseEvent e_ ) {
-        super.processMouseEvent( e_ );
+    public void processMouseEvent(MouseEvent e_) {
+        super.processMouseEvent(e_);
 
-        if( e_.getButton() == MouseEvent.BUTTON1 &&
+        if (e_.getButton() == MouseEvent.BUTTON1 &&
             e_.getModifiers() == MouseEvent.MOUSE_CLICKED &&
-            this.isFocusTraversable() ) {
+            this.isFocusTraversable()) {
 
             /* Get the absolute origin of this component.
              */
             Point origin = getLocationOnScreen();
             Insets insets = super.getInsets();
-            origin.translate( insets.left, insets.top );
+            origin.translate(insets.left, insets.top);
 
             int line = e_.getY() - origin.y;
-            if( line > getLineCount() - 1 ) {
+            if (line > getLineCount() - 1) {
                 return;
             }
 
             int column = e_.getX() - origin.x;
-            int lineStart = getLineStartOffset( line );
-            int lineEnd = getLineEndOffset( line );
-            if( column > lineEnd - lineStart ) {
+            int lineStart = getLineStartOffset(line);
+            int lineEnd = getLineEndOffset(line);
+            if (column > lineEnd - lineStart) {
                 column = lineEnd - lineStart;
             }
-            setCaretPosition( lineStart + column );
+            setCaretPosition(lineStart + column);
             repaint();
         }
     }
@@ -416,7 +403,7 @@ public class JTextArea
      *
      * @param toolkit
      */
-    public void draw( Toolkit toolkit ) {
+    public void draw(Toolkit toolkit) {
         Point tempCaret = null;
         Point caret = _caret;
 
@@ -428,8 +415,8 @@ public class JTextArea
 
         /* Start by blanking out the text area
          */
-        toolkit.blankBox( origin, getSize(), colorpair );
-        toolkit.setCursor( origin );
+        toolkit.blankBox(origin, getSize(), colorpair);
+        toolkit.setCursor(origin);
 
         StringBuffer charBuffer = new StringBuffer();
         /* Scan through the entire document, drawing each character in it.
@@ -437,128 +424,123 @@ public class JTextArea
         ScrollEvent scrollevent = null;
         int row = 0, col = 0;
         // outerloop:
-            for( int i = 0; i < super._document.length(); i++ ) {
+        for (int i = 0; i < super._document.length(); i++) {
 
-                /* At some point during the scan of the document, the
-                 * caret position should match the scan index, unless the caret
-                 * position is after the last character of the document.
+            /* At some point during the scan of the document, the
+             * caret position should match the scan index, unless the caret
+             * position is after the last character of the document.
+             */
+            if (_caretPosition == i) {
+                tempCaret = new Point(col, row);
+
+                /* If the caret has changed, generate a ScrollEvent. Note
+                 * that this method may be called multiple times during the
+                 * scan; however, we must post only the last event generated.
                  */
-                if( _caretPosition == i ) {
-                    tempCaret = new Point( col, row );
-
-                    /* If the caret has changed, generate a ScrollEvent. Note
-                     * that this method may be called multiple times during the
-                     * scan; however, we must post only the last event generated.
-                     */
-                    if( tempCaret.equals( caret ) == false ) {
-                        scrollevent = generateScrollEvent( tempCaret,
-                                                           new Point( col, row ) );
-                        caret = tempCaret;
-                    }
+                if (tempCaret.equals(caret) == false) {
+                    scrollevent = generateScrollEvent(tempCaret,
+                        new Point(col, row));
+                    caret = tempCaret;
                 }
+            }
 
-                char chr = super._document.charAt( i );
-                if( col < _columns ) {
-                    if( chr == '\n' ) {
-                        col = 0;
-                        row++;
-                        if( row >= _rows ) {
-                            _rows++;
-                        }
-                        if(charBuffer.length() > 0){
-                            toolkit.addString( charBuffer.toString(), 0, colorpair );
-                            charBuffer.setLength(0);
-                        }
-                        toolkit.setCursor( origin.addOffset( col, row ) );
+            char chr = super._document.charAt(i);
+            if (col < _columns) {
+                if (chr == '\n') {
+                    col = 0;
+                    row++;
+                    if (row >= _rows) {
+                        _rows++;
                     }
-                    else {
-                        charBuffer.append(chr);
-                        //toolkit.addChar( chr, 0, colorpair );
-                        col++;
-                    }
-                }
-                else {    // We have reached the right-hand column.
-                    if(charBuffer.length() > 0){
-                        toolkit.addString( charBuffer.toString(), 0, colorpair );
+                    if (charBuffer.length() > 0) {
+                        toolkit.addString(charBuffer.toString(), 0, colorpair);
                         charBuffer.setLength(0);
                     }
-                    if( _lineWrap == false ) {
-                        if( chr == '\n' ) {
-                            col = 0;
-                            row++;
-                            if( row >= _rows ) {
-                                _rows++;
-                            }
-                            toolkit.setCursor( origin.addOffset( col, row ) );
+                    toolkit.setCursor(origin.addOffset(col, row));
+                } else {
+                    charBuffer.append(chr);
+                    //toolkit.addChar( chr, 0, colorpair );
+                    col++;
+                }
+            } else {    // We have reached the right-hand column.
+                if (charBuffer.length() > 0) {
+                    toolkit.addString(charBuffer.toString(), 0, colorpair);
+                    charBuffer.setLength(0);
+                }
+                if (_lineWrap == false) {
+                    if (chr == '\n') {
+                        col = 0;
+                        row++;
+                        if (row >= _rows) {
+                            _rows++;
                         }
-                        else {
-                            toolkit.addChar( chr, 0, colorpair );
-                            col++;
-                            _columns++;
+                        toolkit.setCursor(origin.addOffset(col, row));
+                    } else {
+                        toolkit.addChar(chr, 0, colorpair);
+                        col++;
+                        _columns++;
+                    }
+                } else {    // line-wrap is true
+                    if (_wrapStyleWord == false) {
+                        col = 0;
+                        row++;
+                        if (row >= _rows) {
+                            _rows++;
+                        }
+                        toolkit.setCursor(origin.addOffset(col, row));
+                        if (chr != '\n')    // thanks to Chris Rogers for this
+                        {
+                            toolkit.addChar(chr, 0, colorpair);
+                        }
+                    } else {
+                        /* We must back-track until we get to whitespace, so
+                         * that we can move the word to the next line.
+                         */
+                        int j;
+                        for (j = 0; j < _columns; j++) {
+                            char tmpchr = super._document.charAt(i - j);
+                            if (tmpchr == ' ' || tmpchr == '\t') {
+                                deleteEOL(toolkit, col - j, row, colorpair);
+                                col = 0;
+                                row++;
+                                if (row >= _rows) {
+                                    _rows++;
+                                }
+                                i -= j;
+                                toolkit.setCursor(origin.addOffset(col, row));
+                                break;
+                            }
+                        }
+                        if (j == _columns) {    // the word was too long
+                            if (chr == ' ' || chr == '\n' || chr == '\t') {
+                                col = 0;
+                                row++;
+                                if (row >= _rows) {
+                                    _rows++;
+                                }
+                                toolkit.setCursor(origin.addOffset(col, row));
+                            }
                         }
                     }
-                    else {    // line-wrap is true
-                        if( _wrapStyleWord == false ) {
-                            col = 0;
-                            row++;
-                            if( row >= _rows ) {
-                                _rows++;
-                            }
-                            toolkit.setCursor( origin.addOffset( col, row ) );
-                            if( chr != '\n' )    // thanks to Chris Rogers for this
-                            {
-                                toolkit.addChar( chr, 0, colorpair );
-                            }
-                        }
-                        else {
-                            /* We must back-track until we get to whitespace, so
-                             * that we can move the word to the next line.
-                             */
-                            int j;
-                            for( j = 0; j < _columns; j++ ) {
-                                char tmpchr = super._document.charAt( i - j );
-                                if( tmpchr == ' ' || tmpchr == '\t' ) {
-                                    deleteEOL( toolkit, col - j, row, colorpair );
-                                    col = 0;
-                                    row++;
-                                    if( row >= _rows ) {
-                                        _rows++;
-                                    }
-                                    i -= j;
-                                    toolkit.setCursor( origin.addOffset( col, row ) );
-                                    break;
-                                }
-                            }
-                            if( j == _columns ) {    // the word was too long
-                                if( chr == ' ' || chr == '\n' || chr == '\t' ) {
-                                    col = 0;
-                                    row++;
-                                    if( row >= _rows ) {
-                                        _rows++;
-                                    }
-                                    toolkit.setCursor( origin.addOffset( col, row ) );
-                                }
-                            }
-                        }
-                    }    // end if line-wrap is true
-                }        // end if we have reached the right-hand column
-            }        // end FOR loop.
+                }    // end if line-wrap is true
+            }        // end if we have reached the right-hand column
+        }        // end FOR loop.
 
-        if(charBuffer.length() > 0){
-            toolkit.addString( charBuffer.toString(), 0, colorpair );
+        if (charBuffer.length() > 0) {
+            toolkit.addString(charBuffer.toString(), 0, colorpair);
             charBuffer.setLength(0);
         }
         /* Check for the case where the caret position is after the last
          * character of the document.
          */
-        if( _caretPosition == super._document.length() ) {
-            tempCaret = new Point( col, row );
+        if (_caretPosition == super._document.length()) {
+            tempCaret = new Point(col, row);
 
             /* If the caret has changed, generate a ScrollEvent
              */
-            if( tempCaret.equals( caret ) == false ) {
-                scrollevent = generateScrollEvent( tempCaret,
-                                                   new Point( col, row ) );
+            if (tempCaret.equals(caret) == false) {
+                scrollevent = generateScrollEvent(tempCaret,
+                    new Point(col, row));
             }
             caret = tempCaret;
         }
@@ -568,8 +550,8 @@ public class JTextArea
          * endless loop, where a ScrollEvent triggers a draw(), which
          * triggers an unnecessary ScrollEvent and so on.
          */
-        if( ( _caret.equals( caret ) == false ) && scrollevent != null ) {
-            toolkit.getSystemEventQueue().postEvent( scrollevent );
+        if ((_caret.equals(caret) == false) && scrollevent != null) {
+            toolkit.getSystemEventQueue().postEvent(scrollevent);
             _caret = caret;
         }
     }
@@ -582,39 +564,39 @@ public class JTextArea
         /* Get the absolute origin of this component.
          */
         Point origin = getLocationOnScreen();
-        Toolkit.getDefaultToolkit().setCursor( origin.addOffset( _caret ) );
+        Toolkit.getDefaultToolkit().setCursor(origin.addOffset(_caret));
     }
 
     /**
      * Register a ScrollListener object for this JTextArea.
      */
-    public void addScrollListener( ScrollListener sl_ ) {
-        if( _scrollListeners == null ) {
+    public void addScrollListener(ScrollListener sl_) {
+        if (_scrollListeners == null) {
             _scrollListeners = new Vector<ScrollListener>();
         }
-        _scrollListeners.add( sl_ );
+        _scrollListeners.add(sl_);
     }
 
     /**
      * Remove a ScrollListener object that is registered for this JTextArea.
      */
-    public void removeScrollListener( ScrollListener sl_ ) {
-        if( _scrollListeners == null ) {
+    public void removeScrollListener(ScrollListener sl_) {
+        if (_scrollListeners == null) {
             return;
         }
-        _scrollListeners.remove( sl_ );
+        _scrollListeners.remove(sl_);
     }
 
     /**
      * Process scroll events generated by this JTextArea.
      */
-    public void processScrollEvent( ScrollEvent e_ ) {
-        if( _scrollListeners != null ) {
-            for( Enumeration<ScrollListener> e = _scrollListeners.elements();
+    public void processScrollEvent(ScrollEvent e_) {
+        if (_scrollListeners != null) {
+            for (Enumeration<ScrollListener> e = _scrollListeners.elements();
                  e.hasMoreElements(); ) {
 
                 ScrollListener sl = e.nextElement();
-                sl.scroll( e_ );
+                sl.scroll(e_);
             }
         }
     }
@@ -627,26 +609,26 @@ public class JTextArea
      * or in the setColumns() and setRows() methods).
      */
     public Dimension getPreferredScrollableViewportSize() {
-        return new Dimension( _preferredColumns, _preferredRows );
+        return new Dimension(_preferredColumns, _preferredRows);
     }
 
-    public void debug( int level_ ) {
-        for( int i = 0; i < level_; i++ ) {
-            System.err.print( "    " );
+    public void debug(int level_) {
+        for (int i = 0; i < level_; i++) {
+            System.err.print("    ");
         }
-        System.err.println( "JTextArea origin=" + _origin +
-                            " size=" + getSize() );
+        System.err.println("JTextArea origin=" + _origin +
+            " size=" + getSize());
     }
 
     /**
      * A private helper method to delete from a specified position
      * until the end of the line.
      */
-    private void deleteEOL( Toolkit term_, int col_, int row_, int colorpair_ ) {
+    private void deleteEOL(Toolkit term_, int col_, int row_, int colorpair_) {
         Point origin = getLocationOnScreen();
-        term_.setCursor( origin.addOffset( col_, row_ ) );
-        for( int i = col_; i < _columns; i++ ) {
-            term_.addChar( ' ', 0, colorpair_ );
+        term_.setCursor(origin.addOffset(col_, row_));
+        for (int i = col_; i < _columns; i++) {
+            term_.addChar(' ', 0, colorpair_);
         }
     }
 
@@ -654,60 +636,56 @@ public class JTextArea
      * This helper method converts offset to line number and
      * vice versa.
      */
-    private int offsetCalc( int mode_, int value_ ) {
+    private int offsetCalc(int mode_, int value_) {
         int lineOfOffset = 0;
         int row = 0;
 
-        if( mode_ == LINE_START_OFFSET && value_ == 0 ) {
+        if (mode_ == LINE_START_OFFSET && value_ == 0) {
             return 0;
         }
 
-        for( int col = 0, i = 0;
+        for (int col = 0, i = 0;
              i < super._document.length();
-             i++ ) {
+             i++) {
 
-            if( mode_ == LINE_OF_OFFSET && value_ == i ) {
+            if (mode_ == LINE_OF_OFFSET && value_ == i) {
                 lineOfOffset = row;
             }
 
-            char chr = super._document.charAt( i );
-            if( col < _columns ) {
-                if( chr == '\n' ) {
+            char chr = super._document.charAt(i);
+            if (col < _columns) {
+                if (chr == '\n') {
                     col = 0;
                     row++;
-                }
-                else {
+                } else {
                     col++;
                 }
-            }
-            else {    // We have reached the right-hand column.
-                if( _lineWrap == false ) {
-                    if( chr == '\n' ) {
+            } else {    // We have reached the right-hand column.
+                if (_lineWrap == false) {
+                    if (chr == '\n') {
                         col = 0;
                         row++;
                     }
-                }
-                else {    // line-wrap is true
-                    if( _wrapStyleWord == false ) {
+                } else {    // line-wrap is true
+                    if (_wrapStyleWord == false) {
                         col = 0;
                         row++;
-                    }
-                    else {
+                    } else {
                         /* We must back-track until we get to whitespace, so
                          * that we can move the word to the next line.
                          */
                         int j;
-                        for( j = 0; j < _columns; j++ ) {
-                            char tmpchr = super._document.charAt( i - j );
-                            if( tmpchr == ' ' || tmpchr == '\t' ) {
+                        for (j = 0; j < _columns; j++) {
+                            char tmpchr = super._document.charAt(i - j);
+                            if (tmpchr == ' ' || tmpchr == '\t') {
                                 col = 0;
                                 row++;
                                 i -= j;
                                 break;
                             }
                         }
-                        if( j == _columns ) {    // the word was too long
-                            if( chr == ' ' || chr == '\n' || chr == '\t' ) {
+                        if (j == _columns) {    // the word was too long
+                            if (chr == ' ' || chr == '\n' || chr == '\t') {
                                 col = 0;
                                 row++;
                             }
@@ -716,32 +694,27 @@ public class JTextArea
                 }    // end if line-wrap is true
             }        // end if we have reached the right-hand column
 
-            if( mode_ == LINE_START_OFFSET && col == 0 && row == value_ ) {
+            if (mode_ == LINE_START_OFFSET && col == 0 && row == value_) {
                 return i + 1;
-            }
-            else if( mode_ == LINE_END_OFFSET && col == 0 && row == value_ + 1 ) {
+            } else if (mode_ == LINE_END_OFFSET && col == 0 && row == value_ + 1) {
                 return i;
             }
 
         }        // end FOR loop.
 
-        if( mode_ == LINE_OF_OFFSET ) {
-            if( value_ == super._document.length() ) {
+        if (mode_ == LINE_OF_OFFSET) {
+            if (value_ == super._document.length()) {
                 return row;
-            }
-            else {
+            } else {
                 return lineOfOffset;
             }
-        }
-        else if( mode_ == LINE_COUNT ) {
+        } else if (mode_ == LINE_COUNT) {
             return row + 1;
-        }
-        else if( mode_ == LINE_END_OFFSET && row == value_ ) {
+        } else if (mode_ == LINE_END_OFFSET && row == value_) {
             return super._document.length();
-        }
-        else {
-            throw new IndexOutOfBoundsException( "Invalid offset or line number: mode=" + mode_ +
-                                                 " value=" + value_ + " row=" + row + " doc=\"" + _document + "\"" );
+        } else {
+            throw new IndexOutOfBoundsException("Invalid offset or line number: mode=" + mode_ +
+                " value=" + value_ + " row=" + row + " doc=\"" + _document + "\"");
         }
     }
 
@@ -756,10 +729,9 @@ public class JTextArea
          * draw() method of this JTextArea.
          */
         Component todraw;
-        if( getParent() instanceof JViewport ) {
+        if (getParent() instanceof JViewport) {
             todraw = getParent();
-        }
-        else {
+        } else {
             todraw = this;
         }
 
@@ -777,62 +749,53 @@ public class JTextArea
          */
         Component todraw;
         Component parent = getParent();
-        if( parent == null ) {
+        if (parent == null) {
             this.repaint();
-        }
-        else {
-            if( parent instanceof JViewport ) {
+        } else {
+            if (parent instanceof JViewport) {
                 todraw = parent;
-            }
-            else {
+            } else {
                 todraw = this;
             }
             /* If this component is already displayed, generate a PaintEvent
              * and post it onto the queue.
              */
-            todraw.draw( Toolkit.getDefaultToolkit() );
+            todraw.draw(Toolkit.getDefaultToolkit());
         }
     }
 
     /**
      * Private method, called whenever the caret changes.
      */
-    private ScrollEvent generateScrollEvent( Point tempCaret_, Point col_row_ ) {
+    private ScrollEvent generateScrollEvent(Point tempCaret_, Point col_row_) {
         int direction;
 
         /* Determine the direction of scrolling
          */
-        if( tempCaret_.y > _caret.y ) {
-            if( tempCaret_.x > _caret.x ) {
+        if (tempCaret_.y > _caret.y) {
+            if (tempCaret_.x > _caret.x) {
                 direction = ScrollEvent.UP_LEFT;
-            }
-            else if( tempCaret_.x < _caret.x ) {
+            } else if (tempCaret_.x < _caret.x) {
                 direction = ScrollEvent.UP_RIGHT;
-            }
-            else {
+            } else {
                 direction = ScrollEvent.UP;
             }
-        }
-        else if( tempCaret_.y < _caret.y ) {
-            if( tempCaret_.x > _caret.x ) {
+        } else if (tempCaret_.y < _caret.y) {
+            if (tempCaret_.x > _caret.x) {
                 direction = ScrollEvent.DOWN_LEFT;
-            }
-            else if( tempCaret_.x < _caret.x ) {
+            } else if (tempCaret_.x < _caret.x) {
                 direction = ScrollEvent.DOWN_RIGHT;
-            }
-            else {
+            } else {
                 direction = ScrollEvent.DOWN;
             }
-        }
-        else {
-            if( tempCaret_.x > _caret.x ) {
+        } else {
+            if (tempCaret_.x > _caret.x) {
                 direction = ScrollEvent.LEFT;
-            }
-            else {
+            } else {
                 direction = ScrollEvent.RIGHT;
             }
         }
-        return new ScrollEvent( this, direction, col_row_ );
+        return new ScrollEvent(this, direction, col_row_);
 
     }
 
@@ -848,7 +811,7 @@ public class JTextArea
     /**
      * The caret is updated only when the component is drawn.
      */
-    private Point _caret = new Point( 0, 0 );
+    private Point _caret = new Point(0, 0);
 
     private boolean _lineWrap;
     private boolean _wrapStyleWord = false;

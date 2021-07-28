@@ -20,8 +20,12 @@
  
 package org.jnode.fs;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import org.apache.tools.ant.types.resources.Files;
 import org.jnode.driver.Device;
+import org.jnode.util.FileUtils;
 
 /**
  * The <tt>FileSystem<tt> interface provide methods common to file system implementations.

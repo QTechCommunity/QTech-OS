@@ -22,7 +22,7 @@ package org.jnode.test.jnodenative;
 
 public class NativeTestCase2 {
     public TestCase2 getTestCase2() {
-        System.err.println("this is the native implementation for JNode");
+        System.err.println("this is the native implementation for QTech OS");
         return new TestCase2();
     }
 }

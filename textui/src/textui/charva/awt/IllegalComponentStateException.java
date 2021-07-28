@@ -23,22 +23,21 @@ package charva.awt;
  * This exception is thrown when a CHARVA component is in an
  * illegal state for the requested operation.
  */
-public class IllegalComponentStateException extends RuntimeException
-{
+public class IllegalComponentStateException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
-    /** Construct an IllegalComponentStateException.
+    /**
+     * Construct an IllegalComponentStateException.
      */
-    public IllegalComponentStateException()
-    {
-    super();
+    public IllegalComponentStateException() {
+        super();
     }
 
-    /** Construct an IllegalComponentStateException with the specified
+    /**
+     * Construct an IllegalComponentStateException with the specified
      * message.
      */
-    public IllegalComponentStateException(String msg)
-    {
-    super(msg);
+    public IllegalComponentStateException(String msg) {
+        super(msg);
     }
 }

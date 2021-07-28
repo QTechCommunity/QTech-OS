@@ -230,8 +230,8 @@ public class VMwareBuilderTask extends Task {
         
         // Finally reinstate the saved JNode.nvram file if we have one.
         if (saveDir != null) {
-            File savedNVRam = new File(saveDir, "JNode.nvram");
-            File nvram = new File(new File(isoFile).getParentFile(), "JNode.nvram"); 
+            File savedNVRam = new File(saveDir, "QTechOS.nvram");
+            File nvram = new File(new File(isoFile).getParentFile(), "QTechOS.nvram"); 
             if (savedNVRam.exists() && !nvram.exists()) {
                 InputStream is = null;
                 OutputStream os = null;
@@ -243,7 +243,7 @@ public class VMwareBuilderTask extends Task {
                     os.write(buffer);
                     os.flush();
                 } catch (IOException ex) {
-                    throw new BuildException("Cannot copy the saved 'JNode.nvram' file: " + ex.getMessage());
+                    throw new BuildException("Cannot copy the saved 'QTechOS.nvram' file: " + ex.getMessage());
                 } finally {
                     if (is != null) {
                         try {
@@ -286,7 +286,7 @@ public class VMwareBuilderTask extends Task {
         props.put("displayName", (name != null) ? name : "QTechOS");
         props.put("guestOS", "dos");
 
-        props.put("nvram", "JNode.nvram");  
+        props.put("nvram", "QTechOS.nvram");  
         props.put("MemTrimRate", "-1");  
 
         final String osName = System.getProperty("os.name").toLowerCase(); 

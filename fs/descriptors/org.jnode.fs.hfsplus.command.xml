@@ -23,7 +23,7 @@
 <plugin id="org.jnode.fs.hfsplus.command"
         name="Ext2 specific commands"
         version="@VERSION@"
-        provider-name="JNode.org"
+        provider-name="QTechOS"
         license-name="lgpl">
 
   <requires>

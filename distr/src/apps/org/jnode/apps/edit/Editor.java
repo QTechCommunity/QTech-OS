@@ -58,7 +58,7 @@ public class Editor extends JFrame {
     private TitledBorder border;
 
     private Editor(final File file) {
-        super("JNote - JNode Text Editor");
+        super("JNote - QTech OS Text Editor");
         this.file = file;
         setBackground(Color.black);
         setForeground(Color.cyan);

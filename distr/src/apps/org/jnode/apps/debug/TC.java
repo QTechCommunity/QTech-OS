@@ -40,7 +40,7 @@ public class TC extends JFrame {
     private JPanel contentPane;
 
     public TC() {
-        super("JNode Test Client");
+        super("QTech OS Test Client");
         initialize();
         setLocation(0, 0);
         setSize(80, 24);

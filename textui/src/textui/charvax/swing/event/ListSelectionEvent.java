@@ -29,20 +29,16 @@ public class ListSelectionEvent extends java.util.EventObject {
 
     /**
      * Construct a ListSelectionEvent.
-     * 
-     * @param source_
-     *            the object that initiated this event (usually a
-     *            DefaultListSelectionModel).
-     * @param firstIndex_
-     *            the index of the first row whose selection status has
-     *            changed.
-     * @param lastIndex_
-     *            the index of the last row whose selection status has changed.
-     * @param isAdjusting_
-     *            not used in CHARVA.
+     *
+     * @param source_      the object that initiated this event (usually a
+     *                     DefaultListSelectionModel).
+     * @param firstIndex_  the index of the first row whose selection status has
+     *                     changed.
+     * @param lastIndex_   the index of the last row whose selection status has changed.
+     * @param isAdjusting_ not used in CHARVA.
      */
     public ListSelectionEvent(Object source_, int firstIndex_, int lastIndex_,
-            boolean isAdjusting_) {
+                              boolean isAdjusting_) {
         super(source_);
         //_source = source_;
         _firstIndex = firstIndex_;
@@ -66,7 +62,7 @@ public class ListSelectionEvent extends java.util.EventObject {
 
     //private final Object _source;
 
-    private int _firstIndex;
+    private final int _firstIndex;
 
     //private final int _lastIndex;
 

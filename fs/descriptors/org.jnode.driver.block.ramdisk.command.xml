@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver.block.ramdisk.command" 
-        name="JNode Ramdisk related commands"
+        name="QTech OS Ramdisk related commands"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="JNode.org">
+        provider-name="QTechOS">
         
   <requires>
     <import plugin="org.jnode.driver.block.ramdisk"/>

@@ -26,34 +26,43 @@ import charvax.swing.event.TableModelListener;
  * The TableModel interface specifies the methods that the JTable
  * class will use to interrogate a tabular data model.
  */
-public interface TableModel
-{
-    /** Adds a listener that will be notified each time the data model 
+public interface TableModel {
+    /**
+     * Adds a listener that will be notified each time the data model
      * changes.
      */
-    public void addTableModelListener(TableModelListener l);
+    void addTableModelListener(TableModelListener l);
 
-    /** Removes the specified listener from the list of listeners.
+    /**
+     * Removes the specified listener from the list of listeners.
      */
-    public void removeTableModelListener(TableModelListener l);
+    void removeTableModelListener(TableModelListener l);
 
-    /** Get the number of columns in the model. */
-    public int getColumnCount();
-
-    /** Get the name of the specified column. */
-    public String getColumnName(int column_);
-
-    /** Get the number of rows in the model. */
-    public int getRowCount();
-
-    /** Returns an attribute value for the cell at (rowIndex, columnIndex)
+    /**
+     * Get the number of columns in the model.
      */
-    public Object getValueAt(int rowIndex_, int columnIndex_);
+    int getColumnCount();
 
-    /** Sets the attribute value for the cell at position (row, column).
+    /**
+     * Get the name of the specified column.
      */
-    public void setValueAt(Object value_, int row_, int column_);
+    String getColumnName(int column_);
 
-    public void fireTableChanged(TableModelEvent evt_);
+    /**
+     * Get the number of rows in the model.
+     */
+    int getRowCount();
+
+    /**
+     * Returns an attribute value for the cell at (rowIndex, columnIndex)
+     */
+    Object getValueAt(int rowIndex_, int columnIndex_);
+
+    /**
+     * Sets the attribute value for the cell at position (row, column).
+     */
+    void setValueAt(Object value_, int row_, int column_);
+
+    void fireTableChanged(TableModelEvent evt_);
 
 }

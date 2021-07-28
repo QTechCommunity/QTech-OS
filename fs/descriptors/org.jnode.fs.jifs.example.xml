@@ -24,7 +24,7 @@
         name="Jnode Information FileSystem Extension Example"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="JNode.org">
+        provider-name="QTechOS">
         
         
   <requires>

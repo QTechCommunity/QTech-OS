@@ -22,6 +22,7 @@ package org.jnode.partitions.ibm;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 import org.jnode.driver.block.BlockDeviceAPI;
 import org.jnode.driver.bus.ide.IDEConstants;
 
@@ -100,6 +101,7 @@ public class MasterBootRecord {
      * @return the MBR array
      */
     public byte[] array() {
-        return mbr.array();
+        byte[] array = mbr.array();
+        return Arrays.copyOf(array, array.length);
     }
 }

@@ -23,7 +23,6 @@ package charva.awt.event;
  * The listener interface for receiving ScrollEvents.
  */
 public interface ScrollListener
-    extends EventListener
-{
+    extends EventListener {
     void scroll(ScrollEvent e_);
 }

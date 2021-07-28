@@ -25,18 +25,19 @@ package charva.awt;
  * exits intentionally or because of a signal such as SIGTERM, SIGHUP etc.
  */
 public class ShutdownHook
-    implements Runnable
-{
-    /** The constructor (which does nothing) is package-private because 
+    implements Runnable {
+    /**
+     * The constructor (which does nothing) is package-private because
      * it is not intended to be called by application programs.
      */
     ShutdownHook() {
     }
 
-    /** Implement the Runnable interface; shuts down the ncurses environment
+    /**
+     * Implement the Runnable interface; shuts down the ncurses environment
      * and restores the previous terminal settings.
      */
     public void run() {
-    Toolkit.getDefaultToolkit().close();
+        Toolkit.getDefaultToolkit().close();
     }
 }

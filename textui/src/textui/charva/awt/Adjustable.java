@@ -22,64 +22,74 @@ package charva.awt;
 import charva.awt.event.AdjustmentEvent;
 import charva.awt.event.AdjustmentListener;
 
-/** 
+/**
  * The interface for objects that have an adjustable numeric value
  * constrained within a bounded range of values.
  */
-public interface Adjustable
-{
-    public void addAdjustmentListener(AdjustmentListener listener_);
+public interface Adjustable {
+    void addAdjustmentListener(AdjustmentListener listener_);
 
-    public void removeAdjustmentListener(AdjustmentListener listener_);
+    void removeAdjustmentListener(AdjustmentListener listener_);
 
-    /** Gets the maximum value of the adjustable object.
+    /**
+     * Gets the maximum value of the adjustable object.
      */
-    public int getMaximum();
+    int getMaximum();
 
-    /** Gets the minimum value of the adjustable object.
+    /**
+     * Gets the minimum value of the adjustable object.
      */
-    public int getMinimum();
+    int getMinimum();
 
-    /** Gets the orientation of the object.
+    /**
+     * Gets the orientation of the object.
      */
-    public int getOrientation();
+    int getOrientation();
 
-    /** Gets the value of the adjustable object.
+    /**
+     * Gets the value of the adjustable object.
      */
-    public int getValue();
+    int getValue();
 
-    /** Gets the length of the proportional indicator.
+    /**
+     * Gets the length of the proportional indicator.
      */
-    public int getVisibleAmount();
+    int getVisibleAmount();
 
-    /** Gets the block increment (the amount by which the value will
+    /**
+     * Gets the block increment (the amount by which the value will
      * change when the arrow keys are pressed).
      */
-    public int getBlockIncrement();
+    int getBlockIncrement();
 
-    /** Sets the maximum value of the adjustable object.
+    /**
+     * Sets the maximum value of the adjustable object.
      */
-    public void setMaximum(int val_);
+    void setMaximum(int val_);
 
-    /** Sets the minimum value of the adjustable object.
+    /**
+     * Sets the minimum value of the adjustable object.
      */
-    public void setMinimum(int val_);
+    void setMinimum(int val_);
 
-    /** Sets the value of the adjustable object.
+    /**
+     * Sets the value of the adjustable object.
      */
-    public void setValue(int val_);
+    void setValue(int val_);
 
-    /** Sets the length of the proportional indicator.
+    /**
+     * Sets the length of the proportional indicator.
      */
-    public void setVisibleAmount(int val_);
+    void setVisibleAmount(int val_);
 
-    /** Sets the block increment
+    /**
+     * Sets the block increment
      */
-    public void setBlockIncrement(int val_);
+    void setBlockIncrement(int val_);
 
-    public void processAdjustmentEvent(AdjustmentEvent evt_);
+    void processAdjustmentEvent(AdjustmentEvent evt_);
 
-    public static final int VERTICAL = 200;
-    public static final int HORIZONTAL = 201;
+    int VERTICAL = 200;
+    int HORIZONTAL = 201;
 
 }

@@ -21,11 +21,11 @@ package charvax.swing;
 
 import charva.awt.BorderLayout;
 import charva.awt.Color;
+import charva.awt.Component;
 import charva.awt.Container;
 import charva.awt.Dimension;
 import charva.awt.Frame;
 import charva.awt.Insets;
-import charva.awt.Component;
 import charva.awt.event.PaintEvent;
 
 /**
@@ -43,15 +43,15 @@ public class JFrame extends Frame {
         _contentPane.setLayout(new BorderLayout());
     }
 
-    
-    protected void processPaintEvent(PaintEvent  event) {
+
+    protected void processPaintEvent(PaintEvent event) {
         Component source = (Component) event.getSource();
         if (!source.isTotallyObscured()) {
             //if(source instanceof JViewport || source instanceof JTextArea){
 //                source.draw();
 //                requestSync();
 //            }else{
-                super.processPaintEvent(event);
+            super.processPaintEvent(event);
 //            }
         }
     }
@@ -85,11 +85,11 @@ public class JFrame extends Frame {
 
         Dimension menubarSize = _menubar.minimumSize();
         if (menubarSize.width + _insets.left + _insets.right > minsize.width)
-                minsize.width = menubarSize.width + _insets.left
-                        + _insets.right;
+            minsize.width = menubarSize.width + _insets.left
+                + _insets.right;
 
         if (menubarSize.height > minsize.height)
-                minsize.height = menubarSize.height;
+            minsize.height = menubarSize.height;
 
         return minsize;
     }
@@ -104,7 +104,7 @@ public class JFrame extends Frame {
         // Make the menubar (if it exists) inherit the JFrame's color
         // unless the menubar's color has already been set.
         if (_menubar != null && _menubar.getForeground() == null)
-                _menubar.setForeground(color_);
+            _menubar.setForeground(color_);
     }
 
     /**
@@ -117,7 +117,7 @@ public class JFrame extends Frame {
         // Make the menubar (if it exists) inherit the JFrame's color
         // unless the menubar's color has already been set.
         if (_menubar != null && _menubar.getBackground() == null)
-                _menubar.setBackground(color_);
+            _menubar.setBackground(color_);
     }
 
     /**
@@ -126,8 +126,10 @@ public class JFrame extends Frame {
      * frame is the last window in the application).
      */
     public void setDefaultCloseOperation(int operation_) {
-        if (operation_ < EXIT_ON_CLOSE || operation_ > DO_NOTHING_ON_CLOSE) { throw new IllegalArgumentException(
-                "invalid operation"); }
+        if (operation_ < EXIT_ON_CLOSE || operation_ > DO_NOTHING_ON_CLOSE) {
+            throw new IllegalArgumentException(
+                "invalid operation");
+        }
         //_closeOperation = operation_;
     }
 
@@ -136,7 +138,7 @@ public class JFrame extends Frame {
 
     private JMenuBar _menubar = null;
 
-    private JPanel _contentPane = new JPanel();
+    private final JPanel _contentPane = new JPanel();
 
     //private final int _closeOperation = DO_NOTHING_ON_CLOSE;
 

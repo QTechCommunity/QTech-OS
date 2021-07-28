@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.fs.smbfs"
-        name="Samba file system for JNode"
+        name="Samba file system for QTech OS"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="JNode.org">
+        provider-name="QTechOS">
 
   <requires>
 	<import plugin="org.jnode.fs"/>

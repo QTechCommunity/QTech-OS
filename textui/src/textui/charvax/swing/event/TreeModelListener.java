@@ -23,23 +23,26 @@ package charvax.swing.event;
  * This defines the interface for an object that listens for changes in a
  * TreeModel.
  */
-public interface TreeModelListener
-{
-    /**Invoked after a node (or a set of siblings) has
+public interface TreeModelListener {
+    /**
+     * Invoked after a node (or a set of siblings) has
      * changed in some way.
      */
-    public void treeNodesChanged(TreeModelEvent e);
+    void treeNodesChanged(TreeModelEvent e);
 
-    /** Invoked after nodes have been inserted into the tree.
+    /**
+     * Invoked after nodes have been inserted into the tree.
      */
-    public void treeNodesInserted(TreeModelEvent e);
+    void treeNodesInserted(TreeModelEvent e);
 
-    /** Invoked after nodes have been removed from the tree.
+    /**
+     * Invoked after nodes have been removed from the tree.
      */
-    public void treeNodesRemoved(TreeModelEvent e);
+    void treeNodesRemoved(TreeModelEvent e);
 
-    /** Invoked after the tree has drastically changed structure 
+    /**
+     * Invoked after the tree has drastically changed structure
      * from a given node down.
      */
-    public void treeStructureChanged(TreeModelEvent e);
+    void treeStructureChanged(TreeModelEvent e);
 }

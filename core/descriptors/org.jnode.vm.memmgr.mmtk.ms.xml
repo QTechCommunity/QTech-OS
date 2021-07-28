@@ -25,7 +25,7 @@
         version="@VERSION@"
         system="true"
         license-name="cpl"
-        provider-name="JNode.org">
+        provider-name="QTechOS">
         
   <requires>
     <import plugin="org.jnode.vm.core"/>

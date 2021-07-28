@@ -285,6 +285,8 @@ public class VMWareCore extends AbstractSurface implements VMWareConstants, PCI_
             new VMWareConfiguration(1280, 1024, cm),
             new VMWareConfiguration(640, 480, cm),
             new VMWareConfiguration(1280, 800, cm),
+            new VMWareConfiguration(1920, 1080
+                , cm),
         };
     }
 

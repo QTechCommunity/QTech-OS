@@ -27,8 +27,10 @@ public class Font {
 
     public Font(String name_, int style_, int size_) {
         _name = name_;
-        if (style_ < PLAIN && style_ > (BOLD | ITALIC)) { throw new IllegalArgumentException(
-                "invalid font style"); }
+        if (style_ < PLAIN && style_ > (BOLD | ITALIC)) {
+            throw new IllegalArgumentException(
+                "invalid font style");
+        }
 
         _style = style_;
         //_size = size_;
@@ -51,9 +53,9 @@ public class Font {
     //====================================================================
     // INSTANCE VARIABLES
 
-    private String _name;
+    private final String _name;
 
-    private int _style;
+    private final int _style;
 
     //private final int _size;
 
