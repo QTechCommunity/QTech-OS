@@ -60,7 +60,7 @@ jobs:
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Ant Building
       run: |
-        ./build.sh
+        ./build.sh cd-x86-lite
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
