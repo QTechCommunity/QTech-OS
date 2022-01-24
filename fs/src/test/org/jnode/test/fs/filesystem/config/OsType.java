@@ -26,7 +26,7 @@ public enum OsType {
     /**
      * An OS that is the JNode OS
      */
-    QTECH_OS("QTechOS"),
+    QTECH_OS("UltreonOS"),
 
     /**
      * An OS that is or is not the JNode OS

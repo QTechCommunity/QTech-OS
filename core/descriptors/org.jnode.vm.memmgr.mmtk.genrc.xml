@@ -25,7 +25,7 @@
         version="@VERSION@"
         system="true"
         license-name="cpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
         
   <requires>
     <import plugin="org.jnode.vm.core"/>

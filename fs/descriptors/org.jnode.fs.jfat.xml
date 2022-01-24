@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.fs.jfat" 
-        name="QTech OS JFAT FileSystem"
+        name="Ultreon OS JFAT FileSystem"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
         
   <requires>
     <import plugin="org.jnode.fs"/>

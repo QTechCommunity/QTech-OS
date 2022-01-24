@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.net.ipv4"
-  name="QTech OS IPv4 Network Layer"
+  name="Ultreon OS IPv4 Network Layer"
   version="@VERSION@"
         license-name="lgpl"
-  provider-name="QTechOS">
+  provider-name="UltreonOS">
 
   <requires>
     <import plugin="org.jnode.net"/>

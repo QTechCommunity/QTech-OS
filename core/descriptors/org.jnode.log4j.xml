@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.log4j" 
-        name="QTech OS Log4j setup"
+        name="Ultreon OS Log4j setup"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl"
         class="org.jnode.log4j.config.Log4jConfigurePlugin">
         

@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.permission" 
-        name="QTech OS specific permissions"
+        name="Ultreon OS specific permissions"
         version="@VERSION@"
         system="true"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl">
         
   <runtime>

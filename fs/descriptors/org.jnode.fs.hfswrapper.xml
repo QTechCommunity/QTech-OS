@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.fs.hfswrapper"
-        name="QTech OS HFS Wrapper"
+        name="Ultreon OS HFS Wrapper"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
 
     <requires>
         <import plugin="org.jnode.fs"/>

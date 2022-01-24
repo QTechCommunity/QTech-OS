@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.awt.command" 
-        name="QTech OS GUI Command classes"
+        name="Ultreon OS GUI Command classes"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
         
   <requires>
     <import plugin="org.jnode.awt"/>

@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.partitions.apm"
-        name="QTech OS APM partition table classes"
+        name="Ultreon OS APM partition table classes"
         version="0.2.9-dev"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
         
   <requires>
     <import plugin="org.jnode.partitions"/>

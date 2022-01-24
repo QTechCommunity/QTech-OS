@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.partitions.command" 
-        name="QTech OS partitioning commands"
+        name="Ultreon OS partitioning commands"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
         
   <requires>
     <import plugin="org.jnode.driver.bus.ide"/>

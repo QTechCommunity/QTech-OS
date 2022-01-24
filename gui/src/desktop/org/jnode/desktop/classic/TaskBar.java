@@ -86,12 +86,12 @@ public class TaskBar extends JPanel {
         setLayout(layout);
 //        setBorder(new BevelBorder(BevelBorder.RAISED));
         setBackground(new Color(0x5f5f5f));
-        startButton = new QButton("QTech", new ImageIcon(Desktop.loadImage("qtech_icon.png")));
-        startButton.setToolTipText("QTech OS Menu");
+        startButton = new QButton("UltreonOS", new ImageIcon(Desktop.loadImage("UltreonIcon.png")));
+        startButton.setToolTipText("Ultreon OS Menu");
 //        startButton.setBorder(new EmptyBorder(1, 3, 1, 3));
-        startButton.setBorder(new EmptyBorder(0, 0, 0, 0));
-        startButton.setBackground(new Color(0x5f5f5f));
-        startButton.setForeground(new Color(0xafafaf));
+//        startButton.setBorder(new EmptyBorder(0, 0, 0, 0));
+//        startButton.setBackground(new Color(0x5f5f5f));
+//        startButton.setForeground(new Color(0xafafaf));
 
         add(startButton, BorderLayout.WEST);
         startMenu = new JPopupMenu();
@@ -171,7 +171,7 @@ public class TaskBar extends JPanel {
             }
         });
 
-        JMenuItem qui_theme = new JMenuItem("QTech UI");
+        JMenuItem qui_theme = new JMenuItem("Ultreon UI");
         lfMenu.add(qui_theme);
         qui_theme.addActionListener(new SetLFAction("com.qtech.os.ui.old.dark.QUILookAndFeel") {
             public void actionPerformed(ActionEvent e) {

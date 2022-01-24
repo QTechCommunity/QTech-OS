@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.runtime" 
-        name="QTech OS core runtime classes specific to X86"
+        name="Ultreon OS core runtime classes specific to X86"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         system="true"
         license-name="lgpl"
         class="org.jnode.system.x86.DMAPlugin">

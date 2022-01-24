@@ -41,7 +41,7 @@ public class ResolverCommand extends AbstractCommand {
     private static final String help_add = "If set, add a DNS server";
     private static final String help_del = "If set, remove a DNS server";
     private static final String help_server = "the DNS server's hostname or IP address";
-    private static final String help_super = "Manage QTech OS's DNS resolver";
+    private static final String help_super = "Manage Ultreon OS's DNS resolver";
     private static final String str_no_servers = "No DNS servers found.";
     private static final String str_servers = "DNS servers:";
     

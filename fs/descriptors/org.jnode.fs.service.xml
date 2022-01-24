@@ -24,7 +24,7 @@
         name="FS Service API"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
         
   <requires>
     <import plugin="org.jnode.driver.block"/>

@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.fs.ramfs.def"
-        name="QTech OS TempFileSystem"
+        name="Ultreon OS TempFileSystem"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         class="org.jnode.fs.ramfs.def.RAMFSPlugin">
         
   <requires>

@@ -326,7 +326,7 @@ public class UnixTestCommand extends AbstractCommand {
             if (option.equals("--help")) {
                 err.println("Don't panic!");
             } else if (option.equals("--version")) {
-                err.println("QTech OS test 0.0");
+                err.println("Ultreon OS test 0.0");
             } else {
                 throw new CommandSyntaxException("unknown option '" + option + '\'');
             }

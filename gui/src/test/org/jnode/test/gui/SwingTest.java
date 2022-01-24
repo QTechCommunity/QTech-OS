@@ -43,9 +43,9 @@ public class SwingTest extends JFrame {
         setLocation(100, 100);
         setSize(400, 400);
         //getContentPane().add(north = new JButton("JButton north"), BorderLayout.NORTH);
-        URL url = getClass().getClassLoader().getResource("JNode_logo_trans.png");
+        URL url = getClass().getClassLoader().getResource("UltreonLogoTrans.png");
         if (url == null) {
-            System.out.println("Unable to load image: getRecource(\"JNode_logo_trans.png\")");
+            System.out.println("Unable to load image: getRecource(\"UltreonLogoTrans.png\")");
             north = new JButton("JButton north");
         } else {
             north = new JButton("JButton north", new ImageIcon(url));

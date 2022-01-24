@@ -76,7 +76,7 @@ public class JNodeShell implements Shell {
 
             // We just read any key
             terminalIO
-                    .write("Welcome to QTech OS telnet server. Thanks for connecting.\r\n"
+                    .write("Welcome to Ultreon OS telnet server. Thanks for connecting.\r\n"
                             + "You can type any jnode command and " 
                             + "press enter **2 times**(it's a bug!!!) to execute it.\r\n"
                             + "Use the exit command to logout!\r\n"); // some

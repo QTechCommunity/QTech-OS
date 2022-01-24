@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.command.dev.ant"
-        name="QTech OS Ant Commands"
+        name="Ultreon OS Ant Commands"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
 
   <requires>
     <import plugin="org.jnode.shell.help"/>

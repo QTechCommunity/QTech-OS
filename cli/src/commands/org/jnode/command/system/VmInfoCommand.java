@@ -35,9 +35,9 @@ import org.jnode.vm.facade.VmUtils;
  */
 public class VmInfoCommand extends AbstractCommand {
     
-    private static final String help_reset = "if set, reset the QTech OS VM counters";
-    private static final String help_super = "Prints QTech OS VM info";
-    private static final String fmt_vm = "QTech OS VM %s%n";
+    private static final String help_reset = "if set, reset the Ultreon OS VM counters";
+    private static final String help_super = "Prints Ultreon OS VM info";
+    private static final String fmt_vm = "Ultreon OS VM %s%n";
     private static final String fmt_sm = "Security Manager %s%n";
     private static final String fmt_proc = "Processor %s (%s)%n";
     

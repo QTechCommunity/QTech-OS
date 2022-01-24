@@ -164,11 +164,11 @@ public abstract class VmX86Architecture extends BaseVmArchitecture {
             } else if ("L1A".equalsIgnoreCase(compiler)) {
                 this.compilers[1] = new X86Level1ACompiler();
             } else {
-                BootLogInstance.get().warn("QTech OS native compiler '" + compiler + "' is unknown.");
+                BootLogInstance.get().warn("Ultreon OS native compiler '" + compiler + "' is unknown.");
             }
         }
         if (this.compilers[1] == null) {
-            BootLogInstance.get().warn("QTech OS native compiler defaulting to 'L1A'");
+            BootLogInstance.get().warn("Ultreon OS native compiler defaulting to 'L1A'");
             this.compilers[1] = new X86Level1ACompiler();
         }
         this.testCompilers = new NativeCodeCompiler[1];

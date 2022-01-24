@@ -23,7 +23,7 @@
 <plugin id="org.jtestserver.server"
         name="JTestServer"
         version="0.1"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         provider-url="http://www.jnode.org/"
         license-name="gpl">
 

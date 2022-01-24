@@ -69,12 +69,12 @@
 		author="true"
 		version="true"
 		use="true"
-		windowtitle="QTechOS"
+		windowtitle="UltreonOS"
 		maxmemory="256M">
 
 		<parameters/>
 		<classpath refid="cp" />
-		<group title="QTechOS" packages="org.jnode.*,org.vmmagic.*" />
+		<group title="UltreonOS" packages="org.jnode.*,org.vmmagic.*" />
 		<group title="Classpath" packages="java.*,javax.*,gnu.*" />
 		<group title="MMTk" packages="org.mmtk.*" />
 		<!-- link href="http://jnode.org"/ -->

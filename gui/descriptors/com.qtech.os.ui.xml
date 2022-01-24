@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="com.qtech.os.ui"
-        name="QTech OS Desktop Implementation"
+        name="Ultreon OS Desktop Implementation"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl"
         class="com.qtech.os.ui.QTechUIPlugin">
         

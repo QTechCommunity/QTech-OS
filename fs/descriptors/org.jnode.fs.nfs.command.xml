@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.fs.nfs.command"
-        name="NFS file system commands for QTech OS"
+        name="NFS file system commands for Ultreon OS"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
 
 
   <requires>

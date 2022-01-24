@@ -30,9 +30,9 @@ import org.jnode.install.cmdline.CommandLineInstaller;
 public class Main implements Runnable {
 
     public void run() {
-        System.out.println("QTech OS Installation");
+        System.out.println("Ultreon OS Installation");
         CommandLineInstaller.main();
-        System.out.println("QTech OS installation completed.");
+        System.out.println("Ultreon OS installation completed.");
         /*
         while (true) {
             try {

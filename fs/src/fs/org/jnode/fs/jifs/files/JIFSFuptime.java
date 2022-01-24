@@ -50,7 +50,7 @@ public class JIFSFuptime extends JIFSFile {
         String h = (hours < 10) ? "0" : "";
         String m = (minutes < 10) ? "0" : "";
         String s = (seconds < 10) ? "0" : "";
-        addStringln("Time since booting QTech OS:");
+        addStringln("Time since booting Ultreon OS:");
         addStringln("\t" + h + hours + ":" + m + minutes + ":" + s + seconds);
     }
 

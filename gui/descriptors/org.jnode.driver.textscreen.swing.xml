@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver.textscreen.swing"
-        name="QTech OS Swing TextScreen driver"
+        name="Ultreon OS Swing TextScreen driver"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl">
         
   <requires>

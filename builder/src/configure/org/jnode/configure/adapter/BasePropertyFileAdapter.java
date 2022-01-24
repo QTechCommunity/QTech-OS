@@ -222,7 +222,7 @@ public abstract class BasePropertyFileAdapter implements FileAdapter {
             os = new FileOutputStream(toFile);
             if (templateFile == null && saveSupported) {
                 saveToFile(properties, new BufferedOutputStream(os),
-                        "Expanded by QTech OS 'configure' tool");
+                        "Expanded by Ultreon OS 'configure' tool");
             } else {
                 try {
                     is = new FileInputStream(templateFile);

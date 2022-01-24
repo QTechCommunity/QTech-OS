@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.apps.debug"
-        name="QTech OS Debugger"
+        name="Ultreon OS Debugger"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl">
 	
   <runtime>

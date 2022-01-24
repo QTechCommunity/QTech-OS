@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.net"
-  name="QTech OS Network System"
+  name="Ultreon OS Network System"
   version="@VERSION@"
-  provider-name="QTechOS"
+  provider-name="UltreonOS"
         license-name="lgpl"
   class="org.jnode.net.service.NetPlugin">
 
@@ -46,7 +46,7 @@
     </library>
   </runtime>
 
-  <extension-point id="networkLayers" name="QTech OS Network layers"/>
+  <extension-point id="networkLayers" name="Ultreon OS Network layers"/>
 
 
 </plugin>

@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver.net.wireless" 
-        name="QTech OS Abstract Wireless Ethernet driver classes"
+        name="Ultreon OS Abstract Wireless Ethernet driver classes"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
         
   <requires>
     <import plugin="org.jnode.driver.net.ethernet"/>

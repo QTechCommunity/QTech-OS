@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver.bus.ide.atapi" 
-        name="QTech OS IDE ATAPI drivers"
+        name="Ultreon OS IDE ATAPI drivers"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
         
   <requires>
     <import plugin="org.jnode.driver.bus.ide"/>

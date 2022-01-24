@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.test"
-    name="QTech OS Test classes"
+    name="Ultreon OS Test classes"
     version="@VERSION@"
     license-name="lgpl"
-    provider-name="QTechOS">
+    provider-name="UltreonOS">
 
     <requires>
         <import plugin="org.junit" version="4.5"/>

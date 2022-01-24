@@ -23,7 +23,7 @@
 <plugin id="org.jnode.fs.fat.command"
         name="FAT specific commands"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl">
 
   <requires>

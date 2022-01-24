@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.net.ipv4.config"
-    name="QTech OS IPv4 Configuration Service"
+    name="Ultreon OS IPv4 Configuration Service"
     version="@VERSION@"
-    provider-name="QTechOS"
+    provider-name="UltreonOS"
     license-name="lgpl"
     class="org.jnode.net.ipv4.config.impl.IPv4ConfigurationPlugin">
 

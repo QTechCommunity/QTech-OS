@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.awt" 
-        name="QTech OS AWT Implementation"
+        name="Ultreon OS AWT Implementation"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl"
         class="org.jnode.awt.AWTPlugin">
         

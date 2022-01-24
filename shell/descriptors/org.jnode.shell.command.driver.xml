@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.shell.command.driver"
-        name="QTech OS driver commands"
+        name="Ultreon OS driver commands"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
 
   <requires>
     <import plugin="org.jnode.driver"/>

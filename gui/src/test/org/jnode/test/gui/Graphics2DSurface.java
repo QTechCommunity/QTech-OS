@@ -113,7 +113,7 @@ public class Graphics2DSurface implements Surface {
                 super.paintComponent(g);
                 Graphics2DSurface gs = new Graphics2DSurface((Graphics2D) g);
 
-                tr.render(gs, null, tf, "QTechOS", 100, 100, Color.BLACK);
+                tr.render(gs, null, tf, "UltreonOS", 100, 100, Color.BLACK);
             }
         });
         f.setSize(400, 400);

@@ -447,7 +447,7 @@ public class ObjectEmitter {
                         throw new BuildException("Cannot emit field " + jdkField.getName() + " of class "
                             + cls.getName(), ex);
                     } catch (JNodeClassNotFoundException ex) {
-                        BootLogInstance.get().warn("QTech OS class not found " + ex.getMessage());
+                        BootLogInstance.get().warn("Ultreon OS class not found " + ex.getMessage());
                         value = null;
                     }
                     bis.setObjectRef(fldOffset, value);

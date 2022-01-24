@@ -21,11 +21,11 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.plugin.impl" 
-        name="implementation of QTech OS plugin framework"
+        name="implementation of Ultreon OS plugin framework"
         version="@VERSION@"
         system="true"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
         
   <requires>
     <import plugin="nanoxml" version="1.4"/>

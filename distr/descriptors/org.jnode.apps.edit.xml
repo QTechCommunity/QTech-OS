@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.apps.edit"
-        name="A simple editor for QTech OS"
+        name="A simple editor for Ultreon OS"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl">
 	
   <runtime>

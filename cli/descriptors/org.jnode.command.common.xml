@@ -21,7 +21,7 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.command.common"
-        name="QTech OS common commands"
+        name="Ultreon OS common commands"
         version="@VERSION@"
         provider-name="@PROVIDER@"
         license-name="lgpl">

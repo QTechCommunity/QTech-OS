@@ -21,7 +21,7 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.command.archive"
-        name="QTech OS archive commands"
+        name="Ultreon OS archive commands"
         version="@VERSION@"
         provider-name="@PROVIDER@"
         license-name="lgpl">

@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.shell.bjorne"
-        name="QTech OS Bjorne Shell"
+        name="Ultreon OS Bjorne Shell"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
 		class="org.jnode.shell.bjorne.BjorneShellPlugin">
 
   <requires>

@@ -21,11 +21,11 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.runtime.core" 
-        name="QTech OS core runtime classes"
+        name="Ultreon OS core runtime classes"
         version="@VERSION@"
         system="true"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
         
   <requires>
     <import plugin="org.jnode.plugin"/>

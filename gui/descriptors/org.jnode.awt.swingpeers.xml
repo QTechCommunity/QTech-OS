@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.awt.swingpeers" 
-        name="QTech OS AWT Swing based peers implementation"
+        name="Ultreon OS AWT Swing based peers implementation"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl"
         class="org.jnode.awt.swingpeers.SwingPeersPlugin">
         

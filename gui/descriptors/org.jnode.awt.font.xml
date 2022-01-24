@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.awt.font" 
-        name="QTech OS AWT Default Font Manager"
+        name="Ultreon OS AWT Default Font Manager"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl"
         class="org.jnode.awt.font.def.FontPlugin">
         
@@ -48,5 +48,5 @@
     </library>
   </runtime>
 
-  <extension-point id="providers" name="QTech OS Font Providers"/>
+  <extension-point id="providers" name="Ultreon OS Font Providers"/>
 </plugin>

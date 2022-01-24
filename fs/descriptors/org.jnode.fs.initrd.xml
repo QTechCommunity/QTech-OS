@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.fs.initrd" 
-        name="QTech OS initial Ramdisk"
+        name="Ultreon OS initial Ramdisk"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl"
         class="org.jnode.fs.initrd.InitRamdisk">
         

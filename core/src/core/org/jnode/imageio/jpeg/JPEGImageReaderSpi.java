@@ -29,7 +29,7 @@ import javax.imageio.spi.ImageReaderSpi;
 import javax.imageio.stream.ImageInputStream;
 
 public class JPEGImageReaderSpi extends ImageReaderSpi {
-    static final String vendorName = "QTechOS";
+    static final String vendorName = "UltreonOS";
     static final String version = "0.1";
     static final String readerClassName = "org.jnode.imageio.jpeg.JPEGImageReader";
     static final String[] names = {"JPEG"};

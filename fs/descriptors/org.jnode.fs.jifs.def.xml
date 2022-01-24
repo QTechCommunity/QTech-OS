@@ -23,7 +23,7 @@
 <plugin id="org.jnode.fs.jifs.def" 
         name="Jnode Information FileSystem Def"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl"
         class="org.jnode.fs.jifs.def.JIFSPlugin">
         

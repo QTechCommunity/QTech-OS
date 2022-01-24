@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver.video.nvidia" 
-        name="QTech OS Video NVidia SVGA driver"
+        name="Ultreon OS Video NVidia SVGA driver"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="QTechOS">
+        provider-name="UltreonOS">
         
   <requires>
     <import plugin="org.jnode.awt"/>

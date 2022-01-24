@@ -23,7 +23,7 @@
 <plugin id="org.jnode.apps.charvabsh"
         name="Charva Beanshell"
         version="@VERSION@"
-        provider-name="QTechOS"
+        provider-name="UltreonOS"
         license-name="lgpl">
 
     <requires>

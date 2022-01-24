@@ -336,7 +336,7 @@ public class Desktop implements Runnable {
     }
 
     void enableBackgroundImage(boolean b) {
-        if (b) desktopFrame.setBackgroundImage(loadImage("JNode_logo_trans.png"));
+        if (b) desktopFrame.setBackgroundImage(loadImage("UltreonLogoTrans.png"));
         else desktopFrame.setBackgroundImage(null);
         desktopPane.repaint();
     }

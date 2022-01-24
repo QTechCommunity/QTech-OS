@@ -21,7 +21,7 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver.system.pnp"
-        name="QTech OS Plug and Play"
+        name="Ultreon OS Plug and Play"
         version="@VERSION@"
         license-name="lgpl"
         provider-name="ozog.com">

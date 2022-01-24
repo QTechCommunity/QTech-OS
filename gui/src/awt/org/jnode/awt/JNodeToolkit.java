@@ -1163,8 +1163,8 @@ public abstract class JNodeToolkit extends ClasspathToolkit implements FrameBuff
             JNodeToolkit.waitUntilStopped();
         } else {
 
-            Void systemLAF = AccessController.doPrivileged(
-                new SetPropertyAction("swing.systemlaf", "com.qtech.os.ui.old.dark.QUILookAndFeel"));
+//            Void systemLAF = AccessController.doPrivileged(
+//                new SetPropertyAction("swing.systemlaf", "com.qtech.os.ui.old.dark.QUILookAndFeel"));
 
             JNodeToolkit.startGui();
 
