@@ -58,7 +58,7 @@ public class DeviceUtils {
     private static boolean coreInitialized = false;
 
     public static final void initJNodeCore() {
-        if (!coreInitialized && !OsUtils.isQOS()) {
+        if (!coreInitialized && !OsUtils.isUltreonOS()) {
 
             try {
                 // ShellEmu.main(new String[0]);

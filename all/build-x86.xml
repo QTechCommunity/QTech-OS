@@ -342,48 +342,48 @@
 	<!-- Create a full distributable bootable CDROM image -->
 	<target name="cdrom" depends="prepare">
 		<copy file="${sources.dist.tar.gz}" todir="${my-build.dir}/cdrom-full" />
-		<create-cdrom destfile="${qos-x86.iso}" dir="${my-build.dir}/cdrom-full" />
+		<create-cdrom destfile="${UltreonOS-x86.iso}" dir="${my-build.dir}/cdrom-full" />
 
 		<taskdef name="vmware" classname="org.jnode.build.VMwareBuilderTask" classpathref="cp-x86" />
 		<vmware 
-			isoFile="${qos-x86.iso}"
+			isoFile="${UltreonOS-x86.iso}"
 			logFile="${logFile}"
 			memSize="${jnode.virtual.memsize}"
             saveDir="${save.dir}"
 			vmdkImageFile="${vmware.vmx.vmdk.image}"
 		    overrideFile="${vmware.vmx.overrides}"
-			name="Q-OS x86"
+			name="Ultreon OS x86"
 		/>
 	</target>
 
 	<!-- Create a bootable CDROM image -->
 	<target name="cdrom-lite" depends="prepare">
-		<create-cdrom destfile="${qos-x86-lite.iso}" dir="${my-build.dir}/cdrom-lite" />
+		<create-cdrom destfile="${UltreonOS-x86-lite.iso}" dir="${my-build.dir}/cdrom-lite" />
 
 		<taskdef name="vmware" classname="org.jnode.build.VMwareBuilderTask" classpathref="cp-x86" />
 		<vmware 
-			isoFile="${qos-x86-lite.iso}"
+			isoFile="${UltreonOS-x86-lite.iso}"
 			logFile="${logFile}"
 			memSize="${jnode.virtual.memsize}"
             saveDir="${save.dir}"
 			vmdkImageFile="${vmware.vmx.vmdk.image}"
             overrideFile="${vmware.vmx.overrides}"
-			name="Q-OS x86 lite"
+			name="Ultreon OS x86 lite"
 		/>
 	</target>
 
 	<target name="cdrom_64-lite" depends="prepare">
-		<create-cdrom destfile="${qos-x86_64-lite.iso}" dir="${my-build.dir}/cdrom-lite" />
+		<create-cdrom destfile="${UltreonOS-x86_64-lite.iso}" dir="${my-build.dir}/cdrom-lite" />
 
 		<taskdef name="vmware" classname="org.jnode.build.VMwareBuilderTask" classpathref="cp-x86" />
 		<vmware
-			isoFile="${qos-x86_64-lite.iso}"
+			isoFile="${UltreonOS-x86_64-lite.iso}"
 			logFile="${logFile}"
 			memSize="${jnode.virtual.memsize}"
 			saveDir="${save.dir}"
 			vmdkImageFile="${vmware.vmx.vmdk.image}"
             overrideFile="${vmware.vmx.overrides}"
-			name="Q-OS x64 lite"
+			name="Ultreon OS x64 lite"
 		/>
 	</target>
 

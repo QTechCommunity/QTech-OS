@@ -1,7 +1,7 @@
 #
 # $Id$
 #
-#  Q-OS boot menu self configured network example configuration file
+#  Ultreon OS boot menu self configured network example configuration file
 #
 
 # Configure network -> sample data below, so configure for your network
@@ -14,12 +14,12 @@ timeout 5
 default 0
 
 # ---------------------------
-title Q-OS (default)
+title Ultreon OS (default)
 kernel (nd)/jnode32.gz
 module (nd)/default.jgz
 
 # ---------------------------
-title Q-OS (all plugins)
+title Ultreon OS (all plugins)
 kernel (nd)/jnode32.gz
 module (nd)/full.jgz
 

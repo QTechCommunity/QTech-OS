@@ -30,7 +30,7 @@ public class OsUtils {
      *
      * @return boolean
      */
-    public static final boolean isQOS() {
+    public static final boolean isUltreonOS() {
         final String osName = System.getProperty("os.name", "");
         return osName.equals("UltreonOS");
     }

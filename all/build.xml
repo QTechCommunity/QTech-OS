@@ -131,9 +131,9 @@
 	<property name="install-plugin-list" value="/conf/install-plugin-list_disabled.xml"/>
 	<property name="system-plugin-list" value="${root.dir}/all/conf/system-plugin-list.xml"/>
 	<property name="sources.dist.tar.gz" value="${build.dir}/jnodesources-${jnode-ver}.tar.gz"/>
-	<property name="qos-x86.iso" value="${cdroms.dir}/qos-x86.iso"/>
-	<property name="qos-x86-lite.iso" value="${cdroms.dir}/qos-x86-lite.iso"/>
-	<property name="qos-x86_64-lite.iso" value="${cdroms.dir}/qos-x86_64-lite.iso"/>
+	<property name="UltreonOS-x86.iso" value="${cdroms.dir}/UltreonOS-x86.iso"/>
+	<property name="UltreonOS-x86-lite.iso" value="${cdroms.dir}/UltreonOS-x86-lite.iso"/>
+	<property name="UltreonOS-x86_64-lite.iso" value="${cdroms.dir}/UltreonOS-x86_64-lite.iso"/>
 
 	<!-- list of classes and packages that should to be compiled to native code 
 	     in the boot image.  -->
@@ -571,7 +571,7 @@ clean             Remove all intermediate build results.
 	<target name="upload">
 		<property name="upload.dir" value="${build.dir}/upload"/>
 		<mkdir dir="${upload.dir}"/>
-		<gzip src="${qos-x86.iso}" destfile="${upload.dir}/qos-x86-${jnode-ver}.iso.gz"/>
+		<gzip src="${UltreonOS-x86.iso}" destfile="${upload.dir}/UltreonOS-x86-${jnode-ver}.iso.gz"/>
 		<copy todir="${upload.dir}" file="${sources.dist.tar.gz}"/>
 		<checksum algorithm="MD5" forceoverwrite="true">
 			<fileset dir="${upload.dir}">

@@ -86,7 +86,7 @@ public class TaskBar extends JPanel {
         layout.setVgap(0);
         setLayout(layout);
         setBorder(new BevelBorder(BevelBorder.RAISED));
-        startButton = new JButton("QOS", new ImageIcon(Desktop.loadImage("qtech_icon.png")));
+        startButton = new JButton("UltreonOS", new ImageIcon(Desktop.loadImage("UltreonIcon.png")));
         startButton.setToolTipText("JNode Menu");
         startButton.setBorder(new EmptyBorder(1, 3, 1, 3));
 

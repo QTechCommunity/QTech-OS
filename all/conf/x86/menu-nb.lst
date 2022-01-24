@@ -3,17 +3,17 @@ default 0
 timeout 2
 
 # ---------------------------
-title Q-OS (default)
+title Ultreon OS (default)
 kernel (nd)/jnode32.gz
 module (nd)/default.jgz
 
 # ---------------------------
-title Q-OS (all plugins)
+title Ultreon OS (all plugins)
 kernel (nd)/jnode32.gz
 module (nd)/full.jgz
 
 # ---------------------------
-title Q-OS Install
+title Ultreon OS Install
 kernel (nd)/jnode32.gz
 module (nd)/install.jgz
 
