@@ -28,43 +28,38 @@ import charva.awt.Scrollable;
  * such as a Table, when its state changes in such a way that it may
  * need to be scrolled (if it is contained within a ScrollPane).
  */
-public class ScrollEvent extends AWTEvent {
+public class ScrollEvent extends AWTEvent
+{
     private static final long serialVersionUID = 1L;
-
     /**
      * Construct a ScrollEvent with the specified direction and limit
      * parameters.
-     *
      * @param direction_ The direction that the ScrollPane must (potentially)
-     *                   scroll the scrollable component (eg LEFT, RIGHT, UP or DOWN).
-     * @param limit_     A Point representing the row and column that must
-     *                   appear at the edge of the Viewport if the component is scrolled.
-     *                   For examplem, if direction_ is LEFT, the limit_ is the rightmost
-     *                   column that must appear in the viewport.
+     * scroll the scrollable component (eg LEFT, RIGHT, UP or DOWN).
+     * @param limit_ A Point representing the row and column that must 
+     * appear at the edge of the Viewport if the component is scrolled.  
+     * For examplem, if direction_ is LEFT, the limit_ is the rightmost 
+     * column that must appear in the viewport.
      */
     public ScrollEvent(Component source_, int direction_, Point limit_) {
-        super(source_, AWTEvent.SCROLL_EVENT);
-        _direction = direction_;
-        _limit = limit_;
+    super(source_, AWTEvent.SCROLL_EVENT);
+    _direction = direction_;
+    _limit = limit_;
     }
 
-    public Scrollable getScrollable() {
-        return (Scrollable) super.getSource();
+    public Scrollable getScrollable() { 
+    return (Scrollable) super.getSource();
     }
 
-    public int getDirection() {
-        return _direction;
-    }
+    public int getDirection() { return _direction; }
 
-    public Point getLimit() {
-        return _limit;
-    }
+    public Point getLimit() { return _limit; }
 
     //====================================================================
     // INSTANCE VARIABLES
 
-    private final int _direction;
-    private final Point _limit;
+    private int _direction;
+    private Point _limit;
 
     public static final int LEFT = 100;
     public static final int RIGHT = 101;

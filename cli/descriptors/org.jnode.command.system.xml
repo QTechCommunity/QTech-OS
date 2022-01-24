@@ -21,7 +21,7 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.command.system"
-        name="Ultreon OS system commands"
+        name="JNode system commands"
         version="@VERSION@"
         provider-name="@PROVIDER@"
         license-name="lgpl">
@@ -243,7 +243,7 @@
       <option argLabel="off" longName="off" description="Turn kernel debugging off"/>
       <option argLabel="on" longName="on" description="Turn kernel debugging on"/>
     </syntax>
-    <syntax alias="memory" description="Show Ultreon OS memory usage"/>
+    <syntax alias="memory" description="Show JNode memory usage"/>
     <syntax alias="namespace" description="Print the contents of the system namespace"/>
     <syntax alias="onheap" description="Print heap object count and size statistics">
       <optionSet>
@@ -315,7 +315,7 @@
       <argument argLabel="id" description="isolate identifier"/>
     </syntax>
     <syntax alias="thread">
-      <optional description="Display all extant Ultreon OS Threads">
+      <optional description="Display all extant JNode Threads">
         <option argLabel="groupDump" shortName="g" longName="groupDump"/>
       </optional>
       <optional description="Display all threads in thread groups">

@@ -24,81 +24,68 @@ import charvax.swing.table.TableModel;
 /**
  * This event is fired when the data in a table changes.
  */
-public class TableModelEvent extends java.util.EventObject {
+public class TableModelEvent extends java.util.EventObject
+{
     private static final long serialVersionUID = 1L;
-
-    /**
-     * All row data has changed; listeners should discard all state
+    
+    /** All row data has changed; listeners should discard all state
      * and re-query the TableModel.
      */
     public TableModelEvent(TableModel source_) {
-        this(source_, 0, source_.getRowCount() - 1, ALL_COLUMNS, UPDATE);
+    this (source_, 0, source_.getRowCount()-1, ALL_COLUMNS, UPDATE);
     }
 
-    /**
-     * This row of data has been updated.
+    /** This row of data has been updated.
      */
     public TableModelEvent(TableModel source_, int row_) {
-        this(source_, row_, row_, ALL_COLUMNS, UPDATE);
+    this(source_, row_, row_, ALL_COLUMNS, UPDATE);
     }
 
-    /**
-     * The data in rows [firstRow_, lastRow] have been updated.
+    /** The data in rows [firstRow_, lastRow] have been updated.
      */
     public TableModelEvent(TableModel source_, int firstRow_,
-                           int lastRow_) {
-        this(source_, firstRow_, lastRow_, ALL_COLUMNS, UPDATE);
+        int lastRow_) {
+    this(source_, firstRow_, lastRow_, ALL_COLUMNS, UPDATE);
     }
 
-    /**
-     * The cells in the specified column in rows [firstRow_, lastRow]
+    /** The cells in the specified column in rows [firstRow_, lastRow] 
      * have been updated.
      */
     public TableModelEvent(TableModel source_, int firstRow_,
-                           int lastRow_, int column_) {
-        this(source_, firstRow_, lastRow_, column_, UPDATE);
+        int lastRow_, int column_) {
+    this(source_, firstRow_, lastRow_, column_, UPDATE);
     }
 
     public TableModelEvent(TableModel source_,
-                           int firstRow_, int lastRow_, int column_, int type_) {
-        super(source_);
-        _firstRow = firstRow_;
-        //_lastRow = lastRow_;
-        _column = column_;
-        _type = type_;
+    int firstRow_, int lastRow_, int column_, int type_)
+    {
+    super(source_);
+    _firstRow = firstRow_;
+    //_lastRow = lastRow_;
+    _column = column_;
+    _type = type_;
     }
 
-    /**
-     * Get the index of the first row that changed
+    /** Get the index of the first row that changed
      */
-    public int getFirstRow() {
-        return _firstRow;
-    }
+    public int getFirstRow() { return _firstRow; }
 
-    /**
-     * Get the index of the last row that changed
+    /** Get the index of the last row that changed
      */
-    public int getLastRow() {
-        return _firstRow;
-    }
+    public int getLastRow() { return _firstRow; }
 
-    public int getColumn() {
-        return _column;
-    }
+    public int getColumn() { return _column; }
 
-    /**
-     * Returns the type of event - one of INSERT, UPDATE
+    /** Returns the type of event - one of INSERT, UPDATE
      * or DELETE.
      */
-    public int getType() {
-        return _type;
-    }
+    public int getType() { return _type; }
 
     // INSTANCE VARIABLES
-    private final int _firstRow;
+    private int _firstRow;
     //private final int _lastRow;
-    private final int _column;
-    private final int _type;
+    private int _column;
+    private int _type;
 
     /* Allowed values for the "type" parameter.
      */

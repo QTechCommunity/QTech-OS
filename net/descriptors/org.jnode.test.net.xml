@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.test.net"
-  name="Ultreon OS NET Test classes"
+  name="JNode NET Test classes"
   version="@VERSION@"
         license-name="lgpl"
-  provider-name="UltreonOS">
+  provider-name="JNode.org">
 
   <requires>
     <import plugin="com.jcraft.jsch"/>

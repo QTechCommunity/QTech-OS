@@ -20,27 +20,24 @@
 package charvax.swing;
 
 /**
- * A mutable version of ComboBoxModel.
+ * A mutable version of ComboBoxModel. 
  */
 public interface MutableComboBoxModel
-    extends ComboBoxModel {
-    /**
-     * Add an item to the end of the model.
+    extends ComboBoxModel
+{
+    /** Add an item to the end of the model.
      */
-    void addElement(Object item);
+    public void addElement(Object item);
 
-    /**
-     * Insert an item at the specified index.
+    /** Insert an item at the specified index.
      */
-    void insertElementAt(Object obj, int index);
+    public void insertElementAt(Object obj, int index);
 
-    /**
-     * Remove the specified object from the model.
+    /** Remove the specified object from the model.
      */
-    void removeElement(Object obj);
+    public void removeElement(Object obj);
 
-    /**
-     * Remove the item at the specified index.
+    /** Remove the item at the specified index.
      */
-    void removeElementAt(int index);
+    public void removeElementAt(int index);
 }

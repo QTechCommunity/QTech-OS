@@ -20,19 +20,18 @@
 package charvax.swing;
 
 /**
- * ComboBoxDataModel is a ListModel with a selected item.
- * This selected item is in the model since it is not always in the
+ * ComboBoxDataModel is a ListModel with a selected item. 
+ * This selected item is in the model since it is not always in the 
  * item list.
  */
 public interface ComboBoxModel
-    extends ListModel {
-    /**
-     * Return the selected item.
+    extends ListModel
+{
+    /** Return the selected item.
      */
-    Object getSelectedItem();
+    public Object getSelectedItem();
 
-    /**
-     * Set the selected item
+    /** Set the selected item
      */
-    void setSelectedItem(Object anItem);
+    public void setSelectedItem(Object anItem);
 }

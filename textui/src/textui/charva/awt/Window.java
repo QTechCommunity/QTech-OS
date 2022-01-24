@@ -19,6 +19,9 @@
 
 package charva.awt;
 
+import java.util.Enumeration;
+import java.util.Vector;
+
 import charva.awt.event.AWTEvent;
 import charva.awt.event.AdjustmentEvent;
 import charva.awt.event.GarbageCollectionEvent;
@@ -28,8 +31,6 @@ import charva.awt.event.ScrollEvent;
 import charva.awt.event.SyncEvent;
 import charva.awt.event.WindowEvent;
 import charva.awt.event.WindowListener;
-import java.util.Enumeration;
-import java.util.Vector;
 
 /**
  * The Window class represents a "toplevel" window with no decorative frame.
@@ -89,16 +90,16 @@ public class Window extends Container implements Runnable {
 
         Enumeration<WindowListener> e = _windowListeners.elements();
         while (e.hasMoreElements()) {
-            WindowListener wl = e.nextElement();
+            WindowListener wl = (WindowListener) e.nextElement();
             switch (evt_.getID()) {
 
-                case AWTEvent.WINDOW_CLOSING:
-                    wl.windowClosing(evt_);
-                    break;
+            case AWTEvent.WINDOW_CLOSING:
+                wl.windowClosing(evt_);
+                break;
 
-                case AWTEvent.WINDOW_OPENED:
-                    wl.windowOpened(evt_);
-                    break;
+            case AWTEvent.WINDOW_OPENED:
+                wl.windowOpened(evt_);
+                break;
             }
         }
     }
@@ -190,7 +191,7 @@ public class Window extends Container implements Runnable {
          */
         try {
             EventQueue evtQueue = _term.getSystemEventQueue();
-            for (_windowClosed = false; _windowClosed != true; ) {
+            for (_windowClosed = false; _windowClosed != true;) {
 
                 java.util.EventObject evt = evtQueue.getNextEvent();
 
@@ -201,10 +202,10 @@ public class Window extends Container implements Runnable {
                 processEvent((AWTEvent) evt);
             } // end FOR loop
         } catch (Exception e) {
-            System.err.println("Exception in Window.run");
+            System.err.println( "Exception in Window.run" );
             e.printStackTrace();
 //            System.exit(1);
-            System.err.println("Exiting method (not VM)");
+            System.err.println( "Exiting method (not VM)" );
         }
     }
 
@@ -215,17 +216,25 @@ public class Window extends Container implements Runnable {
     protected void processEvent(AWTEvent evt_) {
         Object source = evt_.getSource();
 
-        if (evt_ instanceof AdjustmentEvent) {
+        if (evt_ instanceof AdjustmentEvent){
             ((Adjustable) source)
-                .processAdjustmentEvent((AdjustmentEvent) evt_);
-        } else if (evt_ instanceof ScrollEvent) {
+                    .processAdjustmentEvent((AdjustmentEvent) evt_);
+        }
+
+        else if (evt_ instanceof ScrollEvent) {
             processScrollEvent((ScrollEvent) evt_);
-        } else if (evt_ instanceof PaintEvent) {
+        }
+
+        else if (evt_ instanceof PaintEvent) {
 
             processPaintEvent((PaintEvent) evt_);
-        } else if (evt_ instanceof SyncEvent) {
+        }
+
+        else if (evt_ instanceof SyncEvent) {
             _term.sync();
-        } else if (evt_ instanceof WindowEvent) {
+        }
+
+        else if (evt_ instanceof WindowEvent) {
             WindowEvent we = (WindowEvent) evt_;
             we.getWindow().processWindowEvent(we);
 
@@ -252,11 +261,11 @@ public class Window extends Container implements Runnable {
                 Window window = null;
                 synchronized (winlist) {
                     for (int i = 0; i < winlist.size(); i++) {
-                        window = winlist.elementAt(i);
+                        window = (Window) winlist.elementAt(i);
                         window.draw(Toolkit.getDefaultToolkit());
                     }
                     if (window != null) // (there may be no windows left)
-                        window.requestFocus();
+                            window.requestFocus();
                 }
 
                 /*
@@ -269,16 +278,20 @@ public class Window extends Container implements Runnable {
                  * display of a new window which might be displayed immediately
                  * afterwards.
                  */
-                if (window != null)
+                if(window != null)
                     SyncQueue.getInstance().postEvent(new SyncEvent(window));
             }
         } // end if WindowEvent
 
         else if (evt_ instanceof GarbageCollectionEvent) {
             SyncQueue.getInstance().postEvent(evt_);
-        } else if (evt_ instanceof InvocationEvent) {
+        }
+
+        else if (evt_ instanceof InvocationEvent) {
             ((InvocationEvent) evt_).dispatch();
-        } else {
+        }
+
+        else {
             /*
              * It is a KeyEvent, MouseEvent, ActionEvent, ItemEvent, FocusEvent
              * or a custom type of event.
@@ -295,7 +308,7 @@ public class Window extends Container implements Runnable {
         super.requestSync();
     }
 
-    protected void processPaintEvent(PaintEvent event) {
+    protected void processPaintEvent(PaintEvent  event) {
         Component source = (Component) event.getSource();
         if (!source.isTotallyObscured()) {
             processPaintEvent2(source);
@@ -308,7 +321,7 @@ public class Window extends Container implements Runnable {
          * that are stacked above it, we must redraw its window and all the
          * windows above it.
          */
-        if (!source.isTotallyObscured()) {
+        if (!((Component) source).isTotallyObscured()) {
 
             Vector<Window> windowlist = _term.getWindowList();
             synchronized (windowlist) {
@@ -318,7 +331,7 @@ public class Window extends Container implements Runnable {
                  * component, because setVisible(false) may have been set
                  * on the component.
                  */
-                Window ancestor = source.getAncestorWindow();
+                Window ancestor = ((Component) source).getAncestorWindow();
                 ancestor.draw(Toolkit.getDefaultToolkit());
 
                 /*
@@ -328,7 +341,7 @@ public class Window extends Container implements Runnable {
                 Window w = null;
                 int i;
                 for (i = 0; i < windowlist.size(); i++) {
-                    w = windowlist.elementAt(i);
+                    w = (Window) windowlist.elementAt(i);
                     if (w == ancestor) break;
                 }
 
@@ -337,7 +350,7 @@ public class Window extends Container implements Runnable {
                  * the PaintEvent.
                  */
                 for (; i < windowlist.size(); i++) {
-                    w = windowlist.elementAt(i);
+                    w = (Window) windowlist.elementAt(i);
                     w.draw(Toolkit.getDefaultToolkit());
                 }
             }
@@ -354,10 +367,10 @@ public class Window extends Container implements Runnable {
 
         if (!_visible) {
             System.err.println("Trying to hide window " + this
-                + " that is already hidden!");
+                    + " that is already hidden!");
             return; // This window is already hidden.
         }
-        _term.removeWindow(this);
+        _term.removeWindow( this );
         _visible = false;
         WindowEvent we = new WindowEvent(this, AWTEvent.WINDOW_CLOSING);
         _term.getSystemEventQueue().postEvent(we);
@@ -365,7 +378,6 @@ public class Window extends Container implements Runnable {
 
     /**
      * Draw all the components in this window, and request the keyboard focus.
-     *
      * @param toolkit
      */
     public void draw(Toolkit toolkit) {
@@ -397,13 +409,13 @@ public class Window extends Container implements Runnable {
     public void adjustLocation() {
         int bottom = _origin.y + getHeight();
         if (bottom > _term.getScreenRows())
-            _origin.y -= bottom - _term.getScreenRows();
+                _origin.y -= bottom - _term.getScreenRows();
 
         if (_origin.y < 0) _origin.y = 0;
 
         int right = _origin.x + getWidth();
         if (right > _term.getScreenColumns())
-            _origin.x -= right - _term.getScreenColumns();
+                _origin.x -= right - _term.getScreenColumns();
 
         if (_origin.x < 0) _origin.x = 0;
     }
@@ -439,7 +451,7 @@ public class Window extends Container implements Runnable {
     //====================================================================
     // INSTANCE VARIABLES
 
-    private final Window _owner;
+    private Window _owner;
 
     protected Toolkit _term;
 

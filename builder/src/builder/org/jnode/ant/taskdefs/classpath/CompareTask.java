@@ -236,8 +236,8 @@ public class CompareTask extends Task {
             }
             if (diffJNode > 0) {
                 out.println("Found " + diffJNode
-                    + " changes with Ultreon OS in it<br/>");
-                log("Found " + diffJNode + " changes with Ultreon OS in it");
+                    + " changes with JNode in it<br/>");
+                log("Found " + diffJNode + " changes with JNode in it");
             }
 
             reportFooter(out);

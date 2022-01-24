@@ -140,8 +140,6 @@ public class WindowBar extends JPanel {
         public FrameWrapper(JInternalFrame iFrame) {
             this.frame = iFrame;
             this.setText(iFrame.getTitle());
-            this.setBackground(new Color(0x6f6f6f));
-            this.setForeground(new Color(0xffffff));
             this.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
                     try {

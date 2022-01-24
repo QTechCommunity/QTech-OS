@@ -1,6 +1,6 @@
 #
 # $Id$
-# Default Ultreon OS boot menu configuration file
+# Default Q-OS boot menu configuration file
 # 
 #
 # Below are the preset menu setting for pxe boot
@@ -17,12 +17,12 @@ timeout 5
 default 0
 
 # ---------------------------
-title Ultreon OS (default)
+title Q-OS (default)
 kernel (nd)/jnode32.gz
 module (nd)/default.jgz
 
 # ---------------------------
-title Ultreon OS (all plugins)
+title Q-OS (all plugins)
 kernel (nd)/jnode32.gz
 module (nd)/full.jgz
 

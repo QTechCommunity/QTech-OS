@@ -21,11 +21,11 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <fragment id="gnu.mauve.plugin"
-  name="Mauve extensions for Ultreon OS"
+  name="Mauve extensions for JNode"
   version="@VERSION@"
   plugin-id="gnu.mauve"
   plugin-version="@VERSION@"
-  provider-name="UltreonOS"
+  provider-name="JNode.org"
   provider-url="http://www.jnode.org/"
   license-name="gpl">
 

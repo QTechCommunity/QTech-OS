@@ -21,15 +21,13 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.install" 
-        name="Ultreon OS Installation Program"
+        name="JNode Installation Program"
         version="@VERSION@"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl">
         
   <requires>
     <import plugin="org.jnode.fs"/>
-    <import plugin="org.jnode.fs.jfat"/>
-    <import plugin="org.jnode.fs.jfat.command"/>
     <import plugin="org.jnode.log4j"/>
   </requires>
         

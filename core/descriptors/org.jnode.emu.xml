@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.emu" 
-        name="Ultreon OS Emulation"
+        name="JNode Emulation"
         version="@VERSION@"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl">
         
        

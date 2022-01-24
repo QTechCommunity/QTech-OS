@@ -21,23 +21,23 @@ package charva.awt.event;
 
 
 /**
- * An event which executes the <code>run()</code> method on a
+ * An event which executes the <code>run()</code> method on a 
  * <code>Runnable</code> when dispatched by the AWT event dispatcher thread.
  */
-public class InvocationEvent extends AWTEvent {
+public class InvocationEvent extends AWTEvent
+{
     private static final long serialVersionUID = 1L;
-
     /**
      * Constructs an InvocationEvent with the specified source which
      * will execute the Runnable's run() method when dispatched by
      * the AWT dispatch thread.
      *
-     * @param source_   the source of this event.
+     * @param source_ the source of this event.
      * @param runnable_ the Runnable whose run() method will be called.
-     *                  when the run() method has returned.
+     * when the run() method has returned.
      */
     public InvocationEvent(Object source_, Runnable runnable_) {
-        this(source_, runnable_, null);
+    this(source_, runnable_, null);
     }
 
     /**
@@ -46,16 +46,16 @@ public class InvocationEvent extends AWTEvent {
      * the AWT dispatch thread. After the run() method has returned,
      * the notifier's notifyAll() method will be called.
      *
-     * @param source_   the source of this event.
+     * @param source_ the source of this event.
      * @param runnable_ the Runnable whose run() method will be called.
      * @param notifier_ the object whose notifyAll() method will be called
-     *                  when the run() method has returned.
+     * when the run() method has returned.
      */
-    public InvocationEvent(Object source_, Runnable runnable_,
-                           Object notifier_) {
-        super(source_, AWTEvent.INVOCATION_EVENT);
-        _runnable = runnable_;
-        _notifier = notifier_;
+    public InvocationEvent(Object source_, Runnable runnable_, 
+        Object notifier_) {
+    super(source_, AWTEvent.INVOCATION_EVENT);
+    _runnable = runnable_;
+    _notifier = notifier_;
     }
 
     /**
@@ -63,25 +63,23 @@ public class InvocationEvent extends AWTEvent {
      * is non-null) calls the notifier's notifyAll() method.
      */
     public void dispatch() {
-        _runnable.run();
+    _runnable.run();
 
-        if (_notifier != null) {
-            synchronized (_notifier) {
-                _notifier.notifyAll();
-            }
+    if (_notifier != null) {
+        synchronized (_notifier) {
+        _notifier.notifyAll();
         }
+    }
     }
 
     //====================================================================
     // INSTANCE VARIABLES
 
-    /**
-     * The Runnable whose run() method will be called.
+    /** The Runnable whose run() method will be called.
      */
     protected Runnable _runnable;
 
-    /**
-     * The (possibly null) object whose notifyAll() method will be called
+    /** The (possibly null) object whose notifyAll() method will be called
      * as soon as the Runnable's run() method has returned.
      */
     protected Object _notifier;

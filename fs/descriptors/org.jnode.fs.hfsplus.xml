@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.fs.hfsplus" 
-        name="Ultreon OS HFS+ FileSystem"
+        name="JNode HFS+ FileSystem"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="UltreonOS">
+        provider-name="JNode.org">
         
   <requires>
     <import plugin="org.jnode.fs"/>

@@ -21,12 +21,13 @@ package charva.awt;
 
 import charva.awt.event.ItemListener;
 
-/**
- * The interface for objects that contain a set of items, one or
+/** 
+ * The interface for objects that contain a set of items, one or 
  * more of which can be selected. (Examples are a List and a CheckBox).
  */
-public interface ItemSelectable {
-    void addItemListener(ItemListener listener_);
+public interface ItemSelectable
+{
+    public void addItemListener(ItemListener listener_);
 
-    void removeItemListener(ItemListener listener_);
+    public void removeItemListener(ItemListener listener_);
 }

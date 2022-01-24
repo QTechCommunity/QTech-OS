@@ -25,7 +25,7 @@
   version="@VERSION@"
   system="true"
   plugin-version="@VERSION@"
-  provider-name="UltreonOS"
+  provider-name="JNode.org"
   provider-url="http://jnode.org"
   license-name="classpath">
 

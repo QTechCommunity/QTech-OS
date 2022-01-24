@@ -18,7 +18,7 @@
     along with this library; If not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -->
-<project name="UltreonOS-Shell" default="all" basedir=".">
+<project name="JNode-Shell" default="all" basedir=".">
 
   <typedef file="${basedir}/../all/lib/jnode.xml"/>
 				

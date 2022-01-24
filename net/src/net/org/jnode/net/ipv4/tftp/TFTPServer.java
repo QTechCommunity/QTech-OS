@@ -70,7 +70,7 @@ public class TFTPServer extends TFTP {
     }
 
     private void run() throws SocketException {
-        System.out.println("Ultreon OS TFTP Server");
+        System.out.println("JNode TFTP Server");
         open(DEFAULT_PORT);
         setSoTimeout(0);
         beginBufferedOps();

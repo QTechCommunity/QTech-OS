@@ -23,13 +23,14 @@ package charva.awt;
 /**
  * Defines the interface for classes that know how to lay out Containers.
  */
-public interface LayoutManager {
+public interface LayoutManager
+{
     /**
-     * Calculate the geometry for the specified list of Components,
-     * and return the size of the rectangle that encloses all the
+     * Calculate the geometry for the specified list of Components, 
+     * and return the size of the rectangle that encloses all the 
      * Components.
      */
-    Dimension minimumSize(Container container_);
+    public Dimension minimumSize(Container container_);
 
-    void doLayout(Container container_);
+    public void doLayout(Container container_);
 }

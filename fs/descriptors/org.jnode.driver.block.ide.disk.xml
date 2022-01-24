@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver.block.ide.disk" 
-        name="Ultreon OS IDE Disk drivers"
+        name="JNode IDE Disk drivers"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="UltreonOS">
+        provider-name="JNode.org">
         
   <requires>
     <import plugin="org.jnode.driver.bus.ide"/>

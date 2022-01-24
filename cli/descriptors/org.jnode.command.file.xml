@@ -21,7 +21,7 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.command.file"
-        name="Ultreon OS file commands"
+        name="JNode file commands"
         version="@VERSION@"
         provider-name="@PROVIDER@"
         license-name="lgpl">

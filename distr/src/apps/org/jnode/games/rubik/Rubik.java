@@ -42,44 +42,35 @@ import javax.swing.SwingUtilities;
  * @author Karl H\u00f6rnell, March 11 1996 (Last modified October 6)
  *
  */
-@SuppressWarnings({"JavaDoc", "UnusedReturnValue"})
-public final class
-Rubik extends JComponent {
+public final class Rubik extends JComponent {
     
     private static final long serialVersionUID = 1L;
     
     int i, j, k, n, o, p, q, lastX, lastY, dx, dy;
-    int[] rectX, rectY;
-    Color[] colList;
-    Color bgcolor;
-    final double[] sideVec = {0, 0, 1, 0, 0, -1, 0, -1, 0, 1, 0, 0, 0, 1, 0, -1, 0, 0}; // Normal vectors
-    final double[] corners = {-1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1,
+    int rectX[], rectY[];
+    Color colList[], bgcolor;
+    final double sideVec[] = {0, 0, 1, 0, 0, -1, 0, -1, 0, 1, 0, 0, 0, 1, 0, -1, 0, 0}; // Normal vectors
+    final double corners[] = {-1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1,
         -1, -1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1}; // Vertex co-ordinates
-    double[] topCorners, botCorners;
-    final int[] sides = {4, 5, 6, 7, 3, 2, 1, 0, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 0, 4, 7, 3};
-    final int[] nextSide = {2, 3, 4, 5, 4, 3, 2, 5, 1, 3, 0, 5, 1, 4, 0, 2, 1, 5, 0, 3, 2, 0, 4, 1};
-    final int[] mainBlocks = {0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3};
-    final int[] twistDir = {-1, 1, -1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, -1, 1, -1, 1};
-    final int[] colDir = {-1, -1, 1, -1, 1, -1};
-    final int[] circleOrder = {0, 1, 2, 5, 8, 7, 6, 3};
-    int[] topBlocks, botBlocks;
-    int[] sideCols;
-    int sideW;
-    int sideH;
+    double topCorners[], botCorners[];
+    final int sides[] = {4, 5, 6, 7, 3, 2, 1, 0, 0, 1, 5, 4, 1, 2, 6, 5, 2, 3, 7, 6, 0, 4, 7, 3};
+    final int nextSide[] = {2, 3, 4, 5, 4, 3, 2, 5, 1, 3, 0, 5, 1, 4, 0, 2, 1, 5, 0, 3, 2, 0, 4, 1};
+    final int mainBlocks[] = {0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3};
+    final int twistDir[] = {-1, 1, -1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, -1, 1, -1, 1};
+    final int colDir[] = {-1, -1, 1, -1, 1, -1};
+    final int circleOrder[] = {0, 1, 2, 5, 8, 7, 6, 3};
+    int topBlocks[], botBlocks[];
+    int sideCols[], sideW, sideH;
     int dragReg, twistSide = -1;
-    int[] nearSide, buffer; // Which side belongs to dragCorn
-    double[] dragCorn, dragDir;
-    double[] eye = {0.3651, 0.1826, -0.9129}; // Initial observer co-ordinate axes (view)
-    double[] eX = {0.9309, -0.0716, 0.3581}; // (sideways)
-    double[] eY; // (vertical)
-    double[] Teye, TeX, TeY;
-    double[] light, temp = {0, 0, 0}, temp2 = {0, 0, 0}, newCoord;
+    int nearSide[], buffer[]; // Which side belongs to dragCorn
+    double dragCorn[], dragDir[];
+    double eye[] = {0.3651, 0.1826, -0.9129}; // Initial observer co-ordinate axes (view)
+    double eX[] = {0.9309, -0.0716, 0.3581}; // (sideways)
+    double eY[]; // (vertical)
+    double Teye[], TeX[], TeY[];
+    double light[], temp[] = {0, 0, 0}, temp2[] = {0, 0, 0}, newCoord[];
     double sx, sy, sdxh, sdyh, sdxv, sdyv, d, t1, t2, t3, t4, t5, t6;
-    double phi;
-    double phibase = 0;
-    double Cphi;
-    double Sphi;
-    double[] currDragDir;
+    double phi, phibase = 0, Cphi, Sphi, currDragDir[];
 
     boolean naturalState = true, twisting = false, OKtoDrag = false;
     Math m;
@@ -162,9 +153,8 @@ Rubik extends JComponent {
      * Convert hexadecimal RGB parameter to color.
      * @return
      */
-    @SuppressWarnings("ConstantConditions")
     public Color findBGColor() {
-        int[] hex;
+        int hex[];
         String s, h = "0123456789abcdef";
         Color c;
         hex = new int[6];
@@ -183,9 +173,9 @@ Rubik extends JComponent {
 // Various vector manipulation functions
 
     /**
-     *
+     * 
      */
-    public double scalProd(double[] v1, int ix1, double[] v2, int ix2) {
+    public double scalProd(double v1[], int ix1, double v2[], int ix2) {
         return v1[ix1] * v2[ix2] + v1[ix1 + 1] * v2[ix2 + 1] + v1[ix1 + 2] * v2[ix2 + 2];
     }
 
@@ -195,7 +185,7 @@ Rubik extends JComponent {
      * @param ix
      * @return
      */
-    public double vNorm(double[] v, int ix) {
+    public double vNorm(double v[], int ix) {
         return Math.sqrt(v[ix] * v[ix] + v[ix + 1] * v[ix + 1] + v[ix + 2] * v[ix + 2]);
     }
 
@@ -207,7 +197,7 @@ Rubik extends JComponent {
      * @param ix2
      * @return
      */
-    public double cosAng(double[] v1, int ix1, double[] v2, int ix2) {
+    public double cosAng(double v1[], int ix1, double v2[], int ix2) {
         return scalProd(v1, ix1, v2, ix2) / (vNorm(v1, ix1) * vNorm(v2, ix2));
     }
 
@@ -216,7 +206,7 @@ Rubik extends JComponent {
      * @param v
      * @param ix
      */
-    public void normalize(double[] v, int ix) {
+    public void normalize(double v[], int ix) {
         double t = vNorm(v, ix);
         v[ix] = v[ix] / t;
         v[ix + 1] = v[ix + 1] / t;
@@ -229,7 +219,7 @@ Rubik extends JComponent {
      * @param ix
      * @param a
      */
-    public void scalMult(double[] v, int ix, double a) {
+    public void scalMult(double v[], int ix, double a) {
         v[ix] = v[ix] * a;
         v[ix + 1] = v[ix + 1] * a;
         v[ix + 2] = v[ix + 2] * a;
@@ -242,7 +232,7 @@ Rubik extends JComponent {
      * @param v2
      * @param ix2
      */
-    public void addVec(double[] v1, int ix1, double[] v2, int ix2) {
+    public void addVec(double v1[], int ix1, double v2[], int ix2) {
         v2[ix2] += v1[ix1];
         v2[ix2 + 1] += v1[ix1 + 1];
         v2[ix2 + 2] += v1[ix1 + 2];
@@ -255,7 +245,7 @@ Rubik extends JComponent {
      * @param v2
      * @param ix2
      */
-    public void subVec(double[] v1, int ix1, double[] v2, int ix2) {
+    public void subVec(double v1[], int ix1, double v2[], int ix2) {
         v2[ix2] -= v1[ix1];
         v2[ix2 + 1] -= v1[ix1 + 1];
         v2[ix2 + 2] -= v1[ix1 + 2];
@@ -268,7 +258,7 @@ Rubik extends JComponent {
      * @param v2
      * @param ix2
      */
-    public void copyVec(double[] v1, int ix1, double[] v2, int ix2) {
+    public void copyVec(double v1[], int ix1, double v2[], int ix2) {
         v2[ix2] = v1[ix1];
         v2[ix2 + 1] = v1[ix1 + 1];
         v2[ix2 + 2] = v1[ix1 + 2];
@@ -283,8 +273,8 @@ Rubik extends JComponent {
      * @param v3
      * @param ix3
      */
-    public void vecProd(double[] v1, int ix1, double[] v2, int ix2,
-                        double[] v3, int ix3) {
+    public void vecProd(double v1[], int ix1, double v2[], int ix2,
+                        double v3[], int ix3) {
         v3[ix3] = v1[ix1 + 1] * v2[ix2 + 2] - v1[ix1 + 2] * v2[ix2 + 1];
         v3[ix3 + 1] = v1[ix1 + 2] * v2[ix2] - v1[ix1] * v2[ix2 + 2];
         v3[ix3 + 2] = v1[ix1] * v2[ix2 + 1] - v1[ix1 + 1] * v2[ix2];
@@ -670,8 +660,8 @@ Rubik extends JComponent {
      * @param bblocks
      * @param mode
      */
-    public void fixBlock(double[] beye, double[] beX, double[] beY,
-                         double[] bcorners, int[] bblocks, int mode) {
+    public void fixBlock(double beye[], double beX[], double beY[],
+                         double bcorners[], int bblocks[], int mode) {
         copyVec(beye, 0, light, 0);
         scalMult(light, 0, -3);
         addVec(beX, 0, light, 0);

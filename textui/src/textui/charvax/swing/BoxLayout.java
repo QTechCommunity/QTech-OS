@@ -34,17 +34,19 @@ public class BoxLayout implements LayoutManager {
     /**
      * Creates a layout manager that will lay out its components either
      * left-to-right or top-to-bottom, as specified by the axis_ parameter.
-     *
-     * @param target_ The container to be laid out. This parameter is not used, but
-     *                is present for compatibility with the javax.swing.BoxLayout
-     *                constructor).
-     * @param axis_   The axis in which components wil be laid out. Must be X_AXIS
-     *                or Y_AXIS.
+     * 
+     * @param target_
+     *            The container to be laid out. This parameter is not used, but
+     *            is present for compatibility with the javax.swing.BoxLayout
+     *            constructor).
+     * @param axis_
+     *            The axis in which components wil be laid out. Must be X_AXIS
+     *            or Y_AXIS.
      */
     public BoxLayout(Container target_, int axis_) {
         //_target = target_;
         if (axis_ != X_AXIS && axis_ != Y_AXIS)
-            throw new IllegalArgumentException("illegal axis");
+                throw new IllegalArgumentException("illegal axis");
 
         _axis = axis_;
     }
@@ -59,7 +61,7 @@ public class BoxLayout implements LayoutManager {
 
         Component[] components = container_.getComponents();
         for (int i = 0; i < components.length; i++) {
-            Component c = components[i];
+            Component c = components[ i];
             Dimension d = c.minimumSize();
             if (_axis == X_AXIS) {
                 size.width += d.width;
@@ -94,9 +96,9 @@ public class BoxLayout implements LayoutManager {
          * Ensure that the container is at least as large as the minimum size.
          */
         if (containersize.width < minsize.width)
-            containersize.width = minsize.width;
+                containersize.width = minsize.width;
         if (containersize.height < minsize.height)
-            containersize.height = minsize.height;
+                containersize.height = minsize.height;
         container_.setSize(containersize);
 
         Component[] components = container_.getComponents();
@@ -104,7 +106,7 @@ public class BoxLayout implements LayoutManager {
         int voffset = container_.getInsets().top;
         for (int i = 0; i < components.length; i++) {
 
-            Component c = components[i];
+            Component c = components[ i];
 
             /*
              * Get the contained container to lay itself out at its preferred
@@ -125,8 +127,8 @@ public class BoxLayout implements LayoutManager {
                     voffset = (containersize.height - componentsize.height) / 2;
                 } else if (alignment == Component.BOTTOM_ALIGNMENT) {
                     voffset = containersize.height
-                        - container_.getInsets().bottom
-                        - componentsize.height;
+                            - container_.getInsets().bottom
+                            - componentsize.height;
                 }
                 c.setLocation(hoffset, voffset);
                 hoffset += componentsize.width;
@@ -138,8 +140,8 @@ public class BoxLayout implements LayoutManager {
                     hoffset = (containersize.width - componentsize.width) / 2;
                 } else if (alignment == Component.RIGHT_ALIGNMENT) {
                     hoffset = containersize.width
-                        - container_.getInsets().right
-                        - componentsize.width;
+                            - container_.getInsets().right
+                            - componentsize.width;
                 }
                 c.setLocation(hoffset, voffset);
                 voffset += componentsize.height;
@@ -152,7 +154,7 @@ public class BoxLayout implements LayoutManager {
 
     //private final Container _target;
 
-    private final int _axis;
+    private int _axis;
 
     public static final int X_AXIS = 100;
 

@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.shell.help"
-        name="Ultreon OS Help System"
+        name="JNode Help System"
         version="@VERSION@"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl"
 		class="org.jnode.shell.help.def.SystemHelpPlugin">
 

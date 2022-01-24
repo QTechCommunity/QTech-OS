@@ -3,15 +3,15 @@
  */
 package charva.awt;
 
-import charva.awt.event.KeyEvent;
-import charva.awt.event.MouseEvent;
-import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Arrays;
+
 import javax.naming.NameNotFoundException;
-import org.jnode.driver.console.ConsoleEvent;
-import org.jnode.driver.console.ConsoleListener;
+
 import org.jnode.driver.console.ConsoleManager;
 import org.jnode.driver.console.TextConsole;
+import org.jnode.driver.console.ConsoleListener;
+import org.jnode.driver.console.ConsoleEvent;
 import org.jnode.driver.input.KeyboardAdapter;
 import org.jnode.driver.input.KeyboardEvent;
 import org.jnode.driver.input.KeyboardListener;
@@ -20,18 +20,21 @@ import org.jnode.driver.input.PointerListener;
 import org.jnode.naming.InitialNaming;
 import org.jnode.shell.ShellManager;
 
+import charva.awt.event.KeyEvent;
+import charva.awt.event.MouseEvent;
+
 /**
  * @author vali
  * @author Levente S\u00e1ntha
  */
 public class Toolkit extends AbstractToolkit implements KeyboardListener,
-    PointerListener, ConsoleListener {
+        PointerListener, ConsoleListener {
     private static Toolkit instance = null;
 
-    private final int[] colorpairs = new int[256];
+    private int[] colorpairs = new int[256];
 
     // This is a mixed queue of Integer and MouseEvent instances
-    private final LinkedList<Object> keyQueue = new LinkedList<Object>();
+    private LinkedList<Object> keyQueue = new LinkedList<Object>();
 
     private final TextConsole console;
 
@@ -51,7 +54,7 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
 
     private boolean registered;
 
-    private final ConsoleManager conMan;
+    private ConsoleManager conMan;
 
     // mouse state
     private int prevMouseX = 0;
@@ -84,7 +87,7 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
         if (this.hasColors() && Toolkit.isColorEnabled) {
             startColors();
             _colorPairs.add(new ColorPair(_defaultForeground,
-                _defaultBackground));
+                    _defaultBackground));
         }
         this.conMan = conMan;
         //if (!useBuffer) {
@@ -153,10 +156,10 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
             final ShellManager sm = InitialNaming.lookup(ShellManager.NAME);
             final ConsoleManager conMgr = sm.getCurrentShell().getConsole().getManager();
             final TextConsole console = (TextConsole) conMgr.createConsole(
-                "charva",
-                ConsoleManager.CreateOptions.TEXT |
-                    ConsoleManager.CreateOptions.STACKED |
-                    ConsoleManager.CreateOptions.NO_LINE_EDITTING);
+                    "charva",
+                    ConsoleManager.CreateOptions.TEXT |
+                            ConsoleManager.CreateOptions.STACKED |
+                            ConsoleManager.CreateOptions.NO_LINE_EDITTING);
             console.addKeyboardListener(new KeyboardAdapter() {
                 public void keyPressed(KeyboardEvent event) {
                     if (event.isControlDown() && event.getKeyChar() == 'z') {
@@ -176,7 +179,7 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
 
     private void initConsole(TextConsole cons) {
 //        cons.setCursorVisible(false); //This may have to be commented out if charva items lose their cursor.
-        cons.setCursorVisible(true);//Keep this so TextComponents have a cursor.
+        cons.setCursorVisible( true );//Keep this so TextComponents have a cursor.
         cons.addKeyboardListener(this);
         cons.addPointerListener(this);
         curX = /* iniCurX = */console.getCursorX();
@@ -196,14 +199,14 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
     }
 
     public void consoleClosed(ConsoleEvent event) {
-        synchronized (Toolkit.class) {
+        synchronized(Toolkit.class){
             instance = null;
         }
     }
 
     public void close() {
         unregister();
-        synchronized (Toolkit.class) {
+        synchronized(Toolkit.class){
             instance = null;
         }
         //this could kill threads, etc. But let's save 'em for if this instance
@@ -265,7 +268,7 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
     }
 
     public void drawBoxNative(int left_, int top_, int right_, int bottom_,
-                              int colorpair_) {
+            int colorpair_) {
         setCharWithClip(left_, top_, ACS_ULCORNER, colorpair_);
         setCharsWithClip(left_ + 1, top_, ACS_HLINE, colorpair_, right_ - left_ - 1);
 
@@ -284,7 +287,7 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
     }
 
     public void blankBoxNative(int left_, int top_, int right_, int bottom_,
-                               int colorpair_) {
+            int colorpair_) {
         int width = right_ - left_;
         for (int j = top_; j < bottom_; j++) {
             setCharsWithClip(left_, j, ' ', colorpair_, width);
@@ -335,7 +338,7 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
     }
 
     public void initColorPair(int index, int fgnd_, int bgnd_)
-        throws TerminfoCapabilityException {
+            throws TerminfoCapabilityException {
         colorpairs[index] = ((0xF & bgnd_) << 4) | (0xF & fgnd_);
     }
 
@@ -374,77 +377,77 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
             int key_char = event.getKeyChar();
             int key;
             switch (key_code) {
-                case java.awt.event.KeyEvent.VK_LEFT:
-                    key = KeyEvent.VK_LEFT;
-                    break;
-                case java.awt.event.KeyEvent.VK_RIGHT:
-                    key = KeyEvent.VK_RIGHT;
-                    break;
-                case java.awt.event.KeyEvent.VK_UP:
-                    key = KeyEvent.VK_UP;
-                    break;
-                case java.awt.event.KeyEvent.VK_DOWN:
-                    key = KeyEvent.VK_DOWN;
-                    break;
-                case java.awt.event.KeyEvent.VK_PAGE_DOWN:
-                    key = KeyEvent.VK_PAGE_DOWN;
-                    break;
-                case java.awt.event.KeyEvent.VK_PAGE_UP:
-                    key = KeyEvent.VK_PAGE_UP;
-                    break;
+            case java.awt.event.KeyEvent.VK_LEFT:
+                key = KeyEvent.VK_LEFT;
+                break;
+            case java.awt.event.KeyEvent.VK_RIGHT:
+                key = KeyEvent.VK_RIGHT;
+                break;
+            case java.awt.event.KeyEvent.VK_UP:
+                key = KeyEvent.VK_UP;
+                break;
+            case java.awt.event.KeyEvent.VK_DOWN:
+                key = KeyEvent.VK_DOWN;
+                break;
+            case java.awt.event.KeyEvent.VK_PAGE_DOWN:
+                key = KeyEvent.VK_PAGE_DOWN;
+                break;
+            case java.awt.event.KeyEvent.VK_PAGE_UP:
+                key = KeyEvent.VK_PAGE_UP;
+                break;
 
-                case java.awt.event.KeyEvent.VK_HOME:
-                    key = KeyEvent.VK_HOME;
-                    break;
+            case java.awt.event.KeyEvent.VK_HOME:
+                key = KeyEvent.VK_HOME;
+                break;
 
-                case java.awt.event.KeyEvent.VK_END:
-                    key = KeyEvent.VK_END;
-                    break;
+            case java.awt.event.KeyEvent.VK_END:
+                key = KeyEvent.VK_END;
+                break;
 
-                case java.awt.event.KeyEvent.VK_BACK_SPACE:
-                    key = KeyEvent.VK_BACK_SPACE;
-                    break;
+            case java.awt.event.KeyEvent.VK_BACK_SPACE:
+                key = KeyEvent.VK_BACK_SPACE;
+                break;
 
-                case java.awt.event.KeyEvent.VK_INSERT:
-                    key = KeyEvent.VK_INSERT;
-                    break;
+            case java.awt.event.KeyEvent.VK_INSERT:
+                key = KeyEvent.VK_INSERT;
+                break;
 
-                case java.awt.event.KeyEvent.VK_DELETE:
-                    key = KeyEvent.VK_DELETE;
-                    break;
+            case java.awt.event.KeyEvent.VK_DELETE:
+                key = KeyEvent.VK_DELETE;
+                break;
 
-                case java.awt.event.KeyEvent.VK_ENTER:
-                    key = KeyEvent.VK_ENTER;
-                    break;
+            case java.awt.event.KeyEvent.VK_ENTER:
+                key = KeyEvent.VK_ENTER;
+                break;
 
-                case java.awt.event.KeyEvent.VK_ESCAPE:
-                    key = KeyEvent.VK_ESCAPE;
-                    break;
+            case java.awt.event.KeyEvent.VK_ESCAPE:
+                key = KeyEvent.VK_ESCAPE;
+                break;
 
-                case java.awt.event.KeyEvent.VK_F1:
-                case java.awt.event.KeyEvent.VK_F2:
-                case java.awt.event.KeyEvent.VK_F3:
-                case java.awt.event.KeyEvent.VK_F4:
-                case java.awt.event.KeyEvent.VK_F5:
-                case java.awt.event.KeyEvent.VK_F6:
-                case java.awt.event.KeyEvent.VK_F7:
-                case java.awt.event.KeyEvent.VK_F8:
-                case java.awt.event.KeyEvent.VK_F9:
-                case java.awt.event.KeyEvent.VK_F10:
-                case java.awt.event.KeyEvent.VK_F11:
-                case java.awt.event.KeyEvent.VK_F12:
-                case java.awt.event.KeyEvent.VK_F13:
-                case java.awt.event.KeyEvent.VK_F14:
-                case java.awt.event.KeyEvent.VK_F15:
-                case java.awt.event.KeyEvent.VK_F16:
-                case java.awt.event.KeyEvent.VK_F17:
-                case java.awt.event.KeyEvent.VK_F18:
-                case java.awt.event.KeyEvent.VK_F19:
-                case java.awt.event.KeyEvent.VK_F20:
-                    key = KeyEvent.VK_F1 + key_code - java.awt.event.KeyEvent.VK_F1;
-                    break;
-                default:
-                    key = key_char;
+            case java.awt.event.KeyEvent.VK_F1:
+            case java.awt.event.KeyEvent.VK_F2:
+            case java.awt.event.KeyEvent.VK_F3:
+            case java.awt.event.KeyEvent.VK_F4:
+            case java.awt.event.KeyEvent.VK_F5:
+            case java.awt.event.KeyEvent.VK_F6:
+            case java.awt.event.KeyEvent.VK_F7:
+            case java.awt.event.KeyEvent.VK_F8:
+            case java.awt.event.KeyEvent.VK_F9:
+            case java.awt.event.KeyEvent.VK_F10:
+            case java.awt.event.KeyEvent.VK_F11:
+            case java.awt.event.KeyEvent.VK_F12:
+            case java.awt.event.KeyEvent.VK_F13:
+            case java.awt.event.KeyEvent.VK_F14:
+            case java.awt.event.KeyEvent.VK_F15:
+            case java.awt.event.KeyEvent.VK_F16:
+            case java.awt.event.KeyEvent.VK_F17:
+            case java.awt.event.KeyEvent.VK_F18:
+            case java.awt.event.KeyEvent.VK_F19:
+            case java.awt.event.KeyEvent.VK_F20:
+                key = KeyEvent.VK_F1 + key_code - java.awt.event.KeyEvent.VK_F1;
+                break;
+            default:
+                key = key_char;
             }
 
             keyQueue.add(new Integer(key));
@@ -472,7 +475,7 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
                 int color = colorpairs[cp];
                 int xmax = Math.min(x + nbCopy, rightClip + 1);
                 int ln = xmax - x;
-                if (ln > 0) {
+                if(ln > 0){
                     char[] chars = new char[ln];
                     Arrays.fill(chars, c);
                     console.setChar(x, y, chars, color);
@@ -483,7 +486,7 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
 
     private void putCharWithClip(int ch, int att, int cp) {
         if (curY >= topClip && curY <= bottomClip && curX >= leftClip
-            && curX <= rightClip) {
+                && curX <= rightClip) {
             console.putChar((char) ch, computeColor(att, cp));
             curX++;
         }
@@ -491,12 +494,12 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
 
     private void putCharsWithClip(char[] chars, int att, int cp) {
         if (curY >= topClip && curY <= bottomClip && curX >= leftClip
-            && curX <= rightClip) {
+                && curX <= rightClip) {
             int xmax = Math.min(curX + chars.length, rightClip + 1);
             int cx = console.getCursorX();
             int cy = console.getCursorY();
             int length = xmax - curX;
-            if (length > 0) {
+            if(length > 0){
                 console.setChar(cx, cy, chars, 0, length, computeColor(att, cp));
                 console.setCursor(cx + length, cy);
                 curX += length;
@@ -528,7 +531,7 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
     }
 
     /**
-     *
+     *  
      */
     public void pointerStateChanged(PointerEvent event) {
         synchronized (keyQueue) {
@@ -581,7 +584,7 @@ public class Toolkit extends AbstractToolkit implements KeyboardListener,
             Component component = getComponentAt(x, y);
             if (component != null) {
                 MouseEvent me = new MouseEvent(component, modifiers, x, y, 0,
-                    button);
+                        button);
                 keyQueue.add(me);
                 keyQueue.notifyAll();
             }

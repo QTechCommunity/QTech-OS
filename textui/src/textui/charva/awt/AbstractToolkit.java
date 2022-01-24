@@ -30,28 +30,28 @@
 
 package charva.awt;
 
-import charva.awt.event.AWTEvent;
-import charva.awt.event.KeyEvent;
-import charva.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.Vector;
 
+import charva.awt.event.AWTEvent;
+import charva.awt.event.KeyEvent;
+import charva.awt.event.MouseEvent;
+
 /**
  * The Toolkit class provides the interface to the "ncurses" library
  * functions. Exceptions and error messages are reported to the
  * logfile $HOME/charva.log.<p>
- * <p>
+ *
  * The default colors are white foreground and black background, but
  * these defaults can be modified by changing the static variables
  * _defaultForeground and _defaultBackground.
- *
  * @author
  * @author Levente S\u00e1ntha
  */
 public abstract class AbstractToolkit
-    implements Runnable {
+        implements Runnable {
 
     private boolean keyboardReaderRunning = false;
     private Thread keyboardReader;
@@ -64,7 +64,7 @@ public abstract class AbstractToolkit
      * Get the top window of the window stack.
      */
     public Window getTopWindow() {
-        return _windowList.lastElement();
+        return (Window) _windowList.lastElement();
     }
 
     /**
@@ -74,7 +74,7 @@ public abstract class AbstractToolkit
         boolean answer = false;
         synchronized (_windowList) {
             for (int i = 0; i < _windowList.size(); i++) {
-                Window w = _windowList.elementAt(i);
+                Window w = (Window) _windowList.elementAt(i);
                 if (w == window_) {
                     answer = true;
                     break;
@@ -87,10 +87,9 @@ public abstract class AbstractToolkit
     /**
      * Processes a keystroke that was pressed in the currently displayed
      * window.
-     *
      * @param key_ the keystroke that was pressed. If it is less than
-     *             256, it is a ASCII or ISO8859-1 code; otherwise it is a function
-     *             key as defined in the "VK_*" values.
+     * 256, it is a ASCII or ISO8859-1 code; otherwise it is a function
+     * key as defined in the "VK_*" values.
      */
     public void fireKeystroke(int key_) {
         Component currentFocus;
@@ -114,10 +113,9 @@ public abstract class AbstractToolkit
     /**
      * Process a keystroke as if it was pressed while the focus was in the
      * specified component.
-     *
      * @param key_ the keystroke that was pressed. If it is less than
-     *             256, it is an ASCII or ISO8859-1 code; otherwise it is a function
-     *             key as defined in the "VK_*" values.
+     * 256, it is an ASCII or ISO8859-1 code; otherwise it is a function
+     * key as defined in the "VK_*" values.
      */
     public void fireKeystroke(int key_, Component source_) {
         int id;
@@ -129,19 +127,20 @@ public abstract class AbstractToolkit
         _evtQueue.postEvent(new KeyEvent(key_, id, source_));
     }
 
-    public Component getComponentAt(int x, int y) {
+    public Component getComponentAt(int x, int y)
+    {
         Window top_window = getTopWindow();
         Point origin = top_window.getLocation();
         Component component = null;
-
+        
         if (top_window.contains(x, y)) {
             component =
                 top_window.getComponentAt(x - origin.x, y - origin.y);
         }
-
+        
         return component;
     }
-
+    
     /**
      * Processes the mouse-click specified by mouse_info.
      * Note that we disable mouse-click resolution in the ncurses library
@@ -153,7 +152,7 @@ public abstract class AbstractToolkit
         int x = event.getX();
         int y = event.getY();
         int button = event.getButton();
-
+        
         if (modifiers == MouseEvent.MOUSE_PRESSED)
             _lastMousePressTime = System.currentTimeMillis();
 
@@ -164,22 +163,21 @@ public abstract class AbstractToolkit
         long current_time = System.currentTimeMillis();
         Component component = (Component) event.getSource();
         if (modifiers == MouseEvent.MOUSE_RELEASED &&
-            current_time - _lastMousePressTime < 400L) {
+                current_time - _lastMousePressTime < 400L) {
 
             _evtQueue.postEvent(new MouseEvent(
-                component, MouseEvent.MOUSE_CLICKED, x, y, 1, button));
+                    component, MouseEvent.MOUSE_CLICKED, x, y, 1, button));
 
             // Check for a double-click.
             if (current_time - _lastMouseClickTime < 500L) {
                 _evtQueue.postEvent(new MouseEvent(
-                    component, MouseEvent.MOUSE_CLICKED, x, y, 2, button));
+                        component, MouseEvent.MOUSE_CLICKED, x, y, 2, button));
             }
             _lastMouseClickTime = current_time;
         }
     }
 
-    /**
-     * Start a thread that reads characters from the keyboard and
+    /** Start a thread that reads characters from the keyboard and
      * writes them to the event-queue.  Make it a daemon thread
      * so that the program will exit when the main thread ends.
      */
@@ -211,21 +209,22 @@ public abstract class AbstractToolkit
         try {
             while (isKeyboardReaderRunning()) {
                 Object event = readKey();
-
+                
                 // identify the kind of event (key, mouse)
                 int key = -1;
                 MouseEvent mouseEvent = null;
-                if (event == null)
+                if(event == null) 
                     break;
-                else if (event instanceof Integer)
+                else if(event instanceof Integer)
                     key = ((Integer) event).intValue();
-                else if (event instanceof MouseEvent)
+                else if(event instanceof MouseEvent)
                     mouseEvent = (MouseEvent) event;
 
-                if (mouseEvent != null) {
+                if(mouseEvent != null)
+                {
                     fireMouseEvent(mouseEvent);
                 }
-
+                
                 /* Note that if the "kent" key is defined, ncurses returns
                  * VK_ENTER when the ENTER key is pressed; but some terminfo
                  * files don't define the "kent" capability.
@@ -233,15 +232,18 @@ public abstract class AbstractToolkit
                 else if (key == '\n' || key == '\r')
                     key = KeyEvent.VK_ENTER;
 
-                    /* Likewise, some versions of curses don't map '\b' to
-                     * VK_BACK_SPACE (Solaris at least); this works around
-                     * that.  (I can't imagine anyone wanting \b to be mapped
-                     * to anything else.  If they do, then they should set it
-                     * up that way in the terminfo database.)
-                     */
-                else if (key == '\b') {
+                /* Likewise, some versions of curses don't map '\b' to
+                 * VK_BACK_SPACE (Solaris at least); this works around
+                 * that.  (I can't imagine anyone wanting \b to be mapped
+                 * to anything else.  If they do, then they should set it
+                 * up that way in the terminfo database.)
+                 */
+                else if (key == '\b')
+                {
                     key = KeyEvent.VK_BACK_SPACE;
-                } else {
+                }
+                else 
+                {
                     fireKeystroke(key);
                 }
 
@@ -251,7 +253,7 @@ public abstract class AbstractToolkit
                     scriptbuf.setLength(0);
 
                     /* Compute the elapsed time since the last keystroke.
-                     */
+                    */
                     long current = System.currentTimeMillis();
                     long elapsed = 1000;    // initial delay of 1 sec
                     if (_prevTimeMillis != 0)
@@ -261,9 +263,9 @@ public abstract class AbstractToolkit
 
                     if (mouseEvent != null) {
                         scriptbuf.append("MOUSE ").
-                            append(mouseEvent.getX()).
-                            append(" ").
-                            append(mouseEvent.getY());
+                                append(mouseEvent.getX()).
+                                append(" ").
+                                append(mouseEvent.getY());
                     } else {
                         scriptbuf.append("KEY ");
                         scriptbuf.append(Integer.toHexString(key));
@@ -271,14 +273,14 @@ public abstract class AbstractToolkit
                         scriptbuf.append(key2ASCII(key));
                     }
 
-                    _scriptPrintStream.println(scriptbuf);
+                    _scriptPrintStream.println(scriptbuf.toString());
                 }   // if (_scriptPrintStream != null)
             }        // for (;;)
         } catch (Exception e) {
             e.printStackTrace();
         }
         Object obj = Toolkit.getDefaultToolkit();
-        synchronized (obj) {
+        synchronized(obj){
             obj.notifyAll();
         }
         keyboardReader = null;
@@ -371,14 +373,12 @@ public abstract class AbstractToolkit
 
     }
 
-    /**
-     * Close the terminal window and restore terminal settings
+    /** Close the terminal window and restore terminal settings
      * (calls the curses endwin() function).
      */
     public abstract void close();
 
-    /**
-     * Clears the screen (calls the curses clear() function).
+    /** Clears the screen (calls the curses clear() function).
      */
     public abstract void clear();
 
@@ -443,9 +443,9 @@ public abstract class AbstractToolkit
      */
     public void drawBox(Point origin_, Dimension size_) {
         drawBoxNative(origin_.x, origin_.y,
-            origin_.x + size_.width - 1,
-            origin_.y + size_.height - 1,
-            0);
+                origin_.x + size_.width - 1,
+                origin_.y + size_.height - 1,
+                0);
     }
 
     /**
@@ -453,37 +453,34 @@ public abstract class AbstractToolkit
      */
     public void drawBox(Point origin_, Dimension size_, int colorpair_) {
         drawBoxNative(origin_.x, origin_.y,
-            origin_.x + size_.width - 1,
-            origin_.y + size_.height - 1,
-            colorpair_);
+                origin_.x + size_.width - 1,
+                origin_.y + size_.height - 1,
+                colorpair_);
     }
 
     public abstract void drawBoxNative(int left_, int top_,
                                        int right_, int bottom_, int colorpair_);
 
     /**
-     *
      */
     public void blankBox(Point origin_, Dimension size_) {
         blankBoxNative(origin_.x, origin_.y,
-            origin_.x + size_.width - 1,
-            origin_.y + size_.height - 1,
-            0);
+                origin_.x + size_.width - 1,
+                origin_.y + size_.height - 1,
+                0);
     }
 
-    /**
-     * Blank out a box using the specified color pair.
-     *
-     * @param origin_    The top left corner of the rectangle.
-     * @param size_      The dimensions of the rectangle to blank out.
+    /** Blank out a box using the specified color pair.
+     * @param origin_ The top left corner of the rectangle.
+     * @param size_ The dimensions of the rectangle to blank out.
      * @param colorpair_ The number of the color-pair (foreground+background)
-     *                   to use for blanking the rectangle.
+     * to use for blanking the rectangle.
      */
     public void blankBox(Point origin_, Dimension size_, int colorpair_) {
         blankBoxNative(origin_.x, origin_.y,
-            origin_.x + size_.width - 1,
-            origin_.y + size_.height - 1,
-            colorpair_);
+                origin_.x + size_.width - 1,
+                origin_.y + size_.height - 1,
+                colorpair_);
     }
 
     /**
@@ -497,7 +494,7 @@ public abstract class AbstractToolkit
      */
     public void setClipRect(Rectangle clip_) {
         setClipRectNative(clip_.getLeft(), clip_.getTop(),
-            clip_.getRight(), clip_.getBottom());
+                clip_.getRight(), clip_.getBottom());
     }
 
     /**
@@ -524,8 +521,7 @@ public abstract class AbstractToolkit
         return new Dimension(getScreenColumns(), getScreenRows());
     }
 
-    /**
-     * Returns true if the terminal is capable of displaying colours.
+    /** Returns true if the terminal is capable of displaying colours.
      */
     public abstract boolean hasColors();
 
@@ -535,8 +531,7 @@ public abstract class AbstractToolkit
      */
     public abstract int getMaxColorPairs();
 
-    /**
-     * An interface to the terminfo "start_colors()" function.
+    /** An interface to the terminfo "start_colors()" function.
      */
     public abstract void startColors();
 
@@ -548,22 +543,22 @@ public abstract class AbstractToolkit
      * is thrown.
      */
     public int getColorPairIndex(ColorPair pair_)
-        throws TerminfoCapabilityException {
+            throws TerminfoCapabilityException {
         int index = _colorPairs.indexOf(pair_);
         if (index != -1)
             return index;
 
         if (_colorPairs.size() == getMaxColorPairs()) {
             throw new TerminfoCapabilityException(
-                "max number of color pairs (" + getMaxColorPairs() +
+                    "max number of color pairs (" + getMaxColorPairs() +
                     ") exceeded");
         }
 
         index = _colorPairs.size();
         _colorPairs.add(pair_);
         initColorPair(index,
-            pair_.getForeground(),
-            pair_.getBackground());
+                pair_.getForeground(),
+                pair_.getBackground());
         return index;
     }
 
@@ -617,21 +612,18 @@ public abstract class AbstractToolkit
      */
 //    public abstract void print(String str_) throws TerminfoCapabilityException;
 
-    /**
-     * Provides an interface to the terminfo "init_pair()" function.
+    /** Provides an interface to the terminfo "init_pair()" function.
      */
     public abstract void initColorPair(int pair_, int fgnd_, int bgnd_)
-        throws TerminfoCapabilityException;
+            throws TerminfoCapabilityException;
 
-    /**
-     * Emulates the terminfo COLOR_PAIR macro.
+    /** Emulates the terminfo COLOR_PAIR macro.
      */
     public static int COLOR_PAIR_ATTRIBUTE(int pair_) {
         return (pair_ << 8);
     }
 
-    /**
-     * Returns the tty device name (provides an interface to the
+    /** Returns the tty device name (provides an interface to the
      * Unix C function "ttyname()").
      */
     public abstract String getTtyName();
@@ -656,7 +648,6 @@ public abstract class AbstractToolkit
 //            e.printStackTrace();
 //        }
 //    }
-
     /**
      * Remove a window from the list of displayed windows.
      * This is intended to be called by the Window object when it hides itself.
@@ -665,7 +656,8 @@ public abstract class AbstractToolkit
 //        System.err.println( "Removing window" +window_.getName() );
 //        pause();
         synchronized (_windowList) {
-            if (_windowList.remove(window_) == false) {
+            if (_windowList.remove(window_) == false)
+            {
 //                throw new RuntimeException(
 //                        "trying to remove window not in windowlist");
                 //todo why does it happen this case?
@@ -686,7 +678,7 @@ public abstract class AbstractToolkit
         return _windowList;
     }
 
-    private static final int[] COLOR_TABLE = {
+    private static int[] COLOR_TABLE = {
         0, //black 0
         4, //red 0
         2, //green 0
@@ -697,44 +689,38 @@ public abstract class AbstractToolkit
         7, //white 0
     };
 
-    /**
-     * This method is used for initializing the color constants in the
+    /** This method is used for initializing the color constants in the
      * Color class.
      */
     protected static int getColor(int index) {
         return COLOR_TABLE[index];
     }
 
-    /**
-     * Changes the default foreground color.
+    /** Changes the default foreground color.
      */
     public static void setDefaultForeground(Color color_) {
         _defaultForeground = color_;
     }
 
-    /**
-     * Returns the default foreground color.
+    /** Returns the default foreground color.
      */
     public static Color getDefaultForeground() {
         return _defaultForeground;
     }
 
-    /**
-     * Changes the default background color.
+    /** Changes the default background color.
      */
     public static void setDefaultBackground(Color color_) {
         _defaultBackground = color_;
     }
 
-    /**
-     * Returns the default background color.
+    /** Returns the default background color.
      */
     public static Color getDefaultBackground() {
         return _defaultBackground;
     }
 
-    /**
-     * Trigger garbage collection. This method can be called inside an
+    /** Trigger garbage collection. This method can be called inside an
      * event handler, but the call to <code>System.gc()</code> will be
      * made after the event handler has completed (i.e. after drawing is
      * completed). This is a convenient, but OPTIONAL, way of ensuring
@@ -743,7 +729,7 @@ public abstract class AbstractToolkit
      * you take your pick.
      *
      * @param source_ the component that triggered the garbage collection
-     *                (not important).
+     * (not important).
      */
     public void triggerGarbageCollection(Component source_) {
 //LS    _evtQueue.postEvent( new GarbageCollectionEvent(source_));
@@ -759,17 +745,15 @@ public abstract class AbstractToolkit
     protected abstract Object readKey();
 
 
-    /**
-     * Get current X position of cursor.
+    /** Get current X position of cursor.
      */
     protected abstract int getx();
 
-    /**
-     * Get current Y position of cursor.
+    /** Get current Y position of cursor.
      */
     protected abstract int gety();
 
-    private static final int[] ATTRIBUTE_TABLE = {
+    private static int[] ATTRIBUTE_TABLE = {
         0, //A_NORMAL      0
         0, //A_STANDOUT    1
         1, //A_UNDERLINE   2
@@ -783,39 +767,37 @@ public abstract class AbstractToolkit
     };
 
 
-    /**
-     * This method is used for initializing the curses / ncurses video
+    /** This method is used for initializing the curses / ncurses video
      * attributes.
      */
     protected static int getAttribute(int offset_) {
         return ATTRIBUTE_TABLE[offset_];
     }
 
-    private static final int[] ACS_TABLE = new int[]
-        {
-            218, //ACS_ULCORNER 0
-            192, //ACS_LLCORNER 1
-            191, //ACS_URCORNER 2
-            217, //ACS_LRCORNER 3
-            195, //ACS_LTEE     4
-            180, //ACS_RTEE     5
-            193, //ACS_BTEE     6
-            194, //ACS_TTEE     7
-            196, //ACS_HLINE    8
-            179, //ACS_VLINE    9
-            197, //ACS_PLUS    10
-            0, //ACS_S1        11
-            0, //ACS_S9        12
-            254, //ACS_DIAMOND 13 //TODO check it
-            178, //ACS_CKBOARD 14 //TODO check it
-            0, //ACS_DEGREE    15
-            0, //ACS_PLMINUS   16
-            0, //ACS_BULLET    17
+    private static int[] ACS_TABLE = new int[]
+    {
+        218, //ACS_ULCORNER 0
+        192, //ACS_LLCORNER 1
+        191, //ACS_URCORNER 2
+        217, //ACS_LRCORNER 3
+        195, //ACS_LTEE     4
+        180, //ACS_RTEE     5
+        193, //ACS_BTEE     6
+        194, //ACS_TTEE     7
+        196, //ACS_HLINE    8
+        179, //ACS_VLINE    9
+        197, //ACS_PLUS    10
+        0, //ACS_S1        11
+        0, //ACS_S9        12
+        254, //ACS_DIAMOND 13 //TODO check it
+        178, //ACS_CKBOARD 14 //TODO check it
+        0, //ACS_DEGREE    15
+        0, //ACS_PLMINUS   16
+        0, //ACS_BULLET    17
 
-        };
+    };
 
-    /**
-     * This method is used for initializing the line-drawing
+    /** This method is used for initializing the line-drawing
      * characters using curses/ncurses.
      */
     private static int getACSchar(int offset_) {
@@ -832,7 +814,7 @@ public abstract class AbstractToolkit
      * A list of visible Windows.  The first in the list is at the bottom, the
      * last is on top.
      */
-    private final Vector<Window> _windowList = new Vector<Window>();
+    private Vector<Window> _windowList = new Vector<Window>();
 
     /**
      * A list of color-pairs.
@@ -841,13 +823,11 @@ public abstract class AbstractToolkit
 
     protected EventQueue _evtQueue;
 
-    /**
-     * Used to record keystrokes if "charva.script.record" is defined.
+    /** Used to record keystrokes if "charva.script.record" is defined.
      */
     private static PrintStream _scriptPrintStream = null;
 
-    /**
-     * Used to save the time the previous key was pressed.
+    /** Used to save the time the previous key was pressed.
      */
     private long _prevTimeMillis = 0;
 
@@ -868,16 +848,16 @@ public abstract class AbstractToolkit
     static {
         /* Check if the user wants to record or play back a script.
          */
-        String scriptfilename = null; //SRR turning off scripting, because of security exception.
+        String scriptfilename=null; //SRR turning off scripting, because of security exception.
 //        String scriptfilename = System.getProperty("charva.script.record");
 
         if (scriptfilename != null) {
             try {
                 _scriptPrintStream = new PrintStream(
-                    new FileOutputStream(scriptfilename));
+                        new FileOutputStream(scriptfilename));
             } catch (FileNotFoundException ef) {
                 System.err.println("Cannot open script file \"" +
-                    scriptfilename + "\" for writing");
+                        scriptfilename + "\" for writing");
                 System.exit(1);
             }
         }
@@ -888,8 +868,7 @@ public abstract class AbstractToolkit
 //    System.loadLibrary("Terminal");
     }
 
-    /**
-     * This flag is true is the system property "charva.color" has been set.
+    /** This flag is true is the system property "charva.color" has been set.
      */
     public static final boolean isColorEnabled = true;
     //(System.getProperty("charva.color") != null);

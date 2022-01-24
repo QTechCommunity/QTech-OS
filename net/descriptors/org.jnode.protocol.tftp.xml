@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.protocol.tftp" 
-        name="Ultreon OS TFTP protocol handler"
+        name="JNode TFTP protocol handler"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="UltreonOS">
+        provider-name="JNode.org">
         
   <requires>
     <import plugin="org.jnode.net.ipv4"/>

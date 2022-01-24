@@ -230,8 +230,8 @@ public class VMwareBuilderTask extends Task {
         
         // Finally reinstate the saved JNode.nvram file if we have one.
         if (saveDir != null) {
-            File savedNVRam = new File(saveDir, "UltreonOS.nvram");
-            File nvram = new File(new File(isoFile).getParentFile(), "UltreonOS.nvram"); 
+            File savedNVRam = new File(saveDir, "JNode.nvram");
+            File nvram = new File(new File(isoFile).getParentFile(), "JNode.nvram"); 
             if (savedNVRam.exists() && !nvram.exists()) {
                 InputStream is = null;
                 OutputStream os = null;
@@ -243,7 +243,7 @@ public class VMwareBuilderTask extends Task {
                     os.write(buffer);
                     os.flush();
                 } catch (IOException ex) {
-                    throw new BuildException("Cannot copy the saved 'UltreonOS.nvram' file: " + ex.getMessage());
+                    throw new BuildException("Cannot copy the saved 'JNode.nvram' file: " + ex.getMessage());
                 } finally {
                     if (is != null) {
                         try {
@@ -283,10 +283,10 @@ public class VMwareBuilderTask extends Task {
         props.put("usb.present", "TRUE");
         props.put("sound.present", "FALSE");
         props.put("sound.virtualDev", "es1371");
-        props.put("displayName", (name != null) ? name : "UltreonOS");
+        props.put("displayName", (name != null) ? name : "QTechOS");
         props.put("guestOS", "dos");
 
-        props.put("nvram", "UltreonOS.nvram");  
+        props.put("nvram", "JNode.nvram");  
         props.put("MemTrimRate", "-1");  
 
         final String osName = System.getProperty("os.name").toLowerCase(); 

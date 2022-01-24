@@ -26,7 +26,8 @@ package charva.awt.event;
  * are interested in.
  */
 public abstract class KeyAdapter
-    implements KeyListener {
+    implements KeyListener
+{
     public void keyPressed(KeyEvent ke) {
     }
 

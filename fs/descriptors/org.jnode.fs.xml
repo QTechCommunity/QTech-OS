@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.fs" 
-        name="Ultreon OS FileSystem Service"
+        name="JNode FileSystem Service"
         version="@VERSION@"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl"
         class="org.jnode.fs.service.def.FileSystemPlugin">
         

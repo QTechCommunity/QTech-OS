@@ -78,52 +78,6 @@ public class Desktop implements Runnable {
     public void run() {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-
-//                try {
-//                    // Set System L&F
-//                    UIManager.setLookAndFeel("com.qtech.os.ui.old.dark.QUILookAndFeel");
-//                    Logger.getLogger(getClass()).info("Look and Feel set to QUI");
-//                }
-//                catch (UnsupportedLookAndFeelException e) {
-//                    // handle exception
-//                    Logger.getLogger(getClass()).error("Failed to set QUI", e);
-//
-//                    taskBar.startMenu.setVisible(false);
-//                    JNodeToolkit.setExitAction(null);
-//                    JNodeToolkit.stopGui();
-//                    e.printStackTrace();
-//                    return;
-//                }
-//                catch (ClassNotFoundException e) {
-//                    // handle exception
-//                    Logger.getLogger(getClass()).error("Failed to set QUI", e);
-//
-//                    taskBar.startMenu.setVisible(false);
-//                    JNodeToolkit.setExitAction(null);
-//                    JNodeToolkit.stopGui();
-//                    e.printStackTrace();
-//                    return;
-//                }
-//                catch (InstantiationException e) {
-//                    // handle exception
-//                    Logger.getLogger(getClass()).error("Failed to set QUI", e);
-//
-//                    taskBar.startMenu.setVisible(false);
-//                    JNodeToolkit.setExitAction(null);
-//                    JNodeToolkit.stopGui();
-//                    e.printStackTrace();
-//                    return;
-//                }
-//                catch (IllegalAccessException e) {
-//                    // handle exception
-//                    Logger.getLogger(getClass()).error("Failed to set QUI", e);
-//
-//                    taskBar.startMenu.setVisible(false);
-//                    JNodeToolkit.setExitAction(null);
-//                    JNodeToolkit.stopGui();
-//                    e.printStackTrace();
-//                    return;
-//                }
                 final ClassLoader cl = getClass().getClassLoader();
                 final ExtensionPoint appsEP;
                 if (cl instanceof PluginClassLoader) {
@@ -133,7 +87,6 @@ public class Desktop implements Runnable {
                 }
                 Desktop.this.taskBar = new TaskBar(Desktop.this, appsEP);
 
-//                QUILookAndFeel.setCurrentTheme(new DefaultQUITheme());
 
                 final JNodeToolkit tk = JNodeToolkit.getJNodeToolkit();
                 desktopFrame = tk.getAwtContext();

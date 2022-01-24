@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.shell" 
-        name="Ultreon OS Command Shell"
+        name="JNode Command Shell"
         version="@VERSION@"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl"
         class="org.jnode.shell.def.ShellPlugin">
         

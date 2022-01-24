@@ -23,35 +23,35 @@ package charva.awt;
  * Encapsulates the width and height of a component in a single object.
  */
 public class Dimension
-    implements Cloneable {
-    /**
-     * Creates a new Dimension object with width and height = 0;
+    implements Cloneable
+{
+    /** Creates a new Dimension object with width and height = 0;
      */
     public Dimension() {
-        this(0, 0);
+    this(0, 0);
     }
 
     public Dimension(int width_, int height_) {
-        width = width_;
-        height = height_;
+    width = width_;
+    height = height_;
     }
 
     public Dimension(Dimension dimension_) {
-        width = dimension_.width;
-        height = dimension_.height;
+    width = dimension_.width;
+    height = dimension_.height;
     }
 
     public void setSize(Dimension dimension_) {
-        width = dimension_.width;
-        height = dimension_.height;
+    width = dimension_.width;
+    height = dimension_.height;
     }
 
     public Object clone() {
-        return new Dimension(this);
+    return new Dimension (this);
     }
 
     public String toString() {
-        return "(" + width + "," + height + ")";
+    return "(" + width + "," + height + ")";
     }
 
     //====================================================================

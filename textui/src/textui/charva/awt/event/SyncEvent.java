@@ -25,11 +25,12 @@ import charva.awt.Component;
  * A special event which is used for coalescing screen-refresh actions
  * if possible, in order to speed up redrawing.
  */
-public class SyncEvent extends AWTEvent {
+public class SyncEvent extends AWTEvent
+{
     private static final long serialVersionUID = 1L;
 
     public SyncEvent(Component source_) {
-        super(source_, AWTEvent.SYNC_EVENT);
+    super(source_, AWTEvent.SYNC_EVENT);
     }
 
 }

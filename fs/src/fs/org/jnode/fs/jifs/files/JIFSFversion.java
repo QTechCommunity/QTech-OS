@@ -43,8 +43,8 @@ public class JIFSFversion extends JIFSFile {
 
     public void refresh() {
         super.refresh();
-        addStringln("Ultreon OS Version :\n\t" + System.getProperty("os.version"));
-        addStringln("Ultreon OS Java Version :\n\t" + System.getProperty("java.version"));
-        addStringln("Ultreon OS Java Class Version :\n\t" + System.getProperty("java.class.version"));
+        addStringln("JNode Version :\n\t" + System.getProperty("os.version"));
+        addStringln("JNode Java Version :\n\t" + System.getProperty("java.version"));
+        addStringln("JNode Java Class Version :\n\t" + System.getProperty("java.class.version"));
     }
 }

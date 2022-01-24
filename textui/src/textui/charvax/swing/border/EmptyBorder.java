@@ -24,26 +24,26 @@ import charva.awt.Insets;
 import charva.awt.Toolkit;
 
 public class EmptyBorder
-    implements Border {
+    implements Border
+{
     public EmptyBorder(Insets insets_) {
-        _top = insets_.top;
-        _left = insets_.left;
-        _bottom = insets_.bottom;
-        _right = insets_.right;
+    _top = insets_.top;
+    _left = insets_.left;
+    _bottom = insets_.bottom;
+    _right = insets_.right;
     }
 
     public EmptyBorder(int top_, int left_, int bottom_, int right_) {
-        _top = top_;
-        _left = left_;
-        _bottom = bottom_;
-        _right = right_;
+    _top = top_;
+    _left = left_;
+    _bottom = bottom_;
+    _right = right_;
     }
 
-    /**
-     * Returns the insets of the border.
+    /** Returns the insets of the border.
      */
     public Insets getBorderInsets(Component component_) {
-        return new Insets(_top, _left, _bottom, _right);
+    return new Insets(_top, _left, _bottom, _right);
     }
 
     /**
@@ -53,14 +53,14 @@ public class EmptyBorder
     public void paintBorder(Component component_,
                             int colorpair_, int x_, int y_, int width_, int height_, Toolkit toolkit) {
 
-        // Does nothing, but must be here to implement the Border interface.
+    // Does nothing, but must be here to implement the Border interface.
     }
 
     //====================================================================
     // INSTANCE VARIABLES
 
-    private final int _top;
-    private final int _left;
-    private final int _bottom;
-    private final int _right;
+    private int _top;
+    private int _left;
+    private int _bottom;
+    private int _right;
 }

@@ -56,7 +56,7 @@ public class PluginDocumentationTask extends AbstractPluginTask {
 
     private final SortedMap<String, PluginData> descriptors = new TreeMap<String, PluginData>();
 
-    private static final String DOCHEADER = "Ultreon OS plugin documentation";
+    private static final String DOCHEADER = "JNode plugin documentation";
 
     private static final String PLUGINS_SUBDIR = "plugins";
 

@@ -24,6 +24,7 @@ package charva.awt.event;
  * The listener interface for ItemEvents.
  */
 public interface ItemListener
-    extends EventListener {
+    extends EventListener
+{
     void itemStateChanged(ItemEvent ie_);
 }

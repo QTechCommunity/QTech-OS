@@ -47,7 +47,6 @@ public class DesktopPlugin extends Plugin {
     }
 
     protected void startPlugin() throws PluginException {
-//        System.setProperty("jnode.desktop", "org.jnode.desktop.classic.Desktop");
         System.setProperty("jnode.desktop", "org.jnode.desktop.classic.Desktop");
     }
 

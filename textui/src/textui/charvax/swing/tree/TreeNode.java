@@ -22,38 +22,33 @@ package charvax.swing.tree;
 import java.util.Enumeration;
 
 /**
- * This interface defines the requirements for an object that can be
+ * This interface defines the requirements for an object that can be 
  * used as a node in a JTree.
  */
-public interface TreeNode {
-    /**
-     * Returns the child TreeNode at index childIndex.
+public interface TreeNode
+{
+    /** Returns the child TreeNode at index childIndex.
      */
-    TreeNode getChildAt(int childIndex);
+    public TreeNode getChildAt(int childIndex);
 
-    /**
-     * Returns the number of children TreeNodes the TreeNode contains.
+    /** Returns the number of children TreeNodes the TreeNode contains. 
      */
-    int getChildCount();
+    public int getChildCount();
 
-    /**
-     * Returns the parent TreeNode of this TreeNode.
+    /** Returns the parent TreeNode of this TreeNode.
      */
-    TreeNode getParent();
+    public TreeNode getParent();
 
-    /**
-     * Returns true if this TreeNode allows children.
+    /** Returns true if this TreeNode allows children. 
      */
-    boolean getAllowsChildren();
+    public boolean getAllowsChildren();
 
-    /**
-     * Returns true if this TreeNode is a leaf.
+    /** Returns true if this TreeNode is a leaf.
      */
-    boolean isLeaf();
+    public boolean isLeaf();
 
-    /**
-     * Returns the children of the receiver as an Enumeration.
+    /** Returns the children of the receiver as an Enumeration.
      */
-    Enumeration<TreeNode> children();
+    public Enumeration<TreeNode> children();
 
 }

@@ -24,7 +24,7 @@
         name="Jnode Information FileSystem Extension Example"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="UltreonOS">
+        provider-name="JNode.org">
         
         
   <requires>

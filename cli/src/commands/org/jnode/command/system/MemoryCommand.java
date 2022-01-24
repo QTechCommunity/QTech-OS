@@ -30,7 +30,7 @@ import org.jnode.util.NumberUtils;
  */
 public class MemoryCommand extends AbstractCommand {
     
-    private static final String help_super = "Shows current Ultreon OS memory usage";
+    private static final String help_super = "Shows current JNode memory usage";
     private static final String str_total = "Total memory";
     private static final String str_used  = "Used memory";
     private static final String str_free  = "Free memory";

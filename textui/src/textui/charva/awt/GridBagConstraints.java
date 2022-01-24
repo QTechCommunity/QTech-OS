@@ -24,35 +24,38 @@ package charva.awt;
  * This class defines constraints used for laying out components in the
  * GridBagLayout layout manager.
  */
-public class GridBagConstraints {
+public class GridBagConstraints
+{
     /**
      * Creates a GridBagConstraints object with all of its fields set to
      * their default value.
      */
-    public GridBagConstraints() {
+    public GridBagConstraints()
+    {
     }
 
     public GridBagConstraints(int gridx_, int gridy_,
-                              int gridwidth_, int gridheight_,
-                              double weightx_, double weighty_,
-                              int anchor_, int fill_, Insets insets_,
-                              int ipadx_, int ipady_) {
-        gridx = gridx_;
-        gridy = gridy_;
-        gridwidth = gridwidth_;
-        gridheight = gridheight_;
-        weightx = weightx_;
-        weighty = weighty_;
-        anchor = anchor_;
-        fill = fill_;
-        insets = insets_;
-        ipadx = ipadx_;
-        ipady = ipady_;
+        int gridwidth_, int gridheight_,
+        double weightx_, double weighty_,
+        int anchor_, int fill_, Insets insets_,
+        int ipadx_, int ipady_)
+    {
+    gridx = gridx_;
+    gridy = gridy_;
+    gridwidth = gridwidth_;
+    gridheight = gridheight_;
+    weightx = weightx_;
+    weighty = weighty_;
+    anchor = anchor_;
+    fill = fill_;
+    insets = insets_;
+    ipadx = ipadx_;
+    ipady = ipady_;
     }
 
     public String toString() {
-        return "gridx=" + gridx + " gridy=" + gridy +
-            " gridwidth=" + gridwidth + " gridheight=" + gridheight;
+    return "gridx=" + gridx + " gridy=" + gridy +
+        " gridwidth=" + gridwidth + " gridheight=" + gridheight;
     }
 
     //====================================================================
@@ -66,7 +69,7 @@ public class GridBagConstraints {
     public double weighty = 0.0;
     public int anchor = CENTER;
     public int fill = NONE;    // Not used
-    public Insets insets = new Insets(0, 0, 0, 0);
+    public Insets insets = new Insets(0,0,0,0);
     public int ipadx = 0;    // Not used
     public int ipady = 0;    // Not used
 

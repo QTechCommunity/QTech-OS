@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.permission" 
-        name="Ultreon OS specific permissions"
+        name="JNode specific permissions"
         version="@VERSION@"
         system="true"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl">
         
   <runtime>

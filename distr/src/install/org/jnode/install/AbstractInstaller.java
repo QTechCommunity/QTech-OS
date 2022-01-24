@@ -20,9 +20,9 @@
  
 package org.jnode.install;
 
-import java.io.StringWriter;import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;import org.jnode.install.action.GrubInstallerAction;
+import java.util.ListIterator;
 
 /**
  * @author Levente S\u00e1ntha
@@ -50,27 +50,12 @@ public abstract class AbstractInstaller {
                 Step step = input.collect();
                 if (step != null && step.equals(Step.quit))
                     break;
-                if (step != null && step.equals(Step.back))
-                    continue;
             }
 
             try {
                 action.execute();
             } catch (Exception e) {
-                StringWriter stringWriter = new StringWriter();
-                GrubInstallerAction.PrintWriter1 printWriter1 = new GrubInstallerAction.PrintWriter1(stringWriter, true);
-                e.printStackTrace(printWriter1);
-                StringBuffer buffer = stringWriter.getBuffer();
-                String s = buffer.toString();
-                String[] split = s.split("\n");
-                for (String str : split) {
-                    System.err.println(str);
-                    try {
-                        Thread.sleep(2500);
-                    } catch (InterruptedException interruptedException) {
-                        interruptedException.printStackTrace();
-                    }
-                }
+                e.printStackTrace();
                 break;
             }
 
@@ -83,7 +68,7 @@ public abstract class AbstractInstaller {
                         if (lit.hasPrevious())
                             action = lit.previous();
                         else
-                            continue out;
+                            break out;
                         break;
                     case forth:
                         if (lit.hasNext())

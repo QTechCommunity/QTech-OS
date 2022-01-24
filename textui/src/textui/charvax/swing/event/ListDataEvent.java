@@ -27,16 +27,20 @@ public class ListDataEvent extends java.util.EventObject {
 
     /**
      * Construct a ListDataEvent.
-     *
-     * @param source_     the object that initiated this event (usually a
-     *                    DefaultListSelectionModel).
-     * @param type_       an int specifying the type of event; must be CONTENTS_CHANGED
-     *                    (INTERVAL_ADDED or INTERVAL_REMOVED are unused in CHARVA).
-     * @param firstIndex_ an index specifying the bottom of a range.
-     * @param lastIndex_  an index specifying the top of a range.
+     * 
+     * @param source_
+     *            the object that initiated this event (usually a
+     *            DefaultListSelectionModel).
+     * @param type_
+     *            an int specifying the type of event; must be CONTENTS_CHANGED
+     *            (INTERVAL_ADDED or INTERVAL_REMOVED are unused in CHARVA).
+     * @param firstIndex_
+     *            an index specifying the bottom of a range.
+     * @param lastIndex_
+     *            an index specifying the top of a range.
      */
     public ListDataEvent(Object source_, int type_, int firstIndex_,
-                         int lastIndex_) {
+            int lastIndex_) {
         super(source_);
         //_source = source_;
         _type = type_;
@@ -67,9 +71,9 @@ public class ListDataEvent extends java.util.EventObject {
 
     //private final Object _source;
 
-    private final int _type;
+    private int _type;
 
-    private final int _firstIndex;
+    private int _firstIndex;
 
     //private final int _lastIndex;
 

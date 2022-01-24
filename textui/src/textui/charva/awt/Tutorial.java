@@ -72,7 +72,7 @@ public class Tutorial extends JFrame implements ActionListener {
         jMenuFile.add(jMenuItemFileChooser);
 
         JMenuItem jMenuItemCustomFileChooser = new JMenuItem(
-            "custom FileChooser", 'c');
+                "custom FileChooser", 'c');
         jMenuItemCustomFileChooser.addActionListener(this);
         jMenuFile.add(jMenuItemCustomFileChooser);
 
@@ -119,12 +119,12 @@ public class Tutorial extends JFrame implements ActionListener {
         jMenuContainers.add(jMenuItemContainerJOptionPane);
 
         JMenuItem jMenuItemShowMessageDialog = new JMenuItem(
-            "showMessageDialog");
+                "showMessageDialog");
         jMenuItemShowMessageDialog.addActionListener(this);
         jMenuItemContainerJOptionPane.add(jMenuItemShowMessageDialog);
 
         JMenuItem jMenuItemShowConfirmDialog = new JMenuItem(
-            "showConfirmDialog");
+                "showConfirmDialog");
         jMenuItemShowConfirmDialog.addActionListener(this);
         jMenuItemContainerJOptionPane.add(jMenuItemShowConfirmDialog);
 
@@ -133,7 +133,7 @@ public class Tutorial extends JFrame implements ActionListener {
         jMenuItemContainerJOptionPane.add(jMenuItemShowInputDialog);
 
         JMenuItem jMenuItemShowCustomInputDialog = new JMenuItem(
-            "show Custom InputDialog");
+                "show Custom InputDialog");
         jMenuItemShowCustomInputDialog.addActionListener(this);
         jMenuItemContainerJOptionPane.add(jMenuItemShowCustomInputDialog);
 
@@ -146,7 +146,7 @@ public class Tutorial extends JFrame implements ActionListener {
         jMenuWidgets.add(jMenuItemWidgetText);
 
         JMenuItem jMenuItemWidgetSelection = new JMenuItem(
-            "Selection components");
+                "Selection components");
         jMenuItemWidgetSelection.setMnemonic('S');
         jMenuItemWidgetSelection.addActionListener(this);
         jMenuWidgets.add(jMenuItemWidgetSelection);
@@ -194,10 +194,10 @@ public class Tutorial extends JFrame implements ActionListener {
         JPanel labelPanel = new JPanel();
         labelPanel.setLayout(new BoxLayout(labelPanel, BoxLayout.Y_AXIS));
         labelPanel.add(new JLabel(
-            "Use LEFT and RIGHT cursor keys to select a menu."));
+                "Use LEFT and RIGHT cursor keys to select a menu."));
         labelPanel.add(new JLabel("Use ENTER to invoke a menu or menu-item."));
         labelPanel.add(new JLabel("(You can also use the "
-            + "underlined \"mnemonic key\" to invoke a menu.)"));
+                + "underlined \"mnemonic key\" to invoke a menu.)"));
         labelPanel.add(new JLabel("Use BACKSPACE or ESC to dismiss a menu."));
         contentPane.add(labelPanel, BorderLayout.SOUTH);
 
@@ -221,8 +221,7 @@ public class Tutorial extends JFrame implements ActionListener {
         if (actionCommand.equals("Exit")) {
             hide();
             Toolkit.getDefaultToolkit().close();
-            System.err.println(
-                "-->" + getClass().getName() + " closed.  Press ctrl-c if necessary to return to the prompt.");
+            System.err.println( "-->"+getClass().getName()+" closed.  Press ctrl-c if necessary to return to the prompt." );
             //System.gc(); // so that HPROF reports only live objects.
             //System.exit(0);
         } else if (actionCommand.equals("JFileChooser")) {
@@ -232,8 +231,8 @@ public class Tutorial extends JFrame implements ActionListener {
             //        JFileChooser.CANCEL_ACCELERATOR = KeyEvent.VK_F4;
             //        (new JFileChooser()).show();
             JOptionPane.showMessageDialog(this,
-                "This test has been (temporarily) disabled", "Information",
-                JOptionPane.PLAIN_MESSAGE);
+                    "This test has been (temporarily) disabled", "Information",
+                    JOptionPane.PLAIN_MESSAGE);
         } else if (actionCommand.equals("Null Layout")) {
             JDialog dlg = new NullLayoutTest(this);
             dlg.show();
@@ -243,8 +242,8 @@ public class Tutorial extends JFrame implements ActionListener {
         } else if (actionCommand.equals("Layouts in Color")) {
             if (!Toolkit.getDefaultToolkit().hasColors()) {
                 JOptionPane.showMessageDialog(this,
-                    "This terminal does not have color capability!",
-                    "Error", JOptionPane.PLAIN_MESSAGE);
+                        "This terminal does not have color capability!",
+                        "Error", JOptionPane.PLAIN_MESSAGE);
                 return;
             }
             JDialog dlg = new ColorLayoutTest(this);
@@ -259,9 +258,9 @@ public class Tutorial extends JFrame implements ActionListener {
             dlg.show();
         } else if (actionCommand.equals("showMessageDialog")) {
             JOptionPane.showMessageDialog(this,
-                "This is an example of a Message Dialog "
-                    + "with a single message string",
-                "This is the title", JOptionPane.PLAIN_MESSAGE);
+                    "This is an example of a Message Dialog "
+                            + "with a single message string",
+                    "This is the title", JOptionPane.PLAIN_MESSAGE);
         } else if (actionCommand.equals("showConfirmDialog")) {
             showConfirmDialog();
         } else if (actionCommand.equals("showInputDialog")) {
@@ -295,7 +294,7 @@ public class Tutorial extends JFrame implements ActionListener {
         } else {
             JOptionPane.showMessageDialog(this, "Menu item \"" + actionCommand
                     + "\" not implemented yet", "Error",
-                JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.PLAIN_MESSAGE);
         }
         // Trigger garbage-collection after every menu action.
         Toolkit.getDefaultToolkit().triggerGarbageCollection(this);
@@ -328,14 +327,14 @@ public class Tutorial extends JFrame implements ActionListener {
 
         if (chooser.showDialog(this, "Open File") == JFileChooser.APPROVE_OPTION) {
 
-            String[] msgs = {"The selected file was:",
-                chooser.getSelectedFile().getAbsolutePath()};
+            String msgs[] = { "The selected file was:",
+                    chooser.getSelectedFile().getAbsolutePath()};
             JOptionPane.showMessageDialog(this, msgs,
-                "Results of JFileChooser", JOptionPane.PLAIN_MESSAGE);
+                    "Results of JFileChooser", JOptionPane.PLAIN_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this,
-                "The CANCEL button was selected",
-                "Results of JFileChooser", JOptionPane.PLAIN_MESSAGE);
+                    "The CANCEL button was selected",
+                    "Results of JFileChooser", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
@@ -343,11 +342,11 @@ public class Tutorial extends JFrame implements ActionListener {
      * Demonstrate the JOptionPane.showConfirmDialog() method.
      */
     private void showConfirmDialog() {
-        String[] messages = {"This is an example of a Confirm Dialog",
-            "that displays an array of Strings"};
+        String[] messages = { "This is an example of a Confirm Dialog",
+                "that displays an array of Strings"};
 
         int option = JOptionPane.showConfirmDialog(this, messages,
-            "Select an Option", JOptionPane.YES_NO_CANCEL_OPTION);
+                "Select an Option", JOptionPane.YES_NO_CANCEL_OPTION);
         String result = "";
         if (option == JOptionPane.YES_OPTION)
             result = "User selected YES option";
@@ -356,24 +355,24 @@ public class Tutorial extends JFrame implements ActionListener {
         else
             result = "User selected Cancel option";
         JOptionPane.showMessageDialog(this, result,
-            "Result of showConfirmDialog", JOptionPane.PLAIN_MESSAGE);
+                "Result of showConfirmDialog", JOptionPane.PLAIN_MESSAGE);
     }
 
     /**
      * Demonstrate the JOptionPane.showInputDialog() method.
      */
     private void showInputDialog() {
-        String[] messages = {"This is an example of an Input Dialog",
-            "that displays an array of Strings"};
+        String[] messages = { "This is an example of an Input Dialog",
+                "that displays an array of Strings"};
         String result = JOptionPane.showInputDialog(this, messages,
-            "Input a value", JOptionPane.QUESTION_MESSAGE);
+                "Input a value", JOptionPane.QUESTION_MESSAGE);
         String msg = null;
         if (result == null)
             msg = "User selected Cancel option";
         else
             msg = "User entered \"" + result + "\"";
         JOptionPane.showMessageDialog(this, msg, "Result of showInputDialog",
-            JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.PLAIN_MESSAGE);
     }
 
     /**
@@ -381,12 +380,12 @@ public class Tutorial extends JFrame implements ActionListener {
      */
     private void showCustomInputDialog(Component parent_) {
 
-        String[] results = {"", ""};
+        String[] results = { "", ""};
         String selected_option = null;
 
-        String[] message = {"This shows how to create and use",
-            "a JOptionPane directly, without using",
-            "the convenience methods"};
+        String[] message = { "This shows how to create and use",
+                "a JOptionPane directly, without using",
+                "the convenience methods"};
         JOptionPane pane = new JOptionPane(message);
 
         // Make the dialog display a JTextField for user input.
@@ -396,7 +395,7 @@ public class Tutorial extends JFrame implements ActionListener {
         pane.setInitialSelectionValue("default input value");
 
         // Provide customized button labels.
-        String[] options = {"Option 1", "Option 2", "Option 3", "Option 4"};
+        String[] options = { "Option 1", "Option 2", "Option 3", "Option 4"};
         pane.setOptions(options);
 
         // Make "Option 2" the default button.
@@ -406,37 +405,37 @@ public class Tutorial extends JFrame implements ActionListener {
         dialog.show();
         Object selectedValue = pane.getValue();
         System.err.println("Selected value is " + selectedValue);
-        results[0] = "The input value is \"" + pane.getInputValue()
-            + "\"";
+        results[ 0] = "The input value is \"" + (String) pane.getInputValue()
+                + "\"";
 
         // If there is NOT an array of option buttons:
         // (In this case, there is).
         if (pane.getOptions() == null) {
             int option = ((Integer) selectedValue).intValue();
             switch (option) {
-                case JOptionPane.YES_OPTION:
-                    selected_option = "YES";
-                    break;
-                case JOptionPane.OK_OPTION:
-                    selected_option = "OK";
-                    break;
-                case JOptionPane.NO_OPTION:
-                    selected_option = "NO";
-                    break;
-                case JOptionPane.CANCEL_OPTION:
-                    selected_option = "CANCEL";
-                    break;
+            case JOptionPane.YES_OPTION:
+                selected_option = "YES";
+                break;
+            case JOptionPane.OK_OPTION:
+                selected_option = "OK";
+                break;
+            case JOptionPane.NO_OPTION:
+                selected_option = "NO";
+                break;
+            case JOptionPane.CANCEL_OPTION:
+                selected_option = "CANCEL";
+                break;
             }
         } else {
             // If there IS an array of option buttons:
             for (int i = 0; i < options.length; i++) {
-                if (options[i].equals(selectedValue)) {
-                    selected_option = options[i];
+                if (options[ i].equals(selectedValue)) {
+                    selected_option = options[ i];
                     break;
                 }
             } // end for
         }
-        results[1] = "The selected option is \"" + selected_option + "\"";
+        results[ 1] = "The selected option is \"" + selected_option + "\"";
 
         /*
          * Change the (static) labels and accelerators in the JOptionPane. Note
@@ -449,7 +448,7 @@ public class Tutorial extends JFrame implements ActionListener {
          */
 
         JOptionPane.showMessageDialog(this, results,
-            "Result of Customized JOptionPane", JOptionPane.PLAIN_MESSAGE);
+                "Result of Customized JOptionPane", JOptionPane.PLAIN_MESSAGE);
     }
 
 }
@@ -472,7 +471,7 @@ class NullLayoutTest extends JDialog implements ActionListener {
         contentPane.setLayout(null);
 
         JLabel label0 = new JLabel(
-            "Demonstrates how to lay components out manually");
+                "Demonstrates how to lay components out manually");
         contentPane.add(label0);
         label0.setLocation(2, 2);
 
@@ -533,7 +532,7 @@ class LayoutTest extends JDialog implements ActionListener {
         setLocation(3, 3);
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout()); // default layout for
-        // JDialog
+                                                   // JDialog
 
         JPanel toppan = new JPanel();
         toppan.setBorder(new TitledBorder("North Panel"));
@@ -589,17 +588,17 @@ class ColorLayoutTest extends JDialog implements ActionListener {
 
     public ColorLayoutTest(Frame owner_) {
         super(owner_,
-            "Layout Test in Color (yellow foreground, green background)");
+                "Layout Test in Color (yellow foreground, green background)");
         setLocation(3, 3);
         setForeground(Color.yellow);
         setBackground(Color.green);
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout()); // default layout for
-        // JDialog
+                                                   // JDialog
 
         JPanel toppan = new JPanel();
         toppan.setBorder(new TitledBorder(
-            "North Panel (inherits green background)"));
+                "North Panel (inherits green background)"));
         toppan.setForeground(Color.blue);
         contentPane.add(toppan, BorderLayout.NORTH);
 
@@ -619,7 +618,7 @@ class ColorLayoutTest extends JDialog implements ActionListener {
         westpan.add(label1);
         label1.setForeground(Color.magenta);
         JTextField textfield1 = new JTextField(
-            "Cyan JTextField, red background");
+                "Cyan JTextField, red background");
         textfield1.setForeground(Color.cyan);
         textfield1.setBackground(Color.red);
         westpan.add(textfield1);
@@ -650,11 +649,11 @@ class ColorLayoutTest extends JDialog implements ActionListener {
         centerpan.setLayout(new BorderLayout());
         LineBorder centerpan_lineborder = new LineBorder(Color.green);
         TitledBorder centerpan_titledborder = new TitledBorder(
-            centerpan_lineborder, "Green border, yellow title", 0, 0, null,
-            Color.yellow);
+                centerpan_lineborder, "Green border, yellow title", 0, 0, null,
+                Color.yellow);
         centerpan.setBorder(centerpan_titledborder);
         centerpan.add(new JLabel("A white label in the center"),
-            BorderLayout.CENTER);
+                BorderLayout.CENTER);
         contentPane.add(centerpan, BorderLayout.CENTER);
 
         JPanel southpan = new JPanel();
@@ -684,21 +683,21 @@ class ColorLayoutTest extends JDialog implements ActionListener {
  */
 
 class GridBagLayoutTest extends JDialog implements ActionListener,
-    ListSelectionListener {
+        ListSelectionListener {
 
-    private final JTextField lastnameField = new JTextField(25);
+    private JTextField lastnameField = new JTextField(25);
 
-    private final JTextField initialsField = new JTextField(5);
+    private JTextField initialsField = new JTextField(5);
 
-    private final JTextField address1Field = new JTextField(20);
+    private JTextField address1Field = new JTextField(20);
 
-    private final JTextField address2Field = new JTextField(20);
+    private JTextField address2Field = new JTextField(20);
 
-    private final JTextField cityField = new JTextField(20);
+    private JTextField cityField = new JTextField(20);
 
-    private final JTextField postcodeField = new JTextField(8);
+    private JTextField postcodeField = new JTextField(8);
 
-    private final JTextField stateField = new JTextField(15);
+    private JTextField stateField = new JTextField(15);
 
     public GridBagLayoutTest(Frame owner_) {
         super(owner_, "GridBagLayout Test");
@@ -762,9 +761,9 @@ class GridBagLayoutTest extends JDialog implements ActionListener,
         gbc.gridwidth = 2;
         gbc.gridheight = 6;
         gbc.insets = new Insets(1, 1, 1, 1);
-        String[] countries = {"Portugal", "Spain", "France", "Italy",
-            "Germany", "Poland", "Austria", "Belgium", "Denmark", "Norway",
-            "Sweden"};
+        String[] countries = { "Portugal", "Spain", "France", "Italy",
+                "Germany", "Poland", "Austria", "Belgium", "Denmark", "Norway",
+                "Sweden"};
         _countryList = new JList(countries);
         _countryList.setVisibleRowCount(6);
         _countryList.setColumns(12);
@@ -798,7 +797,7 @@ class GridBagLayoutTest extends JDialog implements ActionListener,
         _countryList.repaint();
     }
 
-    private final JList _countryList;
+    private JList _countryList;
 }
 
 /**
@@ -815,7 +814,7 @@ class JTabbedPaneTest extends JDialog implements ActionListener, KeyListener {
         JPanel toppan = new JPanel();
         toppan.setBorder(new EmptyBorder(1, 1, 1, 1));
         toppan.add(new JLabel(
-            "Press the F5, F6 and F7 keys to switch between panes"));
+                "Press the F5, F6 and F7 keys to switch between panes"));
 
         JPanel centerpan = new JPanel();
         centerpan.setLayout(new FlowLayout(FlowLayout.LEFT, 2, 1));
@@ -899,7 +898,7 @@ class JTabbedPaneTest extends JDialog implements ActionListener, KeyListener {
             JPanel northpan = new JPanel();
             JRadioButton button1 = new JRadioButton("View devices by type");
             JRadioButton button2 = new JRadioButton(
-                "View devices by connection");
+                    "View devices by connection");
             ButtonGroup buttons = new ButtonGroup();
             buttons.add(button1);
             buttons.add(button2);
@@ -908,9 +907,9 @@ class JTabbedPaneTest extends JDialog implements ActionListener, KeyListener {
             northpan.add(button2);
 
             JPanel centerpan = new JPanel();
-            String[] devices = {"Computer", "CD-ROM", "Disk drives",
-                "Display adapters", "Floppy disk controllers",
-                "Imaging devices", "Keyboard", "Modem", "Monitors", "Mouse"};
+            String[] devices = { "Computer", "CD-ROM", "Disk drives",
+                    "Display adapters", "Floppy disk controllers",
+                    "Imaging devices", "Keyboard", "Modem", "Monitors", "Mouse"};
             JList deviceList = new JList(devices);
             deviceList.setBorder(new TitledBorder("Devices"));
             centerpan.add(deviceList);
@@ -942,7 +941,7 @@ class JTabbedPaneTest extends JDialog implements ActionListener, KeyListener {
             centerpan.add(new JLabel("Virtual Memory:   32 bit"));
             centerpan.add(new JLabel("Disk Compression: Not Installed"));
             centerpan.add(new JLabel(
-                "Your system is configured for optimum performance"));
+                    "Your system is configured for optimum performance"));
 
             JPanel southpan = new JPanel();
             southpan.setBorder(new TitledBorder("Advanced Settings"));
@@ -956,9 +955,9 @@ class JTabbedPaneTest extends JDialog implements ActionListener, KeyListener {
         }
     }
 
-    private final JButton _okButton;
+    private JButton _okButton;
 
-    private final JTabbedPane _tabpane;
+    private JTabbedPane _tabpane;
 }
 
 /**
@@ -1011,11 +1010,11 @@ class TextWidgetTest extends JDialog implements ActionListener {
      */
     class TextFieldPanel extends JPanel implements ItemListener {
 
-        private final JCheckBox _enabledCb;
+        private JCheckBox _enabledCb;
 
-        private final JCheckBox _visibleCb;
+        private JCheckBox _visibleCb;
 
-        private final JTextField _textfield;
+        private JTextField _textfield;
 
         TextFieldPanel() {
             setLayout(new BorderLayout());
@@ -1054,11 +1053,11 @@ class TextWidgetTest extends JDialog implements ActionListener {
      */
     class PasswordFieldPanel extends JPanel implements ItemListener {
 
-        private final JCheckBox _enabledCb;
+        private JCheckBox _enabledCb;
 
-        private final JCheckBox _visibleCb;
+        private JCheckBox _visibleCb;
 
-        private final JPasswordField _textfield;
+        private JPasswordField _textfield;
 
         PasswordFieldPanel() {
             setLayout(new BorderLayout());
@@ -1097,11 +1096,11 @@ class TextWidgetTest extends JDialog implements ActionListener {
      */
     class TextAreaPanel extends JPanel implements ItemListener {
 
-        private final JCheckBox _linewrap;
+        private JCheckBox _linewrap;
 
-        private final JCheckBox _linewrapstyle;
+        private JCheckBox _linewrapstyle;
 
-        private final JTextArea _textarea;
+        private JTextArea _textarea;
 
         TextAreaPanel() {
             setLayout(new BorderLayout());
@@ -1131,7 +1130,7 @@ class TextWidgetTest extends JDialog implements ActionListener {
             if (source == _linewrap) {
                 _textarea.setLineWrap(_linewrap.isSelected());
                 if (_textarea.getLineWrap() == false)
-                    _linewrapstyle.setSelected(false);
+                        _linewrapstyle.setSelected(false);
                 _linewrapstyle.setEnabled(_textarea.getLineWrap());
             } else {
                 _textarea.setWrapStyleWord(_linewrapstyle.isSelected());
@@ -1176,19 +1175,19 @@ class SelectionTest extends JDialog implements ActionListener {
      */
     class ComboBoxPanel extends JPanel implements ItemListener {
 
-        private final JComboBox _comboBox;
+        private JComboBox _comboBox;
 
-        private final JTextField _comboBoxSelection;
+        private JTextField _comboBoxSelection;
 
         ComboBoxPanel() {
             setLayout(new BorderLayout());
             setBorder(new TitledBorder("JComboBox"));
 
             add(new JLabel("Press ENTER to pop up the JComboBox"),
-                BorderLayout.NORTH);
+                    BorderLayout.NORTH);
 
-            String[] colors = {"Red", "Blue", "Green", "Magenta", "Mauve",
-                "Orange", "Black", "White", "Brown"};
+            String[] colors = { "Red", "Blue", "Green", "Magenta", "Mauve",
+                    "Orange", "Black", "White", "Brown"};
             _comboBox = new JComboBox(colors);
             _comboBox.setMaximumRowCount(5);
             _comboBox.addItemListener(this);
@@ -1211,32 +1210,32 @@ class SelectionTest extends JDialog implements ActionListener {
      * An inner class that displays a JList.
      */
     class JListPanel extends JPanel implements ListSelectionListener,
-        ListDataListener, ItemListener, ActionListener {
+            ListDataListener, ItemListener, ActionListener {
 
-        private final JCheckBox _selectionMode;
+        private JCheckBox _selectionMode;
 
-        private final JList _vehicleList;
+        private JList _vehicleList;
 
-        private final JTextField _listSelection;
+        private JTextField _listSelection;
 
-        private final JButton _deleteButton;
+        private JButton _deleteButton;
 
         JListPanel() {
             setBorder(new TitledBorder("JList"));
             setLayout(new BorderLayout());
 
             add(new JLabel("Use UP, DOWN, PGUP, PGDN, HOME & END to navigate"),
-                BorderLayout.NORTH);
+                    BorderLayout.NORTH);
 
-            String[] vehicles = {"Volkswagen", "Rolls-Royce", "Toyota",
-                "Chrysler", "Mercedes Benz", "Bentley", "Bugatti",
-                "Maserati", "Porsche"};
+            String[] vehicles = { "Volkswagen", "Rolls-Royce", "Toyota",
+                    "Chrysler", "Mercedes Benz", "Bentley", "Bugatti",
+                    "Maserati", "Porsche"};
             DefaultListModel model = new DefaultListModel();
             int columns = 0;
             for (int i = 0; i < vehicles.length; i++) {
-                model.addElement(vehicles[i]);
-                if (vehicles[i].length() > columns)
-                    columns = vehicles[i].length();
+                model.addElement(vehicles[ i]);
+                if (vehicles[ i].length() > columns)
+                        columns = vehicles[ i].length();
             }
             model.addListDataListener(this);
 
@@ -1282,7 +1281,7 @@ class SelectionTest extends JDialog implements ActionListener {
             String s = "";
             for (int i = 0; i < items.length; i++) {
                 if (i != 0) s += ",";
-                s += (String) items[i];
+                s += (String) items[ i];
             }
             _listSelection.setText(s);
         }
@@ -1294,13 +1293,13 @@ class SelectionTest extends JDialog implements ActionListener {
                 if (indices.length == 0) return; // there is no selected item
 
                 DefaultListModel model = (DefaultListModel) _vehicleList
-                    .getModel();
+                        .getModel();
 
                 // We must remove the last elements first, otherwise
                 // (if we remove an element with a low index), the
                 // higher indices will be invalid.
                 for (int i = indices.length - 1; i >= 0; i--) {
-                    model.removeElementAt(indices[i]);
+                    model.removeElementAt(indices[ i]);
                 }
 
                 // Having deleted some elements from the list, we must
@@ -1310,7 +1309,7 @@ class SelectionTest extends JDialog implements ActionListener {
                 // What constitutes the "current row" after a deletion is
                 // debatable; we will assume that the last index to be
                 // deleted is a close approximation.
-                _vehicleList.ensureIndexIsVisible(indices[0]);
+                _vehicleList.ensureIndexIsVisible(indices[ 0]);
             }
         }
 
@@ -1321,7 +1320,7 @@ class SelectionTest extends JDialog implements ActionListener {
          */
         public void contentsChanged(ListDataEvent e_) {
             _vehicleList
-                .removeSelectionInterval(e_.getIndex0(), e_.getIndex1());
+                    .removeSelectionInterval(e_.getIndex0(), e_.getIndex1());
             _vehicleList.repaint();
         }
 
@@ -1343,10 +1342,10 @@ class SelectionTest extends JDialog implements ActionListener {
             if (e_.getSource() == _selectionMode) {
                 if (_selectionMode.isSelected()) {
                     _vehicleList
-                        .setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+                            .setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
                 } else {
                     _vehicleList
-                        .setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                            .setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                 }
             }
         }
@@ -1358,29 +1357,29 @@ class SelectionTest extends JDialog implements ActionListener {
  */
 
 class ButtonTest extends JDialog implements ActionListener, KeyListener,
-    ItemListener {
+        ItemListener {
 
-    private final ButtonGroup _buttons = new ButtonGroup();
+    private ButtonGroup _buttons = new ButtonGroup();
 
-    private final JRadioButton _strawberry = new JRadioButton("Strawberry");
+    private JRadioButton _strawberry = new JRadioButton("Strawberry");
 
-    private final JRadioButton _chocolate = new JRadioButton("Chocolate");
+    private JRadioButton _chocolate = new JRadioButton("Chocolate");
 
-    private final JRadioButton _vanilla = new JRadioButton("Vanilla");
+    private JRadioButton _vanilla = new JRadioButton("Vanilla");
 
-    private final JRadioButton _pistachio = new JRadioButton("Pistachio");
+    private JRadioButton _pistachio = new JRadioButton("Pistachio");
 
-    private final JRadioButton _lime = new JRadioButton("Lime");
+    private JRadioButton _lime = new JRadioButton("Lime");
 
-    private final JTextField _selectedFlavor = new JTextField(15);
+    private JTextField _selectedFlavor = new JTextField(15);
 
-    private final JCheckBox _nutTopping = new JCheckBox("Nuts ");
+    private JCheckBox _nutTopping = new JCheckBox("Nuts ");
 
-    private final JCheckBox _syrupTopping = new JCheckBox("Syrup ");
+    private JCheckBox _syrupTopping = new JCheckBox("Syrup ");
 
-    private final JCheckBox _candyTopping = new JCheckBox("Candy ");
+    private JCheckBox _candyTopping = new JCheckBox("Candy ");
 
-    private final JCheckBox _waferTopping = new JCheckBox("Wafer ");
+    private JCheckBox _waferTopping = new JCheckBox("Wafer ");
 
     ButtonTest(Frame owner_) {
         super(owner_, "Button Test");
@@ -1534,20 +1533,20 @@ class JTableTest extends JDialog implements ActionListener, ItemListener {
 
     private JTable _table;
 
-    private final JTextField _selectedColumns = new JTextField(10);
+    private JTextField _selectedColumns = new JTextField(10);
 
-    private final JTextField _selectedRows = new JTextField(10);
+    private JTextField _selectedRows = new JTextField(10);
 
-    private final JCheckBox _checkBoxAllowRowSelection = new JCheckBox(
-        "Allow row selection");
+    private JCheckBox _checkBoxAllowRowSelection = new JCheckBox(
+            "Allow row selection");
 
-    private final JCheckBox _checkBoxAllowColumnSelection = new JCheckBox(
-        "Allow column selection");
+    private JCheckBox _checkBoxAllowColumnSelection = new JCheckBox(
+            "Allow column selection");
 
-    private final JCheckBox _checkBoxAllowMultipleSelection = new JCheckBox(
-        "Allow multiple selection");
+    private JCheckBox _checkBoxAllowMultipleSelection = new JCheckBox(
+            "Allow multiple selection");
 
-    private final JButton _okButton;
+    private JButton _okButton;
 
     //private JScrollBar _scrollbar;
 
@@ -1588,7 +1587,7 @@ class JTableTest extends JDialog implements ActionListener, ItemListener {
             boolean allowed = _checkBoxAllowMultipleSelection.isSelected();
             if (allowed)
                 _table
-                    .setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+                        .setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
             else
                 _table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         }
@@ -1597,18 +1596,18 @@ class JTableTest extends JDialog implements ActionListener, ItemListener {
     private JPanel makeCenterPanel() {
         JPanel centerpan = new JPanel();
         centerpan.setLayout(new FlowLayout(FlowLayout.LEFT, 2, 1));
-        String[] headings = {"Name", "Color", "Composition", "Mass", "Radius",
-            "Orbit"};
+        String[] headings = { "Name", "Color", "Composition", "Mass", "Radius",
+                "Orbit"};
         String[][] data = {
-            {"Mars", "Red", "Dust", "1.5e10", "2.7e6", "Elliptical"},
-            {"Pluto", "Blue", "Rock", "2.3e11", "2.9e7", "Circular"},
-            {"Luna", "Green", "Cheese", "1.3e5", "2.3e12", "Square"},
-            {"Venus", "White", "Gas", "4.3e5", "2.3e12",
-                "A funny irregular shape whose name is longer than the table width"},
-            {"Jupiter", "Black", "Marshmallow", "4.3e6", "2.3e12",
-                "Zigzag"},
-            {"Neptune", "Purple", "Gas", "1.2e6", "2.4e2", "Elliptical"},
-            {"Saturn", "Yellow", "Gas", "1.1e7", "1.4e6", "Circular"}};
+                { "Mars", "Red", "Dust", "1.5e10", "2.7e6", "Elliptical"},
+                { "Pluto", "Blue", "Rock", "2.3e11", "2.9e7", "Circular"},
+                { "Luna", "Green", "Cheese", "1.3e5", "2.3e12", "Square"},
+                { "Venus", "White", "Gas", "4.3e5", "2.3e12",
+                        "A funny irregular shape whose name is longer than the table width"},
+                { "Jupiter", "Black", "Marshmallow", "4.3e6", "2.3e12",
+                        "Zigzag"},
+                { "Neptune", "Purple", "Gas", "1.2e6", "2.4e2", "Elliptical"},
+                { "Saturn", "Yellow", "Gas", "1.1e7", "1.4e6", "Circular"}};
 
         /*
          * The following inner class overrides the processKeyEvent() method of
@@ -1626,7 +1625,7 @@ class JTableTest extends JDialog implements ActionListener, ItemListener {
                 int[] rows = getSelectedRows();
                 StringBuffer buf = new StringBuffer();
                 for (int i = 0; i < rows.length; i++) {
-                    buf.append(rows[i]);
+                    buf.append(rows[ i]);
                     buf.append(' ');
                 }
                 _selectedRows.setText(buf.toString());
@@ -1634,7 +1633,7 @@ class JTableTest extends JDialog implements ActionListener, ItemListener {
                 int[] columns = getSelectedColumns();
                 buf = new StringBuffer();
                 for (int i = 0; i < columns.length; i++) {
-                    buf.append(columns[i]);
+                    buf.append(columns[ i]);
                     buf.append(' ');
                 }
                 _selectedColumns.setText(buf.toString());
@@ -1707,11 +1706,11 @@ class JTableTest extends JDialog implements ActionListener, ItemListener {
 
 class KeyEventTest extends JDialog implements ActionListener, KeyListener {
 
-    private final JCheckBox _checkBox1 = new JCheckBox("System ON");
+    private JCheckBox _checkBox1 = new JCheckBox("System ON");
 
-    private final JCheckBox _checkBox2 = new JCheckBox("Alarm ON");
+    private JCheckBox _checkBox2 = new JCheckBox("Alarm ON");
 
-    private final JCheckBox _checkBox3 = new JCheckBox("System Armed");
+    private JCheckBox _checkBox3 = new JCheckBox("System Armed");
 
     private charva.awt.util.CapsTextField _capsField;
 
@@ -1748,7 +1747,7 @@ class KeyEventTest extends JDialog implements ActionListener, KeyListener {
         Component src = (Component) e_.getSource();
         int key = e_.getKeyCode();
         if (key == KeyEvent.VK_DOWN
-            && (src == _checkBox1 || src == _checkBox2 || src == _checkBox3)) {
+                && (src == _checkBox1 || src == _checkBox2 || src == _checkBox3)) {
 
             /*
              * Move the keyboard input focus to the textfield below.
@@ -1789,7 +1788,7 @@ class KeyEventTest extends JDialog implements ActionListener, KeyListener {
         gbc.gridwidth = 3;
         gbc.insets = new Insets(1, 1, 1, 1);
         JLabel label = new JLabel(
-            "Press CURSOR-DOWN to move to the text-field below");
+                "Press CURSOR-DOWN to move to the text-field below");
         northpan.add(label, gbc);
 
         gbc.gridy = 1;
@@ -1811,23 +1810,23 @@ class KeyEventTest extends JDialog implements ActionListener, KeyListener {
     private JPanel makeCenterPanel() {
         JPanel centerpan = new JPanel();
         centerpan.setBorder(new TitledBorder(
-            "A Text Field that converts to uppercase"));
+                "A Text Field that converts to uppercase"));
         centerpan.setLayout(new BorderLayout());
 
         JLabel label1 = new JLabel(
-            "The CapsTextField is a subclass of JTextField");
+                "The CapsTextField is a subclass of JTextField");
         label1.setBorder(new EmptyBorder(1, 1, 0, 1));
         centerpan.add(label1, BorderLayout.NORTH);
 
         JLabel label2 = new JLabel(
-            "that overrides the processKeyEvent() method");
+                "that overrides the processKeyEvent() method");
         label2.setBorder(new EmptyBorder(0, 1, 1, 1));
         centerpan.add(label2, BorderLayout.CENTER);
 
         JPanel southpan = new JPanel();
         southpan.add(new JLabel("CapsTextField: "));
         _capsField = new CapsTextField(
-            "THIS FIELD AUTOMATICALLY CONVERTS TO UPPERCASE");
+                "THIS FIELD AUTOMATICALLY CONVERTS TO UPPERCASE");
         southpan.add(_capsField);
         centerpan.add(southpan, BorderLayout.SOUTH);
 
@@ -1842,13 +1841,13 @@ class KeyEventTest extends JDialog implements ActionListener, KeyListener {
 
 class FocusEventTest extends JDialog implements FocusListener, ActionListener {
 
-    private final JTextField _floatField = new JTextField(15);
+    private JTextField _floatField = new JTextField(15);
 
-    private final JTextField _focusLostBy = new JTextField(15);
+    private JTextField _focusLostBy = new JTextField(15);
 
-    private final JTextField _focusGainedBy = new JTextField(15);
+    private JTextField _focusGainedBy = new JTextField(15);
 
-    private final JButton _okButton = new JButton("OK");
+    private JButton _okButton = new JButton("OK");
 
     FocusEventTest(Frame owner_) {
         super(owner_, "FocusEvent Test");
@@ -1891,8 +1890,8 @@ class FocusEventTest extends JDialog implements FocusListener, ActionListener {
                 Float.parseFloat(_floatField.getText());
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this,
-                    "Must be a valid floating-point number", "Error",
-                    JOptionPane.PLAIN_MESSAGE);
+                        "Must be a valid floating-point number", "Error",
+                        JOptionPane.PLAIN_MESSAGE);
                 _floatField.requestFocus();
             }
         } else if (src == _okButton) {
@@ -1947,7 +1946,6 @@ class FocusEventTest extends JDialog implements FocusListener, ActionListener {
 }
 
 //========================================================================
-
 /**
  * This class demonstrates how to run a long-duration task in a separate thread
  * and display the task's progress in a JProgressBar component.
@@ -1955,7 +1953,7 @@ class FocusEventTest extends JDialog implements FocusListener, ActionListener {
 
 class ProgressBarTest extends JDialog implements ActionListener {
 
-    private final JProgressBar _progressBar = new JProgressBar();
+    private JProgressBar _progressBar = new JProgressBar();
 
     private Thread _taskThread;
 
@@ -1993,8 +1991,8 @@ class ProgressBarTest extends JDialog implements ActionListener {
         if (cmd.equals("Start Task")) {
             if (_taskThread != null && _taskThread.isAlive()) {
                 JOptionPane.showMessageDialog(this,
-                    "The task is already running", "Error",
-                    JOptionPane.PLAIN_MESSAGE);
+                        "The task is already running", "Error",
+                        JOptionPane.PLAIN_MESSAGE);
             } else {
                 _taskThread = new TaskThread();
                 _taskThread.start();
@@ -2002,8 +2000,8 @@ class ProgressBarTest extends JDialog implements ActionListener {
         } else if (cmd.equals("OK")) {
             if (_taskThread != null && _taskThread.isAlive()) {
                 JOptionPane.showMessageDialog(this,
-                    "The task is still running", "Error",
-                    JOptionPane.PLAIN_MESSAGE);
+                        "The task is still running", "Error",
+                        JOptionPane.PLAIN_MESSAGE);
             } else
                 hide();
         } else if (cmd.equals("Cancel")) {
@@ -2026,21 +2024,21 @@ class ProgressBarTest extends JDialog implements ActionListener {
         gbc.anchor = GridBagConstraints.WEST;
         gbc.insets = new Insets(1, 1, 1, 1);
         JLabel label = new JLabel(
-            "Press START TASK to run a long task in a separate thread.");
+                "Press START TASK to run a long task in a separate thread.");
         northpan.add(label, gbc);
 
         gbc.gridy = 1;
         gbc.gridwidth = 2;
         gbc.insets = new Insets(0, 1, 0, 1);
         label = new JLabel(
-            "While the task is running, press TAB and then enter some");
+                "While the task is running, press TAB and then enter some");
         northpan.add(label, gbc);
 
         gbc.gridy = 2;
         gbc.gridwidth = 2;
         gbc.insets = new Insets(0, 1, 0, 1);
         label = new JLabel(
-            "text in the TextField to verify that the user interface");
+                "text in the TextField to verify that the user interface");
         northpan.add(label, gbc);
 
         gbc.gridy = 3;
@@ -2053,14 +2051,14 @@ class ProgressBarTest extends JDialog implements ActionListener {
         gbc.gridwidth = 2;
         gbc.insets = new Insets(0, 1, 0, 1);
         label = new JLabel(
-            "The progress bar will start in indeterminate mode, indicating");
+                "The progress bar will start in indeterminate mode, indicating");
         northpan.add(label, gbc);
 
         gbc.gridy = 5;
         gbc.gridwidth = 2;
         gbc.insets = new Insets(0, 1, 0, 1);
         label = new JLabel(
-            "that the task duration is initially unknown; then it will");
+                "that the task duration is initially unknown; then it will");
         northpan.add(label, gbc);
 
         gbc.gridy = 6;
@@ -2099,9 +2097,7 @@ class ProgressBarTest extends JDialog implements ActionListener {
      */
     private class TaskThread extends Thread {
 
-        /**
-         * Constructor
-         */
+        /** Constructor */
         private TaskThread() {
         }
 
@@ -2148,14 +2144,14 @@ class ProgressBarTest extends JDialog implements ActionListener {
      */
     private class ProgressBarUpdater implements Runnable {
 
-        private final int _percent;
+        private int _percent;
 
         private ProgressBarUpdater(int percent_) {
             _percent = percent_;
         }
 
         public void run() {
-            String str = _percent + "%";
+            String str = Integer.toString(_percent) + "%";
             _progressBar.setString(str);
             _progressBar.setValue(_percent);
         }

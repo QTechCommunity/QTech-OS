@@ -23,59 +23,63 @@ import charvax.swing.JComponent;
 
 /**
  * JTextComponent is a much-simplified version of the Swing
- * java.swing.text.JTextComponent class, and is the base class
+ * java.swing.text.JTextComponent class, and is the base class 
  * for JTextArea.
  */
 public abstract class JTextComponent
-    extends JComponent {
-    public JTextComponent() {
+    extends JComponent
+{
+    public JTextComponent()
+    {
     }
 
-    public String getDocument() {
-        return _document.toString();
+    public String getDocument() 
+    { 
+    return _document.toString();
     }
 
-    public void setDocument(String document_) {
-        _document = new StringBuffer(document_);
+    public void setDocument(String document_) 
+    { 
+    _document = new StringBuffer(document_);
     }
 
     public synchronized String getText() {
-        return _document.toString();
+    return _document.toString();
     }
 
-    public synchronized void setText(String text_) {
-        _document = new StringBuffer(text_);
+    public synchronized void setText(String text_)
+    {
+    _document = new StringBuffer(text_);
     }
 
-    public int getCaretPosition() {
-        return _caretPosition;
+    public int getCaretPosition()
+    {
+    return _caretPosition;
     }
 
-    public void setCaretPosition(int caret_) {
-        _caretPosition = caret_;
+    public void setCaretPosition(int caret_)
+    {
+    _caretPosition = caret_;
     }
 
-    /**
-     * Returns the boolean flag indicating whether this TextComponent
+    /** Returns the boolean flag indicating whether this TextComponent
      * is editable or not.
      */
-    public boolean isEditable() {
-        return _editable;
-    }
+    public boolean isEditable() { return _editable; }
 
     /**
      * Sets the boolean that indicates whether this TextComponent should be
      * editable or not.
      */
-    public void setEditable(boolean editable_) {
-        _editable = editable_;
+    public void setEditable(boolean editable_)
+    {
+    _editable = editable_;
     }
 
     //====================================================================
     // INSTANCE VARIABLES
 
-    /**
-     * Index (from the start of the string) where next character will
+    /** Index (from the start of the string) where next character will 
      * be inserted.
      */
     protected int _caretPosition;

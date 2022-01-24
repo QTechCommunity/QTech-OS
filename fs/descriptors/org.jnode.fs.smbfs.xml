@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.fs.smbfs"
-        name="Samba file system for Ultreon OS"
+        name="Samba file system for JNode"
         version="@VERSION@"
         license-name="lgpl"
-        provider-name="UltreonOS">
+        provider-name="JNode.org">
 
   <requires>
 	<import plugin="org.jnode.fs"/>

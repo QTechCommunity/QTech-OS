@@ -200,7 +200,7 @@ public abstract class AbstractCommand implements Command {
     public void execute(CommandLine commandLine, InputStream in, PrintStream out, PrintStream err)
         throws Exception {
         throw new UnsupportedOperationException(
-                "A Ultreon OS command class MUST implement one of the 'execute(...)' methods.");
+                "A JNode command class MUST implement one of the 'execute(...)' methods.");
     }
     
     /**

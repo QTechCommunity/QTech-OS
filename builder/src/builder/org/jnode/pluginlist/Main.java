@@ -45,7 +45,7 @@ public class Main {
         JFileChooser fc = new JFileChooser();
         fc.setDialogType(JFileChooser.OPEN_DIALOG);
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        fc.setDialogTitle("Select Ultreon OS project root directory");
+        fc.setDialogTitle("Select JNode project root directory");
         if (JFileChooser.APPROVE_OPTION == fc.showOpenDialog(parent)) {
             File ret = fc.getSelectedFile();
             if (ret != null) {
@@ -59,7 +59,7 @@ public class Main {
     static File openFile(Component parent) throws Exception {
         JFileChooser fc = new JFileChooser();
         fc.setDialogType(JFileChooser.OPEN_DIALOG);
-        fc.setDialogTitle("Select Ultreon OS plugin list");
+        fc.setDialogTitle("Select JNode plugin list");
         fc.setCurrentDirectory(baseDir);
         if (JFileChooser.APPROVE_OPTION == fc.showOpenDialog(parent)) {
             File ret = fc.getSelectedFile();
@@ -84,7 +84,7 @@ public class Main {
     static void saveAs(Component parent) throws Exception {
         JFileChooser fc = new JFileChooser();
         fc.setDialogType(JFileChooser.SAVE_DIALOG);
-        fc.setDialogTitle("Save Ultreon OS plugin list as");
+        fc.setDialogTitle("Save JNode plugin list as");
         fc.setCurrentDirectory(baseDir);
         if (JFileChooser.APPROVE_OPTION == fc.showOpenDialog(parent)) {
             File ret = fc.getSelectedFile();

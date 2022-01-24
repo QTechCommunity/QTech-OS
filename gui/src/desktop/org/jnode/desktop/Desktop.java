@@ -105,7 +105,7 @@ public class Desktop implements Runnable {
         // Set background info
         final int dx = 30;
         final int dy = dx;
-        final JLabel welcomeLbl = new JLabel("Welcome to Ultreon OS");
+        final JLabel welcomeLbl = new JLabel("Welcome to JNode");
         welcomeLbl.setForeground(Color.WHITE);
         welcomeLbl.setLocation(dx, dy);
         welcomeLbl.setFont(welcomeLbl.getFont().deriveFont(20.0f));

@@ -27,16 +27,16 @@ import charva.awt.Toolkit;
  * Interface describing an object capable of rendering a border
  * around the edges of a component.
  */
-public interface Border {
-    /**
-     * Returns the insets of the border.
+public interface Border
+{
+    /** Returns the insets of the border.
      */
-    Insets getBorderInsets(Component component_);
+    public Insets getBorderInsets(Component component_);
 
     /**
      * Paints the border for the specified component with the specified
      * position and size.
      */
-    void paintBorder(Component component_,
-                     int colorpair_, int x_, int y_, int width_, int height_, Toolkit toolkit);
+    public void paintBorder(Component component_,
+                            int colorpair_, int x_, int y_, int width_, int height_, Toolkit toolkit);
 }

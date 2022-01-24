@@ -30,9 +30,9 @@ import org.jnode.install.cmdline.CommandLineInstaller;
 public class Main implements Runnable {
 
     public void run() {
-        System.out.println("Ultreon OS Installation");
+        System.out.println("JNode Installation");
         CommandLineInstaller.main();
-        System.out.println("Ultreon OS installation completed.");
+        System.out.println("JNode installation completed.");
         /*
         while (true) {
             try {

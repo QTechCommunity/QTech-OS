@@ -21,103 +21,91 @@ package charvax.swing;
 
 import charvax.swing.event.ListSelectionListener;
 
-public interface ListSelectionModel {
+public interface ListSelectionModel
+{
     /**
      * Add a listener to the list that is notified each time the selection
      * changes.
      */
-    void addListSelectionListener(ListSelectionListener l);
+    public void addListSelectionListener(ListSelectionListener l);
 
-    /**
-     * Remove the specified listener from the list of listeners.
+    /** Remove the specified listener from the list of listeners.
      */
-    void removeListSelectionListener(ListSelectionListener l);
+    public void removeListSelectionListener(ListSelectionListener l);
 
-    /**
-     * Change the selection to be the empty set. If this represents a change
+    /** Change the selection to be the empty set. If this represents a change
      * to the selection then notify each ListSelectionListener.
      */
-    void clearSelection();
+    public void clearSelection();
 
-    /**
-     * Change the selection to be the set union between the current
+    /** Change the selection to be the set union between the current
      * selection and the indices between index0 and index1 inclusive. If
      * this represents a change to the current selection, then notify each
-     * ListSelectionListener. Note that index0 does not have to be less
+     * ListSelectionListener. Note that index0 does not have to be less 
      * than or equal to index1.
      */
-    void addSelectionInterval(int index0, int index1);
+    public void addSelectionInterval(int index0, int index1);
 
-    /**
-     * Change the selection to be the set difference between the current
+    /** Change the selection to be the set difference between the current
      * selection and the indices between index0 and index1 inclusive. If
      * this represents a change to the current selection, then notify each
-     * ListSelectionListener. Note that index0 does not have to be less
+     * ListSelectionListener. Note that index0 does not have to be less 
      * than or equal to index1.
      */
-    void removeSelectionInterval(int index0, int index1);
+    public void removeSelectionInterval(int index0, int index1);
 
-    /**
-     * Change the selection to be between index0 and index1 inclusive.
+    /** Change the selection to be between index0 and index1 inclusive.
      * If this represents a change to the selection, then notify each
      * ListSelectionListener. Note that index0 doesn't have to be less than or
      * equal to index1.
      */
-    void setSelectionInterval(int index0, int index1);
+    public void setSelectionInterval(int index0, int index1);
 
-    /**
-     * Set the selection mode. The following modes are allowed:
+    /** Set the selection mode. The following modes are allowed:
      * <ul>
      * <li> SINGLE_SELECTION. Only one list index can be selected at a time.
      * <li> SINGLE_INTERVAL_SELECTION. One contiguous index interval can be set
      * at at time.
      * </ul>
      */
-    void setSelectionMode(int mode_);
+    public void setSelectionMode(int mode_);
 
-    /**
-     * Returns the current selection mode.
+    /** Returns the current selection mode.
      */
-    int getSelectionMode();
+    public int getSelectionMode();
 
-    /**
-     * Returns true if the specified index is selected.
+    /** Returns true if the specified index is selected.
      */
-    boolean isSelectedIndex(int index);
+    public boolean isSelectedIndex(int index);
 
-    /**
-     * Returns true if no indices are selected.
+    /** Returns true if no indices are selected.
      */
-    boolean isSelectionEmpty();
+    public boolean isSelectionEmpty();
 
-    /**
-     * Returns the first selected index, or -1 if the selection is empty.
+    /** Returns the first selected index, or -1 if the selection is empty.
      */
-    int getMinSelectionIndex();
+    public int getMinSelectionIndex();
 
-    /**
-     * Returns the last selected index, or -1 if the selection is empty.
+    /** Returns the last selected index, or -1 if the selection is empty.
      */
-    int getMaxSelectionIndex();
+    public int getMaxSelectionIndex();
 
-    /**
-     * Insert length indices beginning before/after index, without notifying
-     * the ListSelectionListeners. This
-     * is typically called to sync the selection model with a
+    /** Insert length indices beginning before/after index, without notifying
+     * the ListSelectionListeners. This 
+     * is typically called to sync the selection model with a 
      * corresponding change in the data model.
      */
-    void insertIndexInterval(int index, int length, boolean before);
+    public void insertIndexInterval(int index, int length, boolean before);
 
-    /**
-     * Remove the indices in the interval index0,index1 (inclusive)
+    /** Remove the indices in the interval index0,index1 (inclusive) 
      * from the selection model, without notifying
-     * the ListSelectionListeners. This is typically called to sync the
+     * the ListSelectionListeners. This is typically called to sync the 
      * selection model width a corresponding change in the data model.
      */
-    void removeIndexInterval(int index0, int index1);
+    public void removeIndexInterval(int index0, int index1);
 
-    int SINGLE_SELECTION = 201;
-    int SINGLE_INTERVAL_SELECTION = 202;
-    int MULTIPLE_INTERVAL_SELECTION = 203;
+    public static final int SINGLE_SELECTION = 201;
+    public static final int SINGLE_INTERVAL_SELECTION = 202;
+    public static final int MULTIPLE_INTERVAL_SELECTION = 203;
 
 }

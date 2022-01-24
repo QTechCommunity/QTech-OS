@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver.textscreen" 
-        name="Ultreon OS X86 Console TextScreen driver for X86"
+        name="JNode X86 Console TextScreen driver for X86"
         version="@VERSION@"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl"
         class="org.jnode.driver.textscreen.x86.PcTextScreenPlugin">
         

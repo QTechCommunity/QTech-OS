@@ -58,7 +58,7 @@ public class Editor extends JFrame {
     private TitledBorder border;
 
     private Editor(final File file) {
-        super("JNote - Ultreon OS Text Editor");
+        super("JNote - JNode Text Editor");
         this.file = file;
         setBackground(Color.black);
         setForeground(Color.cyan);

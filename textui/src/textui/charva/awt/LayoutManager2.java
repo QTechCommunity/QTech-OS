@@ -25,13 +25,14 @@ package charva.awt;
  * based on a layout-constraints object.
  */
 public interface LayoutManager2
-    extends LayoutManager {
+    extends LayoutManager
+{
 
-    void addLayoutComponent(Component component_, Object constraints_);
+    public void addLayoutComponent(Component component_, Object constraints_);
 
     /**
      * Invalidates the layout, indicating that if the layout manager has cached
      * information it should be discarded.
      */
-    void invalidateLayout(Container target_);
+    public void invalidateLayout(Container target_);
 }

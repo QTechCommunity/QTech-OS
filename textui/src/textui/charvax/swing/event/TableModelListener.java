@@ -23,6 +23,7 @@ package charvax.swing.event;
  * This defines the interface for an object that listens for changes in a
  * TableModel.
  */
-public interface TableModelListener {
-    void tableChanged(TableModelEvent evt_);
+public interface TableModelListener
+{
+    public void tableChanged(TableModelEvent evt_);
 }

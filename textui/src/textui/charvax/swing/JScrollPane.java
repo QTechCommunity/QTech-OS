@@ -46,9 +46,10 @@ public class JScrollPane extends Container implements ScrollListener {
     /**
      * Create a JScrollPane that displays the contents of the specified
      * component.
-     *
-     * @param component_ The component to be displayed. This component must implement
-     *                   the Scrollable interface.
+     * 
+     * @param component_
+     *            The component to be displayed. This component must implement
+     *            the Scrollable interface.
      */
     public JScrollPane(Component component_) {
         setViewportView(component_);
@@ -56,8 +57,9 @@ public class JScrollPane extends Container implements ScrollListener {
 
     /**
      * Creates a viewport if necessary, and then sets its view.
-     *
-     * @param component_ the view to set in the viewport.
+     * 
+     * @param component_
+     *            the view to set in the viewport.
      */
     public void setViewportView(Component component_) {
         _child = component_;
@@ -182,7 +184,7 @@ public class JScrollPane extends Container implements ScrollListener {
         Point viewPosition = _childViewport.getViewPosition();
         Point headerPosition = null;
         if (_headerViewport != null)
-            headerPosition = _headerViewport.getViewPosition();
+                headerPosition = _headerViewport.getViewPosition();
 
         /*
          * If the limit is inside the viewport, the component doesn't need to
@@ -190,52 +192,52 @@ public class JScrollPane extends Container implements ScrollListener {
          */
         if (limit.x > viewport.getRight()) {
             if ((direction == ScrollEvent.LEFT
-                || direction == ScrollEvent.UP_LEFT || direction == ScrollEvent.DOWN_LEFT)) {
+                    || direction == ScrollEvent.UP_LEFT || direction == ScrollEvent.DOWN_LEFT)) {
 
                 viewPosition.x -= (limit.x - viewport.getRight());
                 if (_headerViewport != null)
-                    headerPosition.x -= (limit.x - viewport.getRight());
+                        headerPosition.x -= (limit.x - viewport.getRight());
             } else if (direction == ScrollEvent.RIGHT
-                || direction == ScrollEvent.UP_RIGHT
-                || direction == ScrollEvent.DOWN_RIGHT) {
+                    || direction == ScrollEvent.UP_RIGHT
+                    || direction == ScrollEvent.DOWN_RIGHT) {
 
                 viewPosition.x += (viewport.getLeft() - limit.x);
                 if (_headerViewport != null)
-                    headerPosition.x += (viewport.getLeft() - limit.x);
+                        headerPosition.x += (viewport.getLeft() - limit.x);
             }
         } else if (limit.x < viewport.getLeft()) {
             if (direction == ScrollEvent.RIGHT
-                || direction == ScrollEvent.UP_RIGHT
-                || direction == ScrollEvent.DOWN_RIGHT) {
+                    || direction == ScrollEvent.UP_RIGHT
+                    || direction == ScrollEvent.DOWN_RIGHT) {
 
                 viewPosition.x += (viewport.getLeft() - limit.x);
                 if (_headerViewport != null)
-                    headerPosition.x += (viewport.getLeft() - limit.x);
+                        headerPosition.x += (viewport.getLeft() - limit.x);
             } else if (direction == ScrollEvent.LEFT
-                || direction == ScrollEvent.UP_LEFT
-                || direction == ScrollEvent.DOWN_LEFT) {
+                    || direction == ScrollEvent.UP_LEFT
+                    || direction == ScrollEvent.DOWN_LEFT) {
                 viewPosition.x -= (limit.x - viewport.getRight());
                 if (_headerViewport != null)
-                    headerPosition.x -= (limit.x - viewport.getRight());
+                        headerPosition.x -= (limit.x - viewport.getRight());
             }
         }
 
         // Now do the up/down scrolling
         if (limit.y < viewport.getTop()
-            && (direction == ScrollEvent.DOWN
-            || direction == ScrollEvent.DOWN_LEFT || direction == ScrollEvent.DOWN_RIGHT)) {
+                && (direction == ScrollEvent.DOWN
+                        || direction == ScrollEvent.DOWN_LEFT || direction == ScrollEvent.DOWN_RIGHT)) {
 
             viewPosition.y += (viewport.getTop() - limit.y);
         } else if (limit.y > viewport.getBottom()
-            && (direction == ScrollEvent.UP
-            || direction == ScrollEvent.UP_LEFT || direction == ScrollEvent.UP_RIGHT)) {
+                && (direction == ScrollEvent.UP
+                        || direction == ScrollEvent.UP_LEFT || direction == ScrollEvent.UP_RIGHT)) {
 
             viewPosition.y -= (limit.y - viewport.getBottom());
         }
 
         _childViewport.setViewPosition(viewPosition);
         if (_headerViewport != null)
-            _headerViewport.setViewPosition(headerPosition);
+                _headerViewport.setViewPosition(headerPosition);
 
         draw(Toolkit.getDefaultToolkit());
 
@@ -275,7 +277,7 @@ public class JScrollPane extends Container implements ScrollListener {
         if (_border != null) {
 
             _border.paintBorder(this, 0, origin.x, origin.y, size.width,
-                size.height, toolkit);
+                    size.height, toolkit);
         }
 
         // Don't draw scrollbars if the child component is a TableHeader.
@@ -302,21 +304,21 @@ public class JScrollPane extends Container implements ScrollListener {
         if (childSize.height > extentSize.height) {
 
             int scrollbar_height = (extentSize.height * extentSize.height)
-                / childSize.height;
+                    / childSize.height;
 
             // Round the height upwards to the nearest integer.
             if (((extentSize.height * extentSize.height) % childSize.height) != 0)
-                scrollbar_height++;
+                    scrollbar_height++;
 
             int scrollbar_offset = (-1 * viewPosition.y * extentSize.height)
-                / childSize.height;
+                    / childSize.height;
 
             for (int i = 0; i < extentSize.height; i++) {
 
                 toolkit.setCursor(origin.addOffset(borderInsets.left
-                    + extentSize.width, borderInsets.top + i));
+                        + extentSize.width, borderInsets.top + i));
                 if (i >= scrollbar_offset
-                    && i < scrollbar_offset + scrollbar_height) {
+                        && i < scrollbar_offset + scrollbar_height) {
                     toolkit.addChar(Toolkit.ACS_CKBOARD, 0, colorpair);
                 }
             }
@@ -325,21 +327,21 @@ public class JScrollPane extends Container implements ScrollListener {
         if (childSize.width > extentSize.width) {
 
             int scrollbar_width = (extentSize.width * extentSize.width)
-                / childSize.width;
+                    / childSize.width;
 
             // Round the width upwards to the nearest integer.
             if (((extentSize.width * extentSize.width) % childSize.width) != 0)
-                scrollbar_width++;
+                    scrollbar_width++;
 
             int scrollbar_offset = (-1 * viewPosition.x * extentSize.width)
-                / childSize.width;
+                    / childSize.width;
 
             for (int i = 0; i < extentSize.width; i++) {
 
                 toolkit.setCursor(origin.addOffset(borderInsets.left + i,
-                    borderInsets.top + extentSize.height));
+                        borderInsets.top + extentSize.height));
                 if (i >= scrollbar_offset
-                    && i < scrollbar_offset + scrollbar_width) {
+                        && i < scrollbar_offset + scrollbar_width) {
                     toolkit.addChar(Toolkit.ACS_CKBOARD, 0, colorpair);
                 }
             }
@@ -376,7 +378,7 @@ public class JScrollPane extends Container implements ScrollListener {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
         System.err.println("JScrollPane origin=" + _origin + " size="
-            + getSize());
+                + getSize());
         super.debug(level_ + 1);
     }
 
@@ -409,7 +411,7 @@ public class JScrollPane extends Container implements ScrollListener {
     /**
      * A JViewport container that holds the (single) child component.
      */
-    private final JViewport _childViewport = new JViewport();
+    private JViewport _childViewport = new JViewport();
 
     //private JScrollBar _vertical;
 

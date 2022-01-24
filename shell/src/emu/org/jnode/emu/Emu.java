@@ -95,7 +95,7 @@ public class Emu {
     public Emu(File root, String[] pluginNames) throws EmuException {
         if (root == null) {
             root = new File("").getAbsoluteFile();
-            System.err.println("Assuming that the Ultreon OS root is '" + root + "'");
+            System.err.println("Assuming that the JNode root is '" + root + "'");
         }
         this.root = root;
         InitialNaming.setNameSpace(new BasicNameSpace());

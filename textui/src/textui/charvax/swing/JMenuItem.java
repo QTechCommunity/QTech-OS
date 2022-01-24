@@ -43,11 +43,13 @@ public class JMenuItem extends AbstractButton {
 
     /**
      * Create a menu item with the specified text and the specified mnemonic.
-     *
-     * @param text_     the label to be displayed in this menu item.
-     * @param mnemonic_ an ASCII character. The first occurrence of this character in
-     *                  the text label will be shown underlined; and pressing this
-     *                  key will invoke the menu item.
+     * 
+     * @param text_
+     *            the label to be displayed in this menu item.
+     * @param mnemonic_
+     *            an ASCII character. The first occurrence of this character in
+     *            the text label will be shown underlined; and pressing this
+     *            key will invoke the menu item.
      */
     public JMenuItem(String text_, int mnemonic_) {
         super.setText(text_);
@@ -78,11 +80,11 @@ public class JMenuItem extends AbstractButton {
 
         if (super.getMnemonic() > 0) {
             int mnemonicPos = super.getText().indexOf(
-                (char) super.getMnemonic());
+                    (char) super.getMnemonic());
             if (mnemonicPos != -1) {
                 toolkit.setCursor(origin.addOffset(1 + mnemonicPos, 0));
                 toolkit.addChar(super.getMnemonic(), attribute
-                    | Toolkit.A_UNDERLINE, colorpair);
+                        | Toolkit.A_UNDERLINE, colorpair);
             }
         }
     }

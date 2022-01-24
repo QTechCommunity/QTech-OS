@@ -21,19 +21,20 @@ package charva.awt;
 
 /**
  * The Insets class specifies the blank space that must be left around
- * the inside of the edges of a Container.  The space can be used for
+ * the inside of the edges of a Container.  The space can be used for 
  * a border, a title, or other items (such as a scrollbar).
  */
-public class Insets {
+public class Insets
+{
     public Insets(int top_, int left_, int bottom_, int right_) {
-        top = top_;
-        left = left_;
-        bottom = bottom_;
-        right = right_;
+    top = top_;
+    left = left_;
+    bottom = bottom_;
+    right = right_;
     }
 
     public String toString() {
-        return "(" + top + "," + left + "," + bottom + "," + right + ")";
+    return "(" + top + "," + left + "," + bottom + "," + right + ")";
     }
 
     //====================================================================

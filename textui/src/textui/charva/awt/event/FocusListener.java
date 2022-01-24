@@ -24,7 +24,8 @@ package charva.awt.event;
  * The listener interface for receiving focus events.
  */
 public interface FocusListener
-    extends EventListener {
+    extends EventListener
+{
     void focusGained(FocusEvent fe_);
 
     void focusLost(FocusEvent fe_);

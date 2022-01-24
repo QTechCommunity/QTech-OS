@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.driver" 
-        name="Ultreon OS Driver Framework"
+        name="JNode Driver Framework"
         version="@VERSION@"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl"
         class="org.jnode.driver.DriverPlugin">
         

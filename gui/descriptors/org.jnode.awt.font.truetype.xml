@@ -23,9 +23,9 @@
 <fragment id="org.jnode.awt.font.truetype" 
 		plugin-id="org.jnode.awt.font"
 		plugin-version="@VERSION@"
-        name="Ultreon OS AWT TrueType Font Provider"
+        name="JNode AWT TrueType Font Provider"
         version="@VERSION@"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl"
         class="org.jnode.awt.font.truetype.TTFPlugin">
         
@@ -37,7 +37,7 @@
     </library>
   </runtime>
 
-  <extension-point id="fonts" name="Ultreon OS TrueType Font URLs"/>
+  <extension-point id="fonts" name="JNode TrueType Font URLs"/>
 
   <extension point="org.jnode.awt.font.providers">
     <mapper class="org.jnode.awt.font.truetype.TTFontProvider"/>

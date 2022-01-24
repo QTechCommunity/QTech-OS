@@ -23,10 +23,9 @@ package charva.awt.event;
  * An adapter for easy instantiation of the WindowListener interface
  */
 public class WindowAdapter
-    implements WindowListener {
-    public void windowClosing(WindowEvent evt_) {
-    }
+    implements WindowListener
+{
+    public void windowClosing(WindowEvent evt_) {}
 
-    public void windowOpened(WindowEvent evt_) {
-    }
+    public void windowOpened(WindowEvent evt_) {}
 }

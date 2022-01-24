@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.work" 
-        name="Ultreon OS Work management"
+        name="JNode Work management"
         version="@VERSION@"
         system="true"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl"
         class="org.jnode.work.WorkPlugin">
         

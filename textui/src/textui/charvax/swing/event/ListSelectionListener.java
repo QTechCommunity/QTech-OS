@@ -22,6 +22,7 @@ package charvax.swing.event;
 import charva.awt.event.EventListener;
 
 public interface ListSelectionListener
-    extends EventListener {
-    void valueChanged(ListSelectionEvent evt);
+    extends EventListener
+{
+    public void valueChanged(ListSelectionEvent evt);
 }

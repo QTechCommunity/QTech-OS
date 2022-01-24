@@ -21,10 +21,10 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.partitions.gpt"
-        name="Ultreon OS GPT partition table classes"
+        name="JNode GPT partition table classes"
         version="0.2.9-dev"
         license-name="lgpl"
-        provider-name="UltreonOS">
+        provider-name="JNode.org">
         
   <requires>
     <import plugin="org.jnode.partitions"/>

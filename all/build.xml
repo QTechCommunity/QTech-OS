@@ -18,7 +18,7 @@
     along with this library; If not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -->
-<project name="UltreonOS" default="help" basedir=".">
+<project name="JNode" default="help" basedir=".">
 
 	<property name="root.dir" value="${basedir}/.."/>
 
@@ -128,13 +128,12 @@
 	<!-- lists of plugins to use while booting -->
 	<property name="default-plugin-list" value="${root.dir}/all/conf/default-plugin-list.xml"/>
 	<property name="full-plugin-list" value="${root.dir}/all/conf/full-plugin-list.xml"/>
-	<property name="install-plugin-list" value="/conf/install-plugin-list.xml"/>
-	<property name="gui-plugin-list" value="/conf/gui-plugin-list.xml"/>
+	<property name="install-plugin-list" value="/conf/install-plugin-list_disabled.xml"/>
 	<property name="system-plugin-list" value="${root.dir}/all/conf/system-plugin-list.xml"/>
 	<property name="sources.dist.tar.gz" value="${build.dir}/jnodesources-${jnode-ver}.tar.gz"/>
-	<property name="UltreonOS-x86.iso" value="${cdroms.dir}/UltreonOS-x86.iso"/>
-	<property name="UltreonOS-x86-lite.iso" value="${cdroms.dir}/UltreonOS-x86-lite.iso"/>
-	<property name="UltreonOS-x86_64-lite.iso" value="${cdroms.dir}/UltreonOS-x86_64-lite.iso"/>
+	<property name="qos-x86.iso" value="${cdroms.dir}/qos-x86.iso"/>
+	<property name="qos-x86-lite.iso" value="${cdroms.dir}/qos-x86-lite.iso"/>
+	<property name="qos-x86_64-lite.iso" value="${cdroms.dir}/qos-x86_64-lite.iso"/>
 
 	<!-- list of classes and packages that should to be compiled to native code 
 	     in the boot image.  -->
@@ -201,7 +200,7 @@
 
 
 	<filterset id="descriptors-filter">
-		<filter token="PROVIDER" value="UltreonOS"/>
+		<filter token="PROVIDER" value="JNode.org"/>
 		<filter token="VERSION" value="${jnode-ver}"/>
 	</filterset>
 
@@ -215,7 +214,7 @@
 	<target name="prepare">
 		<!-- Fail on a Windows platform if there are spaces in the root dir's pathname.  It will
     	             lead to mkisofs dying with a misleading error message.  bluebit / crawley 2008-05-03 -->
-		<fail message="Cannot build Ultreon OS from a directory with spaces in the pathname.">
+		<fail message="Cannot build JNode from a directory with spaces in the pathname.">
 			<condition>
 				<and>
 					<os family="windows"/>
@@ -546,7 +545,7 @@ clean             Remove all intermediate build results.
 	</target>
 
 	<!-- Create a bootable CDROM image containing all x86 bootable images and the sources -->
-	<target name="cd-x86" depends="assemble" description="Create a bootable Ultreon OS CD image with sources included">
+	<target name="cd-x86" depends="assemble" description="Create a bootable JNode CD image with sources included">
 		<tar destfile="${sources.dist.tar.gz}" compression="gzip" basedir="${root.dir}" excludes="*/build/**"/>
 		<x86-build bits="32" target="java-image"/>
 		<!-- TODO enable this when 64 bit support is working -->
@@ -556,7 +555,7 @@ clean             Remove all intermediate build results.
 	</target>
 
 	<!-- Create a bootable CDROM image for x86 32-bits -->
-	<target name="cd-x86-lite" depends="assemble" description="Create a bootable Ultreon OS CD image">
+	<target name="cd-x86-lite" depends="assemble" description="Create a bootable JNode CD image">
 		<x86-build bits="32" target="java-image"/>
 		<property name="jnode.bits" value="32" />
 		<ant antfile="build-x86.xml" inheritall="true" inheritrefs="true" target="cdrom-lite"/>
@@ -572,7 +571,7 @@ clean             Remove all intermediate build results.
 	<target name="upload">
 		<property name="upload.dir" value="${build.dir}/upload"/>
 		<mkdir dir="${upload.dir}"/>
-		<gzip src="${UltreonOS-x86.iso}" destfile="${upload.dir}/UltreonOS-x86-${jnode-ver}.iso.gz"/>
+		<gzip src="${qos-x86.iso}" destfile="${upload.dir}/qos-x86-${jnode-ver}.iso.gz"/>
 		<copy todir="${upload.dir}" file="${sources.dist.tar.gz}"/>
 		<checksum algorithm="MD5" forceoverwrite="true">
 			<fileset dir="${upload.dir}">
@@ -593,7 +592,7 @@ clean             Remove all intermediate build results.
 
 	<!-- Save virtualization etc state across 'clean' -->
 	<target name="save">
-		<copy file="${cdroms.dir}/UltreonOS.nvram" todir="${save.dir}" failonerror="no"/>
+		<copy file="${cdroms.dir}/JNode.nvram" todir="${save.dir}" failonerror="no"/>
 	</target>
 
 	<!-- Clean everything files -->
@@ -608,7 +607,7 @@ clean             Remove all intermediate build results.
 		<pathelement location="${nanoxml-java.jar}"/>
 	</path>
 
-	<target name="javadoc-small" description="Generate documentation of the basic Ultreon OS APIs">
+	<target name="javadoc-small" description="Generate documentation of the basic JNode APIs">
 		<jnode.javadoc destdir="${build.dir}/javadoc/small">
 			<sourcepath>
 				<pathelement location="${root.dir}/core/src/classlib"/>
@@ -1092,13 +1091,13 @@ clean             Remove all intermediate build results.
 		</macrodef>
 		<parallel>
 			<checkPMD projectName="distr" webSrcUrl="distr" projectSrc="distr"/>
-			<checkPMD projectName="UltreonOS-Builder" webSrcUrl="builder" projectSrc="builder"/>
-			<checkPMD projectName="UltreonOS-Core" webSrcUrl="core" projectSrc="core"/>
-			<checkPMD projectName="UltreonOS-FS" webSrcUrl="fs" projectSrc="fs"/>
-			<checkPMD projectName="UltreonOS-GUI" webSrcUrl="gui" projectSrc="gui"/>
-			<checkPMD projectName="UltreonOS-Net" webSrcUrl="net" projectSrc="net"/>
-			<checkPMD projectName="UltreonOS-Shell" webSrcUrl="shell" projectSrc="shell"/>
-			<checkPMD projectName="UltreonOS-TestUI" webSrcUrl="textui" projectSrc="textui"/>
+			<checkPMD projectName="JNode-Builder" webSrcUrl="builder" projectSrc="builder"/>
+			<checkPMD projectName="JNode-Core" webSrcUrl="core" projectSrc="core"/>
+			<checkPMD projectName="JNode-FS" webSrcUrl="fs" projectSrc="fs"/>
+			<checkPMD projectName="JNode-GUI" webSrcUrl="gui" projectSrc="gui"/>
+			<checkPMD projectName="JNode-Net" webSrcUrl="net" projectSrc="net"/>
+			<checkPMD projectName="JNode-Shell" webSrcUrl="shell" projectSrc="shell"/>
+			<checkPMD projectName="JNode-TestUI" webSrcUrl="textui" projectSrc="textui"/>
 		</parallel>
 	</target>
 

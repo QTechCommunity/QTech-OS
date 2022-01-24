@@ -18,7 +18,7 @@
     along with this library; If not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -->
-<project name="UltreonOS-NET-Tests" default="all" basedir=".">
+<project name="JNode-NET-Tests" default="all" basedir=".">
 
     <import file="${basedir}/../all/build.xml"/>
 

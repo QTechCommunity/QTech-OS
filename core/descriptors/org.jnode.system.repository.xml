@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.system.repository" 
-        name="Ultreon OS System Repository"
+        name="JNode System Repository"
         version="@VERSION@"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl"
         class="org.jnode.system.repository.SystemRepositoryPlugin"
         auto-start="true">

@@ -24,10 +24,11 @@ package charva.awt.event;
  * The listener interface for receiving KeyEvents.
  */
 public interface KeyListener
-    extends EventListener {
+    extends EventListener
+{
     /**
-     * KEY_PRESSED events are fired when any key (including a function
-     * key and cursor key) is pressed while the component has keyboard
+     * KEY_PRESSED events are fired when any key (including a function 
+     * key and cursor key) is pressed while the component has keyboard 
      * input focus.
      * KeyEvent.getKeyCode() can be used to find out which key was pressed.
      */
@@ -42,7 +43,7 @@ public interface KeyListener
     void keyTyped(KeyEvent ke_);
 
     /**
-     * This method is never called in CHARVA, but is present for
+     * This method is never called in CHARVA, but is present for 
      * compatibility with javax.swing.
      */
     void keyReleased(KeyEvent ke_);

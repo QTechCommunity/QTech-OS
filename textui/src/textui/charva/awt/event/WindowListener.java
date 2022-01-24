@@ -24,8 +24,8 @@ package charva.awt.event;
  * The listener interface for receiving window events.
  */
 public interface WindowListener
-    extends EventListener {
-    void windowClosing(WindowEvent evt_);
-
-    void windowOpened(WindowEvent evt_);
+    extends EventListener
+{
+    public void windowClosing(WindowEvent evt_);
+    public void windowOpened(WindowEvent evt_);
 }

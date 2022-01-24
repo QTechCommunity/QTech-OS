@@ -24,7 +24,7 @@
        name="JPartition"
        version="@VERSION@"
        license-name="lgpl"
-       provider-name="UltreonOS">
+       provider-name="JNode.org">
 
   <runtime>
 	<library name="jnode-distr.jar">

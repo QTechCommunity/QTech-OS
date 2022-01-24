@@ -18,7 +18,7 @@
     along with this library; If not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -->
-<project name="UltreonOS-x86" default="all" basedir=".">
+<project name="JNode-x86" default="all" basedir=".">
 
 	<property name="my-build.dir" value="${build.dir}/x86" />
 	<property name="my-lib.dir" value="${basedir}/lib/x86" />
@@ -312,7 +312,7 @@
                 <then>
                     <!-- Fail on a Windows platform if there are spaces in the root dir's pathname.  It will
             	     lead to mkisofs dying with a misleading error message.  bluebit / crawley 2008-05-03 -->
-    	            <fail message="Cannot build Ultreon OS from a directory with spaces in the pathname.">
+    	            <fail message="Cannot build JNode from a directory with spaces in the pathname.">
                 	  <condition>
     	                <and>
                 	      <contains string="${os.name}" substring="windows" casesensitive="false" />
@@ -342,48 +342,48 @@
 	<!-- Create a full distributable bootable CDROM image -->
 	<target name="cdrom" depends="prepare">
 		<copy file="${sources.dist.tar.gz}" todir="${my-build.dir}/cdrom-full" />
-		<create-cdrom destfile="${UltreonOS-x86.iso}" dir="${my-build.dir}/cdrom-full" />
+		<create-cdrom destfile="${qos-x86.iso}" dir="${my-build.dir}/cdrom-full" />
 
 		<taskdef name="vmware" classname="org.jnode.build.VMwareBuilderTask" classpathref="cp-x86" />
 		<vmware 
-			isoFile="${UltreonOS-x86.iso}"
+			isoFile="${qos-x86.iso}"
 			logFile="${logFile}"
 			memSize="${jnode.virtual.memsize}"
             saveDir="${save.dir}"
 			vmdkImageFile="${vmware.vmx.vmdk.image}"
 		    overrideFile="${vmware.vmx.overrides}"
-			name="Ultreon OS x86"
+			name="Q-OS x86"
 		/>
 	</target>
 
 	<!-- Create a bootable CDROM image -->
 	<target name="cdrom-lite" depends="prepare">
-		<create-cdrom destfile="${UltreonOS-x86-lite.iso}" dir="${my-build.dir}/cdrom-lite" />
+		<create-cdrom destfile="${qos-x86-lite.iso}" dir="${my-build.dir}/cdrom-lite" />
 
 		<taskdef name="vmware" classname="org.jnode.build.VMwareBuilderTask" classpathref="cp-x86" />
 		<vmware 
-			isoFile="${UltreonOS-x86-lite.iso}"
+			isoFile="${qos-x86-lite.iso}"
 			logFile="${logFile}"
 			memSize="${jnode.virtual.memsize}"
             saveDir="${save.dir}"
 			vmdkImageFile="${vmware.vmx.vmdk.image}"
             overrideFile="${vmware.vmx.overrides}"
-			name="Ultreon OS x86 lite"
+			name="Q-OS x86 lite"
 		/>
 	</target>
 
 	<target name="cdrom_64-lite" depends="prepare">
-		<create-cdrom destfile="${UltreonOS-x86_64-lite.iso}" dir="${my-build.dir}/cdrom-lite" />
+		<create-cdrom destfile="${qos-x86_64-lite.iso}" dir="${my-build.dir}/cdrom-lite" />
 
 		<taskdef name="vmware" classname="org.jnode.build.VMwareBuilderTask" classpathref="cp-x86" />
 		<vmware
-			isoFile="${UltreonOS-x86_64-lite.iso}"
+			isoFile="${qos-x86_64-lite.iso}"
 			logFile="${logFile}"
 			memSize="${jnode.virtual.memsize}"
 			saveDir="${save.dir}"
 			vmdkImageFile="${vmware.vmx.vmdk.image}"
             overrideFile="${vmware.vmx.overrides}"
-			name="Ultreon OS x64 lite"
+			name="Q-OS x64 lite"
 		/>
 	</target>
 

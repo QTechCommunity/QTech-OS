@@ -21,15 +21,14 @@ package charvax.swing;
 
 import charva.awt.EventQueue;
 
-/**
- * A collection of utility methods for Swing.
+/** A collection of utility methods for Swing.
  */
-public class SwingUtilities {
-    /**
-     * Causes the runnable.run() method to be executed asynchronously on
+public class SwingUtilities
+{
+    /** Causes the runnable.run() method to be executed asynchronously on 
      * the AWT event dispatching thread.
      */
     public static void invokeLater(Runnable runnable) {
-        EventQueue.invokeLater(runnable);
+    EventQueue.invokeLater(runnable);
     }
 }

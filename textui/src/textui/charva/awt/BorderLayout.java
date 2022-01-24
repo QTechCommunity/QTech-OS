@@ -136,30 +136,30 @@ public class BorderLayout implements LayoutManager2 {
         if (_south != null) {
             int padding = size.width - _south.getSize().width;
             _south.setLocation(padding / 2, size.height - insets.bottom
-                - _south.getSize().height);
+                    - _south.getSize().height);
             availableHeight -= _south.getSize().height;
         }
 
         if (_west != null) {
             _west.setLocation(insets.left, northbottom
-                + (availableHeight - _west.getSize().height) / 2);
+                    + (availableHeight - _west.getSize().height) / 2);
             availableWidth -= _west.getSize().width;
             westright += _west.getSize().width;
         }
 
         if (_east != null) {
             _east.setLocation(
-                size.width - insets.right - _east.getSize().width,
-                northbottom + (availableHeight - _east.getSize().height)
-                    / 2);
+                    size.width - insets.right - _east.getSize().width,
+                    northbottom + (availableHeight - _east.getSize().height)
+                            / 2);
             availableWidth -= _east.getSize().width;
         }
 
         if (_center != null) {
             _center.setLocation(westright
                     + (availableWidth - _center.getSize().width) / 2,
-                northbottom + (availableHeight - _center.getSize().height)
-                    / 2);
+                    northbottom + (availableHeight - _center.getSize().height)
+                            / 2);
         }
     }
 

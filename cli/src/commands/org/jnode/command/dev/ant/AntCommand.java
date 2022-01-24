@@ -64,7 +64,7 @@ public class AntCommand {
             System.out.println("build.xml not found, creating a template");
             FileOutputStream fos = new FileOutputStream(f);
             PrintWriter pw = new PrintWriter(fos);
-            pw.println("<project name=\"UltreonOS\" default=\"help\" basedir=\".\">");
+            pw.println("<project name=\"JNode\" default=\"help\" basedir=\".\">");
             pw.println("<target name=\"help\">");
             pw.println("<echo>");
             pw.println("echo task is working");

@@ -24,6 +24,7 @@ package charva.awt.event;
  * The listener interface for receiving adjustment events.
  */
 public interface AdjustmentListener
-    extends EventListener {
+    extends EventListener
+{
     void adjustmentValueChanged(AdjustmentEvent evt_);
 }

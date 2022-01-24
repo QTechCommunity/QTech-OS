@@ -21,9 +21,9 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.shell.syntax"
-        name="Ultreon OS Command Syntax System"
+        name="JNode Command Syntax System"
         version="@VERSION@"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl"
 		class="org.jnode.shell.syntax.SystemSyntaxPlugin">
 

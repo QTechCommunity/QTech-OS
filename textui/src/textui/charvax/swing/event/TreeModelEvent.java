@@ -21,62 +21,56 @@ package charvax.swing.event;
 
 import charvax.swing.tree.TreePath;
 
-public class TreeModelEvent extends java.util.EventObject {
+public class TreeModelEvent extends java.util.EventObject
+{
     private static final long serialVersionUID = 1L;
-
-    /**
-     * Used to create an event when the node structure has changed in some way,
-     * identifying the path to the root of a modified subtree as an array of
+    
+    /** Used to create an event when the node structure has changed in some way, 
+     * identifying the path to the root of a modified subtree as an array of 
      * Objects.
      */
-    public TreeModelEvent(Object source, Object[] objects) {
-        this(source, new TreePath(objects), null, null);
-    }
+     public TreeModelEvent(Object source, Object[] objects) {
+     this(source, new TreePath(objects), null, null);
+     }
 
-    /**
-     * Used to create an event when nodes have been changed, inserted, or
-     * removed, identifying the path to the parent of the modified items as
+    /** Used to create an event when nodes have been changed, inserted, or 
+     * removed, identifying the path to the parent of the modified items as 
      * an array of Objects.
      */
     TreeModelEvent(Object source, Object[] objects, int[] childIndices, Object[] children) {
-        this(source, new TreePath(objects), childIndices, children);
+    this(source, new TreePath(objects), childIndices, children);
     }
 
-    /**
-     * Used to create an event when the node structure has changed in some
+    /** Used to create an event when the node structure has changed in some
      * way, identifying the path to the root of the modified subtree as a
      * TreePath object.
      */
     TreeModelEvent(Object source, TreePath path) {
-        this(source, path, null, null);
+    this(source, path, null, null);
     }
 
-    /**
-     * Used to create an event when nodes have been changed, inserted, or
+    /** Used to create an event when nodes have been changed, inserted, or 
      * removed, identifying the path to the parent of the modified items as
      * a TreePath object.
      */
     TreeModelEvent(Object source, TreePath path, int[] childIndices, Object[] children) {
-        super(source);
-        this.path = path;
-        this.childIndices = childIndices;
-        this.children = children;
+    super(source);
+    this.path = path;
+    this.childIndices = childIndices;
+    this.children = children;
     }
 
     //=============================================================
     // INSTANCE VARIABLES
-    /**
-     * Indices identifying the position of where the children were.
+    /** Indices identifying the position of where the children were.
      */
-    protected int[] childIndices;
+    protected  int[] childIndices ;
 
-    /**
-     * Children that have been removed.
+    /** Children that have been removed.
      */
-    protected Object[] children;
+    protected  Object[] children ;
 
-    /**
-     * Path to the parent of the nodes that have changed.
+    /** Path to the parent of the nodes that have changed.
      */
-    protected TreePath path;
+    protected  TreePath path ;
 }

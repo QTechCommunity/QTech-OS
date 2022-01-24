@@ -24,23 +24,23 @@ import charva.awt.Insets;
 import charva.awt.Toolkit;
 
 public class CompoundBorder
-    implements Border {
-    public CompoundBorder(Border outsideBorder_, Border insideBorder_) {
-        _outsideBorder = outsideBorder_;
-        _insideBorder = insideBorder_;
+    implements Border
+{
+    public CompoundBorder(Border outsideBorder_, Border insideBorder_) { 
+    _outsideBorder = outsideBorder_;
+    _insideBorder = insideBorder_;
     }
 
-    /**
-     * Returns the insets of the compound border.
+    /** Returns the insets of the compound border.
      */
     public Insets getBorderInsets(Component component_) {
-        Insets outside = _outsideBorder.getBorderInsets(component_);
-        Insets inside = _insideBorder.getBorderInsets(component_);
-        return new Insets(
-            outside.top + inside.top,
-            outside.left + inside.left,
-            outside.bottom + inside.bottom,
-            outside.right + inside.right);
+    Insets outside = _outsideBorder.getBorderInsets(component_);
+    Insets inside = _insideBorder.getBorderInsets(component_);
+    return new Insets(
+        outside.top + inside.top,
+        outside.left + inside.left,
+        outside.bottom + inside.bottom,
+        outside.right + inside.right);
     }
 
     /**
@@ -52,23 +52,23 @@ public class CompoundBorder
     public void paintBorder(Component component_, int colorpair_,
                             int x_, int y_, int width_, int height_, Toolkit toolkit) {
 
-        _outsideBorder.paintBorder(component_, colorpair_,
-            x_, y_, width_, height_, toolkit);
+    _outsideBorder.paintBorder(component_, colorpair_, 
+        x_, y_, width_, height_, toolkit);
 
-        /* Now paint the inside border, making allowance for the space
-         * already used by the outside border.
-         */
-        Insets outer = _outsideBorder.getBorderInsets(component_);
-        _insideBorder.paintBorder(component_, colorpair_,
-            x_ + outer.left,
-            y_ + outer.top,
-            width_ - outer.left - outer.right,
-            height_ - outer.top - outer.bottom, toolkit);
+    /* Now paint the inside border, making allowance for the space
+     * already used by the outside border.
+     */
+    Insets outer = _outsideBorder.getBorderInsets(component_);
+    _insideBorder.paintBorder(component_, colorpair_,
+        x_ + outer.left, 
+        y_ + outer.top, 
+        width_ - outer.left - outer.right, 
+        height_ - outer.top - outer.bottom, toolkit);
     }
 
     //====================================================================
     // INSTANCE VARIABLES
 
-    private final Border _outsideBorder;
-    private final Border _insideBorder;
+    private Border _outsideBorder;
+    private Border _insideBorder;
 }

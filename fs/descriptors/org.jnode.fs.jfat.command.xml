@@ -23,7 +23,7 @@
 <plugin id="org.jnode.fs.jfat.command"
         name="JFAT specific commands"
         version="@VERSION@"
-        provider-name="UltreonOS"
+        provider-name="JNode.org"
         license-name="lgpl">
 
   <requires>

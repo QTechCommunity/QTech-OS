@@ -96,7 +96,7 @@ public class BOOTPServer {
     }
 
     private void run() throws SocketException {
-        System.out.println("Ultreon OS BOOTP Server");
+        System.out.println("JNode BOOTP Server");
         socket = new DatagramSocket(SERVER_PORT);
         try {
             socket.setBroadcast(true);

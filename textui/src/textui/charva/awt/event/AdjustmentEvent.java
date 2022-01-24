@@ -24,27 +24,24 @@ import charva.awt.Component;
 /**
  * The adjustment event emitted by Adjustable objects (eg a scrollbar).
  */
-public class AdjustmentEvent extends AWTEvent {
+public class AdjustmentEvent extends AWTEvent
+{
     private static final long serialVersionUID = 1L;
-
     /**
      * Create a new AdjustmentEvent.
-     *
      * @param source_ The component to which the event must be delivered.
-     * @param value_  The value of the adjustable component.
+     * @param value_ The value of the adjustable component.
      */
     public AdjustmentEvent(Component source_, int value_) {
-        super(source_, AWTEvent.ADJUSTMENT_EVENT);
-        _value = value_;
+    super(source_, AWTEvent.ADJUSTMENT_EVENT);
+    _value = value_;
     }
 
     public Component getAdjustable() {
-        return (Component) super.getSource();
+    return (Component) super.getSource();
     }
 
-    public int getValue() {
-        return _value;
-    }
+    public int getValue() { return _value; }
 
-    private final int _value;
+    private int _value;
 }

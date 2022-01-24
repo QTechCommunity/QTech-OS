@@ -21,11 +21,11 @@
 <!DOCTYPE plugin SYSTEM "jnode.dtd">
 
 <plugin id="org.jnode.vm" 
-        name="Ultreon OS VM-X86 classes"
+        name="JNode VM-X86 classes"
         version="@VERSION@"
         system="true"
         license-name="lgpl"
-        provider-name="UltreonOS">
+        provider-name="JNode.org">
         
   <requires>
     <import plugin="org.jnode.vm.core"/>

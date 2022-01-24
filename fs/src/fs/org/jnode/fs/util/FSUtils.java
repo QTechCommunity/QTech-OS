@@ -20,7 +20,6 @@
  
 package org.jnode.fs.util;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -30,7 +29,6 @@ import org.apache.log4j.Logger;
 import org.jnode.fs.FSDirectory;
 import org.jnode.fs.FSEntry;
 import org.jnode.fs.FSFile;
-import org.jnode.fs.FileSystem;
 
 /**
  * 
@@ -306,21 +304,5 @@ public class FSUtils {
         }
 
         return result;
-    }
-
-    public static FSEntry getEntry(FileSystem<?> fs, String path) throws IOException {
-        String[] split = path.split("/");
-
-        FSEntry curEntry = fs.getRootEntry();
-        for (int i = 0; i < split.length; i++) {
-            String entry = split[i];
-            if (curEntry instanceof FSDirectory) {
-                FSDirectory directory = (FSDirectory) curEntry;
-                curEntry = directory.getEntry(entry);
-            } else if (i != split.length - 1) {
-                throw new FileNotFoundException(path);
-            }
-        }
-        return curEntry;
     }
 }

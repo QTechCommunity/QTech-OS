@@ -19,6 +19,10 @@
 
 package charva.awt.util;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+
 import charva.awt.Component;
 import charva.awt.Dialog;
 import charva.awt.FlowLayout;
@@ -32,9 +36,6 @@ import charvax.swing.JLabel;
 import charvax.swing.JOptionPane;
 import charvax.swing.JPanel;
 import charvax.swing.JTextField;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
 
 /**
  * This class displays a date entry field in the format CCYY/MM/DD and allows
@@ -42,7 +43,7 @@ import java.util.TimeZone;
  * keystroke and causes a beep if a non-numeric key is typed.
  */
 public class DateEntryField extends JPanel implements KeyListener,
-    FocusListener {
+        FocusListener {
 
     public DateEntryField(Frame owner_) {
         this(owner_, TimeZone.getDefault());
@@ -109,7 +110,7 @@ public class DateEntryField extends JPanel implements KeyListener,
         if (source == _yearField && _yearField.getText().length() < 4) return;
 
         if (source == _monthField && _monthField.getText().length() < 2)
-            return;
+                return;
 
         if (source == _dayField && _dayField.getText().length() < 2) return;
 
@@ -126,24 +127,25 @@ public class DateEntryField extends JPanel implements KeyListener,
         /*
          * Get the absolute origin of this component.
          */
-        /* Point origin = */
-        getLocationOnScreen();
+        /* Point origin = */getLocationOnScreen();
 
         try {
             if (source == _yearField) {
                 if (_yearField.getText().equals("")) {
-                    String[] msgs = {"A valid year must be ",
-                        "entered in this field "};
+                    String[] msgs = { "A valid year must be ",
+                            "entered in this field "};
 
                     JOptionPane.showMessageDialog(_yearField, msgs, "Error",
-                        JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
 
                     _yearField.requestFocus();
                 } else {
                     int year = Integer.parseInt(_yearField.getText());
                     _cal.set(Calendar.YEAR, year);
                 }
-            } else if (source == _monthField) {
+            }
+
+            else if (source == _monthField) {
 
                 if (_monthField.getText().equals("") == false) {
                     int month = Integer.parseInt(_monthField.getText());
@@ -153,13 +155,15 @@ public class DateEntryField extends JPanel implements KeyListener,
                         return;
                     }
                 }
-                String[] msgs = {"The month must be", "between 1 and 12"};
+                String[] msgs = { "The month must be", "between 1 and 12"};
 
                 JOptionPane.showMessageDialog(_monthField, msgs, "Error",
-                    JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.ERROR_MESSAGE);
 
                 _monthField.requestFocus();
-            } else if (source == _dayField) {
+            }
+
+            else if (source == _dayField) {
                 int maxday = _cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
                 if (_dayField.getText().equals("") == false) {
@@ -175,9 +179,9 @@ public class DateEntryField extends JPanel implements KeyListener,
                         return;
                     }
                 }
-                String[] msgs = {"The day must be", "between 1 and " + maxday};
+                String[] msgs = { "The day must be", "between 1 and " + maxday};
                 JOptionPane.showMessageDialog(_dayField, msgs, "Error",
-                    JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.ERROR_MESSAGE);
 
                 _dayField.requestFocus();
             }
@@ -219,7 +223,6 @@ public class DateEntryField extends JPanel implements KeyListener,
     }
 
     /**
-     *
      */
     public void setDay(int day_) {
         _dayField.setText(Integer.toString(day_));
@@ -247,11 +250,11 @@ public class DateEntryField extends JPanel implements KeyListener,
         return Integer.parseInt(_dayField.getText());
     }
 
-    private final JTextField _yearField = new JTextField(4);
+    private JTextField _yearField = new JTextField(4);
 
-    private final JTextField _monthField = new JTextField(2);
+    private JTextField _monthField = new JTextField(2);
 
-    private final JTextField _dayField = new JTextField(2);
+    private JTextField _dayField = new JTextField(2);
 
     private GregorianCalendar _cal;
     //private final Window _owner;
