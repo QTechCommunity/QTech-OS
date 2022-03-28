@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -28,7 +28,7 @@ import org.jnode.plugin.ConfigurationElement;
 import org.jnode.plugin.PluginDescriptor;
 
 /**
- * Dummy configuration element for configuring plugins outside of the normal JNode framework.
+ * Dummy configuration element for configuring plugins outside of the normal UltreonOS framework.
  * Most methods have dummy implementations.  If you come across a use-case that requires
  * a non-dummy implementation, please implement the method in this class rather than
  * subclassing. 

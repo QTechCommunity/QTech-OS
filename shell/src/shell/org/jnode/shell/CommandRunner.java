@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -143,7 +143,7 @@ public class CommandRunner implements CommandRunnable {
     /**
      * Executes the command.
      *
-     * For a JNode command, this will initialize and execute the command. For
+     * For a UltreonOS command, this will initialize and execute the command. For
      * other commands the main method will be invoked via reflection with the
      * set of arguments supplied on the command line.
      */

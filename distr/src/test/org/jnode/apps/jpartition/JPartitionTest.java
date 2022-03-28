@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -51,7 +51,7 @@ import org.junit.runners.Suite.SuiteClasses;
     TestRemovePartitionFromDevice.class, TestOSFacade.class })
 public class JPartitionTest extends TestSuite {
     static {
-        // when not in JNode, must be called before anything
+        // when not in UltreonOS, must be called before anything
         // invoking InitialNaming
         DeviceUtils.initJNodeCore();
     }

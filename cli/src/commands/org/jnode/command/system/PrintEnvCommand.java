@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -30,7 +30,7 @@ import java.util.TreeMap;
 import org.jnode.shell.AbstractCommand;
 
 /**
- * This command prints the current environment variables.  A regular JNode command
+ * This command prints the current environment variables.  A regular UltreonOS command
  * cannot set environment variables because the Java APIs do not allow this.  Environment
  * variable setting is accomplished by the shell / interpreter and builtin commands, it at all.
  * 

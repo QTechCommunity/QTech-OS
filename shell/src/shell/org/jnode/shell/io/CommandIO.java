@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -30,7 +30,7 @@ import java.io.Reader;
 import java.io.Writer;
 
 /**
- * This interface is JNode's command stream API.  The purpose of the
+ * This interface is UltreonOS's command stream API.  The purpose of the
  * API is to allow commands to gain access the "standard" streams as either
  * byte oriented Input/OutputStreams or character oriented Readers/Writers,
  * while hiding the underlying implementation.  This API will also support 

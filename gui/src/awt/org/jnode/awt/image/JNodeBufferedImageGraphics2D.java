@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -56,7 +56,7 @@ public class JNodeBufferedImageGraphics2D extends AbstractSurfaceGraphics2D {
      * @return The graphics
      *         <p/>
      *         public Graphics create() {
-     *         return new JNodeBufferedImageGraphics(this);
+     *         return new UltreonOSBufferedImageGraphics(this);
      *         }
      * @see java.awt.Graphics#create()
      */

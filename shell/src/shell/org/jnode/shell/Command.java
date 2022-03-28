@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -27,11 +27,11 @@ import org.jnode.shell.io.CommandIO;
 import org.jnode.shell.syntax.ArgumentBundle;
 
 /**
- * This interface is implemented by all JNode native 'command' classes.  It
+ * This interface is implemented by all UltreonOS native 'command' classes.  It
  * provides the 'execute' method(s) used to invoke the command and other
  * methods used to set the arguments and streams.
  * <p>
- * The normal implementation pattern for a JNode native command is to 'extend'
+ * The normal implementation pattern for a UltreonOS native command is to 'extend'
  * the AbstractCommand class.  This class provides implementations of the
  * getters defined by this API along with a default implementations of the
  * execute methods, and some special infrastructure to support the 'classic'
@@ -61,7 +61,7 @@ public interface Command {
      *        piped.
      * @throws Exception command execution may throw any Exception.  It is considered
      * to be <b>good style</b> to allow unexpected exceptions to propagate to the 
-     * JNode shell where they can be handled uniformly based on the user's preferences.
+     * UltreonOS shell where they can be handled uniformly based on the user's preferences.
      */
     public void execute(CommandLine commandLine, InputStream in,
             PrintStream out, PrintStream err) throws Exception;
@@ -73,7 +73,7 @@ public interface Command {
      * 
      * @throws Exception command execution may throw any Exception.  It is considered
      * to be <b>good style</b> to allow unexpected exceptions to propagate to the 
-     * JNode shell where they can be handled uniformly based on the user's preferences.
+     * UltreonOS shell where they can be handled uniformly based on the user's preferences.
      */
     public void execute() throws Exception;
 

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -44,9 +44,9 @@ public class RemoteConsoleInputStream {
      * @Override public int read() throws IOException { while (true) { // In the
      * private method TelnetIO.stripCRSeq (in telnetd library) // is
      * transforming a CR followed by NULL or LF in // an ENTER represented by LF
-     * internally // // In order to satisfy the current JNode shell, we will
+     * internally // // In order to satisfy the current UltreonOS shell, we will
      * transform // that to a sequence of CR+LF. TODO should we fix that in the
-     * JNode shell ? int ch; // // begin of workaround // if(foundLF) // { // ch =
+     * UltreonOS shell ? int ch; // // begin of workaround // if(foundLF) // { // ch =
      * LF; // foundLF = false; // } // else // { ch = terminalIO.read(); //
      * if(ch == LF) // { // ch = CR; // foundLF = true; // } // } // // end of
      * workaround // System.err.println("ch="+ch); if (ch != 0) { // if(ch ==
@@ -55,7 +55,7 @@ public class RemoteConsoleInputStream {
      * if (echo) { terminalIO.write((char) ch); } // }
      * 
      * if(ch == BasicTerminalIO.ENTER) { //TODO it seems we need that to be able
-     * to launch JNode commands ch = -1; }
+     * to launch UltreonOS commands ch = -1; }
      * 
      * return ch; } } }
      */

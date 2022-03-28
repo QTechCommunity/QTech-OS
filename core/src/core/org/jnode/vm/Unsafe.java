@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -649,7 +649,7 @@ public final class Unsafe {
     protected static native Address getBootHeapEnd();
 
     /**
-     * Gets information of the JNode kernel command line.
+     * Gets information of the UltreonOS kernel command line.
      *
      * @param destination If non-null, the commandline is copied into this array.
      * @return The maximum length of the command line

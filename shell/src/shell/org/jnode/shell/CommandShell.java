@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -323,7 +323,7 @@ public class CommandShell implements Runnable, Shell, ConsoleListener {
             }
         }
 
-        // Run commands from the JNode command line first
+        // Run commands from the UltreonOS command line first
         final String cmdLine = System.getProperty(CMDLINE_PROPERTY_NAME, "");
         final StringTokenizer tok = new StringTokenizer(cmdLine);
 
@@ -589,7 +589,7 @@ public class CommandShell implements Runnable, Shell, ConsoleListener {
      * Gets a {@link CommandInfo} object representing the given command/alias.
      *
      * If the given command is a known alias, and the {@code Class} for the alias
-     * is a type of {@link Command} then a {@code CommandInfo} object for a JNode
+     * is a type of {@link Command} then a {@code CommandInfo} object for a UltreonOS
      * command will be returned. If the {@code Class} is a non-JNode command and
      * a bare command definition for the alias exists, then a {@code CommandInfo}
      * object will be created that contains an {@link org.jnode.shell.syntax.ArgumentBundle ArgumentBundle}

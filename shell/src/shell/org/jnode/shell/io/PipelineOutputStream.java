@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- * This class provides the output side of a JNode shell pipeline.
+ * This class provides the output side of a UltreonOS shell pipeline.
  * Unlike the standard PipedInputStream, this one is designed to
  * support a pipeline with multiple readers and writers.  
  * 

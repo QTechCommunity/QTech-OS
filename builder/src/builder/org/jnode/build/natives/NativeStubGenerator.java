@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -28,7 +28,7 @@ import org.apache.bcel.generic.Type;
 import org.apache.bcel.util.ClassLoaderRepository;
 
 /**
- * Simple tool for generating JNode speciffic "native" stubs for classes with native methods.
+ * Simple tool for generating UltreonOS speciffic "native" stubs for classes with native methods.
  * The first argument is the fully qualified name of the class to process, which is on the classpath.
  * The second argument is the root directory of the source tree where the generated stub is saved,
  * if missing the stub is printed to System.out.

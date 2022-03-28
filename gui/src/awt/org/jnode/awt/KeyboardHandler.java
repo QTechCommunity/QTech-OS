@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -53,7 +53,7 @@ import org.jnode.driver.input.KeyboardListener;
  * @author Levente S\u00e1ntha
  */
 public class KeyboardHandler implements KeyboardListener {
-    //todo refactor this pattern to be generally available in JNode for AWT and text consoles as well
+    //todo refactor this pattern to be generally available in UltreonOS for AWT and text consoles as well
     private static class KeyboardAPIHandler implements KeyboardAPI, DeviceListener {
         private Collection<KeyboardAPI> keyboardList = new HashSet<KeyboardAPI>();
         private Collection<KeyboardListener> listenerList = new HashSet<KeyboardListener>();

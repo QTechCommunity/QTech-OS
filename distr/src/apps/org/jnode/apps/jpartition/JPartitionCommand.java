@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -30,7 +30,7 @@ import org.jnode.shell.syntax.Argument;
 import org.jnode.shell.syntax.FlagArgument;
 
 /**
- * Command to launch JPartition from JNode's shell.
+ * Command to launch JPartition from UltreonOS's shell.
  * @author Fabien DUMINY (fduminy@jnode.org)
  *
  */
@@ -53,7 +53,7 @@ public class JPartitionCommand extends AbstractCommand {
     }
 
     /**
-     * Main method to run JPartition outside of JNode.
+     * Main method to run JPartition outside of UltreonOS.
      * @param args
      * @throws Exception
      */

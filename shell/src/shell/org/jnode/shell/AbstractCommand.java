@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -35,7 +35,7 @@ import org.jnode.shell.syntax.ArgumentBundle;
 import org.jnode.vm.VmExit;
 
 /**
- * This a base class for JNode native command objects.  It provides default implementations 
+ * This a base class for UltreonOS native command objects.  It provides default implementations 
  * of the 'execute' entry points, and other methods defined by the Command API.  It also
  * provides 'getter' methods for retrieving the CommandLine and CommandIO stream
  * objects, and an 'exit' method.

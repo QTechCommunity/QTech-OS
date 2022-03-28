@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -150,7 +150,7 @@ public abstract class AbstractInputDriver<E extends SystemEvent> extends Driver 
                     E event = handleScancode(scancode);
                     if ((event != null) && !event.isConsumed()) {
                         if (eventQueue.isClosed()) {
-                            // the queue is closed : it usually happen while JNode is halting
+                            // the queue is closed : it usually happen while UltreonOS is halting
                             // simply stop processing the events
                             break;
                         }

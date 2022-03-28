@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -82,7 +82,7 @@ public class SwingConsole {
         
         ShellManager sm = InitialNaming.lookup(ShellManager.NAME);
         if (sm != null) {
-            // current shell is null when JNode boot directly in GUI mode, without going 
+            // current shell is null when UltreonOS boot directly in GUI mode, without going 
             // through command line
             if (sm.getCurrentShell() != null) {
                 manager = (TextScreenConsoleManager) sm.getCurrentShell().getConsole().getManager();

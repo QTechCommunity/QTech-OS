@@ -2,7 +2,7 @@
 <!--
     $Id$
 
-    Copyright (C) 2003-2015 JNode.org
+    Copyright (C) 2020-2022 Ultreon Team
 
     This library is free software; you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License as published
@@ -33,7 +33,7 @@
 	<!-- Include antlib -->
 	<typedef file="${root.dir}/all/lib/jnode.xml"/>
 
-	<!-- JNode version -->
+	<!-- UltreonOS version -->
 	<property name="jnode-ver" value="0.2.9-dev"/>
 
 	<!-- Java target and source version -->
@@ -997,7 +997,7 @@ clean             Remove all intermediate build results.
                      basedir="${root.dir}/core/build/classes"/>
 	</target>
 
-	<!-- check that all native methods are properly implemented for JNode -->
+	<!-- check that all native methods are properly implemented for UltreonOS -->
 	<target name="native-method-check" depends="assemble-projects">
 		<echo message="native-method-check"/>
 		<taskdef name="native-check" classname="org.jnode.ant.taskdefs.NativeCheckTask" 

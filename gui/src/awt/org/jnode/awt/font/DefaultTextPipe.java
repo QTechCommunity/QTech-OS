@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -44,7 +44,7 @@ import sun.java2d.SurfaceData;
 import sun.java2d.pipe.TextPipe;
 
 /**
- * Experimental text pipe implementation based on the current font support in JNode.
+ * Experimental text pipe implementation based on the current font support in UltreonOS.
  *
  * @author Levente S\u00e1ntha
  */

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -135,7 +135,7 @@ public class DHCPMessage {
     /** IP address */
     public static final int IRC_SERVER_OPTION = 74;
 
-    /** String URL: JNode specific option */
+    /** String URL: UltreonOS specific option */
     public static final int PLUGIN_LOADER_OPTION = 130;
 
     public static final int END_OPTION = 255;

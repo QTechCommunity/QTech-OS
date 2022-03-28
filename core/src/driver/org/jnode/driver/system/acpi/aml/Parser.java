@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -230,7 +230,7 @@ public class Parser {
         }
 
         public int getWord() {
-            // should use getShort but not implemented in JNode...
+            // should use getShort but not implemented in UltreonOS...
             int value = peekWord();
             move(2);
             return value;

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -31,9 +31,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * This class runs a suite of functional tests on the JNode file system
- * implementation.  The tests are designed to be run from the JNode development
- * sandbox.  The JNode core project needs to be on the bootclasspath to avoid
+ * This class runs a suite of functional tests on the UltreonOS file system
+ * implementation.  The tests are designed to be run from the UltreonOS development
+ * sandbox.  The UltreonOS core project needs to be on the bootclasspath to avoid
  * classloader security problems.
  *
  * @author Fabien DUMINY

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -29,7 +29,7 @@ import org.jnode.driver.console.TextConsole;
 import org.jnode.naming.InitialNaming;
 
 /**
- * Custom Log4j appender class for appending to JNode consoles.  This appender
+ * Custom Log4j appender class for appending to UltreonOS consoles.  This appender
  * avoids the unnecessary Writer to Stream to Writer wrappering that goes on
  * if we use the standard Log4j ConsoleAppender.  (JNode's consoles are natively
  * character oriented rather than byte oriented.)
@@ -44,7 +44,7 @@ public class VirtualConsoleAppender extends WriterAppender {
     private Writer writer;
 
     /**
-     * Create an appender for a named JNode console.
+     * Create an appender for a named UltreonOS console.
      * @param layout the appender's initial log message layout.
      * @param name the target console name.
      * @param toErr if <code>true</code> output to the console's 'err' stream,
@@ -78,7 +78,7 @@ public class VirtualConsoleAppender extends WriterAppender {
     }
 
     /**
-     * Create an appender for a JNode console supplied as an argument.
+     * Create an appender for a UltreonOS console supplied as an argument.
      * @param layout the appender's initial log message layout.
      * @param console the target console.
      * @param toErr if <code>true</code> output to the console's 'err' stream,

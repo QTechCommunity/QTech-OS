@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -60,7 +60,7 @@ public class TFTPClient extends org.apache.commons.net.tftp.TFTPClient {
     }
 
     public void run(Reader in) throws IOException {
-        // FIXME ... figure out to how to use JNode command argument parsing
+        // FIXME ... figure out to how to use UltreonOS command argument parsing
         // (and completion) for our little TFTP interactive command syntax. 
         this.br = new BufferedReader(in);
         out.println("JNode TFTP Client");

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -24,7 +24,7 @@ import java.io.IOException;
 
 /**
  * Interface to stack on to declare implementation of a {@code getCreated()} method,
- * until JNode adds it to {@link FSEntry}.
+ * until UltreonOS adds it to {@link FSEntry}.
  */
 public interface FSEntryCreated {
     public long getCreated() throws IOException;

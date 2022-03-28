@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -337,7 +337,7 @@ public class ObjectEmitter {
      * @param vmType
      * @throws BuildException
      * @throws ClassNotFoundException
-     * @throws JNodeClassNotFoundException
+     * @throws UltreonOSClassNotFoundException
      */
     private void emitObject(Class<?> cls, Object obj, VmNormalClass<?> vmType) throws BuildException,
         ClassNotFoundException, JNodeClassNotFoundException {
@@ -354,7 +354,7 @@ public class ObjectEmitter {
      * @param vmType
      * @throws BuildException
      * @throws ClassNotFoundException
-     * @throws JNodeClassNotFoundException
+     * @throws UltreonOSClassNotFoundException
      */
     private void storeObject(int offset, Class<?> cls, Object obj, VmClassType<?> vmType) throws BuildException,
         ClassNotFoundException, JNodeClassNotFoundException {

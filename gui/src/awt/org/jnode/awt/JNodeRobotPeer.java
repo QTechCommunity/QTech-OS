@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -52,10 +52,10 @@ public class JNodeRobotPeer<toolkitT extends JNodeToolkit> extends
     public int getRGBPixel(int x, int y) {
         return toolkit.getGraphics().getRGBPixel(x, y);
         /*
-        //JNodeToolkit.createImage -> JNodeImage.getPixelColor
+        //JNodeToolkit.createImage -> UltreonOSImage.getPixelColor
         //getToolkitImpl().getAwtContext().
         getAwtRoot().getGraphics().copyArea(x, y, width, height, dx, dy) setColor(null);
-        final JNodeImage screen = null; //TODO get screen image
+        final UltreonOSImage screen = null; //TODO get screen image
         final int[] pixel = new int[1];
         final PixelGrabber pg = new PixelGrabber(screen, x, y, 1, 1, pixel, 0, 1);
         try 

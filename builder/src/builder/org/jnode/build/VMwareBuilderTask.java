@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -40,7 +40,7 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 
 /**
- * This task builds a VMWare '.vmx' file to allow JNode to be run using VMWare player.
+ * This task builds a VMWare '.vmx' file to allow UltreonOS to be run using VMWare player.
  * 
  * @author crawley@jnode.org
  * @author epr@jnode.org
@@ -228,7 +228,7 @@ public class VMwareBuilderTask extends Task {
             throw new BuildException("Cannot write the VMX file: " + vmxFile);
         }
         
-        // Finally reinstate the saved JNode.nvram file if we have one.
+        // Finally reinstate the saved UltreonOS.nvram file if we have one.
         if (saveDir != null) {
             File savedNVRam = new File(saveDir, "JNode.nvram");
             File nvram = new File(new File(isoFile).getParentFile(), "JNode.nvram"); 

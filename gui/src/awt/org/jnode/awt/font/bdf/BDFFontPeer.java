@@ -20,7 +20,7 @@ import sun.font.CoreMetrics;
 import sun.font.FontLineMetrics;
 
 /**
- * Specific implementation of {@link JNodeFontPeer} for BDF fonts
+ * Specific implementation of {@link UltreonOSFontPeer} for BDF fonts
  * 
  * @author fabien
  *

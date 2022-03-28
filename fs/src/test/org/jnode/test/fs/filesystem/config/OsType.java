@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -24,17 +24,17 @@ import org.jnode.util.OsUtils;
 
 public enum OsType {
     /**
-     * An OS that is the JNode OS
+     * An OS that is the UltreonOS OS
      */
     JNODE_OS("JNodeOS"),
 
     /**
-     * An OS that is or is not the JNode OS
+     * An OS that is or is not the UltreonOS OS
      */
     BOTH_OS("BothOS"),
 
     /**
-     * An OS that is not the JNode OS
+     * An OS that is not the UltreonOS OS
      */
     OTHER_OS("OtherOS");
 

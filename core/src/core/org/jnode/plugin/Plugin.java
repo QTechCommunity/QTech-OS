@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -90,7 +90,7 @@ public abstract class Plugin {
 
     /**
      * Start this plugin
-     * To invoke this method, a JNodePermission("startPlugin") is required.
+     * To invoke this method, a UltreonOSPermission("startPlugin") is required.
      *
      * @throws PluginException
      */
@@ -120,7 +120,7 @@ public abstract class Plugin {
 
     /**
      * Stop this plugin.
-     * To invoke this method, a JNodePermission("stopPlugin") is required.
+     * To invoke this method, a UltreonOSPermission("stopPlugin") is required.
      *
      * @throws PluginException
      */

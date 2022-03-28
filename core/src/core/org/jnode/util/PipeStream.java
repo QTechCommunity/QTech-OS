@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -21,8 +21,8 @@
 package org.jnode.util;
 
 /**
- * Marker interface for JNode specific 'pipe' streams; i.e. streams that
- * are used for pipes between JNode commands.
+ * Marker interface for UltreonOS specific 'pipe' streams; i.e. streams that
+ * are used for pipes between UltreonOS commands.
  * 
  * @author crawley@jnode.org
  */

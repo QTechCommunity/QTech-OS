@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -44,7 +44,7 @@ import org.jnode.shell.syntax.EnumArgument;
 import org.jnode.shell.syntax.FlagArgument;
 
 /**
- * This command allows the user to examine and change JNode's key bindings.
+ * This command allows the user to examine and change UltreonOS's key bindings.
  * 
  * @author crawley@jnode.org
  */

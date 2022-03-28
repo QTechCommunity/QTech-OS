@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -88,19 +88,17 @@ public class ApplicationBar extends JPanel {
 
     private void reloadApps() {
         removeAll();
-        final Extension[] exts = ep.getExtensions();
-        final int cnt = exts.length;
+        final Extension[] extensions = ep.getExtensions();
+        final int cnt = extensions.length;
         log.debug("Found " + cnt + " extensions");
-        for (int i = 0; i < cnt; i++) {
-            final Extension ext = exts[i];
-
-            final ConfigurationElement[] elems = ext.getConfigurationElements();
-            log.debug("Found " + elems.length + "ce's");
-            for (int k = 0; k < elems.length; k++) {
-                final ConfigurationElement ce = elems[k];
+        for (final Extension ext : extensions) {
+            final ConfigurationElement[] elements = ext.getConfigurationElements();
+            log.debug("Found " + elements.length + "ce's");
+            for (final ConfigurationElement ce : elements) {
                 if (ce.getName().equals("application")) {
                     final String name = ce.getAttribute("name");
                     final String className = ce.getAttribute("class");
+
                     if ((name != null) && (className != null)) {
                         log.debug("Adding app " + name);
                         addApp(name, new ActionListener() {
@@ -130,7 +128,6 @@ public class ApplicationBar extends JPanel {
         final int rowCount = 5; // TODO calculate on the fly
         constraints.gridx = cnt % rowCount;
         constraints.gridy = cnt / rowCount;
-        constraints.ipadx = 5;
         constraints.ipadx = 5;
         constraints.insets = new Insets(2, 5, 2, 5);
         constraints.fill = GridBagConstraints.BOTH;

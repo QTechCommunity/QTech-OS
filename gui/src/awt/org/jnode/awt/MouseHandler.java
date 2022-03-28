@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -49,7 +49,7 @@ import javax.naming.NameNotFoundException;
  * @author Levente S\u00e1ntha
  */
 public class MouseHandler implements PointerListener {
-    //todo refactor this pattern to be generally available in JNode for AWT and text consoles as well
+    //todo refactor this pattern to be generally available in UltreonOS for AWT and text consoles as well
     private static class PointerAPIHandler implements PointerAPI, DeviceListener {
         private Collection<PointerAPI> pointerList = new HashSet<PointerAPI>();
         private Collection<PointerListener> listenerList = new HashSet<PointerListener>();

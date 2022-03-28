@@ -216,7 +216,7 @@ public final class VMSystem {
      * sequence.
      */
     static InputStream makeStandardInputStream() {
-        return SystemInputStream.getInstance(); // JNode specific
+        return SystemInputStream.getInstance(); // UltreonOS specific
     }
 
     /**

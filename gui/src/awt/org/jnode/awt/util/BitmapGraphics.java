@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -141,7 +141,7 @@ public abstract class BitmapGraphics {
     public abstract void drawPixels(int x, int y, int count, int color, int mode);
 
     //todo investigate it
-    //though a potential performance improvement, this method is not used because it makes JNode unstable 
+    //though a potential performance improvement, this method is not used because it makes UltreonOS unstable 
     public void fillRect(int x, int y, int width, int height, int color, int mode) {
         for (int i = 0; i < height; i++)
             drawPixels(x, y + i, width, color, mode);

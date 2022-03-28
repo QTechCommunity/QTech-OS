@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2013 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -27,7 +27,7 @@ import org.jnode.shell.syntax.Argument;
 import org.jnode.shell.syntax.DeviceArgument;
 
 /**
- * Grub Installer command for JNode.
+ * Grub Installer command for UltreonOS.
  *
  * TODO: Add more options for supporting Grub with user specified file
  * TODO: Add more command support for grub installation.

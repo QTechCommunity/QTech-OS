@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -34,7 +34,7 @@ import org.jnode.shell.help.HelpFactory;
 import org.jnode.shell.help.def.DefaultHelpFactory;
 
 /**
- * This class assembles a minimal set of JNode services to support unit
+ * This class assembles a minimal set of UltreonOS services to support unit
  * testing some shell and syntax infrastructure.
  * <p>
  * A Cassowary is another large flightless bird ... like an Emu but different.

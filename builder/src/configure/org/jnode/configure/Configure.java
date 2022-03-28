@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -26,9 +26,9 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 /**
- * The main class for the JNode configuration tool (command line version).
+ * The main class for the UltreonOS configuration tool (command line version).
  * <p/>
- * The command currently does not use the JNode Command / Syntax APIs. This
+ * The command currently does not use the UltreonOS Command / Syntax APIs. This
  * should be addressed when we have a compatibility library. A version with a
  * GUI-based interface would be a good idea too.
  *

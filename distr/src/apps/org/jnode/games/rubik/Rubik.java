@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -37,7 +37,7 @@ import javax.swing.SwingUtilities;
 
 /**
  * Rubik's Cube 3D simulator.
- * Adapted to JNode by Levente S\u00e1ntha.
+ * Adapted to UltreonOS by Levente S\u00e1ntha.
  *  
  * @author Karl H\u00f6rnell, March 11 1996 (Last modified October 6)
  *

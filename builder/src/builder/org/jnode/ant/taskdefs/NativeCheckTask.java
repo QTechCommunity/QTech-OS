@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -43,13 +43,13 @@ import org.objectweb.asm.attrs.Attributes;
 
 /**
  * That ant task will check that native methods are properly implemented
- * for JNode.
+ * for UltreonOS.
  *
  * @author Fabien DUMINY (fduminy at jnode.org)
  */
 public class NativeCheckTask extends FileSetTask {
     /**
-     * potential implementation of the native methods for JNode.
+     * potential implementation of the native methods for UltreonOS.
      * key: className (String)
      * value: native methods for the class (List&lt;NativeMethod&gt;)
      */
@@ -68,11 +68,11 @@ public class NativeCheckTask extends FileSetTask {
     protected void doExecute() throws BuildException {
         // process all classes to find native methods
         // and classes that could potentially implement native methods
-        // for JNode
+        // for UltreonOS
         processFiles();
 
         // now, check all native methods are properly implemented
-        // for JNode
+        // for UltreonOS
         int nbNativeMethods = 0;
         for (String className : nativeMethods.keySet()) {
             List<NativeMethod> methods = nativeMethods.get(className);

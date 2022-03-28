@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -73,7 +73,7 @@ public final class JvmType {
      * BYTE to INT FLOAT to FLOAT
      *
      * @param type an internal type value
-     * @return the type value for the smallest type that JNode will use to
+     * @return the type value for the smallest type that UltreonOS will use to
      * hold an instance of the type.
      */
     public static int TypeToContainingType(int type) {

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -28,7 +28,7 @@ import org.jnode.nanoxml.XMLElement;
 
 /**
  * This is the base class for the syntax elements that are used to specify concrete 
- * command-line syntaxes for JNode commands.  The key method that a child class must
+ * command-line syntaxes for UltreonOS commands.  The key method that a child class must
  * implement is the <code>prepare</code> method that produces the MuSyntax tree that
  * the MuParser uses when parsing or completing a command line.
  * 

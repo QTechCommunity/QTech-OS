@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -229,7 +229,7 @@ public class TestUtils {
      * SecurityException, NameNotFoundException, IOException,
      * FileSystemException { Class fsClass = config.getFsClass(); Device device =
      * config.getDevice(); // create a formatted FileSystem // by using the
-     * appropriate JNode FileSystem formatter FileSystem fs = null; //
+     * appropriate UltreonOS FileSystem formatter FileSystem fs = null; //
      * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
      * This operation is VERY DANGEROUS !!! It format a device. // And it can be
      * VERY LONG TO PROCESS (if device has a big capacity) // But all this is
@@ -289,7 +289,7 @@ public class TestUtils {
      * throws NameNotFoundException, IOException, FileSystemException { Class
      * fsClass = config.getFsClass(); int sizeInKb = config.getSizeInKb();
      * Object formatOptions = config.getFormatOptions(); // create an image file
-     * of a formatted FileSystem // by using the appropriate JNode FileSystem
+     * of a formatted FileSystem // by using the appropriate UltreonOS FileSystem
      * formatter File origFile = TestUtils.makeFile(config.getImageFile(),
      * sizeInKb); InputStream imageFile = new FileInputStream(origFile);
      * FileDevice device = null; FileSystem fs = null; try { device = new

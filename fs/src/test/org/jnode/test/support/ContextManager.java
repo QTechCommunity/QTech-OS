@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -69,8 +69,8 @@ public class ContextManager {
 
     protected void initLog4j() {
         if (OsType.OTHER_OS.isCurrentOS()) {
-            // configure Log4j only if outside of JNode
-            // (because JNode has its own config for Log4j)
+            // configure Log4j only if outside of UltreonOS
+            // (because UltreonOS has its own config for Log4j)
 
             // name must be of max 8 characters !!!
             // but extension can be larger that 3 characters !!!!!

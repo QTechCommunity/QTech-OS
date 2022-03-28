@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -27,7 +27,7 @@ import java.util.Map;
 /**
  * Loads arguments from a syntax extension point descriptor.
  *
- * In order to provide the benefits of JNode's parsing, completion and help
+ * In order to provide the benefits of UltreonOS's parsing, completion and help
  * systems, a command requires an {@link ArgumentBundle} to parse a
  * {@link org.jnode.shell.CommandLine}. Even if that command is not actually
  * a {@link org.jnode.shell.Command}, a description of {@code Argument}s can

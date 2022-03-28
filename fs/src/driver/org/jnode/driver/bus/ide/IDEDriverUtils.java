@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -30,9 +30,9 @@ import org.jnode.naming.InitialNaming;
 public class IDEDriverUtils {
 
     /**
-     * search and return the IDEDeviceFactory responsible for JNode
+     * search and return the IDEDeviceFactory responsible for UltreonOS
      *
-     * @return the IDEDeviceFactory from JNode
+     * @return the IDEDeviceFactory from UltreonOS
      * @throws NamingException
      */
     public static final IDEDeviceFactory getIDEDeviceFactory() throws NamingException {

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -25,7 +25,7 @@ import java.util.Collection;
 import org.jnode.driver.net.NetworkException;
 
 /**
- * This interface must be implemented by the network service of the JNode
+ * This interface must be implemented by the network service of the UltreonOS
  * kernel. It contains methods to register/unregister and obtain NetworkLayers,
  * and it is used by Network drivers to deliver receive packets. <p/> The
  * implementation of this interface must be obtained by invoking a lookup of

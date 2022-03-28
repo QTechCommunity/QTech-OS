@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -46,8 +46,8 @@ import org.jnode.shell.syntax.SyntaxSpecLoader;
 import org.jnode.shell.syntax.XMLSyntaxSpecAdapter;
 
 /**
- * Emu is the core of a light-weight JNode emulator that allows (some) JNode
- * applications to be run using a classic JVM in the context of a JNode development sandbox.
+ * Emu is the core of a light-weight UltreonOS emulator that allows (some) UltreonOS
+ * applications to be run using a classic JVM in the context of a UltreonOS development sandbox.
  * <p>
  * An Emu is also a large flightless bird ... which seems kind of appropriate.
  * 
@@ -87,9 +87,9 @@ public class Emu {
     }
 
     /**
-     * The constructor initializes a minimal subset of JNode services to allow us to run JNode commands.
+     * The constructor initializes a minimal subset of UltreonOS services to allow us to run UltreonOS commands.
      *
-     * @param root the notional JNode sandbox root directory or <code>null</code>.
+     * @param root the notional UltreonOS sandbox root directory or <code>null</code>.
      * @throws EmuException
      */
     public Emu(File root, String[] pluginNames) throws EmuException {

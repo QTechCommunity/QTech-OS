@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -30,7 +30,7 @@ import java.io.PrintStream;
  * This test application test the behavior of streams when System.setIn/Out/Err are used.
  * This is mostly aimed at exercising aspects of the proclet proxy
  * streams mechanisms.  It is a 'classic' Java application that does its owm
- * simple command argument handling.  It should be run in JNode; e.g. from the shell prompt. 
+ * simple command argument handling.  It should be run in UltreonOS; e.g. from the shell prompt. 
  */
 public class ProcletStreamTest {
 

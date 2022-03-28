@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -33,7 +33,7 @@ import org.vmmagic.unboxed.Word;
  * instead of being executed as normal java methods.  The actual method
  * bodies are not used.
  * <p/>
- * Methods in this class can also be called from inside JNode.
+ * Methods in this class can also be called from inside UltreonOS.
  * <p/>
  * See {@link org.jnode.vm.classmgr.VmType VmType} to get the list of "magic" classes and
  * {@link org.jnode.vm.compiler.BaseMagicHelper.MagicMethod MagicMethod}
@@ -210,9 +210,9 @@ public final class VmMagic {
     }
 
     /**
-     * Are we currently running JNode.
+     * Are we currently running UltreonOS.
      *
-     * @return true when running JNode, false when running any other VM.
+     * @return true when running UltreonOS, false when running any other VM.
      */
     public static boolean isRunningJNode() {
         return false;

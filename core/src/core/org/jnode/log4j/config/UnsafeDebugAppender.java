@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -37,7 +37,7 @@ public class UnsafeDebugAppender extends WriterAppender {
     private Writer writer;
 
     /**
-     * Create an appender for a named JNode console.
+     * Create an appender for a named UltreonOS console.
      * @param layout the appender's initial log message layout.
      */
     public UnsafeDebugAppender(Layout layout) {

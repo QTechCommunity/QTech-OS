@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -31,7 +31,7 @@ import org.jnode.shell.syntax.Argument;
 import org.jnode.shell.syntax.IntegerArgument;
 
 /**
- * Starts up a JDWP remote debugger listener for this JNode instance.
+ * Starts up a JDWP remote debugger listener for this UltreonOS instance.
  *
  * @author Levente S\u00e1ntha
  */

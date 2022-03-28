@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -83,7 +83,7 @@ public class ActiveTextConsole extends VirtualTextConsole {
 
     /**
      * This operation is not supported because the resulting Reader would
-     * behave in a way that breaks JNode's conceptual model of virtual consoles.
+     * behave in a way that breaks UltreonOS's conceptual model of virtual consoles.
      */
     @Override
     public Reader getIn() {

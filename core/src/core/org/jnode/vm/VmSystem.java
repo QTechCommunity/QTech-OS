@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -656,7 +656,7 @@ public final class VmSystem {
     // ------------------------------------------
 
     /**
-     * Copy one array to another. This is the implementation for System.arraycopy in JNode
+     * Copy one array to another. This is the implementation for System.arraycopy in UltreonOS
      *
      * @param src
      * @param srcPos
@@ -912,7 +912,7 @@ public final class VmSystem {
     }
 
     /**
-     * Returns the number of milliseconds since booting the kernel of JNode.
+     * Returns the number of milliseconds since booting the kernel of UltreonOS.
      * <p/>
      * This method does not call any other method and CAN be used in the
      * low-level system environment, where synchronization cannot be used.
@@ -1058,7 +1058,7 @@ public final class VmSystem {
     }
 
     /**
-     * Halt the system. This method requires a JNodePermission("halt").
+     * Halt the system. This method requires a UltreonOSPermission("halt").
      *
      * @param reset
      */

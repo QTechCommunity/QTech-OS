@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -23,7 +23,7 @@ package org.jnode.driver.sound.speaker;
 import org.jnode.driver.DeviceAPI;
 
 /**
- * This API defines how a speaker should be interfaced with JNode.
+ * This API defines how a speaker should be interfaced with UltreonOS.
  * 
  * @author Matt Paine
  */

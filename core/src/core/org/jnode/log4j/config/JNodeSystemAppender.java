@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -30,7 +30,7 @@ import org.apache.log4j.WriterAppender;
 /**
  * Custom Log4j appender class for appending to the current System.out or System.err.
  * Unlike {@link org.apache.log4j.ConsoleAppender}, this class tracks the changes to
- * the System streams.  (This is an interim solution until JNode gets the equivalent
+ * the System streams.  (This is an interim solution until UltreonOS gets the equivalent
  * of UNIX /dev/console.)
  *
  * @author crawley@jnode.org
@@ -40,7 +40,7 @@ public class JNodeSystemAppender extends WriterAppender {
     private final Writer writer;
 
     /**
-     * Create an appender for a given JNode console.
+     * Create an appender for a given UltreonOS console.
      *
      * @param layout the appender's initial log message layout.
      * @param toErr  if <code>true</code> output to System.err, otherwise

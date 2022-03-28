@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -43,7 +43,7 @@ import org.apache.tools.ant.types.FileSet;
 
 /*
 This code is based on http://hotswap.dev.java.net/.
-Adapted to JNode by Levente S\u00e1ntha.
+Adapted to UltreonOS by Levente S\u00e1ntha.
 */
 
 /**

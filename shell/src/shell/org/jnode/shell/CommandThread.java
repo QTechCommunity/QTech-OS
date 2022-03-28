@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -21,7 +21,7 @@
 package org.jnode.shell;
 
 /**
- * The CommandThread interface is used by JNode shells, interpreters and invokers 
+ * The CommandThread interface is used by UltreonOS shells, interpreters and invokers 
  * when they need to interact with a thread or thread-like object for running a Command.
  * Its purpose is to hide the API mismatch between Threads and Isolates.
  * 

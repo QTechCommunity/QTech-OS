@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -37,7 +37,7 @@ import org.jnode.vm.VmSystem;
 import org.jnode.vm.isolate.VmIsolate;
 
 /**
- * This class implements the proclet-specific state used in the JNode proclet
+ * This class implements the proclet-specific state used in the UltreonOS proclet
  * mechanism.
  * <p>
  * A 'proclet' is group of threads that has its own version of the system

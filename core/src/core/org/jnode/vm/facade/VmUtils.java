@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -33,7 +33,7 @@ import org.jnode.vm.objects.Statistic;
 
 /**
  * Utility class to share some Vm features.
- * For now, it's especially used to know how native methods are implemented in JNode.
+ * For now, it's especially used to know how native methods are implemented in UltreonOS.
  *
  * @author Fabien DUMINY (fduminy at jnode.org)
  */
@@ -93,7 +93,7 @@ public class VmUtils {
     }
 
     /**
-     * Is JNode currently running.
+     * Is UltreonOS currently running.
      *
      * @return true or false
      */

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -49,7 +49,7 @@ public class TestEmu {
     public static synchronized boolean initEmu(File root) {
         if (!emuInitialized) {
             // This is a bit of a hack.  We don't want class loader dependencies
-            // on the Emu code because that won't work when we run on JNode.  But
+            // on the Emu code because that won't work when we run on UltreonOS.  But
             // we need to use Emu if we are running tests on the dev't platform.
             // The following infers that we are running on the dev't platform if 
             // the 'Emu' class is not loadable.

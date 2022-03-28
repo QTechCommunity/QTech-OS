@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -78,7 +78,7 @@ public class TestHarness {
 
     private void run() throws Exception {
         // Do argument handling the classic Java way to minimize dependencies
-        // on JNode functionality that we might be testing with the harness.
+        // on UltreonOS functionality that we might be testing with the harness.
         int firstArg = 0;
         TestSetSpecification specs;
         if (args.length == 0) {

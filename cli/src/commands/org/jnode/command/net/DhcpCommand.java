@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -69,7 +69,7 @@ public class DhcpCommand extends AbstractCommand {
         final Device dev = argDevice.getValue();
 
         // The DHCP network configuration process will attempt to configure the DNS.  This will only work if
-        // the IP address 127.0.0.1 is bound to the loopback network interface.  And if there isn't, JNode's
+        // the IP address 127.0.0.1 is bound to the loopback network interface.  And if there isn't, UltreonOS's
         // network layer is left in a state that will require a reboot to unjam it (AFAIK).  
         //
         // So, check that loopback is correctly bound ...

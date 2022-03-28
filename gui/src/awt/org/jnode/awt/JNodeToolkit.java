@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -156,10 +156,10 @@ public abstract class JNodeToolkit extends ClasspathToolkit implements FrameBuff
     }
 
     /**
-     * Gets the default toolkit casted to JNodeToolkit.
+     * Gets the default toolkit casted to UltreonOSToolkit.
      *
-     * @return The current toolkit casted to JNodeToolkit.
-     * @throws AWTError If the default toolkit is not instanceof JNodeToolkit.
+     * @return The current toolkit casted to UltreonOSToolkit.
+     * @throws AWTError If the default toolkit is not instanceof UltreonOSToolkit.
      */
     public static JNodeToolkit getJNodeToolkit() {
         final Toolkit tk = Toolkit.getDefaultToolkit();
@@ -224,7 +224,7 @@ public abstract class JNodeToolkit extends ClasspathToolkit implements FrameBuff
     }
 
     /**
-     * This method need only accessed from JNodeRobotPeer in the same package
+     * This method need only accessed from UltreonOSRobotPeer in the same package
      *
      * @return Returns the keyboardHandler.
      */
@@ -233,7 +233,7 @@ public abstract class JNodeToolkit extends ClasspathToolkit implements FrameBuff
     }
 
     /**
-     * This method need only accessed from JNodeRobotPeer in the same package
+     * This method need only accessed from UltreonOSRobotPeer in the same package
      *
      * @return Returns the mouseHandler.
      */
@@ -267,7 +267,7 @@ public abstract class JNodeToolkit extends ClasspathToolkit implements FrameBuff
     }
 
     /**
-     * JNode specific method. Create a buffered image compatible with the
+     * UltreonOS specific method. Create a buffered image compatible with the
      * graphics configuration.
      *
      * @param width  image width

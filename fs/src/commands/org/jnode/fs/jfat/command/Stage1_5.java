@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2013 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -105,12 +105,12 @@ class Stage1_5 {
         /*
          * The most important stage of the GRUB BOOTING. THE stage1.5.
          * 
-         * The Embedded variables for the grub setting into the JNode's grub
+         * The Embedded variables for the grub setting into the UltreonOS's grub
          * stage1.5
          */
 
         /*
-         * The Blocklists for JNode grub installer is setting to the (512-4)th
+         * The Blocklists for UltreonOS grub installer is setting to the (512-4)th
          * position of the Sector1 of the Stage1.5. Blocklists is the size of
          * the stage1.5 in the sectors unit.
          */

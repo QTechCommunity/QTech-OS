@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -35,7 +35,7 @@ import org.jnode.shell.SymbolSource;
  * based on the Arguments and a separately managed Syntax.  The ArgumentBundle and
  * the Syntax tree are related by means of the label values on their respective nodes.
  * <p>
- * Each native JNode command implements a method for providing an ArgumentBundle to
+ * Each native UltreonOS command implements a method for providing an ArgumentBundle to
  * the command shell / interpreters.  The (provisional) interactions for executing a 
  * shell command are as follows:
  * <ol>

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -35,7 +35,7 @@ import org.jnode.vm.VmSystem;
  * proclet.  The System properties and 'env' are also 'procletized' in this 
  * implementation.
  * <p>
- * A JNode isolate is switched to 'proclet mode" by calling 
+ * A UltreonOS isolate is switched to 'proclet mode" by calling 
  * {@link VmSystem#switchToExternalIOContext(IOContext)}.
  * In theory, calling {@link VmSystem#resetIOContext()} will return the isolate
  * to "normal mode".  However, doing this abruptly cause any remaining 

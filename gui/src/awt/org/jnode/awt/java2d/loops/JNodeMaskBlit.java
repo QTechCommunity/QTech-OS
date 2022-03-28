@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -34,7 +34,7 @@ import sun.java2d.loops.SurfaceType;
 import sun.java2d.pipe.Region;
 
 /**
- * Experimental JNode specific implementation of
+ * Experimental UltreonOS specific implementation of
  * sun.java2d.loops.MaskBlit.
  *
  * @author Levente S\u00e1ntha

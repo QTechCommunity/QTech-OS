@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -23,7 +23,7 @@ package org.jnode.util;
 
 /**
  * This exception indicates an error in a proxy stream mechanism.  This
- * is probably due to a JNode bug and probably not recoverable.
+ * is probably due to a UltreonOS bug and probably not recoverable.
  * 
  * @author crawley@jnode.org
  */

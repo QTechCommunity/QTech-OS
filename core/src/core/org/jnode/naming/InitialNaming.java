@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -29,7 +29,7 @@ import javax.naming.NamingException;
 import org.jnode.annotation.SharedStatics;
 
 /**
- * This class provides a namespace that is used by the JNode system. Various
+ * This class provides a namespace that is used by the UltreonOS system. Various
  * services are bound into this namespace. <p/>A service bound into this
  * namespace can be any object. Is does not have to implement any particular
  * interface. It is up to the user of this namespace to cast the objects as

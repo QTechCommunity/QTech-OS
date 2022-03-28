@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -28,7 +28,7 @@ import org.jnode.shell.syntax.SyntaxBundle;
  * to hold information about a command that is being prepared for execution.
  *
  * There are two basic types of command's that can be described. The first type is
- * a JNode command that implements {@link Command} by extending {@link AbstractCommand}.
+ * a UltreonOS command that implements {@link Command} by extending {@link AbstractCommand}.
  * The other type is generally refered to as a 'classic Java' command, and refers to
  * command that is executed via its {@code main} method. This type of command may have
  * an associated bare command definition in its descriptor. If such a descriptor was
@@ -50,7 +50,7 @@ public class CommandInfo {
     private Command instance;
     
     /**
-     * Creates a CommandInfo object for a JNode command.
+     * Creates a CommandInfo object for a UltreonOS command.
      *
      * @param clazz the designated {@code Class} for executing the command
      * @param commandName the name, or alias, for the command

@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -107,7 +107,7 @@ final class GCMarkVisitor extends ObjectVisitor implements ObjectFlags,
                     //Unsafe.debug("Yellow Object in the rootset.\n");
                     //Unsafe.debug("Perhaps corrupted Heap or bad luck.\n");
                     //Unsafe.debug("Continue as long as we don't have a");
-                    //Unsafe.debug("gc map for the stack.\n Panic JNode once");
+                    //Unsafe.debug("gc map for the stack.\n Panic UltreonOS once");
                     //Unsafe.debug("we have an exact GC.\n");
 
                     //Unsafe.die("Corrupted Heap\n");

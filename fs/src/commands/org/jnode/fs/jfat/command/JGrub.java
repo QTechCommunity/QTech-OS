@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2013 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -38,7 +38,7 @@ import org.jnode.fs.service.FileSystemService;
 import org.jnode.naming.InitialNaming;
 
 /**
- * The Grub Installer for JNode.
+ * The Grub Installer for UltreonOS.
  * 
  * TODO: Adding more options for supporting JGRUB with user specified File
  * System wise. Adding more command support for grub installation.

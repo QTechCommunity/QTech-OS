@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -51,14 +51,14 @@ public class UnixFSAccessRights implements FSAccessRights {
         }
         this.filesystem = filesystem;
 
-        // TODO manages users & groups in JNode
+        // TODO manages users & groups in UltreonOS
         owner = new UserPrincipal("root");
         group = new GroupImpl("admins");
         group.addMember(owner);
     }
 
     private Principal getUser() {
-        // TODO manages users & groups in JNode
+        // TODO manages users & groups in UltreonOS
         // we should find the user from the context
         return owner;
     }

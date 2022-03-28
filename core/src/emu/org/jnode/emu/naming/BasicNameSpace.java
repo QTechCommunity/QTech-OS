@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -31,7 +31,7 @@ import org.jnode.naming.AbstractNameSpace;
 
 /**
  * This implementation of NameSpace does not make use of Class.getVmClass() and
- * therefore can be used in JNode applications / test cases / frameworks designed 
+ * therefore can be used in UltreonOS applications / test cases / frameworks designed 
  * to run on a classic Java VM.
  * 
  * @author crawley@jnode.org

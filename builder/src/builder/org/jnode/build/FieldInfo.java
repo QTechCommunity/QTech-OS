@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -77,14 +77,14 @@ public final class FieldInfo {
     }
 
     /**
-     * Is this class an exact match between JDK & JNode type.
+     * Is this class an exact match between JDK & UltreonOS type.
      */
     public boolean isExact() {
         return exact;
     }
 
     /**
-     * Return all declared instance fields that have a one-to-one map between JDK type and JNode type.
+     * Return all declared instance fields that have a one-to-one map between JDK type and UltreonOS type.
      *
      * @return Array of fields, certain offset may contain null.
      */
@@ -93,7 +93,7 @@ public final class FieldInfo {
     }
 
     /**
-     * Return all declared static fields that have a one-to-one map between JDK type and JNode type.
+     * Return all declared static fields that have a one-to-one map between JDK type and UltreonOS type.
      *
      * @return Array of fields, certain offset may contain null.
      */

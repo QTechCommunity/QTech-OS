@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -22,8 +22,8 @@ package org.jnode.fs.jfat;
 /*
  * $Id: FatFormatter.java  2007-07-26 +0100 (s,26 JULY 2007) Tanmoy Deb $
  *
- * JNode.org
- * Copyright (C) 2003-2006 JNode.org
+ * Ultreon Team
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -168,7 +168,7 @@ public class FatFormatter {
     }
 
     /**
-     * The Constructor for the HDD devices in the JNode system.
+     * The Constructor for the HDD devices in the UltreonOS system.
      * 
      * @throws IOException
      * 

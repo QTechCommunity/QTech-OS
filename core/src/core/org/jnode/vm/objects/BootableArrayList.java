@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -31,9 +31,9 @@ import java.util.RandomAccess;
 
 /**
  * A BootableList is a List implementation that can be used in the
- * build process of JNode.
+ * build process of UltreonOS.
  * Using this class, instead of e.g. ArrayList, will avoid class incompatibilities
- * between the JNode java.util implementation and Sun's implementation.
+ * between the UltreonOS java.util implementation and Sun's implementation.
  *
  * @author epr
  */

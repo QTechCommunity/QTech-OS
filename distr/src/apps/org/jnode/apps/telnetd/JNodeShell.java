@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -106,7 +106,7 @@ public class JNodeShell implements Shell {
             // PrintStream out = new PrintStream(new
             // RemoteConsoleOutputStream(terminalIO));
             // PrintStream err = out;
-            // commandShell = new JNodeCommandShell(this, console, in, out,
+            // commandShell = new UltreonOSCommandShell(this, console, in, out,
             // err);
             commandShell = new JNodeCommandShell(console, this);
 
@@ -300,7 +300,7 @@ public class JNodeShell implements Shell {
     }// connectionSentBreak
 
     /**
-     * Create a Shell instance for JNode telnet daemon.
+     * Create a Shell instance for UltreonOS telnet daemon.
      * @return
      */
     public static Shell createShell() {

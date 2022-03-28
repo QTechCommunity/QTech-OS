@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (C) 2003-2015 JNode.org
+ * Copyright (C) 2020-2022 Ultreon Team
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -32,7 +32,7 @@ import org.jnode.shell.ShellException;
 public class JNodeCommandShell extends CommandShell {
     private final JNodeShell shell;
 
-    // public JNodeCommandShell(JNodeShell shell, TextConsole console,
+    // public UltreonOSCommandShell(JNodeShell shell, TextConsole console,
     // InputStream in, PrintStream out, PrintStream err)
     // throws ShellException {
     // super(console, in, out, err);
@@ -40,7 +40,7 @@ public class JNodeCommandShell extends CommandShell {
     // }
 
     /**
-     * Construct a JNode command shell for the telnet daemon.
+     * Construct a UltreonOS command shell for the telnet daemon.
      */
     public JNodeCommandShell(TextConsole cons, JNodeShell shell) throws ShellException {
         super(cons);
@@ -49,7 +49,7 @@ public class JNodeCommandShell extends CommandShell {
     }
 
     /**
-     * Exit the JNode command shell for the telnet daemon.
+     * Exit the UltreonOS command shell for the telnet daemon.
      */
     @Override
     public void exit() {
