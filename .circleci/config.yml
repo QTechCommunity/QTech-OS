@@ -28,7 +28,7 @@ jobs:
     steps:
       - checkout
       
-      - run: apt update -y && apt install mkisofs nasm gcc g++ grub-common coreutils -y
+      - run: apt update -y && apt install mkisofs nasm gcc g++ grub-common coreutils openjdk-8-jdk -y
 
       - run: chmod +x ./build.sh
 
