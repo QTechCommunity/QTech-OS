@@ -33,4 +33,4 @@ jobs:
       - run: chmod +x ./build.sh
 
       # run tests!
-      - run: bash ./build.sh
+      - run: bash ./build.sh cd-x86
